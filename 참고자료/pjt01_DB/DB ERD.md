@@ -1,1 +1,1 @@
-![ex_screenshot](./ERD.png)
+![ex_screenshot](/ERD.png)
