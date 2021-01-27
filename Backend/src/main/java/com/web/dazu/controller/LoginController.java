@@ -3,12 +3,16 @@ package com.web.dazu.controller;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.dazu.model.Member;
 import com.web.dazu.service.LoginService;
+import com.web.dazu.service.MemberService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -21,23 +25,22 @@ public class LoginController {
 	
 	@ApiOperation(value = "로그인 - 카카오  로그인 API로 Token 및 회원 정보 불러오기", response = HashMap.class)
 	@PostMapping("/login")
-	public HashMap<String, Object> login(@RequestParam(value = "code", required = false) String code) {
+	public ResponseEntity<Member> login(@RequestParam(value = "code", required = false) String code) {
 		
 		String accessToken = null;
-		HashMap<String, Object> userInfo = new HashMap<String, Object>();
+		Member member = new Member();
 		try {
 			accessToken = service.getAccessToken(code);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
-			userInfo = service.getMemberInfoKAKAO(accessToken);
+			member = service.getMemberInfoKAKAO(accessToken);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		userInfo.put("accessToken", accessToken);
 		
-		return userInfo;
+		return new ResponseEntity<Member>(member, HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "로그아웃")

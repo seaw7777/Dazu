@@ -1,6 +1,8 @@
 package com.web.dazu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +29,9 @@ public class MemberController {
 	@Autowired
 	private LoginService loginService;
 	
-	@ApiOperation(value = "현재 KAKO 연동 로그인된 회원 정보 읽는다.", response = Member.class)
+	@ApiOperation(value = "현재 KAKAO 연동 로그인된 회원 정보 읽는다.", response = Member.class)
 	@GetMapping("/selectMember/{id}")
-	public Member selectMember(@PathVariable String id) {
+	public ResponseEntity<Member> selectMember(String id) {
 		Member member = new Member();
 		try {
 			member = service.selectMember(id);
@@ -37,7 +39,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		return member;
+		return new ResponseEntity<Member>(member, HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "현재 KAKAO 연동 로그인된 회원 정보에 추가 정보(주소:address)를 붙여 등록한다.")
