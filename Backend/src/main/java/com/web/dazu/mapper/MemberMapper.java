@@ -1,7 +1,10 @@
 package com.web.dazu.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.web.dazu.model.Member;
 
+@Mapper
 public interface MemberMapper {
 
 	Member selectMember(String id) throws Exception;

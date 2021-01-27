@@ -8,10 +8,12 @@ import java.net.URL;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.MemberMapper;
 import com.web.dazu.model.Member;
 
+@Service
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
