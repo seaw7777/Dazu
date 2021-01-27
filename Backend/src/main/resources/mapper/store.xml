@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dazu.mapper.StoreMapper">
+	<select id="selectAllStore" parameterType="string" resultType="Store">
+		select *
+		from store_information
+		where dong = #{dong}
+	</select>
+</mapper>
