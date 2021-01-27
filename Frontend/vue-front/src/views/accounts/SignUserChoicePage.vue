@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row justify="space-around">
       <v-col cols="5">
-        <router-link to="/signup/ownerstep">
+        <router-link to="/user/ownerstep">
           <v-img
             :src="require('@/assets/logo.png')"
             max-width="60"
@@ -13,7 +13,7 @@
         </router-link>
       </v-col>
       <v-col cols="5">
-        <router-link to="/signup/customerstep">
+        <router-link to="/user/customerstep">
           <v-img
             :src="require('@/assets/logo.png')"
             max-width="60"

@@ -36,7 +36,7 @@ public class SwaggerConfiguration {
 		responseMessages.add(new ResponseMessageBuilder().code(500).message("서버 문제 발생 !!!").responseModel(new ModelRef("Error")).build());
 		responseMessages.add(new ResponseMessageBuilder().code(404).message("페이지를 찾을 수 없습니다 !!!").build());
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(version).select()
-					.apis(RequestHandlerSelectors.basePackage("com.miniPJT.covid19.controller"))
+					.apis(RequestHandlerSelectors.basePackage("com.web.dazu.controller"))
 					.paths(postPaths()).build()
 					.useDefaultResponseMessages(false)
 					.globalResponseMessage(RequestMethod.GET,responseMessages);
@@ -50,7 +50,7 @@ public class SwaggerConfiguration {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title(title)
-				.description("<h3>SSAFY API Reference for Developers</h3>Swagger를 이용한 VUEJS API<br><img src=\"ssafy.png\">") 
+				.description("<h3>DAZU API Reference for Developers</h3>Swagger를 이용한 VUEJS API<br><img src=\"ssafy.png\">") 
 				.contact(new Contact("SSAFY", "https://edu.ssafy.com", "ssafy@ssafy.com"))
 				.license("SSAFY License")
 				.licenseUrl("https://www.ssafy.com/ksp/jsp/swp/etc/swpPrivacy.jsp")

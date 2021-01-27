@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h1>DAZU</h1>
-    <p>DAZU 설명</p>
-    <button>카카오 로그인/회원가입</button>
+    <LoginSignBtn></LoginSignBtn>
   </div>
 </template>
 
 <script>
-export default {};
+import LoginSignBtn from '@/components/accounts/LoginSignBtn.vue';
+export default {
+  components: {
+    LoginSignBtn,
+  },
+  methods: {},
+};
 </script>
 
 <style></style>

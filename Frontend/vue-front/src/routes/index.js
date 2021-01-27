@@ -7,19 +7,19 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/login',
+      path: '/',
       component: () => import('@/views/accounts/LoginSignupPage.vue'),
     },
     {
-      path: '/signup/choice',
+      path: '/user/choice',
       component: () => import('@/views/accounts/SignUserChoicePage.vue'),
     },
     {
-      path: '/signup/ownerstep',
+      path: '/user/ownerstep',
       component: () => import('@/views/accounts/OwnerStepPage.vue'),
     },
     {
-      path: '/signup/customerstep',
+      path: '/user/customerstep',
       component: () => import('@/views/accounts/CustomerStepPage.vue'),
     },
   ],
