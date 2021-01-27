@@ -9,10 +9,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import org.springframework.stereotype.Service;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+@Service
 public class LoginServiceImpl implements LoginService {
 
 	@Override
@@ -34,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=2ce9bedc0889520f06b58f54d0724e65");
-            sb.append("&redirect_uri=http://localhost:8080/login/login");
+            sb.append("&redirect_uri=http://localhost:8000/dazu/login");
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
@@ -73,7 +76,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public HashMap<String, Object> getUserInfo(String accessToken) {
+	public HashMap<String, Object> getMemberInfoKAKAO(String accessToken) throws Exception{
 		//	    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 		HashMap<String, Object> userInfo = new HashMap<>();
 		String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -102,11 +105,14 @@ public class LoginServiceImpl implements LoginService {
 		     JsonElement element = parser.parse(result);
 		        
 		     JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-//		     JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+		     String userId = element.getAsJsonObject().get("id").getAsString();
 		        
 		     String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-		        
+		     String profileImage = properties.getAsJsonObject().get("profile_image").getAsString();
+		     
+		     userInfo.put("profileImage", profileImage);
 		     userInfo.put("nickname", nickname);
+		     userInfo.put("id", userId);
 		        
 		 } catch (IOException e) {
 		     e.printStackTrace();
