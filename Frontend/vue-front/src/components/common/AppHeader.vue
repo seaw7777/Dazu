@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!isUserLogin">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
@@ -24,12 +24,9 @@
             >
           </b-nav-form>
 
-          <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">ES</b-dropdown-item>
-            <b-dropdown-item href="#">RU</b-dropdown-item>
-            <b-dropdown-item href="#">FA</b-dropdown-item>
-          </b-nav-item-dropdown>
+          <v-avatar>
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+          </v-avatar>
 
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
@@ -46,7 +43,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
+  },
+};
 </script>
 
 <style></style>
