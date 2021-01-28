@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isUserLogin">
+  <div v-if="isUserLogin">
     <b-navbar toggleable="lg" type="light" variant="warning">
       <b-navbar-brand href="#">
         <b-img

@@ -19,10 +19,11 @@
 export default {
   methods: {
     async onClickKakaoAPI() {
-      window.open(
-        'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=///&redirect_uri=http://localhost:8000/dazu/login&response_type=code">LOGIN',
-      );
       try {
+        window.open(
+          'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2ce9bedc0889520f06b58f54d0724e65&redirect_uri=http://localhost:8000/dazu/login&response_type=code">LOGIN',
+        );
+        console.log('goto vuex');
         await this.$store.dispatch('LOGIN');
       } catch (error) {
         console.log(error);

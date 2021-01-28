@@ -1,34 +1,16 @@
 <template>
-  <v-container fluid>
-    <v-row justify="space-around">
-      <v-col cols="5">
-        <router-link to="/user/ownerstep">
-          <v-img
-            :src="require('@/assets/logo.png')"
-            max-width="60"
-            to="/afiliacion"
-            width="100%"
-          >
-          </v-img>
-        </router-link>
-      </v-col>
-      <v-col cols="5">
-        <router-link to="/user/customerstep">
-          <v-img
-            :src="require('@/assets/logo.png')"
-            max-width="60"
-            to="/afiliacion"
-            width="100%"
-          >
-          </v-img>
-        </router-link>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <UserChoiceForm></UserChoiceForm>
+  </div>
 </template>
 
 <script>
-export default {};
+import UserChoiceForm from '@/components/accounts/UserChoiceForm.vue';
+export default {
+  components: {
+    UserChoiceForm,
+  },
+};
 </script>
 
 <style></style>
