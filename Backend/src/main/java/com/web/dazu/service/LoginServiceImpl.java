@@ -66,7 +66,7 @@ public class LoginServiceImpl implements LoginService {
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(result);
         
-        accessToken = element.getAsJsonObject().get("accessToken").getAsString();
+        accessToken = element.getAsJsonObject().get("access_token").getAsString();
         refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
         
         System.out.println("accessToken : " + accessToken);
@@ -111,12 +111,20 @@ public class LoginServiceImpl implements LoginService {
 	     String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 	     String profileImage = properties.getAsJsonObject().get("profile_image").getAsString();
 	     
-	     Member member = selectMember(id);
+	     System.out.println(nickname + " " + id);
+	     
+//	     Member member = selectMember(id);
+	     
+	     Member member = new Member();
+	     
+	     System.out.println(member.getNickname());
 
 	     member.setNickname(nickname);
 	     member.setProfileImage(profileImage);
 	     member.setUsercode(id);
 	     member.setAccessToken(accessToken);
+	     
+	     System.out.println("service : " + member.getAccessToken());
 		    
 		 return member;
 	}
