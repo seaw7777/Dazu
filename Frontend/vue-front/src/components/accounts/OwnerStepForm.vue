@@ -28,12 +28,17 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" l>
+          <v-col cols="12">
             <v-file-input
               label="File input"
               filled
               prepend-icon="mdi-camera"
             ></v-file-input>
+          </v-col>
+          <v-col cols="12">
+            <v-btn class="ma-2" outlined color="indigo">
+              NEXT
+            </v-btn>
           </v-col>
         </v-row>
       </v-container>

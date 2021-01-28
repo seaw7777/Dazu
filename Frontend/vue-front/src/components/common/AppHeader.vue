@@ -1,14 +1,23 @@
 <template>
   <div v-if="!isUserLogin">
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+    <b-navbar toggleable="lg" type="light" variant="warning">
+      <b-navbar-brand href="#">
+        <b-img
+          :src="require('@/assets/DAZUlogo.png')"
+          class="d-inline-block align-top"
+          width="80"
+          hegith="80"
+          alt="DAZU"
+      /></b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Link</b-nav-item>
-          <b-nav-item href="#" disabled>Disabled</b-nav-item>
+          <b-nav-item to="#">클래스</b-nav-item>
+          <b-nav-item to="#">스토어</b-nav-item>
+          <b-nav-item to="#">커뮤니티</b-nav-item>
+          <b-nav-item to="#">공지사항</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -23,9 +32,8 @@
               >Search</b-button
             >
           </b-nav-form>
-
           <v-avatar>
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+            <b-avatar href="#" src="https://placekitten.com/300/300"></b-avatar>
           </v-avatar>
 
           <b-nav-item-dropdown right>
@@ -34,7 +42,9 @@
               <em>User</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item href="javascript:;" @click="logoutUser"
+              >Log Out</b-dropdown-item
+            >
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -43,10 +53,20 @@
 </template>
 
 <script>
+import { deleteCookie } from '@/utils/cookies';
 export default {
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
+    },
+  },
+  methods: {
+    logoutUser() {
+      this.$store.commit('clearUsername');
+      this.$store.commit('clearToken');
+      deleteCookie('til_auth');
+      deleteCookie('til_user');
+      this.$router.push('/user');
     },
   },
 };
