@@ -1,13 +1,13 @@
 package com.web.dazu.service;
 
-import java.util.HashMap;
+import com.web.dazu.model.Member;
 
 
 public interface LoginService {
 
 	String getAccessToken(String code) throws Exception;
 
-	HashMap<String, Object> getMemberInfoKAKAO(String accessToken) throws Exception;
+	Member getMemberInfoKAKAO(String accessToken) throws Exception;
 
 	void logout(String accessToken) throws Exception;
 }

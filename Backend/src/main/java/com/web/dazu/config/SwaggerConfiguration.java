@@ -50,10 +50,8 @@ public class SwaggerConfiguration {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title(title)
-				.description("<h3>DAZU API Reference for Developers</h3>Swagger를 이용한 VUEJS API<br><img src=\"ssafy.png\">") 
-				.contact(new Contact("SSAFY", "https://edu.ssafy.com", "ssafy@ssafy.com"))
-				.license("SSAFY License")
-				.licenseUrl("https://www.ssafy.com/ksp/jsp/swp/etc/swpPrivacy.jsp")
+				.description("<h3>DAZU API Reference for Developers</h3>Swagger를 이용한 VUEJS API<br>") 
+				.license("DAZU License")
 				.version("1.0").build();
 
 	}
