@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dazu.mapper.MemberMapper">
+
+	<select id="selectMember" parameterType="string" resultType="Member">
+		select usercode, user_name, create_date, address, dong, usertype
+		from member
+		where usercode = #{id}
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		insert into member(usercode, user_name, address, dong, usertype)
+		values(#{usercode}, #{user_name}, #{address}, #{dong}, #{usertype})
+	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		update member
+		set user_name = #{user_name}, address = #{address}, dong = #{dong}
+		where usercode = #{usercode}
+	</update>
+	
+	<delete id="deleteMember" parameterType="string">
+		delete from member
+		where usercode = #{id}
+	</delete>
+	
+</mapper>

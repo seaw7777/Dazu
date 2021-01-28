@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
   routes: [
+    { path: '/', redirect: '/login' },
     {
       path: '/user',
       component: () => import('@/views/accounts/LoginSignupPage.vue'),
@@ -22,6 +23,7 @@ const router = new VueRouter({
       path: '/user/customerstep',
       component: () => import('@/views/accounts/CustomerStepPage.vue'),
     },
+    { path: '/main', component: () => import('@/views/MainPage.vue') },
   ],
 });
 

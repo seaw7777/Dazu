@@ -11,23 +11,53 @@
       </v-img>
     </router-link>
     <h1>DAZU 설명</h1>
-    <v-btn @click="onClickKakaoAPI()">카카오 로그인/회원가입</v-btn>
+
+    <v-btn @click="onClickKakaoAPI">카카오 로그인/회원가입</v-btn>
+
+    <img
+      class="kakao_btn"
+      src="@/assets/kakao_login_medium_narrow.png"
+      @click="loginWithKakao"
+    />
+    <p></p>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      client_id: '2ce9bedc0889520f06b58f54d0724e65',
+      redirect_uri: 'http://localhost:8000/dazu/login',
+    };
+  },
+
   methods: {
     async onClickKakaoAPI() {
       try {
         window.open(
-          'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2ce9bedc0889520f06b58f54d0724e65&redirect_uri=http://localhost:8000/dazu/login&response_type=code">LOGIN',
+          'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2ce9bedc0889520f06b58f54d0724e65&redirect_uri=http://localhost:8000/dazu/login&response_type=code"',
         );
-        console.log('goto vuex');
         await this.$store.dispatch('LOGIN');
       } catch (error) {
         console.log(error);
       }
+    },
+    async loginWithKakao() {
+      try {
+        const params = {
+          redirectUri: 'http://localhost:8000/dazu/login',
+        };
+        console.log('kakaoauth');
+        window.Kakao.Auth.authorize(params);
+        console.log('vuex');
+        await this.$store.dispatch('LOGIN');
+      } catch (error) {
+        console.log(error);
+      }
+
+      // const token = window.Kakao.Auth.setAccessToken(accessToken);
+      // console.log(token);
     },
   },
 };

@@ -3,6 +3,7 @@
     <v-form v-model="valid">
       <v-container>
         <v-row>
+          <h1>사장님 추가 정보 입력 단계</h1>
           <v-col cols="12">
             <v-text-field
               v-model="storename"

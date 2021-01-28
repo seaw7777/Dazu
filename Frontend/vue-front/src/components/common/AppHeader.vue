@@ -1,7 +1,7 @@
 <template>
   <div v-if="isUserLogin">
     <b-navbar toggleable="lg" type="light" variant="warning">
-      <b-navbar-brand href="#">
+      <b-navbar-brand :to="logoLink">
         <b-img
           :src="require('@/assets/DAZUlogo.png')"
           class="d-inline-block align-top"
@@ -39,7 +39,7 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>User</em>
+              <em>{{ $store.state.username }}</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
             <b-dropdown-item href="javascript:;" @click="logoutUser"
@@ -59,6 +59,9 @@ export default {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
+    logoLink() {
+      return this.$store.getters.isLogin ? '/main' : '/user';
+    },
   },
   methods: {
     logoutUser() {
@@ -66,7 +69,7 @@ export default {
       this.$store.commit('clearToken');
       deleteCookie('til_auth');
       deleteCookie('til_user');
-      this.$router.push('/user');
+      this.$router.push('/user/choice');
     },
   },
 };

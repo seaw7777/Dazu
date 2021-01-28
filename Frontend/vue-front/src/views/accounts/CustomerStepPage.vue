@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>고객님 추가 정보 입력 단계</h1>
     <CustomerStepForm></CustomerStepForm>
   </div>
 </template>
