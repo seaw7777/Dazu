@@ -69,7 +69,7 @@ export default {
       this.$store.commit('clearToken');
       deleteCookie('til_auth');
       deleteCookie('til_user');
-      this.$router.push('/user/choice');
+      this.$router.push('/user');
     },
   },
 };

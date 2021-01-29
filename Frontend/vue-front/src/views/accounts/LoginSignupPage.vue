@@ -16,15 +16,11 @@ export default {
   created() {
     this.code = this.$route.query.code;
     console.log(this.code);
-    this.$axios
-      .get('http://localhost:8000/dazu/login?code=' + this.code)
-      .then(({ data }) => {
-        this.member = data;
-        console.log(this.member);
-      })
-      .catch(() => {
-        alert('에러가 발생했습니다.');
-      });
+    if (this.code != undefined || this.code != null) {
+      this.$store.dispatch('CODE', this.code);
+      console.log('goto main');
+      this.$router.push('/main');
+    }
   },
   components: {
     LoginSignBtn,
