@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,9 +27,9 @@ public class LoginController {
 	@ApiOperation(value = "로그인 - 카카오  로그인 API로 Token 및 회원 정보 불러오기", response = HashMap.class)
 	@RequestMapping("/login")
 	public ResponseEntity<Member> login(@RequestParam(value = "code", required = false) String code) {
-		System.out.println("로그인 시도!");
 		String accessToken = null;
 		Member member = new Member();
+		System.out.println(code);
 		try {
 			accessToken = service.getAccessToken(code);
 		} catch (Exception e) {
@@ -36,10 +37,13 @@ public class LoginController {
 		}
 		try {
 			member = service.getMemberInfoKAKAO(accessToken);
-			System.out.println("controller : " + member.getAccessToken());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("controller : " + member.getAccessToken());
+		System.out.println(member.getNickname());
+		System.out.println(member.getProfileImage());
+		System.out.println(member.getUsercode());
 		
 		return new ResponseEntity<Member>(member, HttpStatus.OK);
 	}

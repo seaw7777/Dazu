@@ -43,7 +43,7 @@ public class LoginServiceImpl implements LoginService {
         StringBuilder sb = new StringBuilder();
         sb.append("grant_type=authorization_code");
         sb.append("&client_id=2ce9bedc0889520f06b58f54d0724e65");
-        sb.append("&redirect_uri=http://localhost:8000/dazu/login");
+        sb.append("&redirect_uri=http://localhost:8080/user");
         sb.append("&code=" + code);
         bw.write(sb.toString());
         bw.flush();
@@ -111,13 +111,11 @@ public class LoginServiceImpl implements LoginService {
 	     String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 	     String profileImage = properties.getAsJsonObject().get("profile_image").getAsString();
 	     
-	     System.out.println(nickname + " " + id);
+	     System.out.println(nickname + " " + id + " " + accessToken +  " " + profileImage);
 	     
 //	     Member member = selectMember(id);
 	     
 	     Member member = new Member();
-	     
-	     System.out.println(member.getNickname());
 
 	     member.setNickname(nickname);
 	     member.setProfileImage(profileImage);

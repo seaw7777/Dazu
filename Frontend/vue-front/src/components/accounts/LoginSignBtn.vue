@@ -25,23 +25,13 @@
 
 <script>
 export default {
-  data() {
-    return {
-      client_id: '2ce9bedc0889520f06b58f54d0724e65',
-      redirect_uri: 'http://localhost:8000/dazu/login',
-    };
-  },
-
+  created: {},
   methods: {
     async onClickKakaoAPI() {
-      try {
-        window.open(
-          'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2ce9bedc0889520f06b58f54d0724e65&redirect_uri=http://localhost:8000/dazu/login&response_type=code"',
-        );
-        await this.$store.dispatch('LOGIN');
-      } catch (error) {
-        console.log(error);
-      }
+      const params = {
+        redirectUri: 'http://localhost:8080/user',
+      };
+      window.Kakao.Auth.authorize(params);
     },
     async loginWithKakao() {
       try {

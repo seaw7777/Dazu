@@ -4,10 +4,12 @@ import router from '@/routes/index';
 import vuetify from './plugins/vuetify';
 import BootstrapVue from 'bootstrap-vue';
 import store from '@/store/index';
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.config.productionTip = false;
+Vue.prototype.$axios = axios;
 
 Vue.use(BootstrapVue);
 new Vue({
