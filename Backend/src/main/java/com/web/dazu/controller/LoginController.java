@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,8 +50,8 @@ public class LoginController {
 	}
 	
 	@ApiOperation(value = "로그아웃")
-	@RequestMapping("/logout")
-	public void logout(String accessToken) {
+	@RequestMapping("/logout/{accessToken}")
+	public void logout(@PathVariable String accessToken) {
 		try {
 			service.logout(accessToken);
 		} catch (Exception e) {

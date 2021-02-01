@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassTime;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -18,6 +19,16 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public List<Class> selectAllClass(String dong) throws Exception {
 		return session.getMapper(ClassMapper.class).selectAllClass(dong);
+	}
+
+	@Override
+	public Class selectClass(String classcode) throws Exception {
+		return session.getMapper(ClassMapper.class).selectClass(classcode);
+	}
+
+	@Override
+	public ClassTime selectClassTime(String classcode) throws Exception {
+		return session.getMapper(ClassMapper.class).selectClassTime(classcode);
 	}
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassTime;
 import com.web.dazu.service.ClassService;
 
 import io.swagger.annotations.ApiOperation;
@@ -37,4 +38,29 @@ public class ClassController {
 		}
 		return new ResponseEntity<List<Class>>(list, HttpStatus.OK);
 	}
+	
+	@ApiOperation(value = "클래스 상세 정보를 읽어온다.", response = Class.class)
+	@GetMapping("/{classcode}")
+	public ResponseEntity<Class> selectClass(@PathVariable String classcode) {
+		Class c = new Class();
+		try {
+			c = service.selectClass(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Class>(c, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "클래스 일정(날짜, 시간 등) 정보를 읽어온다.", response = ClassTime.class)
+	@GetMapping("/time/{classcode}")
+	public ResponseEntity<ClassTime> selectClassTime(@PathVariable String classcode) {
+		ClassTime ct = new ClassTime();
+		try {
+			ct = service.selectClassTime(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<ClassTime>(ct, HttpStatus.OK);
+	}
+	
 }
