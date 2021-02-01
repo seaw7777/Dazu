@@ -7,12 +7,16 @@ public class Class {
 	private String class_enddate;
 	private String class_describe;
 	private String class_difficult;
+	private int class_price;
 	private String food_type;
 	private String store_information_storecode;
 	
 	public Class() {}
+	
+
 	public Class(String classcode, String class_name, String class_startdate, String class_enddate,
-			String class_describe, String class_difficult, String food_type, String store_information_storecode) {
+			String class_describe, String class_difficult, int class_price, String food_type,
+			String store_information_storecode) {
 		super();
 		this.classcode = classcode;
 		this.class_name = class_name;
@@ -20,9 +24,11 @@ public class Class {
 		this.class_enddate = class_enddate;
 		this.class_describe = class_describe;
 		this.class_difficult = class_difficult;
+		this.class_price = class_price;
 		this.food_type = food_type;
 		this.store_information_storecode = store_information_storecode;
 	}
+
 
 	public String getClasscode() {
 		return classcode;
@@ -87,5 +93,16 @@ public class Class {
 	public void setStore_information_storecode(String store_information_storecode) {
 		this.store_information_storecode = store_information_storecode;
 	}
+
+
+	public int getClass_price() {
+		return class_price;
+	}
+
+
+	public void setClass_price(int class_price) {
+		this.class_price = class_price;
+	}
+	
 	
 }
