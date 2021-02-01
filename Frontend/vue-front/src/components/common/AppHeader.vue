@@ -56,6 +56,11 @@
 import { deleteCookie } from '@/utils/cookies';
 import { logoutUser } from '@/api/auth';
 export default {
+  data() {
+    return {
+      token: '',
+    };
+  },
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
@@ -69,16 +74,15 @@ export default {
   },
   methods: {
     async logoutUser() {
-      console.log(this.$store.state.token);
+      this.token = this.$store.state.token;
+      console.log(this.token);
+      logoutUser(this.token);
       this.$store.commit('clearUsername');
       this.$store.commit('clearToken');
       this.$store.commit('clearUserimg');
-      this.$store.commit('clearCode');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
-      deleteCookie('til_code');
-      await logoutUser(this.$store.state.token);
       this.$router.push('/user');
     },
   },

@@ -1,11 +1,8 @@
 import { instance } from './index';
 
-function loginUser() {
-  return instance.post('login');
-}
-
+// 로그아웃 API
 function logoutUser(accessToken) {
-  return instance.get('logout', accessToken);
+  return instance.get(`logout/${accessToken}`);
 }
 
-export { loginUser, logoutUser };
+export { logoutUser };
