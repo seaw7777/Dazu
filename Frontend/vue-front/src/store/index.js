@@ -16,6 +16,7 @@ export default new Vuex.Store({
     token: getAuthFromCookie() || '',
     userimg: getImgFromCookie() || '',
     code: '',
+    address: '',
   },
   getters: {
     isLogin(state) {
@@ -32,7 +33,9 @@ export default new Vuex.Store({
     setUserimg(state, userimg) {
       state.userimg = userimg;
     },
-
+    setAddress(state, address) {
+      state.address = address;
+    },
     clearUsername(state) {
       state.username = '';
     },
@@ -57,8 +60,12 @@ export default new Vuex.Store({
     async CODE({ commit }, codeData) {
       console.log(codeData);
       commit('setCode', codeData);
-
       return codeData;
+    },
+    async ROAD({ commit }, address) {
+      console.log(address);
+      commit('setAddress', address);
+      return address;
     },
   },
 });
