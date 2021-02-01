@@ -14,6 +14,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.12",
+    "vue-daum-postcode": "^0.9.0",
     "vue-kakao-login": "^1.0.5",
     "vue-router": "^3.5.0",
     "vuetify": "^2.2.11",

@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify';
 import BootstrapVue from 'bootstrap-vue';
 import store from '@/store/index';
 import axios from 'axios';
+import VueDaumPostcode from 'vue-daum-postcode';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 
 Vue.use(BootstrapVue);
+Vue.use(VueDaumPostcode);
 new Vue({
   render: h => h(App),
   vuetify,
