@@ -42,7 +42,7 @@ public class MemberController {
 		return new ResponseEntity<Member>(member, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "현재 KAKAO 연동 로그인된 회원 정보에 추가 정보(주소:address)를 붙여 등록한다.")
+	@ApiOperation(value = "현재 KAKAO 연동 로그인된 회원 정보에 추가 정보(주소:address, address_detail)를 붙여 등록한다.")
 	@PostMapping("/insertMember")
 	public void insertMember(@RequestBody Member member) {
 		try {

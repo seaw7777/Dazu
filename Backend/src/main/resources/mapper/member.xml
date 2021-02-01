@@ -5,19 +5,19 @@
 <mapper namespace="com.web.dazu.mapper.MemberMapper">
 
 	<select id="selectMember" parameterType="string" resultType="Member">
-		select usercode, user_name, create_date, address, dong, usertype
+		select *
 		from member
 		where usercode = #{id}
 	</select>
 	
 	<insert id="insertMember" parameterType="Member">
-		insert into member(usercode, user_name, address, dong, usertype)
-		values(#{usercode}, #{user_name}, #{address}, #{dong}, #{usertype})
+		insert into member(usercode, address, address_detail, lat, lng, dong, usertype)
+		values(#{usercode}, #{address}, #{address_detail}, #{lat}, #{lng}, #{dong}, #{usertype})
 	</insert>
 	
 	<update id="updateMember" parameterType="Member">
 		update member
-		set user_name = #{user_name}, address = #{address}, dong = #{dong}
+		set address = #{address}, address_detail = #{address_detail}, lat = #{lat}, lng = #{lng}, dong = #{dong}
 		where usercode = #{usercode}
 	</update>
 	

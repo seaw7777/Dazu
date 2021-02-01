@@ -28,7 +28,7 @@ public class ClassController {
 	private ClassService service;
 	
 	@ApiOperation(value = "행정동 별 클래스 정보를 읽어온다.", response = List.class)
-	@GetMapping("/{dong}")
+	@GetMapping("/dong/{dong}")
 	public ResponseEntity<List<Class>> selectAllClass(@PathVariable String dong) {
 		List<Class> list = new ArrayList<Class>();
 		try {
@@ -40,7 +40,7 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "클래스 상세 정보를 읽어온다.", response = Class.class)
-	@GetMapping("/{classcode}")
+	@GetMapping("/detail/{classcode}")
 	public ResponseEntity<Class> selectClass(@PathVariable String classcode) {
 		Class c = new Class();
 		try {
@@ -62,5 +62,8 @@ public class ClassController {
 		}
 		return new ResponseEntity<ClassTime>(ct, HttpStatus.OK);
 	}
+	
+//	@GetMapping("/store/{storecode}")
+//	publice resp
 	
 }
