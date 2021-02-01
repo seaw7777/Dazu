@@ -38,18 +38,18 @@ export default {
   },
   created() {
     this.code = this.$store.state.code;
-    console.log(this.code);
-    this.$axios
-      .get('http://localhost:8000/dazu/login?code=' + this.code)
-      .then(({ data }) => {
-        this.member = data;
-        console.log(this.member);
-        this.$store.dispatch('LOGIN', this.member);
-        this.$router.push('/main');
-      })
-      .catch(() => {
-        alert('에러가 발생했습니다.');
-      });
+    console.log(this.member);
+    // this.$axios
+    //   .get('http://localhost:8000/dazu/login?code=' + this.code)
+    //   .then(({ data }) => {
+    //     this.member = data;
+    //     console.log(this.member);
+    //     this.$store.dispatch('LOGIN', this.member);
+    //     this.$router.push('/main');
+    //   })
+    //   .catch(() => {
+    //     alert('에러가 발생했습니다.');
+    //   });
   },
   components: {
     MainMap,

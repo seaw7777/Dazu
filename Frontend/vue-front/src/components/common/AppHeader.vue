@@ -33,7 +33,7 @@
             >
           </b-nav-form>
           <v-avatar>
-            <b-avatar href="#" src="https://placekitten.com/300/300"></b-avatar>
+            <b-avatar href="#" :src="userImgUrl"></b-avatar>
           </v-avatar>
 
           <b-nav-item-dropdown right>
@@ -54,6 +54,7 @@
 
 <script>
 import { deleteCookie } from '@/utils/cookies';
+import { logoutUser } from '@/api/auth';
 export default {
   computed: {
     isUserLogin() {
@@ -62,13 +63,22 @@ export default {
     logoLink() {
       return this.$store.getters.isLogin ? '/main' : '/user';
     },
+    userImgUrl() {
+      return this.$store.getters.isLogin ? this.$store.state.userimg : '/';
+    },
   },
   methods: {
-    logoutUser() {
+    async logoutUser() {
+      console.log(this.$store.state.token);
       this.$store.commit('clearUsername');
       this.$store.commit('clearToken');
+      this.$store.commit('clearUserimg');
+      this.$store.commit('clearCode');
       deleteCookie('til_auth');
       deleteCookie('til_user');
+      deleteCookie('til_img');
+      deleteCookie('til_code');
+      await logoutUser(this.$store.state.token);
       this.$router.push('/user');
     },
   },
