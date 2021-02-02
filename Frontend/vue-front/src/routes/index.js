@@ -24,6 +24,10 @@ const router = new VueRouter({
       component: () => import('@/views/accounts/CustomerStepPage.vue'),
     },
     { path: '/main', component: () => import('@/views/MainPage.vue') },
+    {
+      path: '/class/detail/:id',
+      component: () => import('@/views/classes/ClassDetailPage.vue'),
+    },
   ],
 });
 

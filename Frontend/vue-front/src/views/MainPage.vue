@@ -13,15 +13,18 @@
             <v-card-text><MainMap></MainMap></v-card-text>
           </v-card>
           <v-card flat v-else-if="item.tab === 'CLASS'">
-            <ul>
-              <v-card-text
-                ><MainClassItem
-                  v-for="classItem in classItems"
-                  :key="classItem.classcode"
-                  :classItem="classItem"
-                ></MainClassItem
-              ></v-card-text>
-            </ul>
+            <v-row no-gutters>
+              <v-col
+                v-for="classItem in classItems"
+                :key="classItem.classcode"
+                cols="12"
+                sm="4"
+              >
+                <v-card-text>
+                  <MainClassItem
+                    :classItem="classItem"
+                  ></MainClassItem></v-card-text></v-col
+            ></v-row>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
