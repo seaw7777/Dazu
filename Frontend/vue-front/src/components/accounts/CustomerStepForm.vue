@@ -73,7 +73,7 @@ export default {
       address: '',
       extraAddress: '',
       usertype: 1,
-      lat: '',
+      lat: 0,
       lng: 0,
     };
   },
@@ -125,8 +125,9 @@ export default {
       const geocoder = new kakao.maps.services.Geocoder();
       geocoder.addressSearch(this.address, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-          var lat = coords.getLat();
+          const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          const lat = coords.getLat();
+          console.log(lat);
           this.lat = lat;
           // console.log('geo' + coords.getLng());
           console.log('change' + lat);
