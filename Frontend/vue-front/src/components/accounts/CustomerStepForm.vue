@@ -73,8 +73,13 @@ export default {
       address: '',
       extraAddress: '',
       usertype: 1,
+<<<<<<< HEAD
       latAdress: '',
       lngAdress: '',
+=======
+      lat: 0,
+      lng: 0,
+>>>>>>> 1da336b379198a28f840e8b176ee7a176c5ca2bd
     };
   },
   created() {
@@ -141,12 +146,21 @@ export default {
       const geocoder = new kakao.maps.services.Geocoder();
       geocoder.addressSearch(this.address, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
+<<<<<<< HEAD
           var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
           var lat = coords.getLat();
           this.lat = coords.getLat();
           console.log('this lat : ' + this.lat);
           console.log('vue lng : ' + coords.getLng());
           console.log('vue lat : ' + lat);
+=======
+          const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          const lat = coords.getLat();
+          console.log(lat);
+          this.lat = lat;
+          // console.log('geo' + coords.getLng());
+          console.log('change' + lat);
+>>>>>>> 1da336b379198a28f840e8b176ee7a176c5ca2bd
         }
       });
     },
