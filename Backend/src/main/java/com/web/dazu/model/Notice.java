@@ -2,8 +2,7 @@ package com.web.dazu.model;
 
 public class Notice {
 	private int main_notice_board_code;
-	private String main_notice_board_write_date;
-	private String main_notice_board_time;
+	private String main_notice_board_write_datetime;
 	private int main_notice_board_visit;
 	private String main_notice_board_title;
 	private String main_notice_board_contents;
@@ -11,13 +10,11 @@ public class Notice {
 	
 	public Notice() {}
 
-	public Notice(int main_notice_board_code, String main_notice_board_write_date, String main_notice_board_time,
-			int main_notice_board_visit, String main_notice_board_title, String main_notice_board_contents,
-			String member_usercode) {
+	public Notice(int main_notice_board_code, String main_notice_board_write_datetime, int main_notice_board_visit,
+			String main_notice_board_title, String main_notice_board_contents, String member_usercode) {
 		super();
 		this.main_notice_board_code = main_notice_board_code;
-		this.main_notice_board_write_date = main_notice_board_write_date;
-		this.main_notice_board_time = main_notice_board_time;
+		this.main_notice_board_write_datetime = main_notice_board_write_datetime;
 		this.main_notice_board_visit = main_notice_board_visit;
 		this.main_notice_board_title = main_notice_board_title;
 		this.main_notice_board_contents = main_notice_board_contents;
@@ -32,20 +29,12 @@ public class Notice {
 		this.main_notice_board_code = main_notice_board_code;
 	}
 
-	public String getMain_notice_board_write_date() {
-		return main_notice_board_write_date;
+	public String getMain_notice_board_write_datetime() {
+		return main_notice_board_write_datetime;
 	}
 
-	public void setMain_notice_board_write_date(String main_notice_board_write_date) {
-		this.main_notice_board_write_date = main_notice_board_write_date;
-	}
-
-	public String getMain_notice_board_time() {
-		return main_notice_board_time;
-	}
-
-	public void setMain_notice_board_time(String main_notice_board_time) {
-		this.main_notice_board_time = main_notice_board_time;
+	public void setMain_notice_board_write_datetime(String main_notice_board_write_datetime) {
+		this.main_notice_board_write_datetime = main_notice_board_write_datetime;
 	}
 
 	public int getMain_notice_board_visit() {
@@ -79,5 +68,6 @@ public class Notice {
 	public void setMember_usercode(String member_usercode) {
 		this.member_usercode = member_usercode;
 	}
+
 	
 }
