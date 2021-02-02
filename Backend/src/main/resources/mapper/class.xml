@@ -20,4 +20,10 @@
 		from class_time_information
 		where class_information_classcode = #{classcode}
 	</select>
+	
+	<select id="selectClassByStore" parameterType="string" resultType="Class">
+		select *
+		from class_information
+		where store_information_storecode = #{storecode}
+	</select>
 </mapper>

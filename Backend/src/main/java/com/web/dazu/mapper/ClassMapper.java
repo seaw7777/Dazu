@@ -13,4 +13,6 @@ public interface ClassMapper {
 
 	ClassTime selectClassTime(String classcode) throws Exception;
 
+	List<Class> selectClassByStore(String storecode) throws Exception;
+
 }
