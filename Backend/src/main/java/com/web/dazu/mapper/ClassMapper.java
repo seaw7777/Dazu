@@ -3,6 +3,7 @@ package com.web.dazu.mapper;
 import java.util.List;
 
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassTime;
 
@@ -17,5 +18,7 @@ public interface ClassMapper {
 	List<Class> selectClassByStore(String storecode) throws Exception;
 
 	List<ClassReview> selectClassReview(String classcode) throws Exception;
+
+	List<ClassNotice> selectClassNotice(String classcode) throws Exception;
 
 }

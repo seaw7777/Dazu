@@ -33,4 +33,9 @@
 		where class_information_classcode = #{classcode}
 	</select>
 	
+	<select id="selectClassNotice" parameterType="string" resultType="ClassNotice">
+		select *
+		from class_notice_board
+		where class_information_classcode = #{classcode}
+	</select>
 </mapper>

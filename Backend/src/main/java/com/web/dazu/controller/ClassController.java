@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassTime;
 import com.web.dazu.service.ClassService;
@@ -85,5 +86,17 @@ public class ClassController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<List<ClassReview>>(list, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "클래스에 등록된 공지사항 목록을 읽어온다.", response = List.class)
+	@GetMapping("/notice/{classcode}")
+	public ResponseEntity<List<ClassNotice>> selectClassNotice(@PathVariable String classcode) {
+		List<ClassNotice> list = new ArrayList<>();
+		try {
+			list = service.selectClassNotice(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<List<ClassNotice>>(list, HttpStatus.OK);
 	}
 }

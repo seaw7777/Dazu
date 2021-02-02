@@ -2,20 +2,27 @@ package com.web.dazu.model;
 
 public class ClassReview {
 	private String member_usercode;
+	private String class_review_write_datetime;
 	private int class_review_code;
 	private int class_review_point;
 	private String class_review_describe;
 	private String class_information_classcode;
 	
 	public ClassReview() {}
-	public ClassReview(String member_usercode, int class_review_code, int class_review_point,
-			String class_review_describe, String class_information_classcode) {
-		super();
+	public ClassReview(String member_usercode, String class_review_write_datetime, int class_review_code,
+			int class_review_point, String class_review_describe, String class_information_classcode) {
 		this.member_usercode = member_usercode;
+		this.class_review_write_datetime = class_review_write_datetime;
 		this.class_review_code = class_review_code;
 		this.class_review_point = class_review_point;
 		this.class_review_describe = class_review_describe;
 		this.class_information_classcode = class_information_classcode;
+	}
+	public String getClass_review_write_datetime() {
+		return class_review_write_datetime;
+	}
+	public void setClass_review_write_datetime(String class_review_write_datetime) {
+		this.class_review_write_datetime = class_review_write_datetime;
 	}
 	public String getMember_usercode() {
 		return member_usercode;

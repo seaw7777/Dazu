@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassTime;
 
@@ -40,6 +41,11 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public List<ClassReview> selectClassReview(String classcode) throws Exception {
 		return session.getMapper(ClassMapper.class).selectClassReview(classcode);
+	}
+
+	@Override
+	public List<ClassNotice> selectClassNotice(String classcode) throws Exception {
+		return session.getMapper(ClassMapper.class).selectClassNotice(classcode);
 	}
 
 }
