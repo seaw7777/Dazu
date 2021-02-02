@@ -18,6 +18,31 @@ export default {
     };
     const map = new window.kakao.maps.Map(container, options);
     console.log(map);
+
+    const geocoder = new window.kakao.maps.services.Geocoder();
+
+    geocoder.addressSearch('부산광역시 연제구 반송로 80', function(
+      result,
+      status,
+    ) {
+      if (status === window.kakao.maps.services.Status.OK) {
+        const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+        console.log('뭐지?' + coords);
+
+        const marker = new window.kakao.maps.Marker({
+          map: map,
+          position: coords,
+        });
+
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content:
+            '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>',
+        });
+        infowindow.open(map, marker);
+
+        map.setCenter(coords);
+      }
+    });
   },
 };
 </script>
