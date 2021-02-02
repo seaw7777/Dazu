@@ -11,4 +11,6 @@ public interface NoticeMapper {
 
 	List<Notice> selectAllNotice() throws Exception;
 
-}
+	void insertNotice(Notice notice) throws Exception;
+
+} 

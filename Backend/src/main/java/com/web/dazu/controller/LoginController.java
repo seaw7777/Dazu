@@ -25,7 +25,7 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	
-	@ApiOperation(value = "로그인 - 카카오  로그인 API로 Token 및 회원 정보 불러오기", response = HashMap.class)
+	@ApiOperation(value = "로그인 - 카카오  로그인 API로 Token 및 회원 정보 불러오기", response = Member.class)
 	@RequestMapping("/login")
 	public ResponseEntity<Member> login(@RequestParam(value = "code", required = false) String code) {
 		String accessToken = null;
