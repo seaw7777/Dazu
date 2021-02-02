@@ -26,19 +26,23 @@ public class FileuploadController {
 	@PostMapping("/fileupload")
 	public String uploadSingle(@RequestPart(value = "files", required = true) List<MultipartFile> file,
 			@RequestParam("address") String address,@RequestParam("detailaddress") String detailaddress) throws Exception {
-		System.out.println("진입");
-		System.out.println(address+" , "+detailaddress);
+		//System.out.println("진입"+address);
+		//stem.out.println("enter");
+		//stem.getProperty("user.dir"); //현재 실행중인 프로그램의 디렉터리 경로
+		//stem.getProperty("sun.boot.class.path"); //시스템 속성으로 기본적으로 지정된 CLASSPATH
+		//stem.getProperty("java.io.tmpdir"); //시스템 속성으로 임시 디렉터리 경로
+		//stem.out.println(address+" , "+detailaddress);
 		for (int i = 0; i < file.size(); i++) {
-		    String rootPath = "home/Image";
-		    System.out.println(rootPath);
+		    String rootPath = "/home/Image";
+		    //stem.out.println(rootPath);
 		    String basePath = rootPath + "/" + "store";
-		    System.out.println(basePath);
+		    //stem.out.println(basePath);
 		    String filePath = basePath + "/" + file.get(i).getOriginalFilename();
-		    System.out.println(filePath);
+		    //stem.out.println(filePath);
 		    File dest = new File(filePath);
-		    System.out.println("진입2");
+		    //stem.out.println("진입2");
 		    fileuploadservice.fileup(filePath);
-		    System.out.println("진입3");
+		    //stem.out.println("진입3");
 		    file.get(i).transferTo(dest); // 파일 업로드 작업 수행
 		}
 	    return "uploaded";
