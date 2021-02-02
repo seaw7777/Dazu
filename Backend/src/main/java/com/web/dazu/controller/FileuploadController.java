@@ -29,10 +29,15 @@ public class FileuploadController {
 		System.out.println("진입");
 		for (int i = 0; i < file.size(); i++) {
 		    String rootPath = "home/Image";
+		    System.out.println(rootPath);
 		    String basePath = rootPath + "/" + "store";
+		    System.out.println(basePath);
 		    String filePath = basePath + "/" + file.get(i).getOriginalFilename();
+		    System.out.println(filePath);
 		    File dest = new File(filePath);
+		    System.out.println("진입2");
 		    fileuploadservice.fileup(filePath);
+		    System.out.println("진입3");
 		    file.get(i).transferTo(dest); // 파일 업로드 작업 수행
 		}
 	    return "uploaded";
