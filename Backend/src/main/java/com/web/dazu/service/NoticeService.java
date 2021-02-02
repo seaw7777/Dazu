@@ -8,4 +8,6 @@ public interface NoticeService {
 
 	List<Notice> selectAllNotice() throws Exception;
 
+	void insertNotice(Notice notice) throws Exception;
+
 }

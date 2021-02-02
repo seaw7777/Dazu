@@ -8,4 +8,9 @@
 		select * 
 		from main_notice_board
 	</select>
+	
+	<insert id="insertNotice" parameterType="Notice">
+		insert into(main_notice_board_title, main_notice_board_contents, member_usercode)
+		values(#{main_notice_board_title}, #{main_notice_board_contents}, #{member_usercode})
+	</insert>
 </mapper>
