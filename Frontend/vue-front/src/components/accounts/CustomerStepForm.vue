@@ -68,14 +68,14 @@ export default {
       usertype: 1,
     };
   },
-  // this.$store.dispatch('ROAD', data.roadAddress);
+
   methods: {
     execDaumPostcode() {
       const currentScroll = Math.max(
         document.body.scrollTop,
         document.documentElement.scrollTop,
       );
-      // eslint-disable-next-line
+
       new daum.Postcode({
         onComplete: data => {
           if (data.userSelectedType === 'R') {
