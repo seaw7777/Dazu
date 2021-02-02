@@ -1,11 +1,25 @@
 package com.web.dazu.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonParseException;
 import com.web.dazu.mapper.StoreMapper;
 import com.web.dazu.model.Store;
 
@@ -22,7 +36,68 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public void insertStore(Store store) throws Exception {
-		session.getMapper(StoreMapper.class).insertStore(store);
+		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
+	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
+	    String jsonString = null;
+
+		 try {
+		        String addrutf = URLEncoder.encode(store.getStore_location(), "UTF-8");
+
+		        String addr = apiUrl + "?query=" + addrutf;
+
+		        URL url = new URL(addr);
+		        URLConnection conn = url.openConnection();
+		        conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+
+		        BufferedReader br = null;
+		        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+
+		        String line = "";
+		        String result = "";
+
+		        while ((line = br.readLine()) != null) {
+		            result += line;
+		        }
+		        jsonString = result.toString();
+		        
+		  	} catch (UnsupportedEncodingException e) {
+		        e.printStackTrace();
+		    } catch (MalformedURLException e) {
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		 
+		 ObjectMapper mapper = new ObjectMapper();
+		    HashMap<String, String> XYMap = new HashMap<String, String>();
+
+		    try {
+		        TypeReference<Map<String, Object>> typeRef 
+		            = new TypeReference<Map<String, Object>>(){};
+		        Map<String, Object> jsonMap = mapper.readValue(jsonString, typeRef);
+
+		        @SuppressWarnings("unchecked")
+		        List<Map<String, String>> docList 
+		            =  (List<Map<String, String>>) jsonMap.get("documents");	
+
+		        Map<String, String> adList = (Map<String, String>) docList.get(0);
+		        XYMap.put("x",adList.get("x"));
+		        XYMap.put("y", adList.get("y"));
+		     
+
+		    } catch (JsonParseException e) {
+		        e.printStackTrace();
+		    } catch (JsonMappingException e) {
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		    store.setLat(XYMap.get("x"));
+		    store.setLng(XYMap.get("y"));
+		    
+		    System.out.println(store.getLat() + store.getLng());
+		 
+	     session.getMapper(StoreMapper.class).insertStore(store);
 	}
 
 }
