@@ -31,4 +31,9 @@ public class ClassServiceImpl implements ClassService {
 		return session.getMapper(ClassMapper.class).selectClassTime(classcode);
 	}
 
+	@Override
+	public List<Class> selectClassByStore(String storecode) throws Exception {
+		return session.getMapper(ClassMapper.class).selectClassByStore(storecode);
+	}
+
 }

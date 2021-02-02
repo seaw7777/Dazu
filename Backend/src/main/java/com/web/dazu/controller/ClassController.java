@@ -1,7 +1,6 @@
 package com.web.dazu.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +62,16 @@ public class ClassController {
 		return new ResponseEntity<ClassTime>(ct, HttpStatus.OK);
 	}
 	
-//	@GetMapping("/store/{storecode}")
-//	publice resp
+	@ApiOperation(value = "가게 별 등록된 모든 클래스 정보를 읽어온다.", response = List.class)
+	@GetMapping("/store/{storecode}")
+	public ResponseEntity<List<Class>> selectClassByStore(@PathVariable String storecode) {
+		List<Class> list = new ArrayList<>();
+		try {
+			list = service.selectClassByStore(storecode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<List<Class>>(list, HttpStatus.OK);
+	}
 	
 }
