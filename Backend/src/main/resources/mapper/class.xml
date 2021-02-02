@@ -6,7 +6,10 @@
 	<select id="selectAllClass" parameterType="string" resultType="Class">
 		select *
 		from class_information
-		where dong = #{dong}
+		where store_information_storecode in(
+		select storecode
+		from store_information
+		where dong = "우이동" );
 	</select>
 	
 	<select id="selectClass" parameterType="string" resultType="Class">
