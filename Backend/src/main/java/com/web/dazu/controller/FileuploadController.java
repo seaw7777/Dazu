@@ -18,15 +18,16 @@ import java.util.List;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
-@RequestMapping("/fileupload")
+@RequestMapping("/file")
 public class FileuploadController {
 	@Autowired
 	private FileUploadService fileuploadservice; 
 	@ApiOperation(value = "파일 업로드 및 회원 정보 받아오기", response = String.class)
-	@PostMapping
+	@PostMapping("/fileupload")
 	public String uploadSingle(@RequestPart(value = "files", required = true) List<MultipartFile> file,
 			@RequestParam("address") String address,@RequestParam("detailaddress") String detailaddress) throws Exception {
 		System.out.println("진입");
+		System.out.println(address+" , "+detailaddress);
 		for (int i = 0; i < file.size(); i++) {
 		    String rootPath = "home/Image";
 		    System.out.println(rootPath);
