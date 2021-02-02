@@ -6,17 +6,19 @@
         height="200px"
         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       >
-        <v-card-title>Top 10 Australian beaches</v-card-title>
+        <v-card-title>{{ classItem.class_name }}</v-card-title>
       </v-img>
 
       <v-card-subtitle class="pb-0">
-        Number 10
+        {{ classItem.class_describe }}
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
-        <div>Whitehaven Beach</div>
-
-        <div>Whitsunday Island, Whitsunday Islands</div>
+        <div>난이도 : {{ classItem.class_difficult }}</div>
+        <div>오픈 : {{ classItem.class_startdate }}</div>
+        <div>마감 : { classItem.class_enddate }}</div>
+        <div>밀키트 : {{ classItem.mealkit_ok }}</div>
+        <div>가격 : {{ classItem.class_price }}</div>
       </v-card-text>
 
       <v-card-actions>
@@ -33,7 +35,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    classItem: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style></style>

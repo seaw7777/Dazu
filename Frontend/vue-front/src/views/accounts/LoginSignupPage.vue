@@ -18,11 +18,12 @@ export default {
     console.log(this.code);
     if (this.code != undefined || this.code != null) {
       this.$store.dispatch('CODE', this.code);
+      console.log('passif' + this.code);
       this.$axios
-        .get('http://localhost:8000/dazu/login?code=' + this.code)
+        .get('http://i4d104.p.ssafy.io:8000/dazu/login?code=' + this.code)
         .then(({ data }) => {
           this.member = data;
-          console.log(this.member);
+          console.log('member' + this.member);
           this.$store.dispatch('LOGIN', this.member);
           this.$router.push('/main');
         })
