@@ -5,38 +5,6 @@
         <v-row>
           <h1>고객님 추가 정보 입력 단계</h1>
 
-          <!-- <v-col cols="12">
-            <input type="text" id="sample4_postcode" placeholder="우편번호" />
-            <input
-              type="button"
-              @click="sample4_execDaumPostcode()"
-              value="우편번호 찾기"
-            /><br />
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              type="text"
-              id="sample4_roadAddress"
-              placeholder="도로명주소"
-            />
-            <v-text-field
-              type="text"
-              id="sample4_jibunAddress"
-              placeholder="지번주소"
-            />
-            <span id="guide" style="color:#999;display:none"></span>
-            <v-text-field
-              v-model="detailAddress"
-              type="text"
-              id="sample4_detailAddress"
-              placeholder="상세주소"
-            />
-            <v-text-field
-              type="text"
-              id="sample4_extraAddress"
-              placeholder="참고항목"
-            />
-          </v-col> -->
           <div
             ref="searchWindow"
             :style="searchWindow"
