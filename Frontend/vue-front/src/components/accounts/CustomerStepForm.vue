@@ -117,11 +117,8 @@ export default {
       try {
         console.log('data3' + this.address);
         const response = await customerInfoAPI({
-          // accessToken: this.$store.state.token,
           address: this.address,
           address_detail: this.extraAddress,
-          // nickname: '',
-          // profileImage: '',
           usercode: '123444',
           usertype: this.usertype,
         });
