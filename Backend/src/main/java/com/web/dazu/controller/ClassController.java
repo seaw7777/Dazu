@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Class;
+import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassTime;
 import com.web.dazu.service.ClassService;
 
@@ -74,4 +75,15 @@ public class ClassController {
 		return new ResponseEntity<List<Class>>(list, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "클래스에 등록된 후기 목록을 읽어온다.", response = List.class)
+	@GetMapping("/review/{classcode}")
+	public ResponseEntity<List<ClassReview>> selectClassReview(@PathVariable String classcode) {
+		List<ClassReview> list = new ArrayList<>();
+		try {
+			list = service.selectClassReview(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<List<ClassReview>>(list, HttpStatus.OK);
+	}
 }
