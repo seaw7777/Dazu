@@ -42,6 +42,9 @@
               placeholder="상세주소"
             />
           </v-col>
+          <v-col>
+            <v-text-field v-model="lat" placeholder="lat"></v-text-field>
+          </v-col>
           <v-btn class="ma-2" outlined color="indigo" @click="changeMap">
             좌표변환
           </v-btn>
@@ -71,7 +74,7 @@ export default {
       extraAddress: '',
       usertype: 1,
       lat: '',
-      lng: '',
+      lng: 0,
     };
   },
 
@@ -122,21 +125,18 @@ export default {
       const geocoder = new kakao.maps.services.Geocoder();
       geocoder.addressSearch(this.address, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-          // console.log(result[0].y);
-          this.lng = coords.getLng();
-          console.log('geo' + coords.getLng());
-          console.log(this.lng);
-          // console.log(lng);
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          var lat = coords.getLat();
+          this.lat = lat;
+          // console.log('geo' + coords.getLng());
+          console.log('change' + lat);
         }
       });
     },
 
     async submitInfo() {
       try {
-        console.log('data3' + this.address);
-
-        console.log('at' + this.lat);
+        console.log('data3' + this.lat);
         const response = await customerInfoAPI({
           address: this.address,
           address_detail: this.extraAddress,
