@@ -8,4 +8,6 @@ public interface StoreService {
 
 	List<Store> selectAllStore(String dong) throws Exception;
 
+	void insertStore(Store store) throws Exception;
+
 }

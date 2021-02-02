@@ -8,4 +8,9 @@
 		from store_information
 		where dong = #{dong}
 	</select>
+	
+	<insert id="insertStore">
+		insert into(store_name, store_describe, store_location, dong, lat, lng, member_usercode)
+		values(#{store_name}, #{store_describe}, #{store_location}, #{dong}, #{lat}, #{lng}, #{member_usercode})
+	</insert>
 </mapper>
