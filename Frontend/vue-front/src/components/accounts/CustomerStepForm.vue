@@ -73,20 +73,22 @@ export default {
       address: '',
       extraAddress: '',
       usertype: 1,
-      lat: '',
-      lng: 0,
+      latAdress: '',
+      lngAdress: '',
     };
   },
-
+  created() {
+    this.latAdress = '12.3333';
+  },
   methods: {
-    execDaumPostcode() {
+    execDaumPostcode: function() {
       const currentScroll = Math.max(
         document.body.scrollTop,
-        document.documentElement.scrollTop,
+        document.documentElement.scrollTop
       );
 
       new daum.Postcode({
-        onComplete: data => {
+        onComplete: function(data) {
           if (data.userSelectedType === 'R') {
             this.address = data.roadAddress;
           } else {
@@ -108,18 +110,32 @@ export default {
           } else {
             this.extraAddress = '';
           }
+          console.log(this.extraAddress);
+          console.log(this.address);
+          var geocoder = new kakao.maps.services.Geocoder();
+          geocoder.addressSearch(this.address, function(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+              var lat = coords.getLat();
+              console.log('vue lng : ' + coords.getLng());
+              console.log('vue lat : ' + lat);
+              console.log(this.address);
+              this.latAdress = lat;
+              console.log('this lat : ' + this.lat);
+            }
+          });
           this.postcode = data.zonecode;
-          this.$refs.extraAddress.focus();
-          this.searchWindow.display = 'none';
+          // this.$refs.extraAddress.focus();
+          // this.searchWindow.display = 'none';
           document.body.scrollTop = currentScroll;
         },
-        onResize: size => {
-          this.searchWindow.height = `${size.height}px`;
-        },
+        // onResize: function(size) {
+        //   this.searchWindow.height = `${size.height}px`;
+        // },
         width: '100%',
         height: '100%',
-      }).embed(this.$refs.searchWindow);
-      this.searchWindow.display = 'block';
+      }).open();
+      // this.searchWindow.display = 'block';
     },
     changeMap() {
       const geocoder = new kakao.maps.services.Geocoder();
@@ -127,9 +143,10 @@ export default {
         if (status === kakao.maps.services.Status.OK) {
           var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
           var lat = coords.getLat();
-          this.lat = lat;
-          // console.log('geo' + coords.getLng());
-          console.log('change' + lat);
+          this.lat = coords.getLat();
+          console.log('this lat : ' + this.lat);
+          console.log('vue lng : ' + coords.getLng());
+          console.log('vue lat : ' + lat);
         }
       });
     },
