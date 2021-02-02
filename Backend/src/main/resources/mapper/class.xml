@@ -26,4 +26,11 @@
 		from class_information
 		where store_information_storecode = #{storecode}
 	</select>
+	
+	<select id="selectClassReview" parameterType="string" resultType="ClassReview">
+		select *
+		from class_review
+		where class_information_classcode = #{classcode}
+	</select>
+	
 </mapper>
