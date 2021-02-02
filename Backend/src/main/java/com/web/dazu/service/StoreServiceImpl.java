@@ -20,4 +20,9 @@ public class StoreServiceImpl implements StoreService {
 		return session.getMapper(StoreMapper.class).selectAllStore(dong);
 	}
 
+	@Override
+	public void insertStore(Store store) throws Exception {
+		session.getMapper(StoreMapper.class).insertStore(store);
+	}
+
 }
