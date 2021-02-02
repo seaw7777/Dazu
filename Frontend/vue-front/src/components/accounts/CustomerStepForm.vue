@@ -42,6 +42,9 @@
               placeholder="상세주소"
             />
           </v-col>
+          <v-btn class="ma-2" outlined color="indigo" @click="changeMap">
+            좌표변환
+          </v-btn>
           <v-btn class="ma-2" outlined color="indigo" @click="submitInfo">
             NEXT
           </v-btn>
@@ -52,6 +55,7 @@
 </template>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
 import { customerInfoAPI } from '@/api/auth';
 
@@ -66,6 +70,8 @@ export default {
       address: '',
       extraAddress: '',
       usertype: 1,
+      lat: '',
+      lng: '',
     };
   },
 
@@ -112,23 +118,37 @@ export default {
       }).embed(this.$refs.searchWindow);
       this.searchWindow.display = 'block';
     },
+    changeMap() {
+      const geocoder = new kakao.maps.services.Geocoder();
+      geocoder.addressSearch(this.address, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          // console.log(result[0].y);
+          this.lng = coords.getLng();
+          console.log('geo' + coords.getLng());
+          console.log(this.lng);
+          // console.log(lng);
+        }
+      });
+    },
 
     async submitInfo() {
       try {
         console.log('data3' + this.address);
+
+        console.log('at' + this.lat);
         const response = await customerInfoAPI({
-          // accessToken: this.$store.state.token,
           address: this.address,
           address_detail: this.extraAddress,
-          // nickname: '',
-          // profileImage: '',
+          lat: this.lat,
+          lng: this.lng,
           usercode: '123444',
           usertype: this.usertype,
         });
         this.$router.push('/main');
         console.log(response);
       } catch (error) {
-        console.log('error');
+        console.log(error);
       }
     },
   },
