@@ -34,6 +34,8 @@ import MainMap from '@/components/mains/MainMap.vue';
 import MainClassItem from '@/components/mains/MainClassItem.vue';
 
 import { fetchClass } from '@/api/classes';
+import { fetchStore } from '@/api/store';
+
 export default {
   data() {
     return {
@@ -63,6 +65,12 @@ export default {
       this.isLoading = false;
       console.log(data);
       this.classItems = data;
+    },
+    async fetchStoreData() {
+      this.isLoading = true;
+      const { data } = await fetchStore('우이동');
+      this.isLoading = false;
+      console.log(data);
     },
   },
 };

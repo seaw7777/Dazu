@@ -5,20 +5,12 @@
 <script>
 export default {
   name: 'map',
+  props: {},
   data() {
-    return {
-      msg: '맵테스트',
-    };
+    return {};
   },
-  mounted() {
-    const container = document.getElementById('map');
-    const options = {
-      center: new window.kakao.maps.LatLng(35.450701, 126.570667),
-      level: 3,
-    };
-    const map = new window.kakao.maps.Map(container, options);
-    console.log(map);
-  },
+  methods() {},
+  mounted() {},
 };
 </script>
 
