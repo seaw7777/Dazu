@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dazu.mapper.TipBoardCommentMapper">
+	<insert id="writeBoardComment" parameterType="Comment">
+		insert into tip_board_comment (comment_contents,board_code,member_usercode)
+		values (${comment_contents} , ${board_code} , ${board_contents} , ${member_usercode});
+	</insert>
+	
+	<select id="getBoardCommentList" parameterType="int" resultType="Comment">
+		select *
+		from tip_board_comment
+		where board_code = #{board_code}
+	</select>
+	
+	<update id="modifyCommentForm" parameterType="int">
+		select *
+		from tip_board_comment
+		where comment_code = #{comment_code}
+	</update>
+	
+	<update id="modifyCommentForm" parameterType="Comment">
+		update tip_board_comment
+		set comment_contents = #{comment_contents}, comment_write_datetime = now()
+		where comment_code = #{comment_code}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from tip_board_comment
+		where comment_code = #{comment_code}
+	</delete>
+</mapper>
