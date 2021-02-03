@@ -2,11 +2,14 @@ package com.web.dazu.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassTime;
 
+@Mapper
 public interface ClassMapper {
 
 	List<Class> selectAllClass(String dong) throws Exception;
