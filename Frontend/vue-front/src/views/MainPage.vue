@@ -2,7 +2,11 @@
   <div>
     <v-card>
       <v-tabs v-model="tab" background-color="primary" dark>
-        <v-tab v-for="item in items" :key="item.tab" @click="fetchData">
+        <v-tab
+          v-for="item in items"
+          :key="item.tab"
+          @click="fetchData(item.tab)"
+        >
           {{ item.tab }}
         </v-tab>
       </v-tabs>
@@ -36,7 +40,7 @@
 import MainMap from '@/components/mains/MainMap.vue';
 import MainClassItem from '@/components/mains/MainClassItem.vue';
 
-import { fetchClass } from '@/api/classes';
+import { fetchClasses } from '@/api/classes';
 export default {
   data() {
     return {
@@ -51,6 +55,11 @@ export default {
       ],
     };
   },
+  computed: {
+    classList() {
+      return this.classItems;
+    },
+  },
   created() {
     this.code = this.$store.state.code;
     // console.log(this.member);
@@ -60,12 +69,14 @@ export default {
     MainClassItem,
   },
   methods: {
-    async fetchData() {
-      this.isLoading = true;
-      const { data } = await fetchClass('우이동');
-      this.isLoading = false;
-      console.log(data);
-      this.classItems = data;
+    async fetchData(tab) {
+      if (tab == 'CLASS') {
+        this.isLoading = true;
+        const { data } = await fetchClasses('우이동');
+        this.isLoading = false;
+        console.log(data);
+        this.classItems = data;
+      }
     },
   },
 };

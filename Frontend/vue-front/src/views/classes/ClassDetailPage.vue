@@ -2,7 +2,7 @@
   <div>
     <div class="flex-container">
       <aside class="secondary secondary-a">
-        <ClassShortDetail></ClassShortDetail>
+        <ClassShortDetail :classData="classdata"></ClassShortDetail>
       </aside>
       <aside class="secondary secondary-b">
         <ClassChoiceForm></ClassChoiceForm>
@@ -46,6 +46,7 @@ import MealkitInfo from '@/components/classes/MealkitInfo.vue';
 import ClassReview from '@/components/classes/ClassReview.vue';
 import ClassNotice from '@/components/classes/ClassNotice.vue';
 import ClassChoiceForm from '@/components/classes/ClassChoiceForm.vue';
+import { fetchClass } from '@/api/classes';
 export default {
   data() {
     return {
@@ -57,6 +58,7 @@ export default {
         { tab: '후기' },
         { tab: '공지사항' },
       ],
+      classdata: [],
     };
   },
   components: {
@@ -71,6 +73,8 @@ export default {
   async created() {
     const id = this.$route.params.id;
     console.log(id);
+    const { data } = await fetchClass(id);
+    this.classdata = data;
   },
 };
 </script>
