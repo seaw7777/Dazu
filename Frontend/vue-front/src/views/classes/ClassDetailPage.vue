@@ -1,9 +1,16 @@
 <template>
   <div>
-    <ClassShortDetail></ClassShortDetail>
+    <div class="flex-container">
+      <aside class="secondary secondary-a">
+        <ClassShortDetail></ClassShortDetail>
+      </aside>
+      <aside class="secondary secondary-b">
+        <ClassChoiceForm></ClassChoiceForm>
+      </aside>
+    </div>
     <v-card>
       <v-tabs v-model="tab" background-color="primary" dark>
-        <v-tab v-for="item in items" :key="item.tab" @click="fetchData">
+        <v-tab v-for="item in items" :key="item.tab">
           {{ item.tab }}
         </v-tab>
       </v-tabs>
@@ -38,6 +45,7 @@ import StoreIntroduce from '@/components/classes/StoreIntroduce.vue';
 import MealkitInfo from '@/components/classes/MealkitInfo.vue';
 import ClassReview from '@/components/classes/ClassReview.vue';
 import ClassNotice from '@/components/classes/ClassNotice.vue';
+import ClassChoiceForm from '@/components/classes/ClassChoiceForm.vue';
 export default {
   data() {
     return {
@@ -58,8 +66,28 @@ export default {
     MealkitInfo,
     ClassReview,
     ClassNotice,
+    ClassChoiceForm,
+  },
+  async created() {
+    const id = this.$route.params.id;
+    console.log(id);
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+.secondary {
+  padding: 1rem;
+}
+.secondary-a {
+  background: white;
+}
+.secondary-b {
+  color: white;
+  background: #666;
+}
+</style>

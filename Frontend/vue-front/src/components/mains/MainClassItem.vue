@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="400">
+    <v-card class="mx-auto" max-width="400" @click="classclick">
       <v-img
         class="white--text align-end"
         height="200px"
@@ -40,6 +40,13 @@ export default {
     classItem: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    classclick() {
+      // console.log(this.classItem);
+      const id = this.classItem.classcode;
+      this.$router.push(`/class/detail/${id}`);
     },
   },
 };
