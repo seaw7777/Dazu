@@ -13,4 +13,52 @@
 		insert into store_information(store_name, store_describe, store_location, dong, lat, lng, member_usercode)
 		values(#{store_name}, #{store_describe}, #{store_location}, #{dong}, #{lat}, #{lng}, #{member_usercode})
 	</insert>
+	
+	<update id="updateStoreGrade" parameterType="int">
+		update store_information
+		set store_grade = (#{class_review_point} + (select store_grade
+												   from store_information
+												   where storecode)) / ((select store_grade_cnt
+						   							   					from store_information
+						   							   					where storecode) + 1 ),
+			store_grade_cnt = (select store_grade_cnt 
+							   from store_information
+							   where storecode) + 1
+	</update>
+	
+	<update id="updateStoreGrade" parameterType="ClassReview">
+		update store_information
+		set store_grade = (select ( store_grade + #{class_review_point} )
+						   from store_grade
+						   where storecode = (select store_information_storecode
+												from class_information
+		                    					where classcode = #{class_information_classcode})) / (select ( store_grade_cnt + 1 )
+													 													from store_grade
+																										 where storecode = (select store_information_storecode
+																															from class_information
+															                    											where classcode = #{class_information_classcode})),
+			store_grade_cnt = (select ( store_grade_cnt + 1 ) 
+							   from store_grade
+							   where storecode = (select store_information_storecode
+													from class_information
+								                    where classcode = #{class_information_classcode}))
+		where storecode = (select store_information_storecode
+							from class_information
+							where classcode = #{class_information_classcode});
+		update store_grade
+		set store_grade = (select store_grade
+							from store_information
+							where storecode = (select store_information_storecode
+							from class_information
+		                    where classcode = #{class_information_classcode})),
+			store_grade_cnt = (select store_grade_cnt
+								from store_information
+		                        where storecode = (select store_information_storecode
+							from class_information
+		                    where classcode = class_information_classcode))
+		where storecode = (select store_information_storecode
+							from class_information
+		                    where classcode = class_information_classcode)
+	</update>
+	
 </mapper>

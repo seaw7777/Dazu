@@ -48,4 +48,9 @@ public class ClassServiceImpl implements ClassService {
 		return session.getMapper(ClassMapper.class).selectClassNotice(classcode);
 	}
 
+	@Override
+	public void insertClassNotice(ClassReview review) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassNotice(review);
+	}
+
 }

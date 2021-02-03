@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonParseException;
 import com.web.dazu.mapper.StoreMapper;
+import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.Store;
 
 @Service
@@ -98,6 +99,11 @@ public class StoreServiceImpl implements StoreService {
 		    System.out.println(store.getLat() + store.getLng());
 		 
 	     session.getMapper(StoreMapper.class).insertStore(store);
+	}
+
+	@Override
+	public void updateStoreGrade(ClassReview review) throws Exception {
+		session.getMapper(StoreMapper.class).updateStoreGrade(review);
 	}
 
 }
