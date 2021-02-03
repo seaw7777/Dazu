@@ -5,6 +5,7 @@ public class Store {
 	private String store_name;
 	private String store_describe;
 	private String store_location;
+	private int store_grade_cnt;
 	private int store_grade;
 	private String dong;
 	private String lat;
@@ -13,18 +14,27 @@ public class Store {
 	
 	public Store() {}
 
-	public Store(String storecode, String store_name, String store_describe, String store_location, int store_grade,
-			String dong, String lat, String lng, String member_usercode) {
+	public Store(String storecode, String store_name, String store_describe, String store_location, int store_grade_cnt,
+			int store_grade, String dong, String lat, String lng, String member_usercode) {
 		super();
 		this.storecode = storecode;
 		this.store_name = store_name;
 		this.store_describe = store_describe;
 		this.store_location = store_location;
+		this.store_grade_cnt = store_grade_cnt;
 		this.store_grade = store_grade;
 		this.dong = dong;
 		this.lat = lat;
 		this.lng = lng;
 		this.member_usercode = member_usercode;
+	}
+	
+	public int getStore_grade_cnt() {
+		return store_grade_cnt;
+	}
+
+	public void setStore_grade_cnt(int store_grade_cnt) {
+		this.store_grade_cnt = store_grade_cnt;
 	}
 
 	public String getStorecode() {
