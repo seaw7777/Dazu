@@ -1,9 +1,38 @@
 <template>
-  <div>오른쪽 상단 클래스 신청하는 폼</div>
+  <div class="flex-container">
+    <h4>STEP1. 강좌유형 선택</h4>
+    <v-select :items="items" label="유형 선택" dense solo></v-select>
+    <h4>STEP2. 클래스 날짜 선택</h4>
+    <div class="calendar-container">
+      <ClassChoiceCalendar></ClassChoiceCalendar>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import ClassChoiceCalendar from '@/components//classes/ClassChoiceCalendar.vue';
+export default {
+  data() {
+    return {
+      items: ['밀키트o', '밀키트X', '밀키트만'],
+    };
+  },
+  props: {
+    classData: {
+      type: Object,
+      required: true,
+    },
+  },
+  components: {
+    ClassChoiceCalendar,
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  /* height: 400px; */
+}
+</style>
