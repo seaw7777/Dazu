@@ -1,5 +1,8 @@
 package com.web.dazu.controller;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Member;
+import com.web.dazu.model.Myclass;
 import com.web.dazu.service.LoginService;
 import com.web.dazu.service.MemberService;
 
@@ -76,6 +80,23 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+	
+	//현재 자신이 등록한 클래스 들을 확인. 멤버불러오기와 같이 불러와야 할 필요
+	@ApiOperation(value = "현재 자신이 등록한 클래스들을 확인한다.")
+	@GetMapping("/selectMyclass/{id}")
+	public ResponseEntity<List<Myclass>> selectmyclass(String id) {
+		List<Myclass> list = new LinkedList<Myclass>();
+		try {
+			list = service.selectMyclass(id);
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println(list.get(i));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<List<Myclass>>(list, HttpStatus.OK);
 
 	}
 }

@@ -1,6 +1,9 @@
 package com.web.dazu.service;
 
+import java.util.List;
+
 import com.web.dazu.model.Member;
+import com.web.dazu.model.Myclass;
 
 public interface MemberService {
 
@@ -13,5 +16,7 @@ public interface MemberService {
 	void unlink(String accessToken) throws Exception;
 
 	void deleteMember(String id) throws Exception;
+
+	List<Myclass> selectMyclass(String id) throws Exception;
 
 }

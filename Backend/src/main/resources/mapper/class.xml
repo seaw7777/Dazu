@@ -47,4 +47,5 @@
 		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
 	</insert>
 	
+	
 </mapper>
