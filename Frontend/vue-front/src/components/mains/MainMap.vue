@@ -1,5 +1,5 @@
 <template>
-  <div id="map" style="width:500px;height:400px;"></div>
+  <div id="map" style="width:900px;height:600px;"></div>
 </template>
 
 <script>
@@ -7,42 +7,71 @@ export default {
   name: 'map',
   data() {
     return {
-      msg: '맵테스트',
+      storeList: [],
+      userAdress: '',
+      selectedMarker: null,
     };
   },
   mounted() {
     const container = document.getElementById('map');
     const options = {
-      center: new window.kakao.maps.LatLng(35.450701, 126.570667),
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
     };
     const map = new window.kakao.maps.Map(container, options);
     console.log(map);
 
-    // const geocoder = new window.kakao.maps.services.Geocoder();
+    var positions = [
+      {
+        title: '희은이네 만두가게',
+        content: '<div style="padding:5px;color:red;">만두클래스1</div>',
+        latlng: new window.kakao.maps.LatLng(33.450705, 126.570677),
+      },
+      {
+        title: '지은이네 만두가게',
+        content: '<div style="padding:5px;color:red;">만두클래스2</div>',
+        latlng: new window.kakao.maps.LatLng(33.450936, 126.569477),
+      },
+      {
+        title: '예림이네 만두가게',
+        content: '<div style="padding:5px;color:red;">만두클래스3</div>',
+        latlng: new window.kakao.maps.LatLng(33.450879, 126.56994),
+      },
+      {
+        title: '현철이네 만두가게',
+        content: '<div style="padding:5px;color:red;">만두클래스4</div>',
+        latlng: new window.kakao.maps.LatLng(33.451393, 126.570738),
+      },
+    ];
 
-    // geocoder.addressSearch('부산광역시 연제구 반송로 80', function(
-    //   result,
-    //   status,
-    // ) {
-    //   if (status === window.kakao.maps.services.Status.OK) {
-    //     const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-    //     console.log('뭐지?' + coords);
+    const imageSrc =
+      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+    const iwRemoveable = true;
 
-    //     const marker = new window.kakao.maps.Marker({
-    //       map: map,
-    //       position: coords,
-    //     });
+    for (var i = 0; i < positions.length; i++) {
+      const imageSize = new window.kakao.maps.Size(24, 35);
+      const markerImage = new window.kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+      );
 
-    //     const infowindow = new window.kakao.maps.InfoWindow({
-    //       content:
-    //         '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>',
-    //     });
-    //     infowindow.open(map, marker);
-
-    //     map.setCenter(coords);
-    //   }
-    // });
+      const marker = new window.kakao.maps.Marker({
+        map: map,
+        position: positions[i].latlng,
+        title: positions[i].title,
+        image: markerImage,
+      });
+      const infowindow = new window.kakao.maps.InfoWindow({
+        content: positions[i].content,
+        removable: iwRemoveable,
+      });
+      window.kakao.maps.event.addListener(marker, 'click', function() {
+        infowindow.close(map, this.selectedMarker);
+        infowindow.open(map, marker);
+        this.selectedMarker = marker;
+        console.log(this.selectedMarker);
+      });
+    }
   },
 };
 </script>
