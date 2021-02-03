@@ -30,8 +30,8 @@ public class ClassController {
 	
 	@Autowired
 	private ClassService service;
-//	@Autowired
-//	private StoreService storeService;
+	@Autowired
+	private StoreService storeService;
 	
 	@ApiOperation(value = "행정동 별 클래스 정보를 읽어온다.", response = List.class)
 	@GetMapping("/dong/{dong}")
@@ -110,7 +110,7 @@ public class ClassController {
 	public void insertClassNotice(@RequestBody ClassReview review) {
 		try {
 			service.insertClassNotice(review);
-//			storeService.updateStoreGrade(review);
+			storeService.updateStoreGrade(review);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

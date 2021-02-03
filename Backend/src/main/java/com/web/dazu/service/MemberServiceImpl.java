@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.MemberMapper;
 import com.web.dazu.model.Member;
+import com.web.dazu.model.Myclass;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -63,6 +65,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(String id) throws Exception {
 		session.getMapper(MemberMapper.class).deleteMember(id);
+	}
+
+	@Override
+	public List<Myclass> selectMyclass(String id) throws Exception {
+		return session.getMapper(MemberMapper.class).selectMyclass(id);
 	}
 
 }
