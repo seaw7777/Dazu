@@ -11,12 +11,15 @@ public class Class {
 	private int class_price;
 	private String food_type;
 	private String store_information_storecode;
+	private String store_information_store_name;
+	private String store_information_store_describe;
 	
 	public Class() {}
 
 	public Class(String classcode, String class_name, String class_startdate, String class_enddate,
 			String class_describe, String class_difficult, char mealkit_ok, int class_price, String food_type,
-			String store_information_storecode) {
+			String store_information_storecode, String store_information_store_name,
+			String store_information_store_describe) {
 		super();
 		this.classcode = classcode;
 		this.class_name = class_name;
@@ -28,7 +31,27 @@ public class Class {
 		this.class_price = class_price;
 		this.food_type = food_type;
 		this.store_information_storecode = store_information_storecode;
+		this.store_information_store_name = store_information_store_name;
+		this.store_information_store_describe = store_information_store_describe;
 	}
+
+	public String getStore_information_store_name() {
+		return store_information_store_name;
+	}
+
+	public void setStore_information_store_name(String store_information_store_name) {
+		this.store_information_store_name = store_information_store_name;
+	}
+
+	public String getStore_information_store_describe() {
+		return store_information_store_describe;
+	}
+
+	public void setStore_information_store_describe(String store_information_store_describe) {
+		this.store_information_store_describe = store_information_store_describe;
+	}
+
+
 
 	public String getClasscode() {
 		return classcode;

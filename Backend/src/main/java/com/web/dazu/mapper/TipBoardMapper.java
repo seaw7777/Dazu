@@ -3,9 +3,11 @@ package com.web.dazu.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.web.dazu.model.Board;
 
-
+@Mapper
 public interface TipBoardMapper {
 	List<Board> getBoardList(Map<String, String> map) throws Exception;
 	void writeBoard(Board board) throws Exception;
