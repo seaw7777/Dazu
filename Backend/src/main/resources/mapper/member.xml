@@ -10,6 +10,16 @@
 		where usercode = #{id}
 	</select>
 	
+	<select id="selectMyClass" parameterType="string" resultType="Class">
+		select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date 
+		from class_information as ci , class_time_information as cti
+		where ci.classcode in (select cti0.class_information_classcode
+		from class_time_information as cti0
+		where cti0.class_timecode in (select cr0.class_time_information_class_timecode
+		from class_room as cr0 
+		where cr0.member_usercode = #{usecode}));
+	</select>
+	
 	<insert id="insertMember" parameterType="Member">
 		insert into member(usercode, address, address_detail, lat, lng, dong, usertype)
 		values(#{usercode}, #{address}, #{address_detail}, #{lat}, #{lng}, #{dong}, #{usertype})
@@ -25,5 +35,7 @@
 		delete from member
 		where usercode = #{id}
 	</delete>
+	
+
 	
 </mapper>
