@@ -17,6 +17,7 @@
         <div>밀키트 여부 : {{ classData.mealkit_ok }}</div>
         <div>가격 : {{ classData.class_price }}</div>
         <div>음식종류 : {{ classData.food_type }}</div>
+        <!-- <p>{{ comclass }}</p> -->
       </div>
     </div>
   </div>
@@ -28,6 +29,12 @@ export default {
     classData: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    comclass: function() {
+      // console.log(this.classData.class_name);
+      return this.classData.class_name;
     },
   },
 };

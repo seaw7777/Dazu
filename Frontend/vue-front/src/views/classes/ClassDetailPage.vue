@@ -5,7 +5,7 @@
         <ClassShortDetail :classData="classdata"></ClassShortDetail>
       </aside>
       <aside class="secondary secondary-b">
-        <ClassChoiceForm></ClassChoiceForm>
+        <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
       </aside>
     </div>
     <v-card>
@@ -58,7 +58,7 @@ export default {
         { tab: '후기' },
         { tab: '공지사항' },
       ],
-      classdata: [],
+      classdata: {},
     };
   },
   components: {
