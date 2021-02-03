@@ -4,9 +4,10 @@
 
 <mapper namespace="com.web.dazu.mapper.ClassMapper">
 	<select id="selectAllClass" parameterType="string" resultType="Class">
-		select *
-		from class_information
-		where dong = #{dong}
+		select c.classcode, c.class_name, c.class_describe, c.class_price, s.store_name as store_information_store_name, s.storecode as store_information_storecode, s.store_describe as store_information_store_describe 
+		from class_information as c join store_information as s
+		on c.store_information_storecode = s.storecode
+		where c.store_information_storecode in (select storecode from store_information where dong = #{dong})
 	</select>
 	
 	<select id="selectClass" parameterType="string" resultType="Class">
@@ -20,4 +21,29 @@
 		from class_time_information
 		where class_information_classcode = #{classcode}
 	</select>
+	
+	<select id="selectClassByStore" parameterType="string" resultType="Class">
+		select *
+		from class_information
+		where store_information_storecode = #{storecode}
+	</select>
+	
+	<select id="selectClassReview" parameterType="string" resultType="ClassReview">
+		select *
+		from class_review
+		where class_information_classcode = #{classcode}
+	</select>
+	
+	<select id="selectClassNotice" parameterType="string" resultType="ClassNotice">
+		select *
+		from class_notice_board
+		where class_information_classcode = #{classcode}
+	</select>
+	
+	<insert id="insertClassNotice" parameterType="ClassNotice">
+		insert into class_review(member_usercode, class_review_point, class_review_describe, class_information_classcode)
+		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
+	</insert>
+	
+	
 </mapper>

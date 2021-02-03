@@ -5,12 +5,10 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.TipBoardMapper;
 import com.web.dazu.model.Board;
 
-@Service
 public class TipBoardServiceImpl implements TipBoardService {
 
 	@Autowired

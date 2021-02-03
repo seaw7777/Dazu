@@ -16,12 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Board;
-import com.web.dazu.model.Member;
 import com.web.dazu.service.TipBoardService;
 
 import io.swagger.annotations.ApiOperation;
-
-
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RequestMapping("/tip_board")
@@ -42,6 +39,7 @@ public class TipboardController {
 		
 		return null;
 	}
+	
 	@ApiOperation(value = "팁 게시판 글쓰기", response = String.class)
 	@PostMapping(value = "/write")
 	public String writeBoard(@RequestBody Board notice) {
@@ -52,7 +50,6 @@ public class TipboardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "fail";
 	}
 	

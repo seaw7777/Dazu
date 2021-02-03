@@ -3,9 +3,33 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.dazu.mapper.StoreMapper">
+
 	<select id="selectAllStore" parameterType="string" resultType="Store">
-		select *
+		select storecode, store_name, store_describe, store_location, (store_grade / store_grade_cnt) as store_grade, store_grade_cnt, dong, lat, lng, member_usercode
 		from store_information
 		where dong = #{dong}
 	</select>
+	
+	<insert id="insertStore">
+		insert into store_information(store_name, store_describe, store_location, dong, lat, lng, member_usercode)
+		values(#{store_name}, #{store_describe}, #{store_location}, #{dong}, #{lat}, #{lng}, #{member_usercode})
+	</insert>
+
+	<update id="updateStoreGrade" parameterType="ClassReview">
+		update store_information
+		set store_grade = (select ( store_grade + #{class_review_point} )
+						   from (select * from store_information) as tmp1
+						   where storecode = (select store_information_storecode
+												from class_information
+		                    					where classcode = #{class_information_classcode})),
+			store_grade_cnt = (select ( store_grade_cnt + 1 ) 
+							   from (select * from store_information) as tmp3
+							   where storecode = select store_information_storecode
+												from class_information
+		                    					where classcode = #{class_information_classcode})
+		where storecode = select store_information_storecode
+							from class_information
+		                    where classcode = #{class_information_classcode}
+	</update>
+	
 </mapper>

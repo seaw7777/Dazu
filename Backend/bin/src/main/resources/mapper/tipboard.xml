@@ -8,10 +8,10 @@
 		from notice
 		<if test="searchWord != null and searchWord != ''">
 			<if test="searchType == 'title'">
-				where board_title like concat('%', #{searchWord}, '%')
+				where title like concat('%', #{searchWord}, '%')
 			</if>
 			<if test="searchType == 'content'">
-				where contents like concat('%', #{searchWord}, '%')
+				where content like concat('%', #{searchWord}, '%')
 			</if>
 		</if>
 		order by no desc
@@ -37,11 +37,11 @@
 	<update id="modifyBoard" parameterType="Board">
 		update tip_board
 		set board_title = #{board_title}, board_contents = #{board_contents}, board_write_datetime = now()
-		where board_code = #{board_code}
+		where board_code = #{no}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
 		delete from tip_board
-		where board_code = #{board_code}
+		where board_code = #{no}
 	</delete>
 </mapper>
