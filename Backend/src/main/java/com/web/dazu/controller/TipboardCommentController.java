@@ -52,7 +52,7 @@ public class TipboardCommentController {
 	}
 	
 	@ApiOperation(value = "팁 게시판 게시글 댓글 수정페이지로", response = Comment.class)
-	@GetMapping(value = "/modify/{comment_code}")
+	@PutMapping(value = "/modify/{comment_code}")
 	public Comment modifyCommentForm(@PathVariable int comment_code) {
 		try {
 			Comment Comment = service.modifyCommentForm(comment_code);
