@@ -23,6 +23,8 @@ export default {
         .get('http://i4d104.p.ssafy.io:8000/dazu/login?code=' + this.code)
         .then(({ data }) => {
           this.member = data;
+          console.log(JSON.stringify(data));
+          console.log('member' + data);
           console.log('member' + this.member);
           this.$store.dispatch('LOGIN', this.member);
           this.$router.push('/main');

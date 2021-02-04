@@ -13,11 +13,15 @@ public class Member {
 	private String nickname;
 	private String profileImage;
 	private String accessToken;
+	private String dong;
 	
 	public Member() {}
 
+	
+
 	public Member(String usercode, String create_date, String address, String address_detail, int usertype, String lat,
-			String lng, String nickname, String profileImage, String accessToken) {
+			String lng, String nickname, String profileImage, String accessToken, String dong) {
+		super();
 		this.usercode = usercode;
 		this.create_date = create_date;
 		this.address = address;
@@ -28,7 +32,20 @@ public class Member {
 		this.nickname = nickname;
 		this.profileImage = profileImage;
 		this.accessToken = accessToken;
+		this.dong = dong;
 	}
+
+	public String getDong() {
+		return dong;
+	}
+
+
+
+	public void setDong(String dong) {
+		this.dong = dong;
+	}
+
+
 
 	public String getUsercode() {
 		return usercode;

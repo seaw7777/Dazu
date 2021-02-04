@@ -27,3 +27,9 @@ export {
   fetchClassReivew,
   postReview,
 };
+//특정 클래스 공지사항 목록 조회
+function fetchClassNotice(classCode) {
+  return instance.get(`class/notice/${classCode}`);
+}
+
+export { fetchClasses, fetchClass, fetchClassNotice };

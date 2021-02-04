@@ -111,9 +111,9 @@ public class LoginServiceImpl implements LoginService {
 	     
 	     System.out.println(nickname + " " + id + " " + accessToken +  " " + profileImage);
 	     
-//	     Member member = selectMember(id);
+	     Member member = selectMember(id);
 	     
-	     Member member = new Member();
+//	     Member member = new Member();
 
 	     member.setNickname(nickname);
 	     member.setProfileImage(profileImage);
