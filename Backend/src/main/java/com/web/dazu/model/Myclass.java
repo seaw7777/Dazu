@@ -1,5 +1,5 @@
 package com.web.dazu.model;
-
+//완료
 public class Myclass {
 	private String classcode;
 	private String class_name;
