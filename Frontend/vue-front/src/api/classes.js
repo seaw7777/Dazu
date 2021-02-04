@@ -27,3 +27,4 @@ export {
   fetchClassReivew,
   postReview,
 };
+//특정 클래스 공지사항 목록 조회

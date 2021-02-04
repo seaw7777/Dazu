@@ -1,30 +1,30 @@
 package com.web.dazu.model;
 
 public class Board {
-	String board_code;
+	int board_code;
 	String board_write_datetime;
 	String board_title;
 	String board_contents;
-	String board_good;
-	String board_visit;
+	int board_good;
+	int board_visit;
 	String member_usercode;
-	
+		
 	public Board() {}
-	public Board(String board_code, String board_write_datetime, String board_title, String board_contents,
-			String board_hood, String board_visit, String user_code) {
+	public Board(int board_code, String board_write_datetime, String board_title, String board_contents, int board_good,
+			int board_visit, String member_usercode) {
 		super();
 		this.board_code = board_code;
 		this.board_write_datetime = board_write_datetime;
 		this.board_title = board_title;
 		this.board_contents = board_contents;
-		this.board_good = board_hood;
+		this.board_good = board_good;
 		this.board_visit = board_visit;
-		this.member_usercode = user_code;
+		this.member_usercode = member_usercode;
 	}
-	public String getBoard_code() {
+	public int getBoard_code() {
 		return board_code;
 	}
-	public void setBoard_code(String board_code) {
+	public void setBoard_code(int board_code) {
 		this.board_code = board_code;
 	}
 	public String getBoard_write_datetime() {
@@ -45,23 +45,23 @@ public class Board {
 	public void setBoard_contents(String board_contents) {
 		this.board_contents = board_contents;
 	}
-	public String getBoard_hood() {
+	public int getBoard_good() {
 		return board_good;
 	}
-	public void setBoard_hood(String board_hood) {
-		this.board_good = board_hood;
+	public void setBoard_good(int board_good) {
+		this.board_good = board_good;
 	}
-	public String getBoard_visit() {
+	public int getBoard_visit() {
 		return board_visit;
 	}
-	public void setBoard_visit(String board_visit) {
+	public void setBoard_visit(int board_visit) {
 		this.board_visit = board_visit;
 	}
-	public String getUser_code() {
+	public String getMember_usercode() {
 		return member_usercode;
 	}
-	public void setUser_code(String user_code) {
-		this.member_usercode = user_code;
+	public void setMember_usercode(String member_usercode) {
+		this.member_usercode = member_usercode;
 	}
 	@Override
 	public String toString() {
@@ -69,6 +69,8 @@ public class Board {
 				+ board_title + ", board_contents=" + board_contents + ", board_good=" + board_good + ", board_visit="
 				+ board_visit + ", member_usercode=" + member_usercode + "]";
 	}
+	
+	
 	
 	
 }

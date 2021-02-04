@@ -9,7 +9,7 @@
 		on c.store_information_storecode = s.storecode
 		where c.store_information_storecode in (select storecode from store_information where dong = #{dong})
 	</select>
-	
+
 	<select id="selectClass" parameterType="string" resultType="Class">
 		select * 
 		from class_information

@@ -12,12 +12,14 @@ public interface MemberMapper {
 
 	Member selectMember(String id) throws Exception;
 
-	void inserMember(Member member) throws Exception;
+	void insertMember(Member member) throws Exception;
 
 	void updateMember(Member member) throws Exception;
 
 	void deleteMember(String id) throws Exception;
 
 	List<Myclass> selectMyclass(String id) throws Exception;
+
+	List<Myclass> selectCommingMyClass(String id) throws Exception;
 
 }

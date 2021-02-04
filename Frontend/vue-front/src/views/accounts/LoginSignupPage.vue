@@ -26,6 +26,7 @@ export default {
           this.member = data;
           console.log(JSON.stringify(data));
           console.log('member' + data);
+          console.log('member' + this.member);
           this.$store.dispatch('LOGIN', this.member);
           if (this.member.address === null) {
             this.$router.push('/user/customerstep');
