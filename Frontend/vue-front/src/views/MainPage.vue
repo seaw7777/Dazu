@@ -48,11 +48,11 @@ export default {
       const imageSize = new window.kakao.maps.Size(24, 35);
       const markerImage = new window.kakao.maps.MarkerImage(
         imageSrc,
-        imageSize,
+        imageSize
       );
       const position = new window.kakao.maps.LatLng(
         Number(storeData.data[i].lng),
-        Number(storeData.data[i].lat),
+        Number(storeData.data[i].lat)
       );
       const marker = new window.kakao.maps.Marker({
         map: map,

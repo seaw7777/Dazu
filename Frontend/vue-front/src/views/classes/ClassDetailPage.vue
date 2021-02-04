@@ -37,9 +37,9 @@
               ><ClassReviewList :classdata="classdata"></ClassReviewList>
             </v-card-text>
           </v-card>
-          <v-card flat v-else-if="item.tab === '공지사항'">
+          <v-card flat v-else-if="item.tab === 'Q&A'">
             <v-card-text class="card-container"
-              ><ClassNotice></ClassNotice>
+              ><ClassQnA></ClassQnA>
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -54,7 +54,7 @@ import ClassIntroduce from '@/components/classes/ClassIntroduce.vue';
 import StoreIntroduce from '@/components/classes/StoreIntroduce.vue';
 import MealkitInfo from '@/components/classes/MealkitInfo.vue';
 import ClassReviewList from '@/components/classes/ClassReviewList.vue';
-import ClassNotice from '@/components/classes/ClassNotice.vue';
+import ClassQnA from '@/components/classes/ClassQnA.vue';
 import ClassChoiceForm from '@/components/classes/ClassChoiceForm.vue';
 import { fetchClass } from '@/api/classes';
 export default {
@@ -66,7 +66,7 @@ export default {
         { tab: '가게소개' },
         { tab: '밀키트 정보' },
         { tab: '후기' },
-        { tab: '공지사항' },
+        { tab: 'Q&A' },
       ],
       classdata: {},
     };
@@ -77,7 +77,7 @@ export default {
     StoreIntroduce,
     MealkitInfo,
     ClassReviewList,
-    ClassNotice,
+    ClassQnA,
     ClassChoiceForm,
   },
   async created() {

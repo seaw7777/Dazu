@@ -19,17 +19,15 @@ function postReview(reviewData) {
 function fetchStoreClass(storeCode) {
   return instance.get(`class/store/${storeCode}`);
 }
-
+//특정 클래스 공지사항 목록 조회
+function fetchClassQnA(classCode) {
+  return instance.get(`class/qna/${classCode}`);
+}
 export {
   fetchClasses,
   fetchClass,
   fetchStoreClass,
   fetchClassReivew,
   postReview,
+  fetchClassQnA,
 };
-//특정 클래스 공지사항 목록 조회
-function fetchClassNotice(classCode) {
-  return instance.get(`class/notice/${classCode}`);
-}
-
-export { fetchClasses, fetchClass, fetchClassNotice };
