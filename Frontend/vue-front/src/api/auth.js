@@ -8,4 +8,9 @@ function logoutUser(accessToken) {
 function customerInfoAPI(customerInfo) {
   return instance.post('member/insertMember', customerInfo);
 }
-export { logoutUser, customerInfoAPI };
+// 고객님 추가 정보 가져오기 API
+function customerGetInfoAPI(id) {
+  return instance.get(`member/selectMember/{id}?id=${id}`);
+}
+
+export { logoutUser, customerInfoAPI, customerGetInfoAPI };

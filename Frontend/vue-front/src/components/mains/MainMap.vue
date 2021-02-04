@@ -5,12 +5,34 @@
 <script>
 export default {
   name: 'map',
-  props: {},
-  data() {
-    return {};
+  props: {
+    storeItems: {
+      type: Object,
+      required: true,
+    },
+    houseItem: Object,
   },
-  methods() {},
-  mounted() {},
+  data() {
+    return {
+      a: '',
+    };
+  },
+  computed() {
+    this.a = this.houseItem.lat;
+  },
+  mounted() {
+    const container = document.getElementById('map');
+    // var parseobj = JSON.parse(JSON.stringify(this.houseItem));
+    // console.log(parseobj);
+    console.log(this.a);
+    // console.log(this.houseLat);
+    const options = {
+      center: new window.kakao.maps.LatLng(this.a, 126.855),
+      level: 3,
+    };
+    const map = new window.kakao.maps.Map(container, options);
+    console.log(map);
+  },
 };
 </script>
 
