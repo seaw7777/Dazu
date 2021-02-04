@@ -8,4 +8,8 @@ function logoutUser(accessToken) {
 function customerInfoAPI(customerInfo) {
   return instance.post('member/insertMember', customerInfo);
 }
-export { logoutUser, customerInfoAPI };
+//
+function customerGetInfoAPI(id) {
+  return instance.get(`member/selectMember/{id}?id=${id}`);
+}
+export { logoutUser, customerInfoAPI, customerGetInfoAPI };

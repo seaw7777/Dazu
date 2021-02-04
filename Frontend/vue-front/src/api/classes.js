@@ -7,5 +7,9 @@ function fetchClasses(dong) {
 function fetchClass(classCode) {
   return instance.get(`class/detail/${classCode}`);
 }
+// 가게 별 모든 클래스 정보 불러오기
+function fetchStoreClass(storeCode) {
+  return instance.get(`class/store/${storeCode}`);
+}
 
-export { fetchClasses, fetchClass };
+export { fetchClasses, fetchClass, fetchStoreClass };
