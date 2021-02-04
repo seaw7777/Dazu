@@ -42,6 +42,7 @@ public class LoginController {
 		System.out.println(member.getNickname());
 		System.out.println(member.getProfileImage());
 		System.out.println(member.getUsercode());
+		System.out.println(member.getAddress());
 		
 		return new ResponseEntity<Member>(member, HttpStatus.OK);
 	}

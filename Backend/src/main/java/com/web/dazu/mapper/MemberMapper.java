@@ -12,7 +12,7 @@ public interface MemberMapper {
 
 	Member selectMember(String id) throws Exception;
 
-	void inserMember(Member member) throws Exception;
+	void insertMember(Member member) throws Exception;
 
 	void updateMember(Member member) throws Exception;
 

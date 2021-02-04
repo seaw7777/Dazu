@@ -7,5 +7,9 @@ function fetchClasses(dong) {
 function fetchClass(classCode) {
   return instance.get(`class/detail/${classCode}`);
 }
+//특정 클래스 공지사항 목록 조회
+function fetchClassNotice(classCode) {
+  return instance.get(`class/notice/${classCode}`);
+}
 
-export { fetchClasses, fetchClass };
+export { fetchClasses, fetchClass, fetchClassNotice };

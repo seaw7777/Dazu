@@ -16,20 +16,19 @@
 	</insert>
 
 	<update id="updateStoreGrade" parameterType="ClassReview">
-		update store_information
+		update store_information 
 		set store_grade = (select ( store_grade + #{class_review_point} )
-						   from (select * from store_information) as tmp1
-						   where storecode = (select store_information_storecode
-												from class_information
-		                    					where classcode = #{class_information_classcode})),
-		store_grade_cnt = (select ( store_grade_cnt + 1 ) 
-							   from (select * from store_information) as tmp3
-							   where storecode = select store_information_storecode
-												from class_information
-		                    					where classcode = #{class_information_classcode})
-		where storecode = select store_information_storecode
-							from class_information
-		                    where classcode = #{class_information_classcode}
+						   from (select * from store_information) as tmp1 join class_information as tmp2
+		                   on tmp1.storecode = tmp2.store_information_storecode
+						   where tmp2.classcode = #{class_information_classcode}),
+			store_grade_cnt = (select ( store_grade_cnt + 1 ) 
+							   from (select * from store_information) as tmp3 join class_information as tmp4
+		                   on tmp3.storecode = tmp4.store_information_storecode
+							   where tmp4.classcode = #{class_information_classcode})
+		where storecode = (select tmp5.storecode
+						   from (select * from store_information) as tmp5 join class_information as tmp6
+		                   on tmp5.storecode = tmp6.store_information_storecode
+						   where tmp6.classcode = #{class_information_classcode});
 	</update>
 	
 </mapper>
