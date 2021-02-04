@@ -25,6 +25,10 @@ const router = new VueRouter({
     },
     { path: '/main', component: () => import('@/views/MainPage.vue') },
     {
+      path: '/class/list',
+      component: () => import('@/views/classes/ClassListPage.vue'),
+    },
+    {
       path: '/class/detail/:id',
       component: () => import('@/views/classes/ClassDetailPage.vue'),
     },
