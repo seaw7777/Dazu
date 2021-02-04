@@ -45,5 +45,9 @@
 		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
 	</insert>
 	
+	<insert id="insertClassRoom" parameterType="ClassRoom">
+		insert into class_room(class_time_information_class_timecode, member_usercode, class_information_classcode)
+		values(#{class_time_information_class_timecode}, #{member_usercode}, #{class_information_classcode})
+	</insert>
 	
 </mapper>

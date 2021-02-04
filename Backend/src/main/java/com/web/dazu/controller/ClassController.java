@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 import com.web.dazu.service.ClassService;
 import com.web.dazu.service.StoreService;
@@ -111,6 +112,16 @@ public class ClassController {
 		try {
 			service.insertClassNotice(review);
 			storeService.updateStoreGrade(review);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - 결제단계X")
+	@PostMapping("/insert") 
+	public void insertClassRoom(@RequestBody ClassRoom room) {
+		try {
+			service.insertClassRoom(room);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

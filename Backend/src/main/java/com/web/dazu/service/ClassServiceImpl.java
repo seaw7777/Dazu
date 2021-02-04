@@ -11,6 +11,7 @@ import com.web.dazu.mapper.StoreMapper;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 
 @Service
@@ -52,6 +53,11 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public void insertClassNotice(ClassReview review) throws Exception {
 		session.getMapper(ClassMapper.class).insertClassNotice(review);
+	}
+
+	@Override
+	public void insertClassRoom(ClassRoom room) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassRoom(room);
 	}
 
 }

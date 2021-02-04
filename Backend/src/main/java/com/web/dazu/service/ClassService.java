@@ -5,6 +5,7 @@ import java.util.List;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 
 public interface ClassService {
@@ -22,5 +23,7 @@ public interface ClassService {
 	List<ClassNotice> selectClassNotice(String classcode) throws Exception;
 
 	void insertClassNotice(ClassReview review) throws Exception;
+
+	void insertClassRoom(ClassRoom room) throws Exception;
 
 }
