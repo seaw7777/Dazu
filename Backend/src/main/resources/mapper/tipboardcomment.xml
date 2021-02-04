@@ -5,7 +5,7 @@
 <mapper namespace="com.web.dazu.mapper.TipBoardCommentMapper">
 	<insert id="writeBoardComment" parameterType="Comment">
 		insert into tip_board_comment (comment_contents,board_code,member_usercode)
-		values (${comment_contents} , ${board_code} , ${board_contents} , ${member_usercode});
+		values (#{comment_contents} , #{board_code} , #{board_contents} , #{member_usercode});
 	</insert>
 	
 	<select id="getBoardCommentList" parameterType="int" resultType="Comment">

@@ -18,8 +18,8 @@
 	</select>
 	
 	<insert id="writeBoard" parameterType="Board">
-		insert into recommended_restaurants_board 
-		values (0,${board_write_datetime} , ${board_title} , ${board_contents},0,0,${member_usercode});
+		insert into recommended_restaurants_board (board_code,board_title,board_contents,board_good,board_visit,member_usercode)
+		values (0, #{board_title} , #{board_contents},0,0,#{member_usercode});
 	</insert>
 	
 	<select id="getBoard" parameterType="int" resultType="Board">
