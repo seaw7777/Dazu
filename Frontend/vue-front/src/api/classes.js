@@ -20,4 +20,10 @@ function fetchStoreClass(storeCode) {
   return instance.get(`class/store/${storeCode}`);
 }
 
-export { fetchClasses, fetchClass, fetchStoreClass, fetchClassReivew, postReview };
+export {
+  fetchClasses,
+  fetchClass,
+  fetchStoreClass,
+  fetchClassReivew,
+  postReview,
+};
