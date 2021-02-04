@@ -41,9 +41,18 @@
 	</select>
 	
 	<insert id="insertClassNotice" parameterType="ClassNotice">
+		insert into class_notice_board(class_notice_board_title, class_notice_board_contents, class_notice_board_visit, class_information_classcode)
+		values(#{class_notice_board_title}, #{class_notice_board_contents}, 0, #{class_information_classcode})
+	</insert>
+	
+	<insert id="insertClassReview" parameterType="ClassReview">
 		insert into class_review(member_usercode, class_review_point, class_review_describe, class_information_classcode)
 		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
 	</insert>
 	
-	
+	<select id="selectClassNoticeDetail" parameterType="string" resultType="ClassNotice">
+		select *
+		from class_notice_board
+		where class_notice_board_code = #{class_notice_board_code}
+	</select>
 </mapper>

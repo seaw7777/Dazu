@@ -24,6 +24,10 @@ public interface ClassMapper {
 
 	List<ClassNotice> selectClassNotice(String classcode) throws Exception;
 
-	void insertClassNotice(ClassReview review) throws Exception;
+	void insertClassNotice(ClassNotice classNotice) throws Exception;
+
+	void insertClassReview(ClassReview classreview) throws Exception;
+
+	ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception;
 
 }

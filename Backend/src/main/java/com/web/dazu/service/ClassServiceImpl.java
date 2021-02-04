@@ -50,8 +50,19 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public void insertClassNotice(ClassReview review) throws Exception {
-		session.getMapper(ClassMapper.class).insertClassNotice(review);
+	public void insertClassNotice(ClassNotice classNotice) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassNotice(classNotice);
+	}
+
+	@Override
+	public void insertClassReview(ClassReview classreview) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassReview(classreview);
+	}
+
+	@Override
+	public ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception {
+		// TODO Auto-generated method stub
+		return session.getMapper(ClassMapper.class).selectClassNoticeDetail(class_notice_board_code);
 	}
 
 }
