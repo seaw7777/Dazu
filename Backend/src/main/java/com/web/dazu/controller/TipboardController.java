@@ -93,7 +93,7 @@ public class TipboardController {
 
 	@ApiOperation(value = "팁 게시판 게시글 수정진행", response = String.class)
 	@PutMapping(value = "/modify")
-	public String modifyNotice(@RequestBody Board board) {
+	public String modifyTip(@RequestBody Board board) {
 		System.out.println(board);
 		try {
 			service.modifyBoard(board);

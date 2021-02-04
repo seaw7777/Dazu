@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dazu.mapper.RestaurantsBoardCommentMapper">
+	<insert id="writeBoardComment" parameterType="Comment">
+		insert into recommended_restaurants_board (comment_contents,board_code,member_usercode)
+		values (${comment_contents} , ${board_code} , ${board_contents} , ${member_usercode});
+	</insert>
+	
+	<select id="getBoardCommentList" parameterType="int" resultType="Comment">
+		select *
+		from recommended_restaurants_board
+		where board_code = #{board_code}
+	</select>
+	
+	<update id="modifyCommentForm" parameterType="int">
+		select *
+		from recommended_restaurants_board
+		where comment_code = #{comment_code}
+	</update>
+	
+	<update id="modifyComment" parameterType="Comment">
+		update recommended_restaurants_board
+		set comment_contents = #{comment_contents}, comment_write_datetime = now()
+		where comment_code = #{comment_code}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from recommended_restaurants_board
+		where comment_code = #{comment_code}
+	</delete>
+</mapper>

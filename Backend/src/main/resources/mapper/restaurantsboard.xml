@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dazu.mapper.RestaurantsBoardMapper">
+	<select id="getBoardList" parameterType="map" resultType="Board">
+		select *
+		from recommended_restaurants_board
+		<if test="searchWord != null and searchWord != ''">
+			<if test="searchType == 'title'">
+				where board_title like concat('%', #{searchWord}, '%')
+			</if>
+			<if test="searchType == 'content'">
+				where contents like concat('%', #{searchWord}, '%')
+			</if>
+		</if>
+		order by board_code desc
+	</select>
+	
+	<insert id="writeBoard" parameterType="Board">
+		insert into recommended_restaurants_board 
+		values (0,${board_write_datetime} , ${board_title} , ${board_contents},0,0,${member_usercode});
+	</insert>
+	
+	<select id="getBoard" parameterType="int" resultType="Board">
+		select *
+		from recommended_restaurants_board
+		where board_code = #{board_code}
+	</select>
+	
+	<update id="updateViews" parameterType="int">
+		update recommended_restaurants_board
+		set board_visit = board_visit + 1
+		where board_code = #{board_code};
+	</update>
+	
+	<update id="modifyBoard" parameterType="Board">
+		update recommended_restaurants_board
+		set board_title = #{board_title}, board_contents = #{board_contents}, board_write_datetime = now()
+		where board_code = #{board_code}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from recommended_restaurants_board
+		where board_code = #{board_code}
+	</delete>
+</mapper>

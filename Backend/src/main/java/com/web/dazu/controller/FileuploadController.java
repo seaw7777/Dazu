@@ -13,7 +13,6 @@ import com.web.dazu.service.FileUploadService;
 import io.swagger.annotations.ApiOperation;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List; 
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)

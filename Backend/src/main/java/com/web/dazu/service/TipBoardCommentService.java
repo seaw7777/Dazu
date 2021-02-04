@@ -2,7 +2,6 @@ package com.web.dazu.service;
 
 import java.util.List;
 
-import com.web.dazu.model.Board;
 import com.web.dazu.model.Comment;
 
 public interface TipBoardCommentService {

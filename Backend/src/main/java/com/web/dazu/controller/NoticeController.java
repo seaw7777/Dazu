@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.dazu.model.Member;
 import com.web.dazu.model.Notice;
 import com.web.dazu.service.NoticeService;
 

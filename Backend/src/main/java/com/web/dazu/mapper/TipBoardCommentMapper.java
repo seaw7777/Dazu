@@ -1,9 +1,6 @@
 package com.web.dazu.mapper;
 
 import java.util.List;
-import java.util.Map;
-
-import com.web.dazu.model.Board;
 import com.web.dazu.model.Comment;
 
 

@@ -22,7 +22,7 @@
 						   where storecode = (select store_information_storecode
 												from class_information
 		                    					where classcode = #{class_information_classcode})),
-			store_grade_cnt = (select ( store_grade_cnt + 1 ) 
+		store_grade_cnt = (select ( store_grade_cnt + 1 ) 
 							   from (select * from store_information) as tmp3
 							   where storecode = select store_information_storecode
 												from class_information
