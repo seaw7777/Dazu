@@ -107,46 +107,23 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "클래스에 후기를 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
-	@PostMapping("/review/reviewinsert")
-	public void insertClassReview(@RequestBody ClassReview classreview) {
+	@PostMapping("/notice/insert")
+	public void insertClassReview(@RequestBody ClassReview review) {
 		try {
-			service.insertClassReview(classreview);
-			storeService.updateStoreGrade(classreview);
+			service.insertClassReview(review);
+			storeService.updateStoreGrade(review);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-<<<<<<< HEAD
-	@ApiOperation(value = "클래스에 공지사항을 등록한다.")
-	@PostMapping("/notice/noticeinsert")
-	public void insertClassNotice(@RequestBody ClassNotice classNotice) {
-		try {
-			service.insertClassNotice(classNotice);
-=======
-	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - 결제단계X")
+	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - KAKAO PAY API")
 	@PostMapping("/insert") 
 	public void insertClassRoom(@RequestBody ClassRoom room) {
 		try {
 			service.insertClassRoom(room);
->>>>>>> feature/class_insert
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-	
-	@ApiOperation(value = "클래스에 등록된 공지사항 상세사항을 읽어온다.", response = List.class)
-	@GetMapping("/notice/detail/{class_notice_board_code}")
-	public ResponseEntity<ClassNotice> selectClassNoticeDetail(@PathVariable String class_notice_board_code) {
-		ClassNotice classnotice = new ClassNotice();
-		try {
-			classnotice = service.selectClassNoticeDetail(class_notice_board_code);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return new ResponseEntity<ClassNotice>(classnotice, HttpStatus.OK);
-	}
-=======
->>>>>>> feature/class_insert
 }

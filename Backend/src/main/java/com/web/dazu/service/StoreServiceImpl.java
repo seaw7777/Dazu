@@ -40,65 +40,47 @@ public class StoreServiceImpl implements StoreService {
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
 	    String jsonString = null;
+	    
+	    String addrutf = URLEncoder.encode(store.getStore_location(), "UTF-8");
 
-		 try {
-		        String addrutf = URLEncoder.encode(store.getStore_location(), "UTF-8");
+        String addr = apiUrl + "?query=" + addrutf;
 
-		        String addr = apiUrl + "?query=" + addrutf;
+        URL url = new URL(addr);
+        URLConnection conn = url.openConnection();
+        conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
 
-		        URL url = new URL(addr);
-		        URLConnection conn = url.openConnection();
-		        conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+        BufferedReader br = null;
+        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
-		        BufferedReader br = null;
-		        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+        String line = "";
+        String result = "";
 
-		        String line = "";
-		        String result = "";
-
-		        while ((line = br.readLine()) != null) {
-		            result += line;
-		        }
-		        jsonString = result.toString();
-		        
-		  	} catch (UnsupportedEncodingException e) {
-		        e.printStackTrace();
-		    } catch (MalformedURLException e) {
-		        e.printStackTrace();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+        while ((line = br.readLine()) != null) {
+            result += line;
+        }
+        jsonString = result.toString();
 		 
-		 ObjectMapper mapper = new ObjectMapper();
-		    HashMap<String, String> XYMap = new HashMap<String, String>();
+		ObjectMapper mapper = new ObjectMapper();
+		HashMap<String, String> XYMap = new HashMap<String, String>();
+		
+		TypeReference<Map<String, Object>> typeRef 
+        = new TypeReference<Map<String, Object>>(){};
+	    Map<String, Object> jsonMap = mapper.readValue(jsonString, typeRef);
+	
+	    @SuppressWarnings("unchecked")
+	    List<Map<String, String>> docList 
+	        =  (List<Map<String, String>>) jsonMap.get("documents");	
+	
+	    Map<String, String> adList = (Map<String, String>) docList.get(0);
+	    XYMap.put("x",adList.get("x"));
+	    XYMap.put("y", adList.get("y"));
 
-		    try {
-		        TypeReference<Map<String, Object>> typeRef 
-		            = new TypeReference<Map<String, Object>>(){};
-		        Map<String, Object> jsonMap = mapper.readValue(jsonString, typeRef);
-
-		        @SuppressWarnings("unchecked")
-		        List<Map<String, String>> docList 
-		            =  (List<Map<String, String>>) jsonMap.get("documents");	
-
-		        Map<String, String> adList = (Map<String, String>) docList.get(0);
-		        XYMap.put("x",adList.get("x"));
-		        XYMap.put("y", adList.get("y"));
-		     
-
-		    } catch (JsonParseException e) {
-		        e.printStackTrace();
-		    } catch (JsonMappingException e) {
-		        e.printStackTrace();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
-		    store.setLat(XYMap.get("x"));
-		    store.setLng(XYMap.get("y"));
+		store.setLat(XYMap.get("x"));
+		store.setLng(XYMap.get("y"));
 		    
-		    System.out.println(store.getLat() + store.getLng());
+		System.out.println(store.getLat() + store.getLng());
 		 
-	     session.getMapper(StoreMapper.class).insertStore(store);
+	    session.getMapper(StoreMapper.class).insertStore(store);
 	}
 
 	@Override

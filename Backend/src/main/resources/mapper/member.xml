@@ -21,8 +21,8 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="Member">
-		insert into member(usercode, address, address_detail, lat, lng, dong, usertype)
-		values(#{usercode}, #{address}, #{address_detail}, #{lat}, #{lng}, #{dong}, #{usertype})
+		insert into member(usercode, nickname, address, address_detail, lat, lng, dong, usertype)
+		values(#{usercode}, #{nickname}, #{address}, #{address_detail}, #{lat}, #{lng}, #{dong}, #{usertype})
 	</insert>
 	
 	<update id="updateMember" parameterType="Member">

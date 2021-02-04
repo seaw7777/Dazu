@@ -1,10 +1,23 @@
 package com.web.dazu.service;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
@@ -61,12 +74,32 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception {
-		// TODO Auto-generated method stub
 		return session.getMapper(ClassMapper.class).selectClassNoticeDetail(class_notice_board_code);
 	}
 
 	@Override
 	public void insertClassRoom(ClassRoom room) throws Exception {
+		
+		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
+		String apiUrl = "https://kapi.kakao.com/v1/payment/ready";
+		String jsonString = null;
+		URL url = new URL(apiUrl);
+		URLConnection conn = url.openConnection();
+
+	    conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+	    
+	    BufferedReader br = null;
+        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+
+        String line = "";
+        String result = "";
+        
+        while ((line = br.readLine()) != null) {
+            result += line;
+        }
+        jsonString = result.toString();
+        System.out.println(jsonString);
+		
 		session.getMapper(ClassMapper.class).insertClassRoom(room);
 	}
 

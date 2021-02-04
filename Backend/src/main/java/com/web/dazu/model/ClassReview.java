@@ -7,17 +7,32 @@ public class ClassReview {
 	private int class_review_point;
 	private String class_review_describe;
 	private String class_information_classcode;
+	private String member_nickname;
 	
 	public ClassReview() {}
+	
 	public ClassReview(String member_usercode, String class_review_write_datetime, int class_review_code,
-			int class_review_point, String class_review_describe, String class_information_classcode) {
+			int class_review_point, String class_review_describe, String class_information_classcode,
+			String member_nickname) {
+		super();
 		this.member_usercode = member_usercode;
 		this.class_review_write_datetime = class_review_write_datetime;
 		this.class_review_code = class_review_code;
 		this.class_review_point = class_review_point;
 		this.class_review_describe = class_review_describe;
 		this.class_information_classcode = class_information_classcode;
+		this.member_nickname = member_nickname;
 	}
+
+	
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
+	}
+
 	public String getClass_review_write_datetime() {
 		return class_review_write_datetime;
 	}

@@ -29,8 +29,9 @@
 	</select>
 	
 	<select id="selectClassReview" parameterType="string" resultType="ClassReview">
-		select *
-		from class_review
+		select member_usercode, class_review_write_datetime, class_review_code, class_review_point, class_review_describe, class_information_classcode, m.nickname as member_nickname
+		from class_review as c join member as m 
+		on c.member_usercode = m.usercode
 		where class_information_classcode = #{classcode}
 	</select>
 	
@@ -55,6 +56,7 @@
 		from class_notice_board
 		where class_notice_board_code = #{class_notice_board_code}
 	</select>
+	
 	<insert id="insertClassRoom" parameterType="ClassRoom">
 		insert into class_room(class_time_information_class_timecode, member_usercode, class_information_classcode)
 		values(#{class_time_information_class_timecode}, #{member_usercode}, #{class_information_classcode})
