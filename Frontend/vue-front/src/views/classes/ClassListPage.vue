@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="coming-container"><ComingClass></ComingClass></div>
     <v-row no-gutters>
       <v-col
         v-for="classItem in classItems"
@@ -14,6 +15,7 @@
 
 <script>
 import ClassItem from '@/components/classes/ClassItem.vue';
+import ComingClass from '@/components/classes/ComingClass.vue';
 import { fetchClasses } from '@/api/classes';
 export default {
   data() {
@@ -27,6 +29,7 @@ export default {
   },
   components: {
     ClassItem,
+    ComingClass,
   },
   async created() {
     this.isLoading = true;
@@ -38,4 +41,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scope>
+.coming-container {
+  display: flex;
+  margin: 20px;
+}
+</style>

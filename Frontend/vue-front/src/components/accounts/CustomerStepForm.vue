@@ -35,6 +35,7 @@
             <br />
           </v-col>
           <v-col cols="12">
+            <v-text-field type="text" v-model="dong" placeholder="동" />
             <v-text-field
               type="text"
               v-model="extraAddress"
@@ -65,6 +66,7 @@ export default {
       postcode: '',
       address: '',
       extraAddress: '',
+      dong: '',
       usertype: 1,
     };
   },
@@ -85,16 +87,14 @@ export default {
           }
           if (data.userSelectedType === 'R') {
             if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-              this.extraAddress += data.bname;
+              this.dong += data.bname;
             }
             if (data.buildingName !== '' && data.apartment === 'Y') {
-              this.extraAddress +=
-                this.extraAddress !== ''
-                  ? `, ${data.buildingName}`
-                  : data.buildingName;
+              this.dong +=
+                this.dong !== '' ? `, ${data.buildingName}` : data.buildingName;
             }
-            if (this.extraAddress !== '') {
-              this.extraAddress = ` (${this.extraAddress})`;
+            if (this.dong !== '') {
+              this.dong = ` ${this.dong}`;
             }
           } else {
             this.extraAddress = '';
@@ -115,11 +115,17 @@ export default {
 
     async submitInfo() {
       try {
-        console.log('data3' + this.address);
+        console.log('data3' + this.dong);
         const response = await customerInfoAPI({
+          accessToken: '',
           address: this.address,
           address_detail: this.extraAddress,
-          usercode: '123444',
+          usercode: this.$store.state.usercode,
+          create_date: '',
+          lat: '',
+          lng: '',
+          dong: this.dong,
+          nickname: this.$store.state.username,
           usertype: this.usertype,
         });
         this.$router.push('/main');
