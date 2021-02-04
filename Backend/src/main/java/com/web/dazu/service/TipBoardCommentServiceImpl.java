@@ -6,11 +6,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.web.dazu.mapper.TipBoardCommentMapper;
 import com.web.dazu.model.Board;
 import com.web.dazu.model.Comment;
 
+@Service
 public class TipBoardCommentServiceImpl implements TipBoardCommentService {
 	@Autowired
 	private SqlSession sqlsession;

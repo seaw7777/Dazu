@@ -20,7 +20,7 @@
 		where comment_code = #{comment_code}
 	</update>
 	
-	<update id="modifyCommentForm" parameterType="Comment">
+	<update id="modifyComment" parameterType="Comment">
 		update tip_board_comment
 		set comment_contents = #{comment_contents}, comment_write_datetime = now()
 		where comment_code = #{comment_code}

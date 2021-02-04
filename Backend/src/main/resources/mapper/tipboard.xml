@@ -5,7 +5,7 @@
 <mapper namespace="com.web.dazu.mapper.TipBoardMapper">
 	<select id="getBoardList" parameterType="map" resultType="Board">
 		select *
-		from notice
+		from tip_board
 		<if test="searchWord != null and searchWord != ''">
 			<if test="searchType == 'title'">
 				where board_title like concat('%', #{searchWord}, '%')
@@ -14,7 +14,7 @@
 				where contents like concat('%', #{searchWord}, '%')
 			</if>
 		</if>
-		order by no desc
+		order by board_code desc
 	</select>
 	
 	<insert id="writeBoard" parameterType="Board">
@@ -25,13 +25,13 @@
 	<select id="getBoard" parameterType="int" resultType="Board">
 		select *
 		from tip_board
-		where board_code = #{no}
+		where board_code = #{board_code}
 	</select>
 	
 	<update id="updateViews" parameterType="int">
 		update tip_board
 		set board_visit = board_visit + 1
-		where no = #{no};
+		where board_code = #{board_code};
 	</update>
 	
 	<update id="modifyBoard" parameterType="Board">
