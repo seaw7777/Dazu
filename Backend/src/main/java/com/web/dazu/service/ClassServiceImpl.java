@@ -10,6 +10,7 @@ import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 
 @Service
@@ -62,6 +63,11 @@ public class ClassServiceImpl implements ClassService {
 	public ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception {
 		// TODO Auto-generated method stub
 		return session.getMapper(ClassMapper.class).selectClassNoticeDetail(class_notice_board_code);
+	}
+
+	@Override
+	public void insertClassRoom(ClassRoom room) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassRoom(room);
 	}
 
 }

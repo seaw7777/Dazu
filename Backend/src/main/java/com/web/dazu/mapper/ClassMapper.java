@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 
 @Mapper
@@ -29,5 +30,7 @@ public interface ClassMapper {
 	void insertClassReview(ClassReview classreview) throws Exception;
 
 	ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception;
+
+	void insertClassRoom(ClassRoom room) throws Exception;
 
 }

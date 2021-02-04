@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassNotice;
 import com.web.dazu.model.ClassReview;
+import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
 import com.web.dazu.service.ClassService;
 import com.web.dazu.service.StoreService;
@@ -116,15 +117,24 @@ public class ClassController {
 		}
 	}
 	
+<<<<<<< HEAD
 	@ApiOperation(value = "클래스에 공지사항을 등록한다.")
 	@PostMapping("/notice/noticeinsert")
 	public void insertClassNotice(@RequestBody ClassNotice classNotice) {
 		try {
 			service.insertClassNotice(classNotice);
+=======
+	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - 결제단계X")
+	@PostMapping("/insert") 
+	public void insertClassRoom(@RequestBody ClassRoom room) {
+		try {
+			service.insertClassRoom(room);
+>>>>>>> feature/class_insert
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 	@ApiOperation(value = "클래스에 등록된 공지사항 상세사항을 읽어온다.", response = List.class)
 	@GetMapping("/notice/detail/{class_notice_board_code}")
@@ -137,4 +147,6 @@ public class ClassController {
 		}
 		return new ResponseEntity<ClassNotice>(classnotice, HttpStatus.OK);
 	}
+=======
+>>>>>>> feature/class_insert
 }
