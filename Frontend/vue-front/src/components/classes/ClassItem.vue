@@ -10,13 +10,13 @@
       </v-img>
 
       <v-card-subtitle class="pb-0">
-        {{ classItem.class_describe }}
+        {{ classItem.store_information_store_name }}
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
         <div>난이도 : {{ classItem.class_difficult }}</div>
         <div>오픈 : {{ classItem.class_startdate }}</div>
-        <div>마감 : { classItem.class_enddate }}</div>
+        <div>마감 : {{ classItem.class_enddate }}</div>
         <div>밀키트 : {{ classItem.mealkit_ok }}</div>
         <div>가격 : {{ classItem.class_price }}</div>
       </v-card-text>
