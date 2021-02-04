@@ -35,27 +35,16 @@
 		where class_information_classcode = #{classcode}
 	</select>
 	
-	<select id="selectClassNotice" parameterType="string" resultType="ClassNotice">
+	<select id="selectClassQnA" parameterType="string" resultType="ClassQnA">
 		select *
-		from class_notice_board
+		from class_qna_board
 		where class_information_classcode = #{classcode}
 	</select>
-	
-	<insert id="insertClassNotice" parameterType="ClassNotice">
-		insert into class_notice_board(class_notice_board_title, class_notice_board_contents, class_notice_board_visit, class_information_classcode)
-		values(#{class_notice_board_title}, #{class_notice_board_contents}, 0, #{class_information_classcode})
-	</insert>
 	
 	<insert id="insertClassReview" parameterType="ClassReview">
 		insert into class_review(member_usercode, class_review_point, class_review_describe, class_information_classcode)
 		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
 	</insert>
-	
-	<select id="selectClassNoticeDetail" parameterType="string" resultType="ClassNotice">
-		select *
-		from class_notice_board
-		where class_notice_board_code = #{class_notice_board_code}
-	</select>
 	
 	<insert id="insertClassRoom" parameterType="ClassRoom">
 		insert into class_room(class_time_information_class_timecode, member_usercode, class_information_classcode)

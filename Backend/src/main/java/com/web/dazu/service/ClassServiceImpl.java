@@ -2,26 +2,17 @@ package com.web.dazu.service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
-import com.web.dazu.model.ClassNotice;
+import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
@@ -58,25 +49,10 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public List<ClassNotice> selectClassNotice(String classcode) throws Exception {
-		return session.getMapper(ClassMapper.class).selectClassNotice(classcode);
-	}
-
-	@Override
-	public void insertClassNotice(ClassNotice classNotice) throws Exception {
-		session.getMapper(ClassMapper.class).insertClassNotice(classNotice);
-	}
-
-	@Override
 	public void insertClassReview(ClassReview classreview) throws Exception {
 		session.getMapper(ClassMapper.class).insertClassReview(classreview);
 	}
-
-	@Override
-	public ClassNotice selectClassNoticeDetail(String class_notice_board_code) throws Exception {
-		return session.getMapper(ClassMapper.class).selectClassNoticeDetail(class_notice_board_code);
-	}
-
+	
 	@Override
 	public void insertClassRoom(ClassRoom room) throws Exception {
 		
@@ -101,6 +77,11 @@ public class ClassServiceImpl implements ClassService {
         System.out.println(jsonString);
 		
 		session.getMapper(ClassMapper.class).insertClassRoom(room);
+	}
+
+	@Override
+	public List<ClassQnA> selectClassQnA(String classcode) throws Exception {
+		return session.getMapper(ClassMapper.class).selectClassQnA(classcode);
 	}
 
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Class;
-import com.web.dazu.model.ClassNotice;
+import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
@@ -94,27 +94,16 @@ public class ClassController {
 		return new ResponseEntity<List<ClassReview>>(list, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "클래스에 등록된 공지사항 목록을 읽어온다.", response = List.class)
-	@GetMapping("/notice/{classcode}")
-	public ResponseEntity<List<ClassNotice>> selectClassNotice(@PathVariable String classcode) {
-		List<ClassNotice> list = new ArrayList<>();
+	@ApiOperation(value = "클래스에 등록된 Q&A 목록을 읽어온다.", response = List.class)
+	@GetMapping("/qna/{classcode}")
+	public ResponseEntity<List<ClassQnA>> selectClassQnA(@PathVariable String classcode) {
+		List<ClassQnA> list = new ArrayList<>();
 		try {
-			list = service.selectClassNotice(classcode);
+			list = service.selectClassQnA(classcode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<List<ClassNotice>>(list, HttpStatus.OK);
-	}
-	@ApiOperation(value = "클래스 공지 상세보기",response = ClassNotice.class)
-	@GetMapping("/noticedetail/{class_notice_board_code}")
-	public ResponseEntity<ClassNotice> selectClassNoticeDetail(@PathVariable String class_notice_board_code) {
-		ClassNotice classnotice = new ClassNotice();
-		try {
-			classnotice = service.selectClassNoticeDetail(class_notice_board_code);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return new ResponseEntity<ClassNotice>(classnotice, HttpStatus.OK);
+		return new ResponseEntity<List<ClassQnA>>(list, HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "클래스에 후기를 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
