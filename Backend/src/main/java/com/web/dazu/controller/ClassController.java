@@ -127,7 +127,7 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "클래스에 등록된 공지사항 상세사항을 읽어온다.", response = List.class)
-	@GetMapping("/notice/{classcode}")
+	@GetMapping("/notice/{class_notice_board_code}")
 	public ResponseEntity<ClassNotice> selectClassNoticeDetail(@PathVariable String class_notice_board_code) {
 		ClassNotice classnotice = new ClassNotice();
 		try {
