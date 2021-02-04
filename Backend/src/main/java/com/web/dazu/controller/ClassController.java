@@ -116,7 +116,7 @@ public class ClassController {
 		}
 	}
 	
-	@ApiOperation(value = "클래스에 공지사항을 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
+	@ApiOperation(value = "클래스에 공지사항을 등록한다.")
 	@PostMapping("/notice/notice")
 	public void insertClassNotice(@RequestBody ClassNotice classNotice) {
 		try {
@@ -127,7 +127,7 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "클래스에 등록된 공지사항 상세사항을 읽어온다.", response = List.class)
-	@GetMapping("/notice/{class_notice_board_code}")
+	@GetMapping("/notice/detail/{class_notice_board_code}")
 	public ResponseEntity<ClassNotice> selectClassNoticeDetail(@PathVariable String class_notice_board_code) {
 		ClassNotice classnotice = new ClassNotice();
 		try {
