@@ -10,7 +10,7 @@
 		where usercode = #{id}
 	</select>
 	
-	<select id="selectMyclass" parameterType="string" resultType="Class">
+	<select id="selectMyclass" parameterType="string" resultType="Myclass">
 		select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date 
 		from class_information as ci , class_time_information as cti
 		where ci.classcode in (select cti0.class_information_classcode
@@ -21,7 +21,7 @@
 		order by class_date;
 	</select>
 	
-	<select id = "selectCommingMyClass" parameterType="string" resultType="Class">
+	<select id = "selectCommingMyClass" parameterType="string" resultType="Myclass">
 		select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date 
 		from class_information as ci , class_time_information as cti
 		where date(cti.class_date) >= date(subdate(now(), INTERVAL 7 DAY)) AND date(cti.class_date)>= date(now()) AND ci.classcode in (select cti0.class_information_classcode
