@@ -105,9 +105,20 @@ public class ClassController {
 		}
 		return new ResponseEntity<List<ClassNotice>>(list, HttpStatus.OK);
 	}
+	@ApiOperation(value = "클래스 공지 상세보기",response = ClassNotice.class)
+	@GetMapping("/noticedetail/{class_notice_board_code}")
+	public ResponseEntity<ClassNotice> selectClassNoticeDetail(@PathVariable String class_notice_board_code) {
+		ClassNotice classnotice = new ClassNotice();
+		try {
+			classnotice = service.selectClassNoticeDetail(class_notice_board_code);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<ClassNotice>(classnotice, HttpStatus.OK);
+	}
 	
 	@ApiOperation(value = "클래스에 후기를 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
-	@PostMapping("/notice/insert")
+	@PostMapping("/review/insert")
 	public void insertClassReview(@RequestBody ClassReview review) {
 		try {
 			service.insertClassReview(review);
