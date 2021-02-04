@@ -1,46 +1,13 @@
 <template>
   <div>
-    <v-card>
-      <v-tabs v-model="tab" background-color="primary" dark>
-        <v-tab
-          v-for="item in items"
-          :key="item.tab"
-          @click="fetchData(item.tab)"
-        >
-          {{ item.tab }}
-        </v-tab>
-      </v-tabs>
-
-      <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in items" :key="item.tab">
-          <v-card flat v-if="item.tab === 'MAP'">
-            <v-card-text><MainMap></MainMap></v-card-text>
-          </v-card>
-          <v-card flat v-else-if="item.tab === 'CLASS'">
-            <v-row no-gutters>
-              <v-col
-                v-for="classItem in classItems"
-                :key="classItem.classcode"
-                cols="12"
-                sm="4"
-              >
-                <v-card-text>
-                  <MainClassItem
-                    :classItem="classItem"
-                  ></MainClassItem></v-card-text></v-col
-            ></v-row>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
-    </v-card>
+    <MainMap></MainMap>
   </div>
 </template>
 
 <script>
 import MainMap from '@/components/mains/MainMap.vue';
-import MainClassItem from '@/components/mains/MainClassItem.vue';
 
-import { fetchClasses } from '@/api/classes';
+// import { fetchClasses } from '@/api/classes';
 export default {
   data() {
     return {
@@ -66,18 +33,7 @@ export default {
   },
   components: {
     MainMap,
-    MainClassItem,
-  },
-  methods: {
-    async fetchData(tab) {
-      if (tab == 'CLASS') {
-        this.isLoading = true;
-        const { data } = await fetchClasses('우이동');
-        this.isLoading = false;
-        console.log(data);
-        this.classItems = data;
-      }
-    },
+    // MainClassItem,
   },
 };
 </script>
