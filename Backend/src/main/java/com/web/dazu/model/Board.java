@@ -63,6 +63,12 @@ public class Board {
 	public void setUser_code(String user_code) {
 		this.member_usercode = user_code;
 	}
+	@Override
+	public String toString() {
+		return "Board [board_code=" + board_code + ", board_write_datetime=" + board_write_datetime + ", board_title="
+				+ board_title + ", board_contents=" + board_contents + ", board_good=" + board_good + ", board_visit="
+				+ board_visit + ", member_usercode=" + member_usercode + "]";
+	}
 	
 	
 }
