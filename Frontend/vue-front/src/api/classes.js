@@ -7,5 +7,12 @@ function fetchClasses(dong) {
 function fetchClass(classCode) {
   return instance.get(`class/detail/${classCode}`);
 }
-
-export { fetchClasses, fetchClass };
+// 클래스별 리뷰 리스트 불러오기
+function fetchClassReivew(classCode) {
+  return instance.get(`class/review/${classCode}`);
+}
+// 클래스 리뷰 입력
+function postReview(reviewData) {
+  return instance.post('class/review/insert', reviewData);
+}
+export { fetchClasses, fetchClass, fetchClassReivew, postReview };

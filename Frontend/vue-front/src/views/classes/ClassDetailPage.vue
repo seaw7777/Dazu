@@ -18,19 +18,29 @@
       <v-tabs-items v-model="tab">
         <v-tab-item v-for="item in items" :key="item.tab">
           <v-card flat v-if="item.tab === '클래스 소개'">
-            <v-card-text><ClassIntroduce></ClassIntroduce></v-card-text>
+            <v-card-text class="card-container"
+              ><ClassIntroduce></ClassIntroduce
+            ></v-card-text>
           </v-card>
           <v-card flat v-else-if="item.tab === '가게소개'">
-            <v-card-text><StoreIntroduce></StoreIntroduce> </v-card-text>
+            <v-card-text class="card-container"
+              ><StoreIntroduce></StoreIntroduce>
+            </v-card-text>
           </v-card>
           <v-card flat v-else-if="item.tab === '밀키트 정보'">
-            <v-card-text><MealkitInfo></MealkitInfo> </v-card-text>
+            <v-card-text class="card-container"
+              ><MealkitInfo></MealkitInfo>
+            </v-card-text>
           </v-card>
           <v-card flat v-else-if="item.tab === '후기'">
-            <v-card-text><ClassReview></ClassReview> </v-card-text>
+            <v-card-text class="card-container"
+              ><ClassReviewList :classdata="classdata"></ClassReviewList>
+            </v-card-text>
           </v-card>
           <v-card flat v-else-if="item.tab === '공지사항'">
-            <v-card-text><ClassNotice></ClassNotice> </v-card-text>
+            <v-card-text class="card-container"
+              ><ClassNotice></ClassNotice>
+            </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
@@ -43,7 +53,7 @@ import ClassShortDetail from '@/components/classes/ClassShortDetail.vue';
 import ClassIntroduce from '@/components/classes/ClassIntroduce.vue';
 import StoreIntroduce from '@/components/classes/StoreIntroduce.vue';
 import MealkitInfo from '@/components/classes/MealkitInfo.vue';
-import ClassReview from '@/components/classes/ClassReview.vue';
+import ClassReviewList from '@/components/classes/ClassReviewList.vue';
 import ClassNotice from '@/components/classes/ClassNotice.vue';
 import ClassChoiceForm from '@/components/classes/ClassChoiceForm.vue';
 import { fetchClass } from '@/api/classes';
@@ -66,14 +76,15 @@ export default {
     ClassIntroduce,
     StoreIntroduce,
     MealkitInfo,
-    ClassReview,
+    ClassReviewList,
     ClassNotice,
     ClassChoiceForm,
   },
   async created() {
     const id = this.$route.params.id;
-    console.log(id);
+    // console.log(id);
     const { data } = await fetchClass(id);
+    console.log(data);
     this.classdata = data;
   },
 };
@@ -93,5 +104,9 @@ export default {
 .secondary-b {
   color: white;
   background: #666;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
 }
 </style>
