@@ -19,4 +19,6 @@ public interface MemberService {
 
 	List<Myclass> selectMyclass(String id) throws Exception;
 
+	List<Myclass> selectCommingMyClass(String id) throws Exception;
+
 }

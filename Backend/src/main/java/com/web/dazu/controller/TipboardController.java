@@ -31,19 +31,8 @@ public class TipboardController {
 	@ApiOperation(value = "팁 게시판 목록을 받아온다.", response = List.class)
 	@GetMapping(value = "/list")
 	public List<Board> getBoardList(@RequestParam Map<String, String> map) {
-		System.out.println("진입");
-//		System.out.println(map);
-		for (String key : map.keySet()) {
-			String value = (String) map.get(key);
-			System.out.println(key + " : " + value);
-			System.out.println("진입2");
-		}
-		Map<String, String> dummy = new HashMap<String, String>();
-		dummy.put("searchWord", "향신");
-		dummy.put("searchType", "샤싣");
-		System.out.println(dummy);
 		try {
-			List<Board> list = service.getBoardList(dummy);
+			List<Board> list = service.getBoardList(map);
 			System.out.println(list);
 			return list;
 		} catch (Exception e) {

@@ -72,4 +72,9 @@ public class MemberServiceImpl implements MemberService {
 		return session.getMapper(MemberMapper.class).selectMyclass(id);
 	}
 
+	@Override
+	public List<Myclass> selectCommingMyClass(String id) throws Exception {
+		return session.getMapper(MemberMapper.class).selectCommingMyClass(id);
+	}
+
 }

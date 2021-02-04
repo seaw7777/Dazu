@@ -27,7 +27,7 @@ public class FileuploadController {
 			@RequestParam("address") String address,@RequestParam("detailaddress") String detailaddress) throws Exception {
 		System.out.println("진입");
 		for (int i = 0; i < file.size(); i++) {
-		    String rootPath = "home/Image";
+		    String rootPath = "home/Image/";
 		    String basePath = rootPath + "/" + "store";
 		    String filePath = basePath + "/" + file.get(i).getOriginalFilename();
 		    File dest = new File(filePath);

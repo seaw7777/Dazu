@@ -90,9 +90,18 @@ public class MemberController {
 		List<Myclass> list = new LinkedList<Myclass>();
 		try {
 			list = service.selectMyclass(id);
-			for (int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i));
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<List<Myclass>>(list, HttpStatus.OK);
+
+	}
+	@ApiOperation(value = "현재 자신이 등록한 7일 이내 클래스들을 확인한다.")
+	@GetMapping("/selectCommingMyclass/{id}")
+	public ResponseEntity<List<Myclass>> selectCommingMyClass(String id) {
+		List<Myclass> list = new LinkedList<Myclass>();
+		try {
+			list = service.selectCommingMyClass(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -20,4 +20,6 @@ public interface MemberMapper {
 
 	List<Myclass> selectMyclass(String id) throws Exception;
 
+	List<Myclass> selectCommingMyClass(String id) throws Exception;
+
 }

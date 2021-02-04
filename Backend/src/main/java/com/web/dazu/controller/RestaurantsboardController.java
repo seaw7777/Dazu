@@ -1,5 +1,6 @@
 package com.web.dazu.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,10 +44,10 @@ public class RestaurantsboardController {
 	
 	@ApiOperation(value = "맛집 게시판 글쓰기", response = String.class)
 	@PostMapping(value = "/write")
-	public String writeBoard(@RequestBody Board notice) {
-		System.out.println(notice);
+	public String writeBoard(@RequestBody Board board) {
+		System.out.println(board);
 		try {
-			service.writeBoard(notice);
+			service.writeBoard(board);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
