@@ -10,7 +10,7 @@
 		where usercode = #{id}
 	</select>
 	
-	<select id="selectMyClass" parameterType="string" resultType="Class">
+	<select id="selectMyclass" parameterType="string" resultType="Class">
 		select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date 
 		from class_information as ci , class_time_information as cti
 		where ci.classcode in (select cti0.class_information_classcode
