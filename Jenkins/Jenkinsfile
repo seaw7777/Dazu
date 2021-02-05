@@ -26,8 +26,8 @@ sh 'mvn -B -DskipTests -f ./Backend/pom.xml clean package'
 stage('Docker build') {
 agent any
 steps {
-sh 'docker build -t dazufront:latest /var/jenkins_home/workspace/dazu/Frontend/vue-front'
-sh 'docker build -t dazuback:latest /var/jenkins_home/workspace/dazu/Backend'
+sh 'docker build -t dazufront:latest /var/jenkins_home/workspace/test/Frontend/vue-front'
+sh 'docker build -t dazuback:latest /var/jenkins_home/workspace/test/Backend'
 }
 }
 stage('Docker run') {
