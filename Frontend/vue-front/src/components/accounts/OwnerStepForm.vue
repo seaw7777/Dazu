@@ -30,11 +30,10 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12">
-            <v-file-input
-              label="File input"
-              filled
-              prepend-icon="mdi-camera"
-            ></v-file-input>
+            <v-icon large style="color:#d49812;">
+              mdi-camera
+            </v-icon>
+            <v-file-input label="File input" filled></v-file-input>
           </v-col>
           <v-col cols="12">
             <v-btn class="ma-2" outlined color="indigo">

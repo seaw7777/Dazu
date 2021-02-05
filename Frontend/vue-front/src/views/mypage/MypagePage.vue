@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div><MypageCalendar></MypageCalendar></div>
-    <div><MypageComingClass></MypageComingClass></div>
-    <div><MypageUserClass></MypageUserClass></div>
     <div><MypageUserInfo></MypageUserInfo></div>
+    <div><MypageCalendar></MypageCalendar></div>
+    <div><MypageUserClass></MypageUserClass></div>
+    <div><MypageComingClass></MypageComingClass></div>
   </div>
 </template>
 

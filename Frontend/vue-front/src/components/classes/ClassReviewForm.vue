@@ -5,6 +5,7 @@
         class="rating-form"
         v-model="rating"
         show-value
+        color="red"
       ></b-form-rating>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field

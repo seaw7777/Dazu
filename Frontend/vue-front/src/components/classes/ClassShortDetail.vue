@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="flex-container">
-      <v-container class="fill-height" fluid>
+    <div class="flex-container" color="blue">
+      <v-container class="fill-height" fluid color="blue">
         <v-row>
           <v-col cols="12">
             <v-img

@@ -4,8 +4,8 @@
       <div><ClassReviewForm :classdata="classdata"></ClassReviewForm></div>
       <v-list three-line>
         <template v-for="review in classreviews">
-          <v-list-item :key="review.class_review_code" class="review-container">
-            <v-list-item-content>
+          <v-list-item :key="review.class_review_code" class="list-item">
+            <v-list-item-content class="review-content">
               <ReviewStar :class_point="review.class_review_point"></ReviewStar>
               {{ review.member_nickname }}
               {{ review.class_review_point }}

@@ -7,7 +7,12 @@
         </aside>
 
         <v-card>
-          <v-tabs v-model="tab" background-color="primary" dark>
+          <v-tabs
+            v-model="tab"
+            background-color="black
+          "
+            dark
+          >
             <v-tab v-for="item in items" :key="item.tab">
               {{ item.tab }}
             </v-tab>
@@ -30,11 +35,13 @@
                   ><MealkitInfo></MealkitInfo>
                 </v-card-text>
               </v-card>
+
               <v-card flat v-else-if="item.tab === '후기'">
                 <v-card-text class="card-container"
                   ><ClassReviewList :classdata="classdata"></ClassReviewList>
                 </v-card-text>
               </v-card>
+
               <v-card flat v-else-if="item.tab === 'Q&A'">
                 <v-card-text class="card-container"
                   ><ClassQnA></ClassQnA>

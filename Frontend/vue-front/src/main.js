@@ -6,6 +6,7 @@ import BootstrapVue from 'bootstrap-vue';
 import store from '@/store/index';
 import axios from 'axios';
 import VueDaumPostcode from 'vue-daum-postcode';
+// import './src/sass/main.scss';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';

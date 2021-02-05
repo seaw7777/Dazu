@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="light" variant="warning">
       <b-navbar-brand :to="logoLink">
         <b-img
-          :src="require('@/assets/DAZUlogo.png')"
+          :src="require('@/assets/DAZUnewlogo.png')"
           class="d-inline-block align-top"
           width="80"
           hegith="80"
