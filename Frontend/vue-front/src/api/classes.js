@@ -19,9 +19,13 @@ function postReview(reviewData) {
 function fetchStoreClass(storeCode) {
   return instance.get(`class/store/${storeCode}`);
 }
-//특정 클래스 공지사항 목록 조회
+//특정 클래스 질문 목록 조회
 function fetchClassQnA(classCode) {
   return instance.get(`class/qna/${classCode}`);
+}
+// 클래스 질문 등록
+function postQnA(qnaData) {
+  return instance.post('class/qna/insert', qnaData);
 }
 export {
   fetchClasses,
@@ -30,4 +34,5 @@ export {
   fetchClassReivew,
   postReview,
   fetchClassQnA,
+  postQnA,
 };

@@ -84,4 +84,9 @@ public class ClassServiceImpl implements ClassService {
 		return session.getMapper(ClassMapper.class).selectClassQnA(classcode);
 	}
 
+	@Override
+	public void insertClassQnA(ClassQnA qna) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassQnA(qna);
+	}
+
 }

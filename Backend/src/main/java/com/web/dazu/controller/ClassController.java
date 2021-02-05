@@ -106,6 +106,16 @@ public class ClassController {
 		return new ResponseEntity<List<ClassQnA>>(list, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "클래스에 Q&A를 등록한다.")
+	@PostMapping("/qna/insert")
+	public void insertClassQnA(@RequestBody ClassQnA qna) {
+		try {
+			service.insertClassQnA(qna);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@ApiOperation(value = "클래스에 후기를 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
 	@PostMapping("/review/insert")
 	public void insertClassReview(@RequestBody ClassReview review) {

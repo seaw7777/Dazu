@@ -26,4 +26,6 @@ public interface ClassService {
 
 	List<ClassQnA> selectClassQnA(String classcode) throws Exception;
 
+	void insertClassQnA(ClassQnA qna) throws Exception;
+
 }

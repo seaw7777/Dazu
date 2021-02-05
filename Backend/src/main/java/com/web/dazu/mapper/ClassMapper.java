@@ -29,4 +29,6 @@ public interface ClassMapper {
 
 	List<ClassQnA> selectClassQnA(String classcode) throws Exception;
 
+	void insertClassQnA(ClassQnA qna) throws Exception;
+
 }
