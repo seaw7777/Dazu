@@ -26,7 +26,7 @@ sh 'mvn -B -DskipTests -f ./Backend clean package'
 stage('Docker build') {
 agent any
 steps {
-sh 'docker build -t dazufront:latest ./Front/vue-front'
+sh 'docker build -t dazufront:latest ./Frontend/vue-front'
 sh 'docker build -t dazuback:latest ./Backend'
 }
 }
