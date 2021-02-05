@@ -36,8 +36,9 @@
 	</select>
 	
 	<select id="selectClassQnA" parameterType="string" resultType="ClassQnA">
-		select *
-		from class_qna_board
+		select class_qna_baoard_write_datetime, class_qna_board_write_contents, class_qna_answer_write_content, m.nickname as member_nickname
+		from class_qna_board as q join `member` as m
+		on q.member_usercode = m.usercode
 		where class_information_classcode = #{classcode}
 	</select>
 	

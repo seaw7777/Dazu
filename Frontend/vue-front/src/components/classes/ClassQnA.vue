@@ -2,40 +2,73 @@
   <div>
     <v-container>
       <v-row no-gutters>
-        <v-btn depressed>
-          작성
-        </v-btn>
         <v-text-field :rules="rules"></v-text-field>
+        <v-btn large color="primary" dark>
+          등록
+        </v-btn>
         <br /><br />
-        <v-expansion-panels class="mb-6">
-          <v-expansion-panel v-for="(qna, i) in qnas" :key="i">
-            <v-expansion-panel-header>
-              {{ qna.member_nickname }}
-              <template v-slot:actions>
-                <v-icon color="primary">
-                  $expand
-                </v-icon>
+        <v-card class="mx-auto" width="1000">
+          <v-list>
+            <v-list-item>
+              <v-list-item-title><strong>내용</strong></v-list-item-title>
+              <v-list-item-subtitle
+                ><strong>작성자</strong></v-list-item-subtitle
+              >
+              <v-list-item-subtitle>작성일</v-list-item-subtitle>
+            </v-list-item>
+
+            <v-list-group v-for="(qna, i) in qnas" :key="i">
+              <template v-slot:activator>
+                <v-list-item-title>{{
+                  qna.class_qna_board_write_contents
+                }}</v-list-item-title>
+                <v-list-item-subtitle>{{
+                  qna.member_nickname
+                }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{
+                  qna.class_qna_baoard_write_datetime
+                }}</v-list-item-subtitle>
               </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              {{ qna.class_qna_board_write_contents }} &nbsp;
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-check-circle</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>{{
+                  qna.class_qna_answer_write_content
+                }}</v-list-item-title>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
+        </v-card>
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-import { fetchClassQnA } from '@/api/classes';
+// import { fetchClassQnA } from '@/api/classes';
 export default {
   data() {
     return {
       qnas: [
         {
-          member_nickname: '히히',
-          class_qna_board_write_contents: '넹?',
+          class_qna_baoard_write_datetime: '2021-02-05',
+          class_qna_board_write_contents: '이거 왜이래요?',
+          class_qna_answer_write_content: '원래 그래요^^',
+          member_nickname: '조희은',
+        },
+        {
+          class_qna_baoard_write_datetime: '2021-02-05',
+          class_qna_board_write_contents: '이거 왜이래요?',
+          class_qna_answer_write_content: '원래 그래요^^',
+          member_nickname: '조희은',
+        },
+        {
+          class_qna_baoard_write_datetime: '2021-02-05',
+          class_qna_board_write_contents: '이거 왜이래요?',
+          class_qna_answer_write_content: '원래 그래요^^',
+          member_nickname: '조희은',
         },
       ],
     };
@@ -43,9 +76,9 @@ export default {
   async created() {
     const id = this.$route.params.id;
     console.log(id);
-    const { data } = await fetchClassQnA(id);
-    this.qnas = data;
-    console.log(data);
+    // const { data } = await fetchClassQnA(id);
+    // this.qnas = data;
+    // console.log(data);
   },
 };
 </script>
