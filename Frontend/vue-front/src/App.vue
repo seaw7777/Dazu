@@ -1,9 +1,14 @@
 <template>
+<<<<<<< HEAD
   <!-- <div id="app"> -->
   <v-app>
     <div v-if="isUserLogin">
       <AppHeader></AppHeader>
     </div>
+=======
+  <v-app>
+    <AppHeader></AppHeader>
+>>>>>>> feature/community
     <router-view></router-view>
   </v-app>
 </template>
