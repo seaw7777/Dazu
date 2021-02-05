@@ -51,10 +51,11 @@ export default {
           class_review_describe: this.review_content,
           class_review_point: this.rating,
           member_nickname: this.$store.state.username,
-          //   usercode:
+          member_usercode: this.$store.state.usercode,
           class_information_classcode: this.classdata.classcode,
         });
         console.log('review status->' + data);
+        console.log(JSON.stringify(data));
         this.rating = 0;
         this.review_content = '';
       } catch (error) {
