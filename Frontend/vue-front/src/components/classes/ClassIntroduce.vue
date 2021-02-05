@@ -2,9 +2,7 @@
   <div>
     <v-img
       lazy-src="require(@/assets/page.jpg)"
-      max-height="300"
-      max-width="500"
-      src="require(@/assets/page.jpg)"
+      src="@/assets/page.jpg"
     ></v-img>
   </div>
 </template>
