@@ -1,18 +1,26 @@
 <template>
-  <div class="app" data-app>
-    <AppHeader></AppHeader>
-
+  <!-- <div id="app"> -->
+  <v-app>
+    <div v-if="isUserLogin">
+      <AppHeader></AppHeader>
+    </div>
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import AppHeader from '@/components/common/AppHeader.vue';
+import AppHeader from './components/common/AppHeader.vue';
+
 export default {
+  name: 'App',
+
   components: {
     AppHeader,
   },
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
+  },
 };
 </script>
-
-<style></style>
