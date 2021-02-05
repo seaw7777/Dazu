@@ -51,8 +51,8 @@ sh 'docker container ls -a -f name=dazuback -q \
 // dangling 상태가 되기 때문에 이미지를 일괄 삭제
 sh 'docker rmi $(docker images -f "dangling-true" -q)'
 // docker container 실행
-sh 'docker run -d --name dazufront -p 80:80 <front-image-name>:latest'
-sh 'docker run -d --name <back-image-name> -p 8080:8080 <back-image-name>:latest'
+sh 'docker run -d --name dazufront -p 80:80 dazufront:latest'
+sh 'docker run -d --name dazuback -p 8080:8080 dazuback:latest'
 }
 }
 }
