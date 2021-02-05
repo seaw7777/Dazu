@@ -51,4 +51,16 @@ public class RestaurantsBoardServiceImpl implements RestaurantsBoardService {
 		return sqlsession.getMapper(RestaurantsBoardMapper.class).searchByTitle(word);
 	}
 
+	@Override
+	public List<Board> selectpopularposts() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.getMapper(RestaurantsBoardMapper.class).selectpopularposts();
+	}
+
+	@Override
+	public void updateViews(int board_code) throws Exception {
+		// TODO Auto-generated method stub
+		sqlsession.getMapper(RestaurantsBoardMapper.class).updateViews(board_code);
+	}
+
 }

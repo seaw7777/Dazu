@@ -44,4 +44,11 @@
 		delete from recommended_restaurants_board
 		where board_code = #{board_code}
 	</delete>
+	
+	<select id="selectpopularposts" parameterType="int" resultType="Board">
+		select *
+		from recommended_restaurants_board
+        order by board_visit desc
+		limit 10;
+	</select>
 </mapper>

@@ -86,7 +86,7 @@ public class RestaurantsboardCommentController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "fail";
 	}
+
 }

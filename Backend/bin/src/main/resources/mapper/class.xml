@@ -4,12 +4,12 @@
 
 <mapper namespace="com.web.dazu.mapper.ClassMapper">
 	<select id="selectAllClass" parameterType="string" resultType="Class">
-		select c.classcode, c.class_name, c.class_describe, c.class_price, s.store_name as store_information_store_name, s.storecode as store_information_storecode, s.store_describe as store_information_store_describe 
+		select c.classcode, c.class_name, c.class_startdate,c.class_enddate,c.class_describe, c.class_price, s.store_name as store_information_store_name, s.storecode as store_information_storecode, s.store_describe as store_information_store_describe 
 		from class_information as c join store_information as s
 		on c.store_information_storecode = s.storecode
 		where c.store_information_storecode in (select storecode from store_information where dong = #{dong})
 	</select>
-	
+
 	<select id="selectClass" parameterType="string" resultType="Class">
 		select * 
 		from class_information
@@ -29,21 +29,26 @@
 	</select>
 	
 	<select id="selectClassReview" parameterType="string" resultType="ClassReview">
-		select *
-		from class_review
+		select member_usercode, class_review_write_datetime, class_review_code, class_review_point, class_review_describe, class_information_classcode, m.nickname as member_nickname
+		from class_review as c join member as m 
+		on c.member_usercode = m.usercode
 		where class_information_classcode = #{classcode}
 	</select>
 	
-	<select id="selectClassNotice" parameterType="string" resultType="ClassNotice">
+	<select id="selectClassQnA" parameterType="string" resultType="ClassQnA">
 		select *
-		from class_notice_board
+		from class_qna_board
 		where class_information_classcode = #{classcode}
 	</select>
 	
-	<insert id="insertClassNotice" parameterType="ClassNotice">
+	<insert id="insertClassReview" parameterType="ClassReview">
 		insert into class_review(member_usercode, class_review_point, class_review_describe, class_information_classcode)
 		values(#{member_usercode}, #{class_review_point}, #{class_review_describe}, #{class_information_classcode})
 	</insert>
 	
+	<insert id="insertClassRoom" parameterType="ClassRoom">
+		insert into class_room(class_time_information_class_timecode, member_usercode, class_information_classcode)
+		values(#{class_time_information_class_timecode}, #{member_usercode}, #{class_information_classcode})
+	</insert>
 	
 </mapper>
