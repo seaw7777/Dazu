@@ -41,7 +41,9 @@
             <template #button-content>
               <em>{{ $store.state.username }}</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item :to="'/mypage/' + this.$store.state.usercode">
+              Mypage</b-dropdown-item
+            >
             <b-dropdown-item href="javascript:;" @click="logoutUser"
               >Log Out</b-dropdown-item
             >
