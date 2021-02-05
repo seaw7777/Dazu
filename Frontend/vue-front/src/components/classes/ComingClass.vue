@@ -1,37 +1,55 @@
 <template>
-  <div>
-    <h3>7일 이내로 다가오는 클래스</h3>
-    <div>
-      <v-card class="mx-auto" max-width="344" outlined>
-        <v-list-item three-line>
-          <v-list-item-content>
-            <div class="overline mb-4">
-              OVERLINE
-            </div>
-            <v-list-item-title class="headline mb-1">
-              Headline 5
-            </v-list-item-title>
-            <v-list-item-subtitle
-              >Greyhound divisely hello coldly
-              fonwderfully</v-list-item-subtitle
-            >
-          </v-list-item-content>
-
-          <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
-        </v-list-item>
-
-        <v-card-actions>
-          <v-btn outlined rounded text>
-            Button
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </div>
-  </div>
+  <v-sheet class="mx-auto" elevation="8" max-width="1000">
+    <p>다가오는 클래스</p>
+    <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+      <v-slide-item v-for="n in classLen" :key="n" v-slot="{ active }">
+        <v-card
+          :color="active ? 'primary' : 'grey lighten-1'"
+          class="ma-4"
+          height="260"
+          width="300"
+          @click="classclick(n - 1)"
+        >
+          <v-img
+            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            height="180px"
+          ></v-img>
+          <v-card-title>
+            {{ classItems[n - 1].class_name }}
+          </v-card-title>
+        </v-card>
+      </v-slide-item>
+    </v-slide-group>
+  </v-sheet>
 </template>
 
 <script>
-export default {};
+import { customerUpcomingClass } from '@/api/auth';
+export default {
+  data: () => ({
+    model: null,
+    classItems: [],
+    checkClass: false,
+    classLen: Number,
+  }),
+  async created() {
+    this.isLoading = true;
+    const classList = await customerUpcomingClass('1');
+    this.isLoading = false;
+    this.classItems = classList.data;
+    this.classLen = classList.data.length;
+    if (this.classLen > 0) {
+      this.checkClass = true;
+    }
+    // console.log('받은거' + JSON.stringify(this.classItems));
+  },
+  methods: {
+    classclick(n) {
+      const id = this.classItems[n].classcode;
+      this.$router.push(`/class/detail/${id}`);
+    },
+  },
+};
 </script>
 
 <style></style>

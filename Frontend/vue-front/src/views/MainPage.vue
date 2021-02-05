@@ -1,6 +1,7 @@
 <template>
-  <div class="map-container">
-    <div id="map" style="width:900px;height:500px;"></div>
+  <div>
+    <div><ComingClass></ComingClass></div>
+    <div class="map-container" id="map" style="width:900px;height:500px;"></div>
   </div>
 </template>
 
@@ -8,13 +9,15 @@
 import { fetchStore } from '@/api/store';
 import { customerGetInfoAPI } from '@/api/auth';
 import { fetchStoreClass } from '@/api/classes';
+import ComingClass from '@/components/classes/ComingClass.vue';
 export default {
   data() {
     return {
       isLoading: false,
-      dialogm1: '',
-      dialog: false,
     };
+  },
+  components: {
+    ComingClass,
   },
   async mounted() {
     this.isLoading = true;
