@@ -16,5 +16,7 @@ public interface RestaurantsBoardMapper {
 	void modifyBoard(Board board) throws Exception;
 	void deleteBoard(int board_code) throws Exception;
 	List<Board> searchByTitle(String word) throws Exception;
+	List<Board> selectpopularposts() throws Exception;
+	
 	
 }

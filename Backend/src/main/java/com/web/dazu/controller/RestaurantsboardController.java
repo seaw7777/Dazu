@@ -1,6 +1,7 @@
 package com.web.dazu.controller;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,19 @@ public class RestaurantsboardController {
 		return null;
 	}
 	
+	@ApiOperation(value = "맛집 게시판 상세보기.", response = Board.class)
+	@GetMapping(value = "/detail/{board_code}")
+	public Board getBoardDetail(@PathVariable int board_code) {
+		try {
+			Board board = service.getBoard(board_code);
+			service.updateViews(board_code);
+			return board;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@ApiOperation(value = "맛집 게시판 게시글 수정페이지로 이동", response = Board.class)
 	@GetMapping(value = "/modify/{board_code}")
 	public Board modifyForm(@PathVariable int board_code) {
@@ -103,5 +117,16 @@ public class RestaurantsboardController {
 		}
 		
 		return "fail";
+	}
+	@ApiOperation(value = "맛집 게시판 인기 게시글 불러오기", response = List.class)
+	@GetMapping(value = "/Popular_posts")
+	public List<Board> selectpopularposts(){
+		List<Board> list = new LinkedList<Board>();
+		try {
+			list = service.selectpopularposts();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
 	}
 }

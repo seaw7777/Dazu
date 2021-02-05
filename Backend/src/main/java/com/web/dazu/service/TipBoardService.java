@@ -19,4 +19,8 @@ public interface TipBoardService {
 	void deleteBoard(int board_code) throws Exception;
 	
 	List<Board> searchByTitle(String word) throws Exception;
+
+	List<Board> selectpopularposts() throws Exception;
+
+	void updateViews(int board_code) throws Exception;
 }
