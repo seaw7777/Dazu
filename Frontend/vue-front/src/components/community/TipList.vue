@@ -1,10 +1,12 @@
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="tipList"
-    :items-per-page="5"
-    class="elevation-1"
-  ></v-data-table>
+  <div>
+    <v-data-table
+      :headers="headers"
+      :items="tipList"
+      :items-per-page="5"
+      class="elevation-1"
+    ></v-data-table>
+  </div>
 </template>
 
 <script>
