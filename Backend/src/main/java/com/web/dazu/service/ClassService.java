@@ -28,4 +28,6 @@ public interface ClassService {
 
 	void insertClassQnA(ClassQnA qna) throws Exception;
 
+	void insertClassQnAAnswer(String answer) throws Exception;
+
 }

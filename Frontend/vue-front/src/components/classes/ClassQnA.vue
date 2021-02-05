@@ -41,7 +41,7 @@
                   ><v-text-field></v-text-field
                 ></v-list-item-subtitle>
                 <v-list-item-subtitle
-                  ><v-btn medium color="primary" dark @click="insertQna">
+                  ><v-btn medium color="primary" dark @click="insertAnswer">
                     등록
                   </v-btn></v-list-item-subtitle
                 >
@@ -55,40 +55,40 @@
 </template>
 
 <script>
-// import { fetchClassQnA } from '@/api/classes';
+import { fetchClassQnA } from '@/api/classes';
 import { postQnA } from '@/api/classes';
 export default {
   data() {
     return {
       insertData: '',
       qnas: [
-        {
-          class_qna_baoard_write_datetime: '2021-02-05',
-          class_qna_board_write_contents: '이거 왜이래요?',
-          class_qna_answer_write_content: '원래 그래요^^',
-          member_nickname: 'dd',
-        },
-        {
-          class_qna_baoard_write_datetime: '2021-02-05',
-          class_qna_board_write_contents: '이거 왜이래요?',
-          class_qna_answer_write_content: '원래 그래요^^',
-          member_nickname: 'ddd',
-        },
-        {
-          class_qna_baoard_write_datetime: '2021-02-05',
-          class_qna_board_write_contents: '이거 왜이래요?',
-          class_qna_answer_write_content: '원래 그래요^^',
-          member_nickname: 'dddd',
-        },
+        // {
+        //   class_qna_baoard_write_datetime: '2021-02-05',
+        //   class_qna_board_write_contents: '이거 왜이래요?',
+        //   class_qna_answer_write_content: '원래 그래요^^',
+        //   member_nickname: 'dd',
+        // },
+        // {
+        //   class_qna_baoard_write_datetime: '2021-02-05',
+        //   class_qna_board_write_contents: '이거 왜이래요?',
+        //   class_qna_answer_write_content: '원래 그래요^^',
+        //   member_nickname: 'ddd',
+        // },
+        // {
+        //   class_qna_baoard_write_datetime: '2021-02-05',
+        //   class_qna_board_write_contents: '이거 왜이래요?',
+        //   class_qna_answer_write_content: '원래 그래요^^',
+        //   member_nickname: 'dddd',
+        // },
       ],
     };
   },
   async created() {
     const id = this.$route.params.id;
     console.log(id);
-    // const { data } = await fetchClassQnA(id);
-    // this.qnas = data;
-    // console.log(data);
+    const { data } = await fetchClassQnA(id);
+    this.qnas = data;
+    console.log(data);
   },
   methods: {
     async insertQna() {
