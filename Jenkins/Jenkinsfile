@@ -54,7 +54,7 @@ docker rmi $(docker images -f "dangling=true" -q)'
 sh 'docker run -d --name dazufront \
 -p 80:80 \
 -p 443:443 \
--v /home/ubuntu/sslkey:/var/jenkins_home/workspace/dazu/sslkey/ \
+-v /home/ubuntu/sslkey:/var/jenkins_home/workspace/test/sslkey/ \
 --network dazunet \
 dazufront:latest'
 sh 'docker run -d --name dazuback \
