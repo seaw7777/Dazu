@@ -27,7 +27,7 @@ public class LoginController {
 	public ResponseEntity<Member> login(@RequestParam(value = "code", required = false) String code) {
 		String accessToken = null;
 		Member member = new Member();
-		System.out.println(code);
+		System.out.println("확인"+code);
 		try {
 			accessToken = service.getAccessToken(code);
 		} catch (Exception e) {
