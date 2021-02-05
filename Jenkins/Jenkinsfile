@@ -20,14 +20,14 @@ args '-v /root/.m2:/root/.m2'
 }
 options { skipDefaultCheckout(false) }
 steps {
-sh 'mvn -B -DskipTests -f ./Backend clean package'
+sh 'mvn -B -DskipTests -f ../Backend/pom.xml clean package'
 }
 }
 stage('Docker build') {
 agent any
 steps {
-sh 'docker build -t dazufront:latest ./Frontend/vue-front'
-sh 'docker build -t dazuback:latest ./Backend'
+sh 'docker build -t dazufront:latest /var/jenkins_home/workspace/dazu/Frontend/vue-front'
+sh 'docker build -t dazuback:latest /var/jenkins_home/workspace/dazu/Backend'
 }
 }
 stage('Docker run') {
@@ -49,10 +49,19 @@ sh 'docker container ls -a -f name=dazuback -q \
 | xargs -r docker container rm'
 // docker image build 시 기존에 존재하던 이미지는
 // dangling 상태가 되기 때문에 이미지를 일괄 삭제
-sh 'docker rmi $(docker images -f "dangling-true" -q)'
-// docker container 실행
-sh 'docker run -d --name dazufront -p 80:80 dazufront:latest'
-sh 'docker run -d --name dazuback -p 8080:8080 dazuback:latest'
+sh 'docker images -f dangling=true && \
+docker rmi $(docker images -f "dangling=true" -q)'
+sh 'docker run -d --name dazufront \
+-p 80:80 \
+-p 443:443 \
+-v /home/ubuntu/sslkey:/var/jenkins_home/workspace/dazu/sslkey/ \
+--network dazunet \
+dazufront:latest'
+sh 'docker run -d --name dazuback \
+--network dazunet \
+dazuback:latest'
+
+
 }
 }
 }
