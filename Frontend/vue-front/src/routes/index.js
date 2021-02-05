@@ -32,6 +32,10 @@ const router = new VueRouter({
       path: '/class/detail/:id',
       component: () => import('@/views/classes/ClassDetailPage.vue'),
     },
+    {
+      path: '/community',
+      component: () => import('@/views/community/CommunityPage.vue'),
+    },
   ],
 });
 
