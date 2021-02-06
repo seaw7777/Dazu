@@ -1,5 +1,6 @@
 package com.web.dazu.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.web.dazu.model.Class;
@@ -28,6 +29,6 @@ public interface ClassService {
 
 	void insertClassQnA(ClassQnA qna) throws Exception;
 
-	void insertClassQnAAnswer(String answer) throws Exception;
+	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
 }

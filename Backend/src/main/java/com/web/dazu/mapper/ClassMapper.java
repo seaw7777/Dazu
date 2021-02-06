@@ -1,5 +1,6 @@
 package com.web.dazu.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -30,5 +31,7 @@ public interface ClassMapper {
 	List<ClassQnA> selectClassQnA(String classcode) throws Exception;
 
 	void insertClassQnA(ClassQnA qna) throws Exception;
+
+	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
 }

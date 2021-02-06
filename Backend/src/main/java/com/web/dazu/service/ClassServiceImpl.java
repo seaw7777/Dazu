@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -87,6 +88,11 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public void insertClassQnA(ClassQnA qna) throws Exception {
 		session.getMapper(ClassMapper.class).insertClassQnA(qna);
+	}
+
+	@Override
+	public void insertClassQnAAnswer(ClassQnA answer) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassQnAAnswer(answer);
 	}
 
 }

@@ -27,6 +27,10 @@ function fetchClassQnA(classCode) {
 function postQnA(qnaData) {
   return instance.post('class/qna/insert', qnaData);
 }
+// 클래스 질문 답변 등록
+function postQnAAnswer(answerData) {
+  return instance.post('class/qna/answer/insert', answerData);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -35,4 +39,5 @@ export {
   postReview,
   fetchClassQnA,
   postQnA,
+  postQnAAnswer,
 };

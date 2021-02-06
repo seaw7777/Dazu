@@ -1,6 +1,7 @@
 package com.web.dazu.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,7 @@ public class ClassController {
 	@ApiOperation(value = "클래스에 Q&A를 등록한다.")
 	@PostMapping("/qna/insert")
 	public void insertClassQnA(@RequestBody ClassQnA qna) {
+		System.out.println(qna.getClass_qna_board_write_contents());
 		try {
 			service.insertClassQnA(qna);
 		} catch (Exception e) {
@@ -118,8 +120,14 @@ public class ClassController {
 	
 	@ApiOperation(value = "특정 클래스 특정 Q&A에 댓글(답변)을 등록한다.")
 	@PostMapping("/qna/answer/insert")
-	public void insertClassQnAAnswer(@RequestBody String answer) {
-		service.insertClassQnAAnswer(answer);
+	public void insertClassQnAAnswer(@RequestBody ClassQnA answer) {
+		System.out.println(answer.getClass_qna_answer_write_content());
+		System.out.println(answer.getClass_qna_board_code());
+		try {
+			service.insertClassQnAAnswer(answer);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@ApiOperation(value = "클래스에 후기를 등록한다. 등록된 후기의 평점에 따라 가게 평점도 변한다.")
