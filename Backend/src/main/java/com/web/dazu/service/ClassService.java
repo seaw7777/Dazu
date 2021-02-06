@@ -1,5 +1,6 @@
 package com.web.dazu.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.web.dazu.model.Class;
@@ -25,5 +26,9 @@ public interface ClassService {
 	void insertClassRoom(ClassRoom room) throws Exception;
 
 	List<ClassQnA> selectClassQnA(String classcode) throws Exception;
+
+	void insertClassQnA(ClassQnA qna) throws Exception;
+
+	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
 }

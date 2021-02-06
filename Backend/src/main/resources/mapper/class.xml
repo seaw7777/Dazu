@@ -36,10 +36,22 @@
 	</select>
 	
 	<select id="selectClassQnA" parameterType="string" resultType="ClassQnA">
-		select *
-		from class_qna_board
+		select class_qna_board_code, class_qna_baoard_write_datetime, class_qna_board_write_contents, class_qna_answer_write_content, m.nickname as member_nickname
+		from class_qna_board as q join `member` as m
+		on q.member_usercode = m.usercode
 		where class_information_classcode = #{classcode}
 	</select>
+	
+	<insert id="insertClassQnA" parameterType="ClassQnA">
+		insert into class_qna_board (class_qna_board_write_contents, member_usercode, class_information_classcode)
+		values (#{class_qna_board_write_contents}, #{member_usercode}, #{class_information_classcode})
+	</insert>
+	
+	<insert id="insertClassQnAAnswer" parameterType="ClassQnA">
+		update class_qna_board
+		set class_qna_answer_write_content = #{class_qna_answer_write_content}
+		where class_qna_board_code = #{class_qna_board_code}
+	</insert>
 	
 	<insert id="insertClassReview" parameterType="ClassReview">
 		insert into class_review(member_usercode, class_review_point, class_review_describe, class_information_classcode)

@@ -41,7 +41,6 @@
                   ><ClassReviewList :classdata="classdata"></ClassReviewList>
                 </v-card-text>
               </v-card>
-
               <v-card flat v-else-if="item.tab === 'Q&A'">
                 <v-card-text class="card-container"
                   ><ClassQnA></ClassQnA>
