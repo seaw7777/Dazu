@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify';
 import BootstrapVue from 'bootstrap-vue';
 import store from '@/store/index';
 import axios from 'axios';
+import VCalendar from 'v-calendar';
 import VueDaumPostcode from 'vue-daum-postcode';
 // import './src/sass/main.scss';
 
@@ -15,6 +16,9 @@ Vue.prototype.$axios = axios;
 
 Vue.use(BootstrapVue);
 Vue.use(VueDaumPostcode);
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',
+});
 new Vue({
   render: h => h(App),
   vuetify,

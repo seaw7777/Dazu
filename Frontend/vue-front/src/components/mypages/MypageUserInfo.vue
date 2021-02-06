@@ -8,7 +8,7 @@
       <div>주소 : {{ this.customerData.address }}</div>
       <div>상세주소 : {{ this.customerData.address_detail }}</div>
       <div>동 : {{ this.customerData.dong }}</div>
-      <v-btn depressed color="primary">
+      <v-btn depressed color="error">
         주소변경
       </v-btn>
     </div>
@@ -16,13 +16,15 @@
 </template>
 
 <script>
-import { MypageCustomerInfo } from '@/api/mypage';
+// import { MypageCustomerInfo } from '@/api/mypage';
 export default {
-  data() {
-    return {
-      customerData: '',
-    };
+  props: {
+    customerData: {
+      type: Object,
+      required: true,
+    },
   },
+
   computed: {
     userImgUrl() {
       return this.$store.state.userimg;
@@ -30,12 +32,6 @@ export default {
     userName() {
       return this.$store.state.username;
     },
-  },
-  async created() {
-    const userid = this.$store.state.usercode;
-    const response = await MypageCustomerInfo(userid);
-    console.log(response.data);
-    this.customerData = response.data;
   },
 };
 </script>
