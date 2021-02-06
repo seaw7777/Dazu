@@ -53,6 +53,8 @@ export default {
     // },
   },
   async created() {
+    const userid = this.$store.state.usercode;
+    console.log(userid);
     const res = await MypageCustomerClass(1);
     this.classDataList = res.data;
   },

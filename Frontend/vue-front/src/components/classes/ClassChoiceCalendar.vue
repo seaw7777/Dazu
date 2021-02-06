@@ -1,25 +1,25 @@
 <template>
-  <div class="calendar-container">
-    <b-form-group
-      label="Select calendar interactive state"
-      v-slot="{ ariaDescribedby }"
-    >
-      <b-form-radio-group
-        v-model="state"
-        :aria-describedby="ariaDescribedby"
-        aria-controls="ex-disabled-readonly"
+  <div>
+    <div class="flex mb-2">
+      <label class="text-gray-600 font-medium"
+        ><input
+          class="mr-1"
+          type="radio"
+          value=""
+          v-model="timezone"
+        />Local</label
       >
-        <b-form-radio value="disabled">Disabled</b-form-radio>
-        <b-form-radio value="readonly">Readonly</b-form-radio>
-        <b-form-radio value="normal">Normal</b-form-radio>
-      </b-form-radio-group>
-    </b-form-group>
-
-    <b-calendar
-      id="ex-disabled-readonly"
-      :disabled="disabled"
-      :readonly="readonly"
-    ></b-calendar>
+      <label class="text-gray-600 font-medium ml-3"
+        ><input
+          class="mr-1"
+          type="radio"
+          value="utc"
+          v-model="timezone"
+        />UTC</label
+      >
+    </div>
+    <vc-date-picker v-model="date" mode="dateTime" :timezone="timezone" />
+    {{ timezone }}
   </div>
 </template>
 
@@ -27,16 +27,9 @@
 export default {
   data() {
     return {
-      state: 'disabled',
+      date: new Date(),
+      timezone: '',
     };
-  },
-  computed: {
-    disabled() {
-      return this.state === 'disabled';
-    },
-    readonly() {
-      return this.state === 'readonly';
-    },
   },
 };
 </script>
