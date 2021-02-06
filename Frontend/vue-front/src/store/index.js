@@ -5,10 +5,12 @@ import {
   getUserFromCookie,
   getImgFromCookie,
   getUserCodeFromCookie,
+  getUserTypeFromCookie,
   saveAuthToCookie,
   saveUserToCookie,
   saveImgToCookie,
   saveUserCodeToCookie,
+  saveUserTypeToCookie,
 } from '@/utils/cookies';
 
 Vue.use(Vuex);
@@ -20,6 +22,7 @@ export default new Vuex.Store({
     code: '',
     address: '',
     usercode: getUserCodeFromCookie() || '',
+    usertype: getUserTypeFromCookie() || '',
   },
   getters: {
     isLogin(state) {
@@ -42,6 +45,9 @@ export default new Vuex.Store({
     setUserCode(state, usercode) {
       state.usercode = usercode;
     },
+    setUserType(state, usertype) {
+      state.usercode = usertype;
+    },
     clearUsername(state) {
       state.username = '';
     },
@@ -51,6 +57,12 @@ export default new Vuex.Store({
     clearUserimg(state) {
       state.username = '';
     },
+    clearUserCode(state) {
+      state.usercode = '';
+    },
+    clearUserType(state) {
+      state.usertype = '';
+    },
   },
   actions: {
     async LOGIN({ commit }, userData) {
@@ -59,10 +71,12 @@ export default new Vuex.Store({
       commit('setUsername', userData.nickname);
       commit('setUserimg', userData.profileImage);
       commit('setUserCode', userData.usercode);
+      commit('setUserType', userData.usertype);
       saveAuthToCookie(userData.accessToken);
       saveUserToCookie(userData.nickname);
       saveImgToCookie(userData.profileImage);
       saveUserCodeToCookie(userData.usercode);
+      saveUserTypeToCookie(userData.usertype);
       return userData;
     },
     async CODE({ commit }, codeData) {

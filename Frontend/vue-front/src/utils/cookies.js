@@ -16,6 +16,9 @@ function saveCodeToCookie(value) {
 function saveUserCodeToCookie(value) {
   document.cookie = `til_usercode=${value}`;
 }
+function saveUserTypeToCookie(value) {
+  document.cookie = `til_usertype=${value}`;
+}
 function getAuthFromCookie() {
   return document.cookie.replace(
     /(?:(?:^|.*;\s*)til_auth\s*=\s*([^;]*).*$)|^.*$/,
@@ -47,6 +50,12 @@ function getUserCodeFromCookie() {
     '$1',
   );
 }
+function getUserTypeFromCookie() {
+  return document.cookie.replace(
+    /(?:(?:^|.*;\s*)til_usertype\s*=\s*([^;]*).*$)|^.*$/,
+    '$1',
+  );
+}
 
 function deleteCookie(value) {
   document.cookie = `${value}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
@@ -58,10 +67,12 @@ export {
   saveImgToCookie,
   saveCodeToCookie,
   saveUserCodeToCookie,
+  saveUserTypeToCookie,
   getAuthFromCookie,
   getUserFromCookie,
   getImgFromCookie,
   getCodeFromCookie,
   getUserCodeFromCookie,
+  getUserTypeFromCookie,
   deleteCookie,
 };

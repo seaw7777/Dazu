@@ -1,9 +1,62 @@
 <template>
-  <div></div>
+  <div>
+    <!-- {{ tmpcom }} -->
+    <vc-calendar :attributes="attributes" is-dark>
+      <div slot="day-popover" slot-scope="{ dayTitle, attributes }">
+        <div class="text-xs text-gray-300 font-semibold text-center">
+          {{ dayTitle }}
+        </div>
+        <ul>
+          <li v-for="{ key, customData } in attributes" :key="key">
+            {{ customData.class_name }}
+            {{ customData.class_starttime.slice(0, 5) }}
+          </li>
+        </ul>
+      </div>
+    </vc-calendar>
+  </div>
 </template>
 
 <script>
-export default {};
+import { MypageCustomerClass } from '@/api/mypage';
+
+export default {
+  data() {
+    return {
+      classDataList: [],
+    };
+  },
+  computed: {
+    attributes() {
+      return [
+        // Attributes for todos
+        ...this.classDataList.map(todo => ({
+          dates: new Date(
+            parseInt(todo.class_date.slice(0, 4)),
+            parseInt(todo.class_date.slice(5, 7)) - 1,
+            parseInt(todo.class_date.slice(8, 10)),
+          ),
+          dot: {
+            color: 'orange',
+            class: 'opacity-75',
+          },
+          popover: {
+            label: todo.class_name,
+          },
+          customData: todo,
+        })),
+      ];
+    },
+    // tmpcomp() {
+    //   const Classes = this.classDataList;
+    //   return console.log(parseInt(Classes[0].class_date.slice((0, 4)) - 1));
+    // },
+  },
+  async created() {
+    const res = await MypageCustomerClass(1);
+    this.classDataList = res.data;
+  },
+};
 </script>
 
 <style></style>
