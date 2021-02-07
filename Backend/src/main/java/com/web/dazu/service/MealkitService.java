@@ -6,6 +6,6 @@ import com.web.dazu.model.Mealkit;
 
 public interface MealkitService {
 
-	List<Mealkit> selectAllMealkit() throws Exception;
+	List<Mealkit> selectAllMealkit(String dong) throws Exception;
 
 }

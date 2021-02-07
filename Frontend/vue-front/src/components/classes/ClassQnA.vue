@@ -7,7 +7,7 @@
           등록
         </v-btn>
         <br /><br />
-        <v-card class="mx-auto" width="1500">
+        <v-card class="mx-auto" width="1000">
           <v-list>
             <v-list-item>
               <v-list-item-title><strong>답변상태</strong></v-list-item-title>

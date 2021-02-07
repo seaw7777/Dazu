@@ -40,6 +40,10 @@ const router = new VueRouter({
       path: '/community',
       component: () => import('@/views/community/CommunityPage.vue'),
     },
+    {
+      path: '/mealkit/list',
+      component: () => import('@/views/mealkits/MealkitListPage.vue'),
+    },
   ],
 });
 
