@@ -15,7 +15,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/class/list">클래스</b-nav-item>
-          <b-nav-item to="#">스토어</b-nav-item>
+          <b-nav-item to="/mealkit/list">스토어</b-nav-item>
           <b-nav-item to="/community">커뮤니티</b-nav-item>
           <b-nav-item to="#">공지사항</b-nav-item>
         </b-navbar-nav>

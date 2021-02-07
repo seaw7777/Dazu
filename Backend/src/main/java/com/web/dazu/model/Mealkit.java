@@ -1,25 +1,49 @@
 package com.web.dazu.model;
 
 public class Mealkit {
-	private String classcode;
+	private int class_information_classcode;
+	private String mealkit_image;
+	private int mealkitcode;
 	private String mealkit_name;
 	private int mealkit_price;
 	
+	private String class_information_classname;
+	
 	public Mealkit() {}
 
-	public Mealkit(String classcode, String mealkit_name, int mealkit_price) {
+	public Mealkit(int class_information_classcode, String mealkit_image, int mealkitcode, String mealkit_name,
+			int mealkit_price, String class_information_classname) {
 		super();
-		this.classcode = classcode;
+		this.class_information_classcode = class_information_classcode;
+		this.mealkit_image = mealkit_image;
+		this.mealkitcode = mealkitcode;
 		this.mealkit_name = mealkit_name;
 		this.mealkit_price = mealkit_price;
+		this.class_information_classname = class_information_classname;
 	}
 
-	public String getClasscode() {
-		return classcode;
+	public int getClass_information_classcode() {
+		return class_information_classcode;
 	}
 
-	public void setClasscode(String classcode) {
-		this.classcode = classcode;
+	public void setClass_information_classcode(int class_information_classcode) {
+		this.class_information_classcode = class_information_classcode;
+	}
+
+	public String getMealkit_image() {
+		return mealkit_image;
+	}
+
+	public void setMealkit_image(String mealkit_image) {
+		this.mealkit_image = mealkit_image;
+	}
+
+	public int getMealkitcode() {
+		return mealkitcode;
+	}
+
+	public void setMealkitcode(int mealkitcode) {
+		this.mealkitcode = mealkitcode;
 	}
 
 	public String getMealkit_name() {
@@ -37,5 +61,13 @@ public class Mealkit {
 	public void setMealkit_price(int mealkit_price) {
 		this.mealkit_price = mealkit_price;
 	}
-	
+
+	public String getClass_information_classname() {
+		return class_information_classname;
+	}
+
+	public void setClass_information_classname(String class_information_classname) {
+		this.class_information_classname = class_information_classname;
+	}
+    
 }

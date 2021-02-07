@@ -1,5 +1,10 @@
 <template>
-  <div>밀키트 소개 탭</div>
+  <div>
+    <v-img
+      lazy-src="require(@/assets/mealkit.jpg)"
+      src="@/assets/mealkit.jpg"
+    ></v-img>
+  </div>
 </template>
 
 <script>

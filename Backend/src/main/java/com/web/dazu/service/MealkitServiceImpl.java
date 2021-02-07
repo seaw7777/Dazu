@@ -16,8 +16,8 @@ public class MealkitServiceImpl implements MealkitService {
 	private SqlSession session;
 	
 	@Override
-	public List<Mealkit> selectAllMealkit() throws Exception {
-		return session.getMapper(MealkitMapper.class).selectAllMealkit();
+	public List<Mealkit> selectAllMealkit(String dong) throws Exception {
+		return session.getMapper(MealkitMapper.class).selectAllMealkit(dong);
 	}
 
 }

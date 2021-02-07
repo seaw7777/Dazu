@@ -9,6 +9,6 @@ import com.web.dazu.model.Mealkit;
 @Mapper
 public interface MealkitMapper {
 
-	List<Mealkit> selectAllMealkit() throws Exception;
+	List<Mealkit> selectAllMealkit(String dong) throws Exception;
 
 }
