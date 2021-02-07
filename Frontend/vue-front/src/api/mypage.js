@@ -7,5 +7,9 @@ function MypageCustomerInfo(userid) {
 function MypageCustomerClass(userid) {
   return instance.get(`member/selectMyclass/{id}?id=${userid}`);
 }
+// 마이페이지 고객님의 7일 남은 클래스 가져오기
+function MypageCustomerComingClass(userid) {
+  return instance.get(`member/selectCommingMyclass/{id}?id=${userid}`);
+}
 
-export { MypageCustomerInfo, MypageCustomerClass };
+export { MypageCustomerInfo, MypageCustomerClass, MypageCustomerComingClass };

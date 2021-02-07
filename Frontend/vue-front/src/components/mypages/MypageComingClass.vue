@@ -1,9 +1,57 @@
 <template>
-  <div></div>
+  <div>
+    <v-sheet class="mx-auto" elevation="8" max-width="800">
+      <v-slide-group
+        v-model="model"
+        class="pa-4"
+        active-class="success"
+        show-arrows
+      >
+        <v-slide-item
+          v-for="comingItem in comingList"
+          :key="comingItem.classcode"
+        >
+          <v-card
+            :color="active ? undefined : 'grey lighten-1'"
+            class="ma-4"
+            @click="classclick(comingItem.classcode)"
+          >
+            <MypageComingClassItem
+              :comingItem="comingItem"
+            ></MypageComingClassItem>
+          </v-card>
+        </v-slide-item>
+      </v-slide-group>
+    </v-sheet>
+  </div>
 </template>
 
 <script>
-export default {};
+import { MypageCustomerComingClass } from '@/api/mypage';
+
+import MypageComingClassItem from '@/components/mypages/MypageComingClassItem.vue';
+export default {
+  data() {
+    return {
+      comingList: [],
+    };
+  },
+  components: {
+    MypageComingClassItem,
+  },
+  methods: {
+    classclick(classid) {
+      this.$router.push(`/class/detail/${classid}`);
+    },
+  },
+
+  async created() {
+    const userid = this.$store.state.usercode;
+    console.log(userid);
+    const res = await MypageCustomerComingClass(1);
+    this.comingList = res.data;
+  },
+};
 </script>
 
 <style></style>

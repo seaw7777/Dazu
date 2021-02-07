@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-row o-gutters>
+    <v-row no-gutters>
       <v-col cols="12">
-        <v-simple-table dark fixed-header height="300px">
+        <v-simple-table fixed-header height="200px">
           <template v-slot:default>
             <thead>
               <tr>
@@ -31,8 +31,7 @@
                   <v-btn
                     :to="'/class/detail/' + item.classcode"
                     class="ma-2"
-                    color="black"
-                    text="black"
+                    color="orange"
                     style="display: flex;"
                     >바로가기
                   </v-btn>
@@ -67,5 +66,6 @@ export default {
 <style scoped>
 .ma-2 {
   background-color: orange;
+  text-color: black;
 }
 </style>

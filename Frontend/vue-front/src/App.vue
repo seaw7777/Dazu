@@ -1,6 +1,6 @@
 <template>
   <!-- <div id="app"> -->
-  <v-app>
+  <v-app id="app">
     <div v-if="isUserLogin">
       <AppHeader></AppHeader>
     </div>
