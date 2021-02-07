@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="flex-container">
     <div class="user-container">
       <div><MypageUserInfo :customerData="customerData"></MypageUserInfo></div>
       <div>
         <MypageCalendar></MypageCalendar>
       </div>
     </div>
-    <div><MypageUserClass></MypageUserClass></div>
-    <div><MypageComingClass></MypageComingClass></div>
+    <div class="user-class-container">
+      <div class="user-class"><MypageUserClass></MypageUserClass></div>
+      <div><MypageComingClass></MypageComingClass></div>
+    </div>
   </div>
 </template>
 
@@ -42,8 +44,18 @@ export default {
 </script>
 
 <style scoped>
+.flex-container {
+  margin-left: auto;
+  margin-right: auto;
+}
 .user-container {
   display: flex;
   justify-content: center;
+}
+.user-class-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
 }
 </style>
