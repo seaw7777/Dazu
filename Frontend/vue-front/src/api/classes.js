@@ -35,6 +35,10 @@ function postQnAAnswer(answerData) {
 function fetchClassTime(classcode) {
   return instance.get(`class/time/${classcode}`);
 }
+// 원하는 클래스 시간과 날짜가 포함된 타임코드를 본내다.
+function postClassTime(timeinfo) {
+  return instance.post('class/insert', timeinfo);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -45,4 +49,5 @@ export {
   postQnA,
   postQnAAnswer,
   fetchClassTime,
+  postClassTime,
 };

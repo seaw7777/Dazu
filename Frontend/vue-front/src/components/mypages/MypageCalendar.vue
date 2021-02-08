@@ -10,10 +10,18 @@
           <li v-for="{ key, customData } in attributes" :key="key">
             {{ customData.class_name }}
             {{ customData.class_starttime.slice(0, 5) }}
+            <a
+              ><v-btn class="ma-2" text icon color="blue lighten-2">
+                <v-icon>mdi-thumb-up</v-icon>
+              </v-btn></a
+            >
           </li>
         </ul>
       </div>
     </vc-calendar>
+    <v-btn class="ma-2" text icon color="blue lighten-2">
+      <v-icon>mdi-thumb-up</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -41,7 +49,9 @@ export default {
             class: 'opacity-75',
           },
           popover: {
+            slot: 'day-popover',
             label: todo.class_name,
+            visibility: 'focus',
           },
           customData: todo,
         })),
@@ -51,6 +61,12 @@ export default {
     //   const Classes = this.classDataList;
     //   return console.log(parseInt(Classes[0].class_date.slice((0, 4)) - 1));
     // },
+  },
+  methods: {
+    movedetail() {
+      // this.$router.push(`/class/detail/${classcode}`);
+      console.log('click');
+    },
   },
   async created() {
     const userid = this.$store.state.usercode;
