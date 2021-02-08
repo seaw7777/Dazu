@@ -31,38 +31,36 @@ sh 'docker build -t dazuback:latest /var/jenkins_home/workspace/test/Backend'
 }
 }
 stage('Docker run') {
-agent any
-steps {
-// 현재 동작중인 컨테이너 중 <front-image-name>의 이름을 가진
-// 컨테이너를 stop 한다
-sh 'docker ps -f name=dazufront -q \
-| xargs --no-run-if-empty docker container stop'
-// 현재 동작중인 컨테이너 중 <back-image-name>의 이름을 가진
-// 컨테이너를 stop 한다
-sh 'docker ps -f name=dazuback -q \
-| xargs --no-run-if-empty docker container stop'
-// <front-image-name>의 이름을 가진 컨테이너를 삭제한다.
-sh 'docker container ls -a -f name=dazufront -q \
-| xargs -r docker container rm'
-// <back-image-name>의 이름을 가진 컨테이너를 삭제한다.
-sh 'docker container ls -a -f name=dazuback -q \
-| xargs -r docker container rm'
-// docker image build 시 기존에 존재하던 이미지는
-// dangling 상태가 되기 때문에 이미지를 일괄 삭제
-sh 'docker images -f dangling=true && \
-docker rmi $(docker images -f "dangling=true" -q)'
-sh 'docker run -d --name dazufront \
--p 80:80 \
--p 443:443 \
--v /home/ubuntu/sslkey/:/var/jenkins_home/workspace/test/sslkey/ \
---network dazunet \
-dazufront:latest'
-sh 'docker run -d --name dazuback \
---network dazunet \
-dazuback:latest'
-
-
-}
-}
-}
+        agent any
+        steps {
+        // 현재 동작중인 컨테이너 중 <front-image-name>의 이름을 가진
+        // 컨테이너를 stop 한다
+            sh 'docker ps -f name=dazufront -q \
+            | xargs --no-run-if-empty docker container stop'
+            // 현재 동작중인 컨테이너 중 <back-image-name>의 이름을 가진
+            // 컨테이너를 stop 한다
+            sh 'docker ps -f name=dazuback -q \
+            | xargs --no-run-if-empty docker container stop'
+            // <front-image-name>의 이름을 가진 컨테이너를 삭제한다.
+            sh 'docker container ls -a -f name=dazufront -q \
+            | xargs -r docker container rm'
+            // <back-image-name>의 이름을 가진 컨테이너를 삭제한다.
+            sh 'docker container ls -a -f name=dazuback -q \
+            | xargs -r docker container rm'
+            // docker image build 시 기존에 존재하던 이미지는
+            // dangling 상태가 되기 때문에 이미지를 일괄 삭제
+            sh 'docker images -f dangling=true && \
+            docker rmi $(docker images -f "dangling=true" -q)'
+            sh 'docker run -d --name dazufront \
+            -p 80:80 \
+            -p 443:443 \
+            -v /home/ubuntu/sslkey/:/var/jenkins_home/workspace/test/sslkey/ \
+            --network dazunet \
+            dazufront:latest'
+            sh 'docker run -d --name dazuback \
+            --network dazunet \
+            dazuback:latest'
+            }
+        }
+    }
 }
