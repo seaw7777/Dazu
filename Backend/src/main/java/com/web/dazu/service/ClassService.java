@@ -8,6 +8,7 @@ import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
+import com.web.dazu.model.KakaoPayAccount;
 
 public interface ClassService {
 
@@ -36,5 +37,9 @@ public interface ClassService {
 	void deleteClass(int classcode) throws Exception;
 
 	void updateClass(Class c) throws Exception;
+
+	String KakaoReady(ClassRoom room) throws Exception;
+
+	KakaoPayAccount KakaoAccount(String pg_token) throws Exception;
 
 }

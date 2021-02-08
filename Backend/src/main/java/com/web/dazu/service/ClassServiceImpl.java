@@ -1,15 +1,19 @@
 package com.web.dazu.service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
@@ -17,6 +21,8 @@ import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
+import com.web.dazu.model.KakaoPayAccount;
+import com.web.dazu.model.KakaoPayReady;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -54,29 +60,9 @@ public class ClassServiceImpl implements ClassService {
 		session.getMapper(ClassMapper.class).insertClassReview(classreview);
 	}
 	
+	
 	@Override
 	public void insertClassRoom(ClassRoom room) throws Exception {
-		
-		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
-		String apiUrl = "https://kapi.kakao.com/v1/payment/ready";
-		String jsonString = null;
-		URL url = new URL(apiUrl);
-		URLConnection conn = url.openConnection();
-
-	    conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
-	    
-	    BufferedReader br = null;
-        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-
-        String line = "";
-        String result = "";
-        
-        while ((line = br.readLine()) != null) {
-            result += line;
-        }
-        jsonString = result.toString();
-        System.out.println(jsonString);
-		
 		session.getMapper(ClassMapper.class).insertClassRoom(room);
 	}
 
@@ -108,6 +94,88 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public void updateClass(Class c) throws Exception {
 		session.getMapper(ClassMapper.class).updateClass(c);
+	}
+
+	private static KakaoPayReady ready;
+	private static ClassRoom cr;
+	
+	@Override
+	public String KakaoReady(ClassRoom room) throws Exception {
+		
+		System.out.println("클래스코드: " + room.getClass_information_classcode()+ " 클래스 이름: "+ room.getItem_name());
+		
+		cr = room;
+		URL url = new URL("https://kapi.kakao.com");
+		
+		ready = null;
+		RestTemplate restTemplate = new RestTemplate();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "KakaoAK " + "96dde04da1dc175485336a41b21a0ad5");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+        params.add("cid", "TC0ONETIME");
+        params.add("partner_order_id", "partner_order_id");
+        params.add("partner_user_id", "partner_user_id");
+        params.add("item_name", room.getItem_name()); // 받아오기
+        params.add("quantity", "1");
+        params.add("total_amount", Integer.toString(room.getTotal_amount())); // 받아오기
+        params.add("tax_free_amount", "0");
+        params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
+        params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
+        params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+        
+        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
+		
+        try {
+        	ready = restTemplate.postForObject(new URI(url + "/v1/payment/ready"), body, KakaoPayReady.class);
+            
+            System.out.println(ready.getNext_redirect_pc_url());
+ 
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return ready.getNext_redirect_pc_url();
+	}
+
+	@Override
+	public KakaoPayAccount KakaoAccount(String pg_token) throws Exception {
+		URL url = new URL("https://kapi.kakao.com");
+		KakaoPayAccount account = null;
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "KakaoAK " + "96dde04da1dc175485336a41b21a0ad5");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+        params.add("cid", "TC0ONETIME");
+        params.add("tid", ready.getTid());
+        params.add("partner_order_id", "partner_order_id");
+        params.add("partner_user_id", "partner_user_id");
+        params.add("pg_token", pg_token);
+        params.add("total_amount", Integer.toString(cr.getTotal_amount())); // 받아오기
+        
+        System.out.println("최종결제금액 : " + cr.getTotal_amount());
+        
+        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
+        
+        try {
+        	account = restTemplate.postForObject(new URI(url + "/v1/payment/approve"), body, KakaoPayAccount.class);
+        
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        
+        cr = null;
+        
+        return account;
+
 	}
 
 }

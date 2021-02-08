@@ -35,6 +35,14 @@ function postQnAAnswer(answerData) {
 function fetchClassTime(classcode) {
   return instance.get(`class/time/${classcode}`);
 }
+// 클래스 신청(카카오페이 결제준비)
+function postKAKAOPAYReady(data) {
+  return instance.post('class/kakao/ready', data);
+}
+// 클래스 신청(카카오페이 결제승인)
+function fetchKAKAOPAYAccount(pg_token) {
+  return instance.get(`class/kakao/account/${pg_token}`);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -45,4 +53,6 @@ export {
   postQnA,
   postQnAAnswer,
   fetchClassTime,
+  postKAKAOPAYReady,
+  fetchKAKAOPAYAccount,
 };

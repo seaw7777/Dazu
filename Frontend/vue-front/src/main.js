@@ -25,4 +25,3 @@ new Vue({
   router,
   store,
 }).$mount('#app');
-window.Kakao.init('a3024df033214c47f7043ddfeb10d1f3');
