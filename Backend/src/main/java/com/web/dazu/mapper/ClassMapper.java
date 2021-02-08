@@ -34,4 +34,10 @@ public interface ClassMapper {
 
 	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
+	void insertClass(Class c) throws Exception;
+
+	void deleteClass(int classcode) throws Exception;
+
+	void updateClass(Class c) throws Exception;
+
 }

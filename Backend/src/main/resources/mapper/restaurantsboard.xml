@@ -4,14 +4,15 @@
 
 <mapper namespace="com.web.dazu.mapper.RestaurantsBoardMapper">
 	<select id="getBoardList" parameterType="map" resultType="Board">
-		select *
-		from recommended_restaurants_board
+		select res.*,m.nickname
+		from recommended_restaurants_board as res,member as m
+		where tip.member_usercode = m.usercode
 		<if test="searchWord != null and searchWord != ''">
 			<if test="searchType == 'title'">
-				where board_title like concat('%', #{searchWord}, '%')
+				and board_title like concat('%', #{searchWord}, '%')
 			</if>
 			<if test="searchType == 'content'">
-				where contents like concat('%', #{searchWord}, '%')
+				and contents like concat('%', #{searchWord}, '%')
 			</if>
 		</if>
 		order by board_code desc
@@ -23,9 +24,10 @@
 	</insert>
 	
 	<select id="getBoard" parameterType="int" resultType="Board">
-		select *
-		from recommended_restaurants_board
+		select res.*,m.nickname
+		from recommended_restaurants_board as res,member as m
 		where board_code = #{board_code}
+		and res.member_usercode = m.usercode
 	</select>
 	
 	<update id="updateViews" parameterType="int">

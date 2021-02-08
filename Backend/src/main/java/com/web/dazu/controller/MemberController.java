@@ -84,7 +84,7 @@ public class MemberController {
 	}
 	
 	//현재 자신이 등록한 클래스 들을 확인. 멤버불러오기와 같이 불러와야 할 필요
-	@ApiOperation(value = "현재 자신이 등록한 클래스들을 확인한다.")
+	@ApiOperation(value = "고객이 신청한 클래스들을 확인한다.")
 	@GetMapping("/selectMyclass/{id}")
 	public ResponseEntity<List<Myclass>> selectmyclass(String id) {
 		System.out.println("진입 : "+id);
