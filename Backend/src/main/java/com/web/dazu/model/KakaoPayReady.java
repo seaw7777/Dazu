@@ -2,13 +2,13 @@ package com.web.dazu.model;
 
 import java.util.Date;
 
-public class KakaoPay {
+public class KakaoPayReady {
 	//response
     private String tid, next_redirect_pc_url;
     private Date created_at;
     
-    public KakaoPay() {}
-	public KakaoPay(String tid, String next_redirect_pc_url, Date created_at) {
+    public KakaoPayReady() {}
+	public KakaoPayReady(String tid, String next_redirect_pc_url, Date created_at) {
 		super();
 		this.tid = tid;
 		this.next_redirect_pc_url = next_redirect_pc_url;

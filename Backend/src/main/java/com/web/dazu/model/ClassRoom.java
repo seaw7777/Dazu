@@ -5,14 +5,35 @@ public class ClassRoom {
 	private String member_usercode;
 	private String class_information_classcode;
 	
+	private String item_name;
+	private int total_amount;
+	
 	public ClassRoom() {}
 
 	public ClassRoom(String class_time_information_class_timecode, String member_usercode,
-			String class_information_classcode) {
+			String class_information_classcode, String item_name, int total_amount) {
 		super();
 		this.class_time_information_class_timecode = class_time_information_class_timecode;
 		this.member_usercode = member_usercode;
 		this.class_information_classcode = class_information_classcode;
+		this.item_name = item_name;
+		this.total_amount = total_amount;
+	}
+
+	public String getItem_name() {
+		return item_name;
+	}
+
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+
+	public int getTotal_amount() {
+		return total_amount;
+	}
+
+	public void setTotal_amount(int total_amount) {
+		this.total_amount = total_amount;
 	}
 
 	public String getClass_time_information_class_timecode() {

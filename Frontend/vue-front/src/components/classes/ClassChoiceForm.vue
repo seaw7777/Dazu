@@ -16,7 +16,7 @@
 
 <script>
 import ClassChoiceCalendar from '@/components//classes/ClassChoiceCalendar.vue';
-import { fetchKAKAOPAY } from '@/api/classes';
+import { postKAKAOPAYReady } from '@/api/classes';
 export default {
   data() {
     return {
@@ -35,7 +35,9 @@ export default {
   methods: {
     async onClickKakaoPayAPI() {
       console.log('클릭페이버튼!!!!!!');
-      const { data } = await fetchKAKAOPAY({
+      const { data } = await postKAKAOPAYReady({
+        item_name: '클래스1',
+        total_amount: 21000,
         class_information_classcode: '1',
         class_time_information_class_timecode: '',
         member_usercode: '2',

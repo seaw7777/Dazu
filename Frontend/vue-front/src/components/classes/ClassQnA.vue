@@ -39,8 +39,10 @@
               <div v-if="qna.class_qna_answer_write_content !== null">
                 <v-list-item v-if="usertype === '0'">
                   <v-list-item-title
-                    ><v-text-field v-model="insertAnswerData"></v-text-field
-                  ></v-list-item-title>
+                    ><v-text-field v-model="insertAnswerData">
+                      {{ qna.class_qna_answer_write_content }}
+                    </v-text-field></v-list-item-title
+                  >
                   <v-list-item-subtitle
                     ><v-btn
                       medium

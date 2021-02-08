@@ -31,9 +31,13 @@ function postQnA(qnaData) {
 function postQnAAnswer(answerData) {
   return instance.post('class/qna/answer/insert', answerData);
 }
-// 클래스 신청(카카오페이 요청)
-function fetchKAKAOPAY(data) {
-  return instance.post('class/customer/insert', data);
+// 클래스 신청(카카오페이 결제준비)
+function postKAKAOPAYReady(data) {
+  return instance.post('class/kakao/ready', data);
+}
+// 클래스 신청(카카오페이 결제승인)
+function fetchKAKAOPAYAccount(pg_token) {
+  return instance.get(`class/kakao/account/${pg_token}`);
 }
 export {
   fetchClasses,
@@ -44,5 +48,6 @@ export {
   fetchClassQnA,
   postQnA,
   postQnAAnswer,
-  fetchKAKAOPAY,
+  postKAKAOPAYReady,
+  fetchKAKAOPAYAccount,
 };

@@ -33,6 +33,10 @@ const router = new VueRouter({
       component: () => import('@/views/classes/ClassDetailPage.vue'),
     },
     {
+      path: '/kakaoPaySuccess',
+      component: () => import('@/views/classes/ClassPayPage.vue'),
+    },
+    {
       path: '/mypage/:usercode',
       component: () => import('@/views/mypage/MypagePage.vue'),
     },

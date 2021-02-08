@@ -1,7 +1,6 @@
 package com.web.dazu.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
+import com.web.dazu.model.KakaoPayAccount;
 import com.web.dazu.service.ClassService;
 import com.web.dazu.service.StoreService;
 
@@ -173,15 +173,41 @@ public class ClassController {
 		}
 	}
 	
-	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - KAKAO PAY API")
-	@PostMapping("/customer/insert") 
-	public String insertClassRoom(@RequestBody ClassRoom room) {
+	private static ClassRoom cr = new ClassRoom();
+	
+	@ApiOperation(value = "KAKAO PAY API 결제 준비(사용자)")
+	@PostMapping("/kakao/ready") 
+	public String KakaoReady(@RequestBody ClassRoom room) {
+		cr = room;
 		String url = null;
 		try {
-			url = service.insertClassRoom(room);
+			url = service.KakaoReady(room);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return url;
+	}
+	
+	@ApiOperation(value = "KAKAO PAY 결제 등록 - 클래스 신청(사용자)")
+	@GetMapping("/kakao/account/{pg_token}")
+	public void KakaoAccount(@PathVariable String pg_token) {
+		
+		KakaoPayAccount account = null;
+		try {
+			account = service.KakaoAccount(pg_token);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		if(account.getAid() != null) {
+			try {
+				service.insertClassRoom(cr);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		cr = null;
+
 	}
 }
