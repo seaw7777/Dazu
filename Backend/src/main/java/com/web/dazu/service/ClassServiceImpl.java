@@ -100,4 +100,9 @@ public class ClassServiceImpl implements ClassService {
 		session.getMapper(ClassMapper.class).insertClass(c);
 	}
 
+	@Override
+	public void deleteClass(int classcode) throws Exception {
+		session.getMapper(ClassMapper.class).deleteClass(classcode);
+	}
+
 }

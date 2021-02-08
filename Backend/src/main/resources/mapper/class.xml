@@ -27,6 +27,11 @@
 		values(#{class_name}, #{class_startdate}, #{class_enddate}, #{class_time}, #{class_difficult}, #{mealkit_ok}, #{food_type}, #{class_price}, #{store_information_storecode})
 	</insert>
 	
+	<delete id="deleteClass">
+		delete from class_information
+		where classcode = #{classcode}
+	</delete>
+	
 	<select id="selectClassByStore" parameterType="string" resultType="Class">
 		select *
 		from class_information

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,6 +65,16 @@ public class ClassController {
 	public void insertClass(@RequestBody Class c) {
 		try {
 			service.insertClass(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "특정 클래스를 삭제한다.(사장님)")
+	@DeleteMapping("ceo/delete")
+	public void deleteClass(@PathVariable int classcode) {
+		try {
+			service.deleteClass(classcode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
