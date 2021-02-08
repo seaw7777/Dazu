@@ -38,4 +38,6 @@ public interface ClassMapper {
 
 	void deleteClass(int classcode) throws Exception;
 
+	void updateClass(Class c) throws Exception;
+
 }

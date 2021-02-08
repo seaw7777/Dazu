@@ -4,7 +4,7 @@
 
 <mapper namespace="com.web.dazu.mapper.ClassMapper">
 	<select id="selectAllClass" parameterType="string" resultType="Class">
-		select c.classcode, c.class_name, c.class_startdate,c.class_enddate,c.class_describe, c.class_price, s.store_name as store_information_store_name, s.storecode as store_information_storecode, s.store_describe as store_information_store_describe 
+		select c.class_time, c.classcode, c.class_name, c.class_startdate,c.class_enddate,c.class_describe, c.class_price, s.store_name as store_information_store_name, s.storecode as store_information_storecode, s.store_describe as store_information_store_describe 
 		from class_information as c join store_information as s
 		on c.store_information_storecode = s.storecode
 		where c.store_information_storecode in (select storecode from store_information where dong = #{dong})
@@ -22,15 +22,21 @@
 		where class_information_classcode = #{classcode}
 	</select>
 	
-	<insert id="insertClass">
+	<insert id="insertClass" parameterType="Class">
 		insert into class_information(class_name, class_startdate, class_enddate, class_time, class_difficult, mealkit_ok, food_type, class_price, store_information_storecode)
 		values(#{class_name}, #{class_startdate}, #{class_enddate}, #{class_time}, #{class_difficult}, #{mealkit_ok}, #{food_type}, #{class_price}, #{store_information_storecode})
 	</insert>
 	
-	<delete id="deleteClass">
+	<delete id="deleteClass" parameterType="string">
 		delete from class_information
 		where classcode = #{classcode}
 	</delete>
+	
+	<update id="updateClass" parameterType="Class">
+		update class_information
+		set class_name = #{class_name}, class_startdate = #{class_startdate}, class_enddate = #{class_enddate}, class_time = #{class_time}, class_describe = #{class_describe}, class_difficult = #{class_difficult}, mealkit_ok = #{mealkit_ok}, food_type = #{food_type}, class_price = #{class_price}
+		where classcode = #{classcode}
+	</update>
 	
 	<select id="selectClassByStore" parameterType="string" resultType="Class">
 		select *

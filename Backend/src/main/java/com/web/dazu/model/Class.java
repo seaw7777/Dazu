@@ -5,6 +5,7 @@ public class Class {
 	private String class_name;
 	private String class_startdate;
 	private String class_enddate;
+	private String class_time;
 	private String class_describe;
 	private String class_difficult;
 	private char mealkit_ok;
@@ -16,7 +17,9 @@ public class Class {
 	
 	public Class() {}
 
-	public Class(String classcode, String class_name, String class_startdate, String class_enddate,
+	
+
+	public Class(String classcode, String class_name, String class_startdate, String class_enddate, String class_time,
 			String class_describe, String class_difficult, char mealkit_ok, int class_price, String food_type,
 			String store_information_storecode, String store_information_store_name,
 			String store_information_store_describe) {
@@ -25,6 +28,7 @@ public class Class {
 		this.class_name = class_name;
 		this.class_startdate = class_startdate;
 		this.class_enddate = class_enddate;
+		this.class_time = class_time;
 		this.class_describe = class_describe;
 		this.class_difficult = class_difficult;
 		this.mealkit_ok = mealkit_ok;
@@ -34,6 +38,21 @@ public class Class {
 		this.store_information_store_name = store_information_store_name;
 		this.store_information_store_describe = store_information_store_describe;
 	}
+
+
+
+	
+	public String getClass_time() {
+		return class_time;
+	}
+
+
+
+	public void setClass_time(String class_time) {
+		this.class_time = class_time;
+	}
+
+
 
 	public String getStore_information_store_name() {
 		return store_information_store_name;

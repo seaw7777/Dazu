@@ -105,4 +105,9 @@ public class ClassServiceImpl implements ClassService {
 		session.getMapper(ClassMapper.class).deleteClass(classcode);
 	}
 
+	@Override
+	public void updateClass(Class c) throws Exception {
+		session.getMapper(ClassMapper.class).updateClass(c);
+	}
+
 }
