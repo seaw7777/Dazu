@@ -53,6 +53,10 @@ const router = new VueRouter({
       component: () => import('@/views/notice/NoticeDetailPage.vue'),
     },
     { path: '*', component: () => import('@/views/NotFoundPage.vue') },
+    {
+      path: '/community/tip/detail/:id',
+      component: () => import('@/views/community/CommunityTipDetail.vue'),
+    },
   ],
 });
 

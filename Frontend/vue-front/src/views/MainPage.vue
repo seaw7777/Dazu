@@ -68,7 +68,7 @@ export default {
       for (let index = 0; index < storeClass.data.length; index++) {
         const id = storeClass.data[index].classcode;
         element += '<br>';
-        element += `<a href="http://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
+        element += `<a href="http://59.23.41.85:8088/dazu/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
       }
       element += '</div>';
 
