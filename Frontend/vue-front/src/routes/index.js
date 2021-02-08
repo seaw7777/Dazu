@@ -44,6 +44,7 @@ const router = new VueRouter({
       path: '/mealkit/list',
       component: () => import('@/views/mealkits/MealkitListPage.vue'),
     },
+    { path: '*', component: () => import('@/views/NotFoundPage.vue') },
   ],
 });
 
