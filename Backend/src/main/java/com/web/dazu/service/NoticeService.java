@@ -10,4 +10,6 @@ public interface NoticeService {
 
 	void insertNotice(Notice notice) throws Exception;
 
+	Notice selectDetailNotice(String noticecode) throws Exception;
+
 }

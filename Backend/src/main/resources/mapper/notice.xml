@@ -8,6 +8,12 @@
 		from main_notice_board
 	</select>
 	
+	<select id="selectDetailNotice" parameterType="string" resultType="Notice">
+		select *
+		from main_notice_board
+		where main_notice_board_code = #{noticeboard}
+	</select>
+	
 	<insert id="insertNotice" parameterType="Notice">
 		insert into main_notice_board (main_notice_board_title, main_notice_board_contents, member_usercode)
 		values (#{main_notice_board_title}, #{main_notice_board_contents}, #{member_usercode})

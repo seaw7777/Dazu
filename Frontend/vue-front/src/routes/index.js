@@ -49,7 +49,7 @@ const router = new VueRouter({
       component: () => import('@/views/notice/NoticeListPage.vue'),
     },
     {
-      path: '/notice/detail/:code',
+      path: '/notice/detail/:noticecode',
       component: () => import('@/views/notice/NoticeDetailPage.vue'),
     },
   ],

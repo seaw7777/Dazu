@@ -95,7 +95,7 @@ export default {
     return {
       insertData: '',
       insertAnswerData: '',
-      usertype: '1',
+      usertype: '0',
       qnas: [],
     };
   },
