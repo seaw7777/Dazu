@@ -44,6 +44,7 @@ const router = new VueRouter({
       path: '/mealkit/list',
       component: () => import('@/views/mealkits/MealkitListPage.vue'),
     },
+<<<<<<< HEAD
     {
       path: '/notice/list',
       component: () => import('@/views/notice/NoticeListPage.vue'),
@@ -52,6 +53,9 @@ const router = new VueRouter({
       path: '/notice/detail/:noticecode',
       component: () => import('@/views/notice/NoticeDetailPage.vue'),
     },
+=======
+    { path: '*', component: () => import('@/views/NotFoundPage.vue') },
+>>>>>>> feature/signup_ownerstep
   ],
 });
 

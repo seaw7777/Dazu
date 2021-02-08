@@ -16,10 +16,14 @@ function customerGetInfoAPI(id) {
 function customerUpcomingClass(id) {
   return instance.get(`member/selectCommingMyclass/{id}?id=${id}`);
 }
-
+// 사장님 추가 정보 보내기
+function ownerInfoPost(ownerInfo) {
+  return instance.post('member/insertMember', ownerInfo);
+}
 export {
   logoutUser,
   customerInfoAPI,
   customerGetInfoAPI,
   customerUpcomingClass,
+  ownerInfoPost,
 };
