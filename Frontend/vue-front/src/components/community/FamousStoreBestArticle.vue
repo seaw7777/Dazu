@@ -4,10 +4,14 @@
       <v-row v-for="n in 5" :key="n">
         <v-col v-for="k in 2" :key="k">
           <div v-if="k === 1">
-            <p>{{ n }} {{ bestFamousStoreList[n - 1].board_title }}</p>
+            <p @click="titleClick(bestFamousStoreList[n - 1].board_code)">
+              {{ n }} {{ bestFamousStoreList[n - 1].board_title }}
+            </p>
           </div>
           <div v-else>
-            <p>{{ n + 5 }} {{ bestFamousStoreList[n + 4].board_title }}</p>
+            <p @click="titleClick(bestFamousStoreList[n + 4].board_code)">
+              {{ n + 5 }} {{ bestFamousStoreList[n + 4].board_title }}
+            </p>
           </div>
         </v-col>
       </v-row>
@@ -26,6 +30,11 @@ export default {
   async created() {
     const bestFamousStores = await getBestFamousStore();
     this.bestFamousStoreList = bestFamousStores.data;
+  },
+  methods: {
+    titleClick(id) {
+      this.$router.push(`/community/famousstore/detail/${id}`);
+    },
   },
 };
 </script>

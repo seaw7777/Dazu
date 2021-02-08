@@ -57,6 +57,11 @@ const router = new VueRouter({
       path: '/community/tip/detail/:id',
       component: () => import('@/views/community/CommunityTipDetail.vue'),
     },
+    {
+      path: '/community/famousstore/detail/:id',
+      component: () =>
+        import('@/views/community/CommunityFamousStoreDetail.vue'),
+    },
   ],
 });
 
