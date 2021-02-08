@@ -8,10 +8,12 @@ public class Board {
 	int board_good;
 	int board_visit;
 	String member_usercode;
+	String nickname;
 		
 	public Board() {}
+
 	public Board(int board_code, String board_write_datetime, String board_title, String board_contents, int board_good,
-			int board_visit, String member_usercode) {
+		int board_visit, String member_usercode, String nickname) {
 		super();
 		this.board_code = board_code;
 		this.board_write_datetime = board_write_datetime;
@@ -20,7 +22,17 @@ public class Board {
 		this.board_good = board_good;
 		this.board_visit = board_visit;
 		this.member_usercode = member_usercode;
+		this.nickname = nickname;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public int getBoard_code() {
 		return board_code;
 	}
@@ -69,8 +81,5 @@ public class Board {
 				+ board_title + ", board_contents=" + board_contents + ", board_good=" + board_good + ", board_visit="
 				+ board_visit + ", member_usercode=" + member_usercode + "]";
 	}
-	
-	
-	
-	
+
 }
