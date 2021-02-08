@@ -25,4 +25,9 @@ public class NoticeServiceImpl implements NoticeService {
 		session.getMapper(NoticeMapper.class).insertNotice(notice);
 	}
 
+	@Override
+	public Notice selectDetailNotice(String noticecode) throws Exception {
+		return session.getMapper(NoticeMapper.class).selectDetailNotice(noticecode);
+	}
+
 }

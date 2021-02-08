@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,18 @@ public class NoticeController {
 		}
 		return list;
 	}	
+	
+	@ApiOperation(value = "상세 공지사항을 읽는다.", response = Notice.class)
+	@GetMapping("/detail/{noticecode}")
+	public Notice selectDetailNotice(@PathVariable String noticecode) {
+		Notice notice = new Notice();
+		try {
+			notice = service.selectDetailNotice(noticecode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return notice;
+	}
 	
 	@ApiOperation(value = "새로운 공지사항을 등록한다.")
 	@PostMapping("/insert")

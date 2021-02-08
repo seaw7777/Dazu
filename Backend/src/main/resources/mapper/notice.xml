@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.web.dazu.mapper.NoticeMapper">
+	<select id="selectAllNotice" parameterType="string" resultType="Notice">
+		select *
+		from main_notice_board
+	</select>
+	
+	<select id="selectDetailNotice" parameterType="string" resultType="Notice">
+		select *
+		from main_notice_board
+		where main_notice_board_code = #{noticeboard}
+	</select>
+	
+	<insert id="insertNotice" parameterType="Notice">
+		insert into main_notice_board (main_notice_board_title, main_notice_board_contents, member_usercode)
+		values (#{main_notice_board_title}, #{main_notice_board_contents}, #{member_usercode})
+	</insert>
+</mapper>
