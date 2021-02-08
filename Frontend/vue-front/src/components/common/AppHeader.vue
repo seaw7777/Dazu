@@ -78,13 +78,17 @@ export default {
     async logoutUser() {
       this.token = this.$store.state.token;
       console.log(this.token);
-      logoutUser(this.token);
+      await logoutUser(this.token);
       this.$store.commit('clearUsername');
       this.$store.commit('clearToken');
       this.$store.commit('clearUserimg');
+      this.$store.commit('clearUserCode');
+      this.$store.commit('clearUserType');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
+      deleteCookie('til_usercode');
+      deleteCookie('til_usertype');
       this.$router.push('/user');
     },
   },

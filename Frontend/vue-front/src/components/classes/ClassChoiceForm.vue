@@ -6,6 +6,8 @@
     <div class="calendar-container">
       <ClassChoiceCalendar></ClassChoiceCalendar>
     </div>
+    <div>가격 입력 :</div>
+    <div>신청버튼</div>
   </div>
 </template>
 

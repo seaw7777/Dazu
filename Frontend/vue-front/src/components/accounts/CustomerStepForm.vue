@@ -67,7 +67,7 @@ export default {
       address: '',
       extraAddress: '',
       dong: '',
-      usertype: 1,
+      usertype: '1',
     };
   },
 
@@ -116,6 +116,10 @@ export default {
     async submitInfo() {
       try {
         console.log('data3' + this.dong);
+        const extrainfo = {
+          dong: this.dong,
+          usertype: this.usertype,
+        };
         const response = await customerInfoAPI({
           accessToken: '',
           address: this.address,
@@ -128,8 +132,10 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
+        this.$store.dispatch('EXTRAINFO', extrainfo);
         this.$router.push('/main');
         console.log(response);
+        console.log('고객님 회원가입 완료');
       } catch (error) {
         console.log('error');
       }

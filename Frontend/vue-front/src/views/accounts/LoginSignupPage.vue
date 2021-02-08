@@ -21,15 +21,13 @@ export default {
 
       console.log('passif' + this.code);
       this.$axios
-        .get('http://localhost:8000/dazu/login?code=' + this.code)
+        .get('http://59.23.41.85:8088/dazu/login?code=' + this.code)
         .then(({ data }) => {
           this.member = data;
-          console.log(JSON.stringify(data));
-          console.log('member' + data);
-          console.log('member' + this.member);
+          console.log('member' + JSON.stringify(data));
           this.$store.dispatch('LOGIN', this.member);
           if (this.member.address === null) {
-            this.$router.push('/user/customerstep');
+            this.$router.push('/user/choice');
           } else {
             this.$router.push('/main');
           }

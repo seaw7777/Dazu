@@ -67,7 +67,7 @@ export default {
       address: '',
       extraAddress: '',
       dong: '',
-      usertype: 1,
+      usertype: '0',
     };
   },
 
@@ -128,6 +128,7 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
+        this.$store.dispatch('USERTYPE', this.usertype);
         this.$router.push('/main');
         console.log(response);
       } catch (error) {

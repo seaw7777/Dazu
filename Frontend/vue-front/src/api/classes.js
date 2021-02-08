@@ -31,6 +31,10 @@ function postQnA(qnaData) {
 function postQnAAnswer(answerData) {
   return instance.post('class/qna/answer/insert', answerData);
 }
+// 클래스 신청 날짜,시간 정보 가죠오기
+function fetchClassTime(classcode) {
+  return instance.get(`class/time/${classcode}`);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -40,4 +44,5 @@ export {
   fetchClassQnA,
   postQnA,
   postQnAAnswer,
+  fetchClassTime,
 };
