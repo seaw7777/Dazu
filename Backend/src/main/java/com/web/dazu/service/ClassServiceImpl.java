@@ -2,14 +2,24 @@ package com.web.dazu.service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
+import java.net.URLEncoder;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
@@ -17,6 +27,7 @@ import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
 import com.web.dazu.model.ClassRoom;
 import com.web.dazu.model.ClassTime;
+import com.web.dazu.model.KakaoPay;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -55,29 +66,43 @@ public class ClassServiceImpl implements ClassService {
 	}
 	
 	@Override
-	public void insertClassRoom(ClassRoom room) throws Exception {
+	public String insertClassRoom(ClassRoom room) throws Exception {
 		
-		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
-		String apiUrl = "https://kapi.kakao.com/v1/payment/ready";
-		String jsonString = null;
-		URL url = new URL(apiUrl);
-		URLConnection conn = url.openConnection();
-
-	    conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
-	    
-	    BufferedReader br = null;
-        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-
-        String line = "";
-        String result = "";
+		URL url = new URL("https://kapi.kakao.com");
+		
+		KakaoPay pay = null;
+		RestTemplate restTemplate = new RestTemplate();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "KakaoAK " + "96dde04da1dc175485336a41b21a0ad5");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+        params.add("cid", "TC0ONETIME");
+        params.add("partner_order_id", "1001");
+        params.add("partner_user_id", "gorany");
+        params.add("item_name", "갤럭시S9");
+        params.add("quantity", "1");
+        params.add("total_amount", "2100");
+        params.add("tax_free_amount", "100");
+        params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
+        params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
+        params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
         
-        while ((line = br.readLine()) != null) {
-            result += line;
-        }
-        jsonString = result.toString();
-        System.out.println(jsonString);
+        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 		
-		session.getMapper(ClassMapper.class).insertClassRoom(room);
+        try {
+            pay = restTemplate.postForObject(new URI(url + "/v1/payment/ready"), body, KakaoPay.class);
+            
+            System.out.println(pay.getNext_redirect_pc_url());
+ 
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+//		session.getMapper(ClassMapper.class).insertClassRoom(room);
+        return pay.getNext_redirect_pc_url();
 	}
 
 	@Override

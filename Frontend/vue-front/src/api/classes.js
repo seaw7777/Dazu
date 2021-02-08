@@ -31,6 +31,10 @@ function postQnA(qnaData) {
 function postQnAAnswer(answerData) {
   return instance.post('class/qna/answer/insert', answerData);
 }
+// 클래스 신청(카카오페이 요청)
+function fetchKAKAOPAY(data) {
+  return instance.post('class/customer/insert', data);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -40,4 +44,5 @@ export {
   fetchClassQnA,
   postQnA,
   postQnAAnswer,
+  fetchKAKAOPAY,
 };

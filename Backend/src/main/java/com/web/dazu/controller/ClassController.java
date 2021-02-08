@@ -175,11 +175,13 @@ public class ClassController {
 	
 	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - KAKAO PAY API")
 	@PostMapping("/customer/insert") 
-	public void insertClassRoom(@RequestBody ClassRoom room) {
+	public String insertClassRoom(@RequestBody ClassRoom room) {
+		String url = null;
 		try {
-			service.insertClassRoom(room);
+			url = service.insertClassRoom(room);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return url;
 	}
 }

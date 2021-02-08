@@ -23,7 +23,7 @@ public interface ClassService {
 
 	void insertClassReview(ClassReview classreview) throws Exception;
 
-	void insertClassRoom(ClassRoom room) throws Exception;
+	String insertClassRoom(ClassRoom room) throws Exception;
 
 	List<ClassQnA> selectClassQnA(String classcode) throws Exception;
 
