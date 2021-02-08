@@ -1,18 +1,25 @@
 <template>
   <div class="flex-container">
     <h4>STEP1. 강좌유형 선택</h4>
-    <v-select :items="items" label="유형 선택" dense solo></v-select>
+    <v-select
+      :items="items"
+      label="유형 선택"
+      dense
+      solo
+      v-model="mealkitchoice"
+    ></v-select>
     <h4>STEP2. 클래스 날짜 선택</h4>
     <div class="calendar-container">
       <ClassChoiceCalendar></ClassChoiceCalendar>
     </div>
-    <div>가격 입력 :</div>
-    <div>신청버튼</div>
-    <img
-      style="width: 70px; height: 50px;"
-      src="@/assets/kakaopay.png"
-      @click="onClickKakaoPayAPI"
-    />
+
+    <div v-if="mealkitchoice == '밀키트o'">
+      가격 입력 :{{ classData.class_price + 3000 }}
+    </div>
+    <div v-else-if="mealkitchoice === '밀키트만'">
+      가격 입력 : 3000
+    </div>
+    <div v-else>가격 입력 : {{ classData.class_price }}</div>
   </div>
 </template>
 
@@ -22,6 +29,7 @@ import { postKAKAOPAYReady } from '@/api/classes';
 export default {
   data() {
     return {
+      mealkitchoice: '',
       items: ['밀키트o', '밀키트X', '밀키트만'],
     };
   },
