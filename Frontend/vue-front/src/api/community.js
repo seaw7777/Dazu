@@ -12,12 +12,6 @@ function getTipDetail(board_code) {
 function getTipDetailComment(board_code) {
   return instance.get(`tip_board_comment/list/${board_code}`);
 }
-function getBestFamousStore() {
-  return instance.get('Restaurants_board/Popular_posts');
-}
-function getFamousStoreList(map) {
-  return instance.get(`Restaurants_board/list?map=${map}`);
-}
 function postTipComment(commentData) {
   return instance.post('tip_board_comment/write', commentData);
 }
@@ -36,6 +30,36 @@ function deleteTip(id) {
 function deleteTipComment(id) {
   return instance.delete(`tip_board_comment/delete/${id}`);
 }
+function getBestFamousStore() {
+  return instance.get('Restaurants_board/Popular_posts');
+}
+function getFamousStoreList(map) {
+  return instance.get(`Restaurants_board/list?map=${map}`);
+}
+function getFamousStoreDetail(board_code) {
+  return instance.get(`Restaurants_board/detail/${board_code}`);
+}
+function getFamousStoreDetailComment(board_code) {
+  return instance.get(`Restaurants_board_comment/list/${board_code}`);
+}
+function postFamousStoreComment(commentData) {
+  return instance.post('Restaurants_board_comment/write', commentData);
+}
+function postFamousStore(tipData) {
+  return instance.post('Restaurants_board/write', tipData);
+}
+function updateFamousStore(id) {
+  return instance.get(`Restaurants_board/modify/${id}`);
+}
+function putFamousStore(tipData) {
+  return instance.put('Restaurants_board/modify', tipData);
+}
+function deleteFamousStore(id) {
+  return instance.delete(`Restaurants_board/delete/${id}`);
+}
+function deleteFamousStoreComment(id) {
+  return instance.delete(`Restaurants_board_comment/delete/${id}`);
+}
 
 export {
   getBestTip,
@@ -50,4 +74,12 @@ export {
   putTip,
   deleteTip,
   deleteTipComment,
+  getFamousStoreDetail,
+  getFamousStoreDetailComment,
+  postFamousStoreComment,
+  postFamousStore,
+  updateFamousStore,
+  putFamousStore,
+  deleteFamousStore,
+  deleteFamousStoreComment,
 };
