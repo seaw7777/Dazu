@@ -95,4 +95,19 @@ public class ClassServiceImpl implements ClassService {
 		session.getMapper(ClassMapper.class).insertClassQnAAnswer(answer);
 	}
 
+	@Override
+	public void insertClass(Class c) throws Exception {
+		session.getMapper(ClassMapper.class).insertClass(c);
+	}
+
+	@Override
+	public void deleteClass(int classcode) throws Exception {
+		session.getMapper(ClassMapper.class).deleteClass(classcode);
+	}
+
+	@Override
+	public void updateClass(Class c) throws Exception {
+		session.getMapper(ClassMapper.class).updateClass(c);
+	}
+
 }

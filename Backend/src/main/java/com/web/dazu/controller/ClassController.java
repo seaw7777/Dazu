@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,6 +59,36 @@ public class ClassController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<Class>(c, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "새로운 클래스를 등록한다.(사장님)")
+	@PostMapping("/ceo/insert")
+	public void insertClass(@RequestBody Class c) {
+		try {
+			service.insertClass(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "특정 클래스를 삭제한다.(사장님)")
+	@DeleteMapping("/ceo/delete/{classcode}")
+	public void deleteClass(@PathVariable int classcode) {
+		try {
+			service.deleteClass(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "특정 클래스 정보를 수정한다.(사장님)")
+	@PutMapping("/ceo/update")
+	public void updateClass(@RequestBody Class c) {
+		try {
+			service.updateClass(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@ApiOperation(value = "클래스 일정(날짜, 시간 등) 정보를 읽어온다.", response = ClassTime.class)
@@ -142,7 +174,7 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - KAKAO PAY API")
-	@PostMapping("/insert") 
+	@PostMapping("/customer/insert") 
 	public void insertClassRoom(@RequestBody ClassRoom room) {
 		try {
 			service.insertClassRoom(room);
