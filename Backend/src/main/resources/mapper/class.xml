@@ -22,6 +22,11 @@
 		where class_information_classcode = #{classcode}
 	</select>
 	
+	<insert id="insertClass">
+		insert into class_information(class_name, class_startdate, class_enddate, class_time, class_difficult, mealkit_ok, food_type, class_price, store_information_storecode)
+		values(#{class_name}, #{class_startdate}, #{class_enddate}, #{class_time}, #{class_difficult}, #{mealkit_ok}, #{food_type}, #{class_price}, #{store_information_storecode})
+	</insert>
+	
 	<select id="selectClassByStore" parameterType="string" resultType="Class">
 		select *
 		from class_information

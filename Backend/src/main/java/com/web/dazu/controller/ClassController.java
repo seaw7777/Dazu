@@ -59,6 +59,16 @@ public class ClassController {
 		return new ResponseEntity<Class>(c, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "새로운 클래스를 등록한다.(사장님)")
+	@PostMapping("/ceo/insert")
+	public void insertClass(@RequestBody Class c) {
+		try {
+			service.insertClass(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@ApiOperation(value = "클래스 일정(날짜, 시간 등) 정보를 읽어온다.", response = ClassTime.class)
 	@GetMapping("/time/{classcode}")
 	public ResponseEntity<ClassTime> selectClassTime(@PathVariable String classcode) {
@@ -142,7 +152,7 @@ public class ClassController {
 	}
 	
 	@ApiOperation(value = "사용자(고객)이 클래스를 신청(등록)한다. - KAKAO PAY API")
-	@PostMapping("/insert") 
+	@PostMapping("/customer/insert") 
 	public void insertClassRoom(@RequestBody ClassRoom room) {
 		try {
 			service.insertClassRoom(room);

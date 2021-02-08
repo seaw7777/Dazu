@@ -31,4 +31,6 @@ public interface ClassService {
 
 	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
+	void insertClass(Class c) throws Exception;
+
 }
