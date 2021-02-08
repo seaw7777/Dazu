@@ -21,7 +21,7 @@ export default {
 
       console.log('passif' + this.code);
       this.$axios
-        .get('http://i4d104.p.ssafy.io:8000/dazu/login?code=' + this.code)
+        .get('http://59.23.41.85:8088/dazu/login?code=' + this.code)
         .then(({ data }) => {
           this.member = data;
           console.log(JSON.stringify(data));

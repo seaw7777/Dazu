@@ -40,6 +40,10 @@ const router = new VueRouter({
       path: '/community',
       component: () => import('@/views/community/CommunityPage.vue'),
     },
+    {
+      path: '/community/tip/detail/:id',
+      component: () => import('@/views/community/CommunityTipDetail.vue'),
+    },
   ],
 });
 
