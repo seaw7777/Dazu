@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fixed-top">
     <b-navbar toggleable="lg" type="light" variant="warning" sticky="true">
       <b-navbar-brand :to="logoLink">
         <b-img
