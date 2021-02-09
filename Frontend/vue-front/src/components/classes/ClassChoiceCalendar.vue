@@ -22,8 +22,36 @@
         v-model="timecode"
       ></v-select>
     </v-col>
+
     <div>
-      <v-btn elevation="2" @click="submitTime">신청하기</v-btn>
+      <div v-if="mealkitchoice == '밀키트o'">
+        <v-card class="mx-auto" max-width="300">
+          <v-card-text>
+            <p class="display-1 text--primary">
+              ₩ {{ classData.class_price + classData.milkit_price }}
+            </p>
+          </v-card-text>
+        </v-card>
+      </div>
+      <div v-else-if="mealkitchoice === '밀키트만'">
+        <v-card class="mx-auto" max-width="300">
+          <v-card-text>
+            <p class="display-1 text--primary">
+              ₩ {{ classData.milkit_price }}
+            </p>
+          </v-card-text>
+        </v-card>
+      </div>
+      <div v-else>
+        <v-card class="mx-auto" max-width="300">
+          <v-card-text>
+            <p class="display-1 text--primary">₩ {{ classData.class_price }}</p>
+          </v-card-text>
+        </v-card>
+      </div>
+      <div>
+        <v-btn class="submit" elevation="2" @click="submitTime">신청하기</v-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +61,15 @@ import { fetchClassTime, postClassTime } from '@/api/classes';
 // postClassTime
 
 export default {
+  props: {
+    mealkitchoice: {
+      type: String,
+    },
+    classData: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       date: new Date(),
@@ -103,4 +140,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.submit {
+  margin-top: 10px;
+}
+</style>

@@ -10,18 +10,10 @@
           <li v-for="{ key, customData } in attributes" :key="key">
             {{ customData.class_name }}
             {{ customData.class_starttime.slice(0, 5) }}
-            <a
-              ><v-btn class="ma-2" text icon color="blue lighten-2">
-                <v-icon>mdi-thumb-up</v-icon>
-              </v-btn></a
-            >
           </li>
         </ul>
       </div>
     </vc-calendar>
-    <v-btn class="ma-2" text icon color="blue lighten-2">
-      <v-icon>mdi-thumb-up</v-icon>
-    </v-btn>
   </div>
 </template>
 
