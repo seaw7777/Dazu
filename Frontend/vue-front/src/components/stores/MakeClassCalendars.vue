@@ -67,6 +67,7 @@
             '20:30',
           ]"
           label="클래스 개설 시간"
+          v-model="times"
           multiple
         ></v-autocomplete>
       </v-col>
@@ -75,12 +76,30 @@
 </template>
 
 <script>
+import { fetchClassTime } from '@/api/classes';
 export default {
   data: function() {
     return {
       dates: [],
       menu: false,
+      times: [],
     };
+  },
+  props: {
+    classcode: {
+      type: String,
+      required: true,
+    },
+  },
+  async created() {
+    console.log(this.classcode);
+    const { data } = await fetchClassTime(this.classcode);
+    for (let index = 0; index < data.length; index++) {
+      console.log(data[index].date);
+      this.dates.push(data[index].date);
+      this.time.push(data[index].starttime);
+    }
+    console.log(JSON.stringify(data));
   },
 };
 </script>

@@ -9,18 +9,37 @@
           <MakeClass></MakeClass>
         </v-col>
       </v-row>
+      <v-col
+        v-for="classSimpleItem in classSimpleItems"
+        :key="classSimpleItem.classcode"
+        cols="12"
+        sm="12"
+      >
+        <ClassSimpleItem :classSimpleItem="classSimpleItem"></ClassSimpleItem
+      ></v-col>
     </v-card>
   </div>
 </template>
 
 <script>
 import MakeClass from '@/components/stores/MakeClass.vue';
+import ClassSimpleItem from '@/components/classes/ClassSimpleItem.vue';
+import { fetchStoreClass } from '@/api/classes';
 export default {
   components: {
     MakeClass,
+    ClassSimpleItem,
   },
   data() {
-    return {};
+    return {
+      classSimpleItems: [],
+    };
+  },
+  async created() {
+    const id = this.$route.params.storecode;
+    const { data } = await fetchStoreClass(id);
+    console.log(data);
+    this.classSimpleItems = data;
   },
 };
 </script>

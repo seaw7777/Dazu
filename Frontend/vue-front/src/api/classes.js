@@ -47,6 +47,14 @@ function fetchKAKAOPAYAccount(pg_token) {
 function postClassTime(timeinfo) {
   return instance.post('class/insert', timeinfo);
 }
+// 특정 클래스를 삭제한다.
+function deleteClass(classcode) {
+  return instance.delete(`class/ceo/delete/${classcode}`);
+}
+// 특정 클래스 정보를 수정한다.
+function updateClass(data) {
+  return instance.put('class/ceo/update', data);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -60,4 +68,6 @@ export {
   postKAKAOPAYReady,
   fetchKAKAOPAYAccount,
   postClassTime,
+  deleteClass,
+  updateClass,
 };
