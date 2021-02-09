@@ -5,13 +5,14 @@
 <mapper namespace="com.web.dazu.mapper.TipBoardCommentMapper">
 	<insert id="writeBoardComment" parameterType="Comment">
 		insert into tip_board_comment (comment_contents,board_code,member_usercode)
-		values (#{comment_contents} , #{board_code} , #{board_contents} , #{member_usercode});
+		values (#{comment_contents} , #{board_code} , #{member_usercode});
 	</insert>
 	
 	<select id="getBoardCommentList" parameterType="int" resultType="Comment">
-		select *
-		from tip_board_comment
-		where board_code = #{board_code}
+		select tip.*,m.nickname
+		from tip_board_comment as tip,member as m
+		where tip.member_usercode = m.usercode
+		and board_code = #{board_code} 
 	</select>
 	
 	<update id="modifyCommentForm" parameterType="int">
@@ -26,7 +27,7 @@
 		where comment_code = #{comment_code}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="int">
+	<delete id="deleteBoardComment" parameterType="int">
 		delete from tip_board_comment
 		where comment_code = #{comment_code}
 	</delete>

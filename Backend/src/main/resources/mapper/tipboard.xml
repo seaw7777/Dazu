@@ -19,8 +19,8 @@
 	</select>
 	
 	<insert id="writeBoard" parameterType="Board">
-		insert into tip_board 
-		values (0,#{board_write_datetime} , #{board_title} , #{board_contents},0,0,#{member_usercode});
+		insert into tip_board (board_title , board_contents , board_good , board_visit , member_usercode )
+		values (#{board_title} , #{board_contents},0,0,#{member_usercode})
 	</insert>
 	
 	<select id="getBoard" parameterType="int" resultType="Board">

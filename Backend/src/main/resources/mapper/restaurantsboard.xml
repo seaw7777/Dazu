@@ -6,7 +6,7 @@
 	<select id="getBoardList" parameterType="map" resultType="Board">
 		select res.*,m.nickname
 		from recommended_restaurants_board as res,member as m
-		where tip.member_usercode = m.usercode
+		where res.member_usercode = m.usercode
 		<if test="searchWord != null and searchWord != ''">
 			<if test="searchType == 'title'">
 				and board_title like concat('%', #{searchWord}, '%')
@@ -17,17 +17,15 @@
 		</if>
 		order by board_code desc
 	</select>
-	
 	<insert id="writeBoard" parameterType="Board">
-		insert into recommended_restaurants_board (board_code,board_title,board_contents,board_good,board_visit,member_usercode)
-		values (0, #{board_title} , #{board_contents},0,0,#{member_usercode});
+		insert into recommended_restaurants_board (board_title , board_contents , board_good , board_visit , member_usercode )
+		values (#{board_title} , #{board_contents},0,0,#{member_usercode})
 	</insert>
 	
 	<select id="getBoard" parameterType="int" resultType="Board">
-		select res.*,m.nickname
-		from recommended_restaurants_board as res,member as m
+		select *
+		from recommended_restaurants_board
 		where board_code = #{board_code}
-		and res.member_usercode = m.usercode
 	</select>
 	
 	<update id="updateViews" parameterType="int">
@@ -47,7 +45,7 @@
 		where board_code = #{board_code}
 	</delete>
 	
-	<select id="selectpopularposts" parameterType="int" resultType="Board">
+		<select id="selectpopularposts" parameterType="int" resultType="Board">
 		select *
 		from recommended_restaurants_board
         order by board_visit desc
