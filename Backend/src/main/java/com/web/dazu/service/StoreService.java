@@ -13,4 +13,6 @@ public interface StoreService {
 
 	void updateStoreGrade(ClassReview review) throws Exception;
 
+	Store selectStore(String usercode) throws Exception;
+
 }

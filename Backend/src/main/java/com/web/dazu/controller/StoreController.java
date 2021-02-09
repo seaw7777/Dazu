@@ -50,4 +50,16 @@ public class StoreController {
 			e.printStackTrace();
 		}
 	}
+	
+	@ApiOperation(value = "특정 가게 정보를 불러온다. - 사장님 마이페이지", response = Store.class)
+	@GetMapping("/{usercode}")
+	public ResponseEntity<Store> selectStore(@PathVariable String usercode) {
+		Store store = new Store();
+		try {
+			store = service.selectStore(usercode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Store>(store, HttpStatus.OK);
+	}
 }

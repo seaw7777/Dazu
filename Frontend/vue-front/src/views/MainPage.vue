@@ -1,86 +1,66 @@
 <template>
   <div>
     <div><ComingClass></ComingClass></div>
+
+    <v-card>
+      <v-tabs
+        v-model="tab"
+        background-color="deep-purple accent-4"
+        centered
+        dark
+        icons-and-text
+      >
+        <v-tab v-for="item in items" :key="item.tab">
+          {{ item.tab }}
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-tab>
+      </v-tabs>
+
+      <v-tabs-items v-model="tab">
+        <v-tab-item v-for="item in items" :key="item.tab">
+          <v-card flat v-if="item.tab === '지도'">
+            <v-card-text class="card-container"
+              ><MainMap></MainMap
+            ></v-card-text>
+          </v-card>
+          <v-card flat v-else-if="item.tab === '목록'">
+            <v-card-text class="card-container"
+              ><MainClassList></MainClassList>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
+
     <div class="map-container" id="map" style="width:900px;height:500px;"></div>
   </div>
 </template>
 
 <script>
-import { fetchStore } from '@/api/store';
-import { customerGetInfoAPI } from '@/api/auth';
-import { fetchStoreClass } from '@/api/classes';
 import ComingClass from '@/components/classes/ComingClass.vue';
+import MainMap from '@/components/mains/MainMap.vue';
+import MainClassList from '@/components/mains/MainClassList.vue';
 export default {
   data() {
     return {
       isLoading: false,
+      tab: null,
+      items: [
+        {
+          tab: '지도',
+          icon: 'mdi-home-map-marker',
+        },
+        {
+          tab: '목록',
+          icon: 'mdi-heart',
+        },
+      ],
     };
   },
   components: {
     ComingClass,
-  },
-  async mounted() {
-    this.isLoading = true;
-    const houseData = await customerGetInfoAPI('1');
-    const storeData = await fetchStore('우이동');
-    this.isLoading = false;
-    const lat = Number(houseData.data.lat);
-    const lng = Number(houseData.data.lng);
-    const container = document.getElementById('map');
-    const options = {
-      center: new window.kakao.maps.LatLng(lng, lat),
-      level: 3,
-    };
-    const map = new window.kakao.maps.Map(container, options);
-
-    var housePosition = new window.kakao.maps.LatLng(lng, lat);
-
-    var marker = new window.kakao.maps.Marker({
-      position: housePosition,
-    });
-
-    marker.setMap(map);
-
-    const imageSrc =
-      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
-    const iwRemoveable = true;
-
-    for (var i = 0; i < storeData.data.length; i++) {
-      const storeClass = await fetchStoreClass(storeData.data[i].storecode);
-
-      const imageSize = new window.kakao.maps.Size(24, 35);
-      const markerImage = new window.kakao.maps.MarkerImage(
-        imageSrc,
-        imageSize,
-      );
-      const position = new window.kakao.maps.LatLng(
-        Number(storeData.data[i].lng),
-        Number(storeData.data[i].lat),
-      );
-      const marker = new window.kakao.maps.Marker({
-        map: map,
-        position: position,
-        title: storeData.data[i].store_name,
-        image: markerImage,
-      });
-      let element = '<div style="padding:5px;">';
-      element += storeData.data[i].store_name;
-      for (let index = 0; index < storeClass.data.length; index++) {
-        const id = storeClass.data[index].classcode;
-        element += '<br>';
-        element += `<a href="http://59.23.41.85:8088/dazu/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
-      }
-      element += '</div>';
-
-      const infowindow = new window.kakao.maps.InfoWindow({
-        content: element,
-        removable: iwRemoveable,
-      });
-
-      window.kakao.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
-      });
-    }
+    MainClassList,
+    MainMap,
   },
 };
 </script>

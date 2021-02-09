@@ -88,4 +88,9 @@ public class StoreServiceImpl implements StoreService {
 		session.getMapper(StoreMapper.class).updateStoreGrade(review);
 	}
 
+	@Override
+	public Store selectStore(String usercode) throws Exception {
+		return session.getMapper(StoreMapper.class).selectStore(usercode);
+	}
+
 }

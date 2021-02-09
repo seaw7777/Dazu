@@ -15,7 +15,6 @@
 
 <script>
 import ClassItem from '@/components/classes/ClassItem.vue';
-// import ComingClass from '@/components/classes/ComingClass.vue';
 import { fetchClasses } from '@/api/classes';
 export default {
   data() {

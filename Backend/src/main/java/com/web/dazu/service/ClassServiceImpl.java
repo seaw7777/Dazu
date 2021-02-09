@@ -121,9 +121,9 @@ public class ClassServiceImpl implements ClassService {
         params.add("quantity", "1");
         params.add("total_amount", Integer.toString(room.getTotal_amount())); // 받아오기
         params.add("tax_free_amount", "0");
-        params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+        params.add("approval_url", "http://https://i4d104.p.ssafy.io/kakaoPaySuccess");
+        params.add("cancel_url", "http://https://i4d104.p.ssafy.io/kakaoPayCancel");
+        params.add("fail_url", "http://https://i4d104.p.ssafy.io/kakaoPaySuccessFail");
         
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 		
