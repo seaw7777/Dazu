@@ -17,6 +17,7 @@
 		</if>
 		order by board_code desc
 	</select>
+	
 	<insert id="writeBoard" parameterType="Board">
 		insert into recommended_restaurants_board (board_title , board_contents , board_good , board_visit , member_usercode )
 		values (#{board_title} , #{board_contents},0,0,#{member_usercode})
