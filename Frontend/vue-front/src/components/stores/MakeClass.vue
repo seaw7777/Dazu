@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-7">
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
@@ -12,6 +12,7 @@
             <span class="headline">새로운 클래스 생성</span>
           </v-card-title>
           <v-card-text>
+            <h5>클래스 정보</h5>
             <v-container>
               <v-row>
                 <v-col cols="12" sm="6">
@@ -76,6 +77,31 @@
                 <v-col cols="12"
                   ><MakeClassCalendars></MakeClassCalendars
                 ></v-col>
+              </v-row>
+            </v-container>
+            <v-container>
+              <h5>밀키트 정보</h5>
+              <v-row>
+                <v-col cols="6">
+                  <v-select
+                    :items="['제공', '미제공']"
+                    label="밀키트 제공 여부"
+                  ></v-select>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" sm="6">
+                  <v-text-field
+                    label="밀키트 가격"
+                    hint="ex) 10000원 -> 10000"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-file-input
+                    truncate-length="15"
+                    label="밀키트 상세 설명 등록"
+                  ></v-file-input>
+                </v-col>
               </v-row>
             </v-container>
             <small>*indicates required field</small>
