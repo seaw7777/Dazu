@@ -92,7 +92,7 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-import { MypageCustomerInfo } from '@/api/mypage';
+import { MypageCustomerInfo, MypageCustomerEditAddress } from '@/api/mypage';
 export default {
   props: {
     customerData: {
@@ -184,11 +184,10 @@ export default {
           usertype: this.usertype,
         });
         this.$store.dispatch('EXTRAINFO', extrainfo);
-        this.$router.push('/main');
-        console.log(response);
-        console.log('고객님 회원가입 완료');
+        this.$router.go(this.$router.currentRoute);
+        console.log('고객님 주소변경 완료');
       } catch (error) {
-        console.log('error');
+        console.log(error);
       }
     },
   },
