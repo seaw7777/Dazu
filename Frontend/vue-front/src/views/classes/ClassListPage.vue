@@ -34,7 +34,7 @@ export default {
     this.isLoading = true;
     const { data } = await fetchClasses('우이동');
     this.isLoading = false;
-    console.log(data);
+    console.log('클래스:' + data);
     this.classItems = data;
   },
 };
