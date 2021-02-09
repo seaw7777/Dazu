@@ -66,6 +66,10 @@ const router = new VueRouter({
       component: () =>
         import('@/views/community/CommunityFamousStoreDetail.vue'),
     },
+    {
+      path: '/mystore/:usercode',
+      component: () => import('@/views/stores/MyStorePage.vue'),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
