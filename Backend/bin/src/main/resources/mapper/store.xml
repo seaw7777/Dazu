@@ -31,4 +31,10 @@
 						   where tmp6.classcode = #{class_information_classcode});
 	</update>
 	
+	<select id="selectStore" parameterType="string" resultType="Store">
+		select *
+		from store_information
+		where member_usercode = #{ usercode }
+	</select>
+	
 </mapper>

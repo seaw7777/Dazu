@@ -28,7 +28,7 @@ public class StoreController {
 	private StoreService service;
 	
 	@ApiOperation(value = "현재 로그인된 회원의 행정동에 위치하는 모든 가게 정보를 불러온다.", response = List.class)
-	@GetMapping("/{dong}")
+	@GetMapping("list/{dong}")
 	public ResponseEntity<List<Store>> selectAllStore(@PathVariable String dong) {
 		
 		List<Store> list = new ArrayList<Store>();
@@ -52,7 +52,7 @@ public class StoreController {
 	}
 	
 	@ApiOperation(value = "특정 가게 정보를 불러온다. - 사장님 마이페이지", response = Store.class)
-	@GetMapping("/{usercode}")
+	@GetMapping("detail/{usercode}")
 	public ResponseEntity<Store> selectStore(@PathVariable String usercode) {
 		Store store = new Store();
 		try {
