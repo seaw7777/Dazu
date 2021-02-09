@@ -66,6 +66,10 @@ const router = new VueRouter({
       component: () =>
         import('@/views/community/CommunityFamousStoreDetail.vue'),
     },
+    {
+      path: '/mypage/editaddress/:id',
+      component: () => import('@/views/mypage/MypageEditAddress.vue'),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

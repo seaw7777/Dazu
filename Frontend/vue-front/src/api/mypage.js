@@ -11,5 +11,13 @@ function MypageCustomerClass(userid) {
 function MypageCustomerComingClass(userid) {
   return instance.get(`member/selectCommingMyclass/{id}?id=${userid}`);
 }
+function MypageCustomerEditAddress(addressinfo) {
+  return instance.put('member/updateMember', addressinfo);
+}
 
-export { MypageCustomerInfo, MypageCustomerClass, MypageCustomerComingClass };
+export {
+  MypageCustomerInfo,
+  MypageCustomerClass,
+  MypageCustomerComingClass,
+  MypageCustomerEditAddress,
+};

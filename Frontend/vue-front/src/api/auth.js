@@ -18,7 +18,7 @@ function customerUpcomingClass(id) {
 }
 // 사장님 추가 정보 보내기
 function ownerInfoPost(ownerInfo) {
-  return instance.post('member/insertMember', ownerInfo);
+  return instance.post('store/insert', ownerInfo);
 }
 export {
   logoutUser,
