@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- {{ tmpcom }} -->
-    <vc-calendar :attributes="attributes" is-dark>
+    <vc-calendar v-model="date" :attributes="attributes">
       <div slot="day-popover" slot-scope="{ dayTitle, attributes }">
         <div class="text-xs text-gray-300 font-semibold text-center">
           {{ dayTitle }}
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       classDataList: [],
+      date: new Date(),
     };
   },
   computed: {
@@ -43,7 +44,6 @@ export default {
           popover: {
             slot: 'day-popover',
             label: todo.class_name,
-            visibility: 'focus',
           },
           customData: todo,
         })),

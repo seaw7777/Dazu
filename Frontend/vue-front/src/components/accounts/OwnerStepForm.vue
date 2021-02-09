@@ -3,7 +3,15 @@
     <v-form v-model="valid">
       <v-container>
         <v-row>
-          <h1>고객님 추가 정보 입력 단계</h1>
+          <h1>사장님 추가 정보 입력 단계</h1>
+          <v-col cols="12">
+            <v-text-field
+              type="text"
+              v-model="storename"
+              placeholder="가게명"
+            />
+            <br />
+          </v-col>
 
           <div
             ref="searchWindow"
@@ -68,6 +76,7 @@ export default {
       extraAddress: '',
       dong: '',
       usertype: '0',
+      storename: '',
     };
   },
 
@@ -117,16 +126,16 @@ export default {
       try {
         console.log('data3' + this.dong);
         const response = await ownerInfoPost({
-          accessToken: '',
-          address: this.address,
-          address_detail: this.extraAddress,
-          usercode: this.$store.state.usercode,
-          create_date: '',
+          dong: this.dong,
           lat: '',
           lng: '',
-          dong: this.dong,
-          nickname: this.$store.state.username,
-          usertype: this.usertype,
+          member_usercode: this.$store.state.usercode,
+          store_describe: '',
+          store_grade: 0,
+          store_grade_cnt: 0,
+          store_location: this.address,
+          store_name: this.storename,
+          storecode: '',
         });
         this.$store.dispatch('USERTYPE', this.usertype);
         this.$router.push('/main');
