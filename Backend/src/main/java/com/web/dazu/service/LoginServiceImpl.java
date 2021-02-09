@@ -41,7 +41,8 @@ public class LoginServiceImpl implements LoginService {
         StringBuilder sb = new StringBuilder();
         sb.append("grant_type=authorization_code");
         sb.append("&client_id=2ce9bedc0889520f06b58f54d0724e65");
-        sb.append("&redirect_uri=http://i4d104.p.ssafy.io/user");
+        //sb.append("&redirect_uri=http://i4d104.p.ssafy.io/user");
+        sb.append("&redirect_uri=http://localhost:8080/user");
         sb.append("&code=" + code);
         bw.write(sb.toString());
         bw.flush();
@@ -121,7 +122,8 @@ public class LoginServiceImpl implements LoginService {
 		     member.setCreate_date(member1.getCreate_date());
 		     member.setDong(member1.getDong());
 		     member.setLat(member1.getLat());
-		     member.setLng(member1.getLng()); 
+		     member.setLng(member1.getLng());
+		     member.setUsertype(member1.getUsertype());
 	     }
 
 	     member.setNickname(nickname);
