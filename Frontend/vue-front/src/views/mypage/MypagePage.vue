@@ -16,10 +16,10 @@
 <script>
 import { MypageCustomerInfo } from '@/api/mypage';
 
-import MypageCalendar from '@/components/mypages/MypageCalendar.vue';
-import MypageComingClass from '@/components/mypages/MypageComingClass.vue';
-import MypageUserClass from '@/components/mypages/MypageUserClass.vue';
-import MypageUserInfo from '@/components/mypages/MypageUserInfo.vue';
+import MypageCalendar from '@/components/customer_mypages/MypageCalendar.vue';
+import MypageComingClass from '@/components/customer_mypages/MypageComingClass.vue';
+import MypageUserClass from '@/components/customer_mypages/MypageUserClass.vue';
+import MypageUserInfo from '@/components/customer_mypages/MypageUserInfo.vue';
 export default {
   components: {
     MypageCalendar,

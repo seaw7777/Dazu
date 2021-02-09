@@ -29,7 +29,7 @@
 <script>
 import { MypageCustomerComingClass } from '@/api/mypage';
 
-import MypageComingClassItem from '@/components/mypages/MypageComingClassItem.vue';
+import MypageComingClassItem from '@/components/customer_mypages/MypageComingClassItem.vue';
 export default {
   data() {
     return {
@@ -49,6 +49,7 @@ export default {
     const userid = this.$store.state.usercode;
     console.log(userid);
     const res = await MypageCustomerComingClass(1);
+    console.log('coming!!' + res.data);
     this.comingList = res.data;
   },
 };

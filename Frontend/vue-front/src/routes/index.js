@@ -70,11 +70,6 @@ const router = new VueRouter({
       path: '/mystore/:usercode',
       component: () => import('@/views/stores/MyStorePage.vue'),
     },
-
-    {
-      path: '/mypage/editaddress/:id',
-      component: () => import('@/views/mypage/MypageEditAddress.vue'),
-    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
