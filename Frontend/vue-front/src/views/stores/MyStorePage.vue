@@ -24,6 +24,7 @@ import StoreAdress from '@/components/stores/StoreAdress.vue';
 import StoreClassList from '@/components/stores/StoreClassList.vue';
 import StoreDetail from '@/components/stores/StoreDetail.vue';
 import StoreName from '@/components/stores/StoreName.vue';
+import { MypageOwnerInfo } from '@/api/mypage';
 export default {
   components: {
     StoreAdress,
@@ -33,6 +34,11 @@ export default {
   },
   data() {
     return {};
+  },
+  async created() {
+    const id = this.$route.params.id;
+    const ownerData = await MypageOwnerInfo(id);
+    console.log(ownerData);
   },
 };
 </script>

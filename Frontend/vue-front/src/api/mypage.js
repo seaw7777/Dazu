@@ -14,10 +14,15 @@ function MypageCustomerComingClass(userid) {
 function MypageCustomerEditAddress(addressinfo) {
   return instance.put('member/updateMember', addressinfo);
 }
+// 마이페이지에 사장님 가게 정보를가지고 온다.
+function MypageOwnerInfo(usercode) {
+  return instance.get(`store/detail/${usercode}`);
+}
 
 export {
   MypageCustomerInfo,
   MypageCustomerClass,
   MypageCustomerComingClass,
   MypageCustomerEditAddress,
+  MypageOwnerInfo,
 };
