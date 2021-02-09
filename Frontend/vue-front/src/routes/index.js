@@ -37,8 +37,12 @@ const router = new VueRouter({
       component: () => import('@/views/classes/ClassPayPage.vue'),
     },
     {
-      path: '/mypage/:usercode',
+      path: '/mypage/1/:usercode',
       component: () => import('@/views/mypage/MypagePage.vue'),
+    },
+    {
+      path: '/mypage/0/:usercode',
+      component: () => import('@/views/mypage/OwnerMypage.vue'),
     },
     {
       path: '/community',
