@@ -8,84 +8,88 @@
       <div>주소 : {{ this.customerData.address }}</div>
       <div>상세주소 : {{ this.customerData.address_detail }}</div>
       <div>동 : {{ this.customerData.dong }}</div>
-      <!-- <v-btn depressed color="error" @click="editAddress">
-        주소변경
-      </v-btn> -->
-      <v-row justify="center">
-        <v-dialog v-model="dialog" persistent max-width="600px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark v-bind="attrs" v-on="on">
-              Open Dialog
-            </v-btn>
-          </template>
-          <v-card>
-            <v-card-title>
-              <span class="headline">주소변경</span>
-            </v-card-title>
-            <v-card-text>
-              <v-container>
-                <v-row>
-                  <div
-                    ref="searchWindow"
-                    :style="searchWindow"
-                    style="border:1px solid;width:500px;margin:5px 0;position:relative"
-                  >
-                    <img
-                      src="//t1.daumcdn.net/postcode/resource/images/close.png"
-                      id="btnFoldWrap"
-                      style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
-                      @click="searchWindow.display = 'none'"
-                      alt="close"
-                    />
-                  </div>
-                  <v-col cols="12">
-                    <input
-                      type="text"
-                      placeholder="우편번호"
-                      v-model="postcode"/>
-                    <v-btn
-                      class="ma-2"
-                      outlined
-                      color="indigo"
-                      value="우편번호 찾기"
-                      @click="execDaumPostcode"
-                      >우편번호 찾기</v-btn
+
+      <div>
+        <v-row>
+          <v-dialog v-model="dialog" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                Open Dialog
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="headline">주소변경</span>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <div
+                      ref="searchWindow"
+                      :style="searchWindow"
+                      style="border:1px solid;width:500px;margin:5px 0;position:relative"
                     >
-                    <br
-                  /></v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                      type="text"
-                      v-model="address"
-                      placeholder="주소"
-                    />
-                    <br />
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field type="text" v-model="dong" placeholder="동" />
-                    <v-text-field
-                      type="text"
-                      v-model="extraAddress"
-                      ref="extraAddress"
-                      placeholder="상세주소"
-                    />
-                  </v-col>
-                </v-row>
-              </v-container>
-              <small>*indicates required field</small>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="dialog = false">
-                Close
-              </v-btn>
-              <v-btn color="blue darken-1" text @click="submitInfo">
-                Save
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-row>
+                      <img
+                        src="//t1.daumcdn.net/postcode/resource/images/close.png"
+                        id="btnFoldWrap"
+                        style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+                        @click="searchWindow.display = 'none'"
+                        alt="close"
+                      />
+                    </div>
+                    <v-col cols="12">
+                      <input
+                        type="text"
+                        placeholder="우편번호"
+                        v-model="postcode"/>
+                      <v-btn
+                        class="ma-2"
+                        outlined
+                        color="indigo"
+                        value="우편번호 찾기"
+                        @click="execDaumPostcode"
+                        >우편번호 찾기</v-btn
+                      >
+                      <br
+                    /></v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        type="text"
+                        v-model="address"
+                        placeholder="주소"
+                      />
+                      <br />
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        type="text"
+                        v-model="dong"
+                        placeholder="동"
+                      />
+                      <v-text-field
+                        type="text"
+                        v-model="extraAddress"
+                        ref="extraAddress"
+                        placeholder="상세주소"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <small>*indicates required field</small>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="dialog = false">
+                  Close
+                </v-btn>
+                <v-btn color="blue darken-1" text @click="submitInfo">
+                  Save
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </div>
     </div>
   </div>
 </template>

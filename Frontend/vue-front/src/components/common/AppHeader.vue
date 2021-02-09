@@ -70,8 +70,8 @@ export default {
     },
     mypageLink() {
       return this.$store.state.usertype == '1'
-        ? '/mypage/' + this.$store.state.usercode
-        : 'main';
+        ? '/mypage/1/' + this.$store.state.usercode
+        : '/mypage/0/' + this.$store.state.usercode;
     },
     userImgUrl() {
       return this.$store.getters.isLogin ? this.$store.state.userimg : '/';
