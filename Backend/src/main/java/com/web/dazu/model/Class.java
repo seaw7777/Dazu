@@ -3,8 +3,6 @@ package com.web.dazu.model;
 public class Class {
 	private String classcode;
 	private String class_name;
-	private String class_startdate;
-	private String class_enddate;
 	private String class_time;
 	private String class_describe;
 	private String class_difficult;
@@ -19,15 +17,12 @@ public class Class {
 
 	
 
-	public Class(String classcode, String class_name, String class_startdate, String class_enddate, String class_time,
-			String class_describe, String class_difficult, char mealkit_ok, int class_price, String food_type,
-			String store_information_storecode, String store_information_store_name,
-			String store_information_store_describe) {
+	public Class(String classcode, String class_name, String class_time, String class_describe, String class_difficult,
+			char mealkit_ok, int class_price, String food_type, String store_information_storecode,
+			String store_information_store_name, String store_information_store_describe) {
 		super();
 		this.classcode = classcode;
 		this.class_name = class_name;
-		this.class_startdate = class_startdate;
-		this.class_enddate = class_enddate;
 		this.class_time = class_time;
 		this.class_describe = class_describe;
 		this.class_difficult = class_difficult;
@@ -86,22 +81,6 @@ public class Class {
 
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
-	}
-
-	public String getClass_startdate() {
-		return class_startdate;
-	}
-
-	public void setClass_startdate(String class_startdate) {
-		this.class_startdate = class_startdate;
-	}
-
-	public String getClass_enddate() {
-		return class_enddate;
-	}
-
-	public void setClass_enddate(String class_enddate) {
-		this.class_enddate = class_enddate;
 	}
 
 	public String getClass_describe() {

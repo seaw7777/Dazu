@@ -30,6 +30,7 @@ const router = new VueRouter({
     },
     {
       path: '/class/detail/:id',
+      name: 'classDetail',
       component: () => import('@/views/classes/ClassDetailPage.vue'),
     },
     {
