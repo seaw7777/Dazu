@@ -51,6 +51,12 @@
               placeholder="상세주소"
             />
           </v-col>
+          <v-col cols="12">
+            <v-file-input
+              truncate-length="15"
+              label="가게 정보 사진"
+            ></v-file-input>
+          </v-col>
           <v-btn class="ma-2" outlined color="indigo" @click="submitInfo">
             NEXT
           </v-btn>
@@ -62,7 +68,7 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-import { ownerInfoPost } from '@/api/auth';
+import { ownerInfoPost, customerInfoAPI } from '@/api/auth';
 
 export default {
   data() {
@@ -136,6 +142,18 @@ export default {
           store_location: this.address,
           store_name: this.storename,
           storecode: '',
+        });
+        const res = await customerInfoAPI({
+          accessToken: '',
+          address: this.address,
+          address_detail: this.extraAddress,
+          usercode: this.$store.state.usercode,
+          create_date: '',
+          lat: '',
+          lng: '',
+          dong: this.dong,
+          nickname: this.$store.state.username,
+          usertype: this.usertype,
         });
         this.$store.dispatch('USERTYPE', this.usertype);
         this.$router.push('/main');

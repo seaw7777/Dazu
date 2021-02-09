@@ -45,6 +45,7 @@ export default {
     const res = await MypageOwnerInfo(3);
     console.log('사장님 가게 데이터' + JSON.stringify(res.data));
     this.storeData = res.data;
+    this.$store.dispatch('STORECODE', this.storData);
   },
 };
 </script>

@@ -11,6 +11,7 @@ function MypageCustomerClass(usercode) {
 function MypageCustomerComingClass(usercode) {
   return instance.get(`member/selectCommingMyclass/{id}?id=${usercode}`);
 }
+// 마이페이지 고객님이 자신의 주소를 수정할 수 있다.
 function MypageCustomerEditAddress(addressinfo) {
   return instance.put('member/updateMember', addressinfo);
 }

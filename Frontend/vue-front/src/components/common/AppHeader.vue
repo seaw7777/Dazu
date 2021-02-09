@@ -87,11 +87,13 @@ export default {
       this.$store.commit('clearUserimg');
       this.$store.commit('clearUserCode');
       this.$store.commit('clearUserType');
+      this.$store.commit('clearStoreCode');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
       deleteCookie('til_usercode');
       deleteCookie('til_usertype');
+      deleteCookie('til_storecode');
       this.$router.push('/user');
     },
   },
