@@ -7,7 +7,7 @@
           등록
         </v-btn>
         <br /><br />
-        <v-card class="mx-auto" width="1000">
+        <v-card class="mx-auto" width="500">
           <v-list>
             <v-list-item>
               <v-list-item-title><strong>답변상태</strong></v-list-item-title>
@@ -97,14 +97,14 @@ export default {
     return {
       insertData: '',
       insertAnswerData: '',
-      usertype: '0',
+      usertype: '',
       qnas: [],
     };
   },
   async created() {
     const id = this.$route.params.id;
-    // this.usertype = this.$store.state.usertype;
-    // console.log(this.usertype);
+    this.usertype = this.$store.state.usertype;
+    console.log('유저타입' + this.usertype);
     console.log(id);
     const { data } = await fetchClassQnA(id);
     this.qnas = data;

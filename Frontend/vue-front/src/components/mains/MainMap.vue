@@ -15,6 +15,9 @@ export default {
     this.isLoading = true;
     const houseData = await customerGetInfoAPI('1');
     const storeData = await fetchStore('우이동');
+
+    console.log('가게: ' + storeData);
+
     this.isLoading = false;
     const lat = Number(houseData.data.lat);
     const lng = Number(houseData.data.lng);
@@ -54,13 +57,14 @@ export default {
         position: position,
         title: storeData.data[i].store_name,
         image: markerImage,
+        center: position,
       });
       let element = '<div style="padding:5px;">';
       element += storeData.data[i].store_name;
       for (let index = 0; index < storeClass.data.length; index++) {
         const id = storeClass.data[index].classcode;
         element += '<br>';
-        element += `<a href="https://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
+        element += `<a href="http://localhost:8080/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
       }
       element += '</div>';
 
