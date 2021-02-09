@@ -36,7 +36,7 @@ export default {
   async created() {
     const userid = this.$store.state.usercode;
     console.log(userid);
-    const response = await MypageCustomerInfo(1);
+    const response = await MypageCustomerInfo(userid);
     console.log(response.data);
     this.customerData = response.data;
   },

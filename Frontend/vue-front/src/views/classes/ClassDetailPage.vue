@@ -6,7 +6,7 @@
           <ClassShortDetail :classData="classdata"></ClassShortDetail>
         </aside>
 
-        <v-card>
+        <v-card class="tab-container">
           <v-tabs
             v-model="tab"
             background-color="black
@@ -102,8 +102,12 @@ export default {
 <style scoped>
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px;
+  justify-items: stretch;
+}
+.tab-container {
+  width: 700px;
 }
 .class-info {
   display: flex;
@@ -116,11 +120,12 @@ export default {
   background: white;
 }
 .secondary-b {
+  height: 700px;
   color: white;
   background: #666;
 }
 .card-container {
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
 }
 </style>

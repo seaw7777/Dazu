@@ -2,24 +2,21 @@
   <div class="flex-container">
     <h4>STEP1. 강좌유형 선택</h4>
     <v-select
+      @click="mealkitCheck"
       :items="items"
       label="유형 선택"
       dense
       solo
       v-model="mealkitchoice"
     ></v-select>
+
     <h4>STEP2. 클래스 날짜 선택</h4>
     <div class="calendar-container">
-      <ClassChoiceCalendar></ClassChoiceCalendar>
+      <ClassChoiceCalendar
+        :mealkitchoice="mealkitchoice"
+        :classData="classData"
+      ></ClassChoiceCalendar>
     </div>
-
-    <div v-if="mealkitchoice == '밀키트o'">
-      가격 입력 :{{ classData.class_price + 3000 }}
-    </div>
-    <div v-else-if="mealkitchoice === '밀키트만'">
-      가격 입력 : 3000
-    </div>
-    <div v-else>가격 입력 : {{ classData.class_price }}</div>
   </div>
 </template>
 
@@ -30,7 +27,7 @@ export default {
   data() {
     return {
       mealkitchoice: '',
-      items: ['밀키트o', '밀키트X', '밀키트만'],
+      items: [],
     };
   },
   props: {
@@ -55,6 +52,15 @@ export default {
       console.log(data);
       window.open(data);
     },
+
+    mealkitCheck() {
+      console.log(this.classData.mealkit_ok);
+      if (this.classData.mealkit_ok === 'o') {
+        this.items = ['밀키트o', '밀키트X', '밀키트만'];
+      } else {
+        this.items = ['밀키트o', '밀키트X'];
+      }
+    },
   },
 };
 </script>
@@ -63,6 +69,7 @@ export default {
 .flex-container {
   display: flex;
   flex-direction: column;
+  width: 300px;
   /* height: 400px; */
 }
 </style>

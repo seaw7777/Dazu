@@ -73,7 +73,7 @@ export default {
   flex-direction: column;
 }
 .rating-form {
-  widows: 100px;
+  /* widows: 100px; */
 }
 .review-btn {
   color: blueviolet;
