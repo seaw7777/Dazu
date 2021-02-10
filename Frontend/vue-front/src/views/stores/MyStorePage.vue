@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col cols="8">
-          <StoreName></StoreName>
+          <StoreName :storeName="storeName"></StoreName>
         </v-col>
         <v-col cols="4">
           <v-row><StoreClassList></StoreClassList></v-row>
@@ -33,15 +33,17 @@ export default {
     StoreName,
   },
   data() {
-    return {};
+    return {
+      storeData: [],
+      storeName: String,
+    };
   },
   async created() {
     const usercode = this.$store.state.usercode;
-    console.log(usercode);
     const res = await MypageOwnerInfo(usercode);
-    console.log(res);
     this.storeData = res.data;
-    this.$store.dispatch('STORECODE', this.storData);
+    this.storeName = res.data.store_name;
+    console.log(this.storeName);
   },
 };
 </script>
