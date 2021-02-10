@@ -55,6 +55,10 @@ function deleteClass(classcode) {
 function updateClass(data) {
   return instance.put('class/ceo/update', data);
 }
+// 새로운 클래스를 등록한다.
+function postClass(data) {
+  return instance.post('class/ceo/insert', data);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -70,4 +74,5 @@ export {
   postClassTime,
   deleteClass,
   updateClass,
+  postClass,
 };

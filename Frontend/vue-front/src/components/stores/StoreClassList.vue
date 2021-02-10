@@ -6,7 +6,7 @@
           <v-card-title>개설 클래스 목록</v-card-title>
         </v-col>
         <v-col cols="4">
-          <MakeClass></MakeClass>
+          <MakeClass :storecode="storecode"></MakeClass>
         </v-col>
       </v-row>
       <v-col
@@ -33,11 +33,13 @@ export default {
   data() {
     return {
       classSimpleItems: [],
+      storecode: '',
     };
   },
   async created() {
     const id = this.$route.params.storecode;
-    const { data } = await fetchStoreClass(id);
+    this.storecode = id;
+    const { data } = await fetchStoreClass('1');
     console.log(data);
     this.classSimpleItems = data;
   },

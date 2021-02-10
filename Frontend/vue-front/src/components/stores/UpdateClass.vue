@@ -81,9 +81,9 @@
                   ></v-file-input>
                 </v-col>
                 <v-col cols="12"
-                  ><MakeClassCalendars
+                  ><UpdateClassCalendars
                     :classcode="classSimpleItem.classcode"
-                  ></MakeClassCalendars
+                  ></UpdateClassCalendars
                 ></v-col>
               </v-row>
             </v-container>
@@ -131,11 +131,11 @@
 </template>
 
 <script>
-import MakeClassCalendars from '@/components/stores/MakeClassCalendars.vue';
+import UpdateClassCalendars from '@/components/stores/MakeClassCalendars.vue';
 import { updateClass } from '@/api/classes';
 export default {
   components: {
-    MakeClassCalendars,
+    UpdateClassCalendars,
   },
   props: {
     classSimpleItem: {
