@@ -37,4 +37,19 @@
 		where member_usercode = #{ usercode }
 	</select>
 	
+	<update id="updateStoreName" parameterType="Store">
+		update store_information
+		set store_name = #{ store_name }
+		where storecode = #{ storecode }
+	</update>
+	
+	<update id="updateStoreAddress" parameterType="Store">
+		update store_information set 
+		store_location = #{store_location},
+		lat = #{lat},
+		lng = #{lng},
+		dong = #{dong}
+		where storecode = #{storecode}
+	</update>
+	
 </mapper>

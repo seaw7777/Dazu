@@ -1,6 +1,7 @@
 package com.web.dazu.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,5 +64,26 @@ public class StoreController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<Store>(store, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "가게 이름을 변경한다.")
+	@PutMapping("/update/name") 
+	public void updateStoreName(@RequestBody Store store) {
+		try {
+			service.updateStoreName(store);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "가게 주소를 변경한다.")
+	@PutMapping("/update/address")
+	public void updateStoreAddress(@RequestBody Store store) {
+		System.out.println(store.getStorecode());
+		try {
+			service.updateStoreAddress(store);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

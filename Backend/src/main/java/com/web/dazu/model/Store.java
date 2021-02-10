@@ -1,7 +1,7 @@
 package com.web.dazu.model;
 
 public class Store {
-	private String storecode;
+	private int storecode;
 	private String store_name;
 	private String store_describe;
 	private String store_location;
@@ -14,7 +14,7 @@ public class Store {
 	
 	public Store() {}
 
-	public Store(String storecode, String store_name, String store_describe, String store_location, int store_grade_cnt,
+	public Store(int storecode, String store_name, String store_describe, String store_location, int store_grade_cnt,
 			int store_grade, String dong, String lat, String lng, String member_usercode) {
 		super();
 		this.storecode = storecode;
@@ -28,7 +28,7 @@ public class Store {
 		this.lng = lng;
 		this.member_usercode = member_usercode;
 	}
-	
+
 	public int getStore_grade_cnt() {
 		return store_grade_cnt;
 	}
@@ -37,11 +37,13 @@ public class Store {
 		this.store_grade_cnt = store_grade_cnt;
 	}
 
-	public String getStorecode() {
+	
+
+	public int getStorecode() {
 		return storecode;
 	}
 
-	public void setStorecode(String storecode) {
+	public void setStorecode(int storecode) {
 		this.storecode = storecode;
 	}
 

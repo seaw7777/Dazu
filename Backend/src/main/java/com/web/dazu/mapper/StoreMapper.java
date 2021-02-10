@@ -18,4 +18,8 @@ public interface StoreMapper {
 
 	Store selectStore(String usercode) throws Exception;
 
+	void updateStoreName(Store store) throws Exception;
+
+	void updateStoreAddress(Store store) throws Exception;
+
 }

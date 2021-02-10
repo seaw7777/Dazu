@@ -15,4 +15,8 @@ public interface StoreService {
 
 	Store selectStore(String usercode) throws Exception;
 
+	void updateStoreName(Store name) throws Exception;
+
+	void updateStoreAddress(Store store) throws Exception;
+
 }
