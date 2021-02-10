@@ -147,6 +147,7 @@ export default {
           store_name: this.storename,
           storecode: '',
         });
+        console.log(response);
         const res = await customerInfoAPI({
           accessToken: '',
           address: this.address,
@@ -159,9 +160,9 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
+        console.log(res);
         this.$store.dispatch('USERTYPE', this.usertype);
         this.$router.push('/main');
-        console.log(response);
       } catch (error) {
         console.log('error');
       }
