@@ -1,15 +1,13 @@
 <template>
-  <div class="mt-7">
-    <v-row justify="center">
+  <div>
+    <v-row no-gutters>
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            클래스 추가
-          </v-btn>
+          <v-icon v-bind="attrs" v-on="on">mdi-lead-pencil</v-icon>
         </template>
         <v-card>
           <v-card-title>
-            <span class="headline">새로운 클래스 생성</span>
+            <span class="headline">클래스 정보 수정</span>
           </v-card-title>
           <v-card-text>
             <h5>클래스 정보</h5>
@@ -34,7 +32,6 @@
                   <v-select
                     :items="['1', '2', '3', '4', '5']"
                     label="최대 수강 인원"
-                    v-model="class_max"
                     required
                   ></v-select>
                 </v-col>
@@ -84,7 +81,9 @@
                   ></v-file-input>
                 </v-col>
                 <v-col cols="12"
-                  ><MakeClassCalendars></MakeClassCalendars
+                  ><UpdateClassCalendars
+                    :classcode="classSimpleItem.classcode"
+                  ></UpdateClassCalendars
                 ></v-col>
               </v-row>
             </v-container>
@@ -121,7 +120,7 @@
             <v-btn color="blue darken-1" text @click="dialog = false">
               Close
             </v-btn>
-            <v-btn color="blue darken-1" text @click="clickInsertClass">
+            <v-btn color="blue darken-1" text @click="clickUpdateClass">
               Save
             </v-btn>
           </v-card-actions>
@@ -132,52 +131,44 @@
 </template>
 
 <script>
-import MakeClassCalendars from '@/components/stores/MakeClassCalendars.vue';
-import { postClass } from '@/api/classes';
+import UpdateClassCalendars from '@/components/stores/MakeClassCalendars.vue';
+import { updateClass } from '@/api/classes';
 export default {
+  components: {
+    UpdateClassCalendars,
+  },
   props: {
-    storecode: {
-      type: String,
+    classSimpleItem: {
+      type: Object,
       required: true,
     },
-  },
-  components: {
-    MakeClassCalendars,
   },
   data() {
     return {
       dialog: false,
-      class_name: '',
-      class_price: '',
-      class_max: '',
-      class_time: '',
-      class_difficult: '',
-      food_type: '',
-      dates: [],
-      times: [],
-      mealkit_ok: '',
+      class_name: this.classSimpleItem.class_name,
+      class_price: this.classSimpleItem.class_price,
+      class_time: this.classSimpleItem.class_time,
+      class_difficult: this.classSimpleItem.class_difficult,
+      food_type: this.classSimpleItem.food_type,
+      mealkit_ok: this.classSimpleItem.mealkit_ok,
     };
   },
   methods: {
-    async clickInsertClass() {
-      if (this.class_time === '1시간') this.class_time = '01:00:00';
-      else if (this.class_time === '1시간 30분') this.class_time = '01:30:00';
-      else if (this.class_time === '2시간') this.class_time = '02:00:00';
-      await postClass({
+    async clickUpdateClass() {
+      await updateClass({
         class_describe: '',
         class_difficult: this.class_difficult,
         class_name: this.class_name,
         class_price: this.class_price,
         class_time: this.class_time,
-        classcode: '',
+        classcode: this.classcode,
         food_type: this.food_type,
         mealkit_ok: this.mealkit_ok,
         store_information_store_describe: '',
         store_information_store_name: '',
-        // store_information_storecode: this.storecode,
-        store_information_storecode: '1',
+        store_information_storecode: '',
       });
-      this.dialog = false;
     },
   },
 };
