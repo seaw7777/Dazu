@@ -52,11 +52,30 @@
             />
           </v-col>
           <v-col cols="12">
-            <v-file-input
+            <!-- <v-file-input
               v-model="file"
               truncate-length="15"
               label="가게 정보 사진"
-            ></v-file-input>
+            ></v-file-input> -->
+            <v-file-input
+              accept="image/png, image/jpeg, image/bmp"
+              label="File input"
+              multiple
+              v-model="selectfile"
+              prepend-icon="mdi-paperclip"
+            >
+              <!-- <input
+              type="file"
+              name="uploadFile"
+              ref="fileData"
+              @change="filechange"
+            /> -->
+              <template v-slot:selection="{ text }">
+                <v-chip small label color="primary">
+                  {{ text }}
+                </v-chip>
+              </template>
+            </v-file-input>
           </v-col>
           <v-btn class="ma-2" outlined color="indigo" @click="submitInfo">
             NEXT
@@ -70,7 +89,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 import { ownerInfoPost, customerInfoAPI } from '@/api/auth';
-
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -78,13 +97,14 @@ export default {
         display: 'none',
         height: '300px',
       },
-      file: '',
+      selectfile: [],
       postcode: '',
       address: '',
       extraAddress: '',
       dong: '',
       usertype: '0',
       storename: '',
+      fd: FormData,
     };
   },
 
@@ -129,13 +149,17 @@ export default {
       }).embed(this.$refs.searchWindow);
       this.searchWindow.display = 'block';
     },
-
     async submitInfo() {
-      var fd = new FormData();
       try {
-        console.log('data3' + this.dong);
-        const response = await ownerInfoPost({
-          file: this.file,
+        // this.createdata();
+        console.log('함수진입');
+        var fd = new FormData();
+        this.selectfile.forEach(function(value, index) {
+          console.log(index);
+          console.log(value);
+          fd.append('files', value);
+        });
+        var datadummy = {
           dong: this.dong,
           lat: '',
           lng: '',
@@ -146,7 +170,36 @@ export default {
           store_location: this.address,
           store_name: this.storename,
           storecode: '',
-        });
+        };
+        console.log(this.selectfile);
+
+        // fd.append('file', this.selectfile);
+        // fd.append('key', this.address);
+        fd.append(
+          'key',
+          new Blob([JSON.stringify(datadummy)], {
+            type: 'application/json',
+          }),
+        );
+        // await axios
+        //   //http://i4d104.p.ssafy.io:8000/dazu/file/fileupload
+        //   //http://localhost:8000/dazu/file/fileupload
+        //   //http://59.23.41.85:8000/dazu/store/insert
+        //   .post('http://localhost:8000/dazu/store/insert', fd, {
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data',
+        //     },
+        //   })
+        //   .then(response => {
+        //     console.log(response);
+        //     console.log(this.address);
+        //     console.log(this.detailaddress);
+        //   })
+        //   .catch(function() {
+        //     console.log('fail');
+        //   });
+        // console.log('함수진입3');
+        const response = await ownerInfoPost(fd);
         const res = await customerInfoAPI({
           accessToken: '',
           address: this.address,
@@ -163,7 +216,7 @@ export default {
         this.$router.push('/main');
         console.log(response);
       } catch (error) {
-        console.log('error');
+        console.log(error);
       }
     },
   },

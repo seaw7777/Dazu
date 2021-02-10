@@ -18,7 +18,11 @@ function customerUpcomingClass(id) {
 }
 // 사장님 추가 정보 보내기
 function ownerInfoPost(ownerInfo) {
-  return instance.post('store/insert', ownerInfo);
+  return instance.post('store/insert', ownerInfo, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 export {
   logoutUser,

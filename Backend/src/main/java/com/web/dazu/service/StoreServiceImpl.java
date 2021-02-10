@@ -15,6 +15,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -36,7 +37,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public void insertStore(Store store) throws Exception {
+	public void insertStore(List<MultipartFile> file,Store store) throws Exception {
 		System.out.println("서비스 진입");
 				
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
