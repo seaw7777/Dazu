@@ -6,6 +6,15 @@
     <div class="owner-info">
       <div>이름 : {{ userName }}</div>
       <div>주소 : {{ this.storeData.store_location }}</div>
+      <div>
+        <v-rating
+          class="star"
+          v-model="storeGrade"
+          background-color="orange lighten-3"
+          color="warning"
+          readonly
+        ></v-rating>
+      </div>
       <div>가게 평점: {{ storeGrade }}</div>
       <v-btn depressed color="error" @click="gotoStoreEdit">
         나의 가게 바로가기
@@ -31,7 +40,7 @@ export default {
       return this.$store.state.username;
     },
     storeGrade() {
-      return this.storeData.store_grade / this.storeData.store_grade_cnt;
+      return this.storeData.store_grade;
     },
   },
   methods: {
@@ -45,7 +54,7 @@ export default {
     const res = await MypageOwnerInfo(3);
     console.log('사장님 가게 데이터' + JSON.stringify(res.data));
     this.storeData = res.data;
-    this.$store.dispatch('STORECODE', this.storData);
+    this.$store.dispatch('STORECODE', this.storeData);
   },
 };
 </script>
