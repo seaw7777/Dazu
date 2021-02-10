@@ -53,6 +53,7 @@
           </v-col>
           <v-col cols="12">
             <v-file-input
+              v-model="file"
               truncate-length="15"
               label="가게 정보 사진"
             ></v-file-input>
@@ -77,6 +78,7 @@ export default {
         display: 'none',
         height: '300px',
       },
+      file: '',
       postcode: '',
       address: '',
       extraAddress: '',
@@ -129,9 +131,11 @@ export default {
     },
 
     async submitInfo() {
+      var fd = new FormData();
       try {
         console.log('data3' + this.dong);
         const response = await ownerInfoPost({
+          file: this.file,
           dong: this.dong,
           lat: '',
           lng: '',

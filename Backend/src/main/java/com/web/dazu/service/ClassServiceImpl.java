@@ -41,7 +41,7 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public ClassTime selectClassTime(String classcode) throws Exception {
+	public List<ClassTime> selectClassTime(String classcode) throws Exception {
 		return session.getMapper(ClassMapper.class).selectClassTime(classcode);
 	}
 

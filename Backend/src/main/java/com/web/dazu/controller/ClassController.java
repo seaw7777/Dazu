@@ -1,6 +1,7 @@
 package com.web.dazu.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,22 +92,25 @@ public class ClassController {
 		}
 	}
 	
-	@ApiOperation(value = "클래스 일정(날짜, 시간 등) 정보를 읽어온다.", response = ClassTime.class)
+	@ApiOperation(value = "클래스 일정(날짜, 시간 등) 정보를 읽어온다.", response = List.class)
 	@GetMapping("/time/{classcode}")
-	public ResponseEntity<ClassTime> selectClassTime(@PathVariable String classcode) {
-		ClassTime ct = new ClassTime();
+	public ResponseEntity<List<ClassTime>> selectClassTime(@PathVariable String classcode) {
+		List<ClassTime> list = new LinkedList<ClassTime>(); 
+		System.out.println(classcode);
 		try {
-			ct = service.selectClassTime(classcode);
+			list =  service.selectClassTime(classcode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<ClassTime>(ct, HttpStatus.OK);
+		System.out.println(list);
+		return new ResponseEntity<List<ClassTime>>(list, HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "가게 별 등록된 모든 클래스 정보를 읽어온다.", response = List.class)
 	@GetMapping("/store/{storecode}")
 	public ResponseEntity<List<Class>> selectClassByStore(@PathVariable String storecode) {
 		List<Class> list = new ArrayList<>();
+		System.out.println(storecode);
 		try {
 			list = service.selectClassByStore(storecode);
 		} catch (Exception e) {

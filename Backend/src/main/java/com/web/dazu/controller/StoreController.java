@@ -45,6 +45,7 @@ public class StoreController {
 	@PostMapping("/insert")
 	public void insertStore(@RequestBody Store store) {
 		try {
+			System.out.println(store);
 			service.insertStore(store);
 		} catch (Exception e) {
 			e.printStackTrace();

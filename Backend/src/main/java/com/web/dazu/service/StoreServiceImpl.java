@@ -37,49 +37,52 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public void insertStore(Store store) throws Exception {
+		System.out.println("서비스 진입");
+				
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
 	    String jsonString = null;
-	    
+	    System.out.println("서비스 진입2");
 	    String addrutf = URLEncoder.encode(store.getStore_location(), "UTF-8");
 
         String addr = apiUrl + "?query=" + addrutf;
-
+        System.out.println("서비스 진입3");
         URL url = new URL(addr);
         URLConnection conn = url.openConnection();
         conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
-
+        System.out.println("서비스 진입4");
         BufferedReader br = null;
         br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-
+        System.out.println("서비스 진입5");
         String line = "";
         String result = "";
-
+        System.out.println("서비스 진입6");
         while ((line = br.readLine()) != null) {
             result += line;
         }
+        System.out.println(result);
         jsonString = result.toString();
-		 
+        System.out.println("서비스 진입7"); 
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, String> XYMap = new HashMap<String, String>();
-		
+		System.out.println("서비스 진입8");
 		TypeReference<Map<String, Object>> typeRef 
         = new TypeReference<Map<String, Object>>(){};
 	    Map<String, Object> jsonMap = mapper.readValue(jsonString, typeRef);
-	
+	    System.out.println("서비스 진입9");
 	    @SuppressWarnings("unchecked")
 	    List<Map<String, String>> docList 
 	        =  (List<Map<String, String>>) jsonMap.get("documents");	
-	
+	    System.out.println("서비스 진입10");
 	    Map<String, String> adList = (Map<String, String>) docList.get(0);
 	    XYMap.put("x",adList.get("x"));
 	    XYMap.put("y", adList.get("y"));
-
+	    System.out.println("서비스 진입11");
 		store.setLat(XYMap.get("x"));
 		store.setLng(XYMap.get("y"));
-		    
+		System.out.println("서비스 진입12");
 		System.out.println(store.getLat() + store.getLng());
-		 
+		System.out.println("서비스 진입13");
 	    session.getMapper(StoreMapper.class).insertStore(store);
 	}
 

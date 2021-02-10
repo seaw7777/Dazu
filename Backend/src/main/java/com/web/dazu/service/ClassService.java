@@ -16,7 +16,7 @@ public interface ClassService {
 
 	Class selectClass(String classcode) throws Exception;
 
-	ClassTime selectClassTime(String classcode) throws Exception;
+	List<ClassTime> selectClassTime(String classcode) throws Exception;
 
 	List<Class> selectClassByStore(String storecode) throws Exception;
 
