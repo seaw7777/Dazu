@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.dazu.model.Store;
 import com.web.dazu.service.StoreService;
@@ -45,10 +47,15 @@ public class StoreController {
 	
 	@ApiOperation(value = "사장님 계정으로 회원가입할 때, 새로운 가게 정보를 등록한다.")
 	@PostMapping("/insert")
-	public void insertStore(@RequestBody Store store) {
+//	public void insertStore(@RequestBody Store store) {
+	//@RequestPart(value = "file", required = true) MultipartFile file,
+	public void insertStore(@RequestPart(value = "files", required = true) List<MultipartFile> file,
+			@RequestPart(value = "key", required = true) Store store) {
+		System.out.println("스토어 진입");
+		System.out.println(file.get(0).getOriginalFilename());
+		System.out.println(store);
 		try {
-			System.out.println(store);
-			service.insertStore(store);
+			service.insertStore(file,store);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

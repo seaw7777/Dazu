@@ -1,8 +1,9 @@
 package com.web.dazu.service;
 
+import java.util.List;
 
-
+import org.springframework.web.multipart.MultipartFile;
 
 public interface FileUploadService {
-	public int fileup(String filePath) throws Exception;
+	public void fileup(List<MultipartFile> file,String index) throws Exception;
 }	

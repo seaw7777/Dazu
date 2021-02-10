@@ -17,9 +17,9 @@
 	</select>
 	
 	<select id="selectClassTime" parameterType="string" resultType="ClassTime">
-		select * 
-		from class_time_information
-		where class_information_classcode = #{classcode}
+		select cti.* ,ci.class_name
+		from class_time_information as cti,class_information as ci
+		where class_information_classcode = #{classcode} and ci.classcode = #{classcode}
 	</select>
 	
 	<insert id="insertClass" parameterType="Class">
