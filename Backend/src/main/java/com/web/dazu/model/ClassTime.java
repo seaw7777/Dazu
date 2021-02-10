@@ -7,9 +7,10 @@ public class ClassTime {
 	private String class_date;
 	private String class_information_classcode;
 	private String member_usercode;
+	private String class_name;
 	public ClassTime() {}
 	public ClassTime(String class_timecode, String class_starttime, String class_endtime, String class_date,
-			String class_information_classcode, String member_usercode) {
+			String class_information_classcode, String member_usercode, String class_name) {
 		super();
 		this.class_timecode = class_timecode;
 		this.class_starttime = class_starttime;
@@ -17,6 +18,7 @@ public class ClassTime {
 		this.class_date = class_date;
 		this.class_information_classcode = class_information_classcode;
 		this.member_usercode = member_usercode;
+		this.class_name = class_name;
 	}
 	public String getClass_timecode() {
 		return class_timecode;
@@ -54,12 +56,20 @@ public class ClassTime {
 	public void setMember_usercode(String member_usercode) {
 		this.member_usercode = member_usercode;
 	}
+	public String getClass_name() {
+		return class_name;
+	}
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
 	@Override
 	public String toString() {
 		return "ClassTime [class_timecode=" + class_timecode + ", class_starttime=" + class_starttime
 				+ ", class_endtime=" + class_endtime + ", class_date=" + class_date + ", class_information_classcode="
-				+ class_information_classcode + ", member_usercode=" + member_usercode + "]";
+				+ class_information_classcode + ", member_usercode=" + member_usercode + ", class_name=" + class_name
+				+ "]";
 	}
+	
 	
 	
 }

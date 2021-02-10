@@ -27,7 +27,8 @@ import com.web.dazu.model.Store;
 
 @Service
 public class StoreServiceImpl implements StoreService {
-	
+	@Autowired
+	private FileUploadService fileuploadservice;
 	@Autowired
 	private SqlSession session;
 
@@ -39,7 +40,7 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void insertStore(List<MultipartFile> file,Store store) throws Exception {
 		System.out.println("서비스 진입");
-				
+		fileuploadservice.fileup(file, "store");
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
 	    String jsonString = null;
