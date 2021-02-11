@@ -34,7 +34,7 @@ public interface ClassService {
 
 	void insertClass(Class c) throws Exception;
 
-	void deleteClass(int classcode) throws Exception;
+	void deleteClass(String classcode) throws Exception;
 
 	void updateClass(Class c) throws Exception;
 

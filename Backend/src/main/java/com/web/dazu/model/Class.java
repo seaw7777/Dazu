@@ -6,6 +6,7 @@ public class Class {
 	private String class_time;
 	private String class_describe;
 	private String class_difficult;
+	private int class_max;
 	private String mealkit_ok;
 	private int class_price;
 	private String food_type;
@@ -15,8 +16,10 @@ public class Class {
 	
 	public Class() {}
 
+	
+
 	public Class(String classcode, String class_name, String class_time, String class_describe, String class_difficult,
-			String mealkit_ok, int class_price, String food_type, String store_information_storecode,
+			int class_max, String mealkit_ok, int class_price, String food_type, String store_information_storecode,
 			String store_information_store_name, String store_information_store_describe) {
 		super();
 		this.classcode = classcode;
@@ -24,6 +27,7 @@ public class Class {
 		this.class_time = class_time;
 		this.class_describe = class_describe;
 		this.class_difficult = class_difficult;
+		this.class_max = class_max;
 		this.mealkit_ok = mealkit_ok;
 		this.class_price = class_price;
 		this.food_type = food_type;
@@ -32,8 +36,22 @@ public class Class {
 		this.store_information_store_describe = store_information_store_describe;
 	}
 
+
+
 	public String getClass_time() {
 		return class_time;
+	}
+
+
+
+	public int getClass_max() {
+		return class_max;
+	}
+
+
+
+	public void setClass_max(int class_max) {
+		this.class_max = class_max;
 	}
 
 

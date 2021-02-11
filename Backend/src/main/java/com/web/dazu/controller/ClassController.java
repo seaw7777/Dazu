@@ -74,7 +74,7 @@ public class ClassController {
 	
 	@ApiOperation(value = "특정 클래스를 삭제한다.(사장님)")
 	@DeleteMapping("/ceo/delete/{classcode}")
-	public void deleteClass(@PathVariable int classcode) {
+	public void deleteClass(@PathVariable String classcode) {
 		try {
 			service.deleteClass(classcode);
 		} catch (Exception e) {
