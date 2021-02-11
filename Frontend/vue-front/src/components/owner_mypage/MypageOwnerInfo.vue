@@ -51,7 +51,7 @@ export default {
   async created() {
     const usercode = this.$store.state.usercode;
     console.log(usercode);
-    const res = await MypageOwnerInfo(3);
+    const res = await MypageOwnerInfo(usercode);
     console.log('사장님 가게 데이터' + JSON.stringify(res.data));
     this.storeData = res.data;
     this.$store.dispatch('STORECODE', this.storeData);

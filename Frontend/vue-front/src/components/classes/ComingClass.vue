@@ -36,7 +36,8 @@ export default {
   }),
   async created() {
     this.isLoading = true;
-    const classList = await customerUpcomingClass('1');
+    const id = this.$store.state.usercode;
+    const classList = await customerUpcomingClass(id);
     this.isLoading = false;
     this.classItems = classList.data;
     this.classLen = classList.data.length;

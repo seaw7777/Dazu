@@ -57,7 +57,7 @@ export default {
   async created() {
     const storecode = this.$store.state.storecode;
     console.log(storecode);
-    const res = await fetchStoreClassInfo(2);
+    const res = await fetchStoreClassInfo(storecode);
     this.classDataList = res.data;
   },
 };

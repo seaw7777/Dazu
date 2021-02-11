@@ -61,7 +61,7 @@ export default {
   async created() {
     const userid = this.$store.state.usercode;
     console.log(userid);
-    const res = await fetchStoreClassInfo(2);
+    const res = await fetchStoreClassInfo(userid);
     this.classDataList = res.data;
     // console.log(this.classDataList);
     for (var key in this.classDataList) {

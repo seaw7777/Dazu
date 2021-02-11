@@ -48,7 +48,7 @@ export default {
   async created() {
     const userid = this.$store.state.usercode;
     console.log(userid);
-    const res = await MypageCustomerComingClass(1);
+    const res = await MypageCustomerComingClass(userid);
     console.log('coming!!' + res.data);
     this.comingList = res.data;
   },
