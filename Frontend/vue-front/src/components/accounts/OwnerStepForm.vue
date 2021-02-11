@@ -173,33 +173,12 @@ export default {
         };
         console.log(this.selectfile);
 
-        // fd.append('file', this.selectfile);
-        // fd.append('key', this.address);
         fd.append(
           'key',
           new Blob([JSON.stringify(datadummy)], {
             type: 'application/json',
           }),
         );
-        // await axios
-        //   //http://i4d104.p.ssafy.io:8000/dazu/file/fileupload
-        //   //http://localhost:8000/dazu/file/fileupload
-        //   //http://59.23.41.85:8000/dazu/store/insert
-        //   .post('http://localhost:8000/dazu/store/insert', fd, {
-        //     headers: {
-        //       'Content-Type': 'multipart/form-data',
-        //     },
-        //   })
-        //   .then(response => {
-        //     console.log(response);
-        //     console.log(this.address);
-        //     console.log(this.detailaddress);
-        //   })
-        //   .catch(function() {
-        //     console.log('fail');
-        //   });
-        // console.log('함수진입3');
-        const response = await ownerInfoPost(fd);
         const res = await customerInfoAPI({
           accessToken: '',
           address: this.address,
@@ -212,6 +191,8 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
+        const response = await ownerInfoPost(fd);
+
         console.log(res);
         this.$store.dispatch('USERTYPE', this.usertype);
         this.$router.push('/main');
