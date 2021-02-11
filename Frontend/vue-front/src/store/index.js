@@ -96,11 +96,11 @@ export default new Vuex.Store({
       saveDongToCookie(userData.dong);
       return userData;
     },
-    async CODE({ commit }, codeData) {
-      console.log(codeData);
-      commit('setCode', codeData);
-      return codeData;
-    },
+    // async CODE({ commit }, codeData) {
+    //   console.log(codeData);
+    //   commit('setCode', codeData);
+    //   return codeData;
+    // },
     async ROAD({ commit }, address) {
       console.log(address);
       commit('setAddress', address);

@@ -19,7 +19,7 @@ export default {
     if (this.code != undefined || this.code != null) {
       this.$store.dispatch('CODE', this.code);
 
-      console.log('passif' + this.code);
+      console.log('passif--' + this.code);
       this.$axios
         .get('https://i4d104.p.ssafy.io/dazu/login?code=' + this.code)
         // .get('http://59.23.41.85:8000/dazu/login?code=' + this.code)
