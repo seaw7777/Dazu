@@ -43,10 +43,6 @@ function postKAKAOPAYReady(data) {
 function fetchKAKAOPAYAccount(pg_token) {
   return instance.get(`class/kakao/account/${pg_token}`);
 }
-// 원하는 클래스 시간과 날짜가 포함된 타임코드를 본내다.
-function postClassTime(timeinfo) {
-  return instance.post('class/insert', timeinfo);
-}
 // 특정 클래스를 삭제한다.
 function deleteClass(classcode) {
   return instance.delete(`class/ceo/delete/${classcode}`);
@@ -58,6 +54,10 @@ function updateClass(data) {
 // 새로운 클래스를 등록한다.
 function postClass(data) {
   return instance.post('class/ceo/insert', data);
+}
+// 새로운 클래스 일정을 등록한다.
+function postClassTime(data) {
+  return instance.post('class/time/insert', data);
 }
 export {
   fetchClasses,

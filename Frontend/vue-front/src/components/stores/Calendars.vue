@@ -19,14 +19,6 @@
           <v-card-text>
             <v-sheet height="64">
               <v-toolbar flat>
-                <v-btn
-                  outlined
-                  class="mr-4"
-                  color="grey darken-2"
-                  @click="setToday"
-                >
-                  Today
-                </v-btn>
                 <v-btn fab text small color="grey darken-2" @click="prev">
                   <v-icon small>
                     mdi-chevron-left
@@ -41,35 +33,6 @@
                   {{ $refs.calendar.title }}
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-menu bottom right>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      outlined
-                      color="grey darken-2"
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      <span>{{ typeToLabel[type] }}</span>
-                      <v-icon right>
-                        mdi-menu-down
-                      </v-icon>
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item @click="type = 'day'">
-                      <v-list-item-title>Day</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="type = 'week'">
-                      <v-list-item-title>Week</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="type = 'month'">
-                      <v-list-item-title>Month</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="type = '4day'">
-                      <v-list-item-title>4 days</v-list-item-title>
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
               </v-toolbar>
             </v-sheet>
             <v-sheet height="600">
@@ -83,7 +46,6 @@
                 @click:event="showEvent"
                 @click:more="viewDay"
                 @click:date="viewDay"
-                @change="updateRange"
               ></v-calendar>
               <v-menu
                 v-model="selectedOpen"
@@ -101,14 +63,17 @@
                     ></v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <v-btn icon>
                       <v-icon>mdi-dots-vertical</v-icon>
                     </v-btn>
                   </v-toolbar>
                   <v-card-text>
-                    <span v-html="selectedEvent.details"></span>
+                    <span v-html="selectedEvent.describe"></span>
+                  </v-card-text>
+                  <v-card-text>
+                    <span><strong>강의시간 : </strong></span>
+                    <span v-html="selectedEvent.startTime"></span>
+                    <span v-html="'-'"></span>
+                    <span v-html="selectedEvent.endTime"></span>
                   </v-card-text>
                   <v-card-actions>
                     <v-btn text color="secondary" @click="selectedOpen = false">
@@ -147,7 +112,10 @@
                 </v-col>
                 <v-col cols="12">
                   <v-icon>mdi-pencil</v-icon>
-                  <v-textarea label="상세 정보를 입력해주세요."></v-textarea>
+                  <v-textarea
+                    label="상세 정보를 입력해주세요."
+                    v-model="describe"
+                  ></v-textarea>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-select
@@ -239,7 +207,19 @@
   </div>
 </template>
 <script>
+import { postClassTime } from '@/api/classes';
+import { fetchClassTime } from '@/api/classes';
 export default {
+  props: {
+    classcode: {
+      type: String,
+      required: true,
+    },
+    class_name: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       dialog: false,
@@ -265,25 +245,56 @@ export default {
         'orange',
         'grey darken-1',
       ],
-      names: [
-        'Meeting',
-        'Holiday',
-        'PTO',
-        'Travel',
-        'Event',
-        'Birthday',
-        'Conference',
-        'Party',
-      ],
+      names: [this.class_name],
       startTime: '',
       endTime: '',
+      describe: '',
     };
   },
-  mounted() {
-    this.$refs.calendar.checkChange();
+  async mounted() {
+    const { data } = await fetchClassTime(this.classcode);
+    const events = [];
+    for (let index = 0; index < data.length; index++) {
+      const start = new Date(
+        data[index].class_date + 'T' + data[index].class_starttime,
+      );
+      const end = new Date(
+        data[index].class_date + 'T' + data[index].class_endtime,
+      );
+
+      events.push({
+        name: this.names[this.rnd(0, this.names.length - 1)],
+        startTime: data[index].class_starttime,
+        endTime: data[index].class_endtime,
+        start: start,
+        end: end,
+        color: this.colors[this.rnd(0, this.colors.length - 1)],
+        timed: false,
+        describe: data[index].class_describe,
+      });
+    }
+    this.events = events;
   },
   methods: {
-    clickInsertClassTime() {},
+    async clickInsertClassTime() {
+      await postClassTime({
+        class_date: this.focus,
+        class_describe: this.describe,
+        class_endtime: this.endTime,
+        class_information_classcode: this.classcode,
+        class_starttime: this.startTime,
+        class_timecode: 0,
+      });
+      this.dialog2 = false;
+
+      this.events.push({
+        name: this.class_name,
+        start: this.startTime,
+        end: this.endTime,
+        color: this.colors[this.rnd(0, this.colors.length - 1)],
+        timed: false,
+      });
+    },
     viewDay({ date }) {
       this.focus = date;
       this.dialog2 = !this.dialog2;
@@ -332,6 +343,18 @@ export default {
     //     const first = new Date(firstTimestamp - (firstTimestamp % 900000));
     //     const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000;
     //     const second = new Date(first.getTime() + secondTimestamp);
+
+    //     console.log(
+    //       allDay +
+    //         ' ' +
+    //         firstTimestamp +
+    //         ' ' +
+    //         first +
+    //         ' ' +
+    //         secondTimestamp +
+    //         ' ' +
+    //         second,
+    //     );
 
     //     events.push({
     //       name: this.names[this.rnd(0, this.names.length - 1)],
