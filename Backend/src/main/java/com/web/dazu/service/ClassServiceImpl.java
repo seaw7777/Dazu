@@ -87,7 +87,7 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public void deleteClass(int classcode) throws Exception {
+	public void deleteClass(String classcode) throws Exception {
 		session.getMapper(ClassMapper.class).deleteClass(classcode);
 	}
 
