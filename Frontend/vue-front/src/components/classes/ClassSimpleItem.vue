@@ -12,7 +12,10 @@
         <v-row no-gutters>
           <v-col cols="12" sm="6" md="8">
             <div>{{ classSimpleItem.class_name }}</div>
-            <Calendars></Calendars>
+            <Calendars
+              :classcode="classSimpleItem.classcode"
+              :class_name="classSimpleItem.class_name"
+            ></Calendars>
           </v-col>
           <v-col cols="6" md="4">
             <UpdateClass :classSimpleItem="classSimpleItem"></UpdateClass>
