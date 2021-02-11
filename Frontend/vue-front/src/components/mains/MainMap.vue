@@ -13,8 +13,8 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    const houseData = await customerGetInfoAPI('1');
-    const storeData = await fetchStore('우이동');
+    const houseData = await customerGetInfoAPI(this.$store.state.usercode);
+    const storeData = await fetchStore(this.$store.state.dong);
 
     console.log('가게: ' + storeData);
 

@@ -106,7 +106,6 @@ export default {
         comment_contents: this.commentInput,
         comment_write_datetime: '',
         member_usercode: this.$store.state.usercode,
-        nickname: this.$store.state.username,
       });
     },
     goList() {
