@@ -37,6 +37,7 @@
                     :items="['1', '2', '3', '4', '5']"
                     label="최대 수강 인원"
                     required
+                    v-model="class_max"
                   ></v-select>
                 </v-col>
                 <v-col cols="12" sm="3">
@@ -84,11 +85,6 @@
                     label="클래스 상세 설명 등록"
                   ></v-file-input>
                 </v-col>
-                <v-col cols="12"
-                  ><UpdateClassCalendars
-                    :classcode="classSimpleItem.classcode"
-                  ></UpdateClassCalendars
-                ></v-col>
               </v-row>
             </v-container>
             <v-container>
@@ -102,7 +98,7 @@
                   ></v-select>
                 </v-col>
               </v-row>
-              <v-row>
+              <v-row v-show="mealkit_ok == '제공'">
                 <v-col cols="12" sm="6">
                   <v-text-field
                     label="밀키트 가격"
@@ -135,17 +131,21 @@
 </template>
 
 <script>
-import UpdateClassCalendars from '@/components/stores/MakeClassCalendars.vue';
 import { updateClass } from '@/api/classes';
 export default {
-  components: {
-    UpdateClassCalendars,
-  },
   props: {
     classSimpleItem: {
       type: Object,
       required: true,
     },
+  },
+  created() {
+    if (this.classSimpleItem.class_time === '01:00:00')
+      this.class_time = '1시간';
+    else if (this.classSimpleItem.class_time === '01:30:00')
+      this.class_time = '1시간 30분';
+    else if (this.classSimpleItem.class_time === '02:00:00')
+      this.class_time = '2시간';
   },
   data() {
     return {
@@ -156,10 +156,15 @@ export default {
       class_difficult: this.classSimpleItem.class_difficult,
       food_type: this.classSimpleItem.food_type,
       mealkit_ok: this.classSimpleItem.mealkit_ok,
+      class_max: this.classSimpleItem.class_max,
+      class_describe: '', // 파일 업로드 완료되면 수정할 부분
     };
   },
   methods: {
     async clickUpdateClass() {
+      if (this.class_time === '1시간') this.class_time = '01:00:00';
+      else if (this.class_time === '1시간 30분') this.class_time = '01:30:00';
+      else if (this.class_time === '2시간') this.class_time = '02:00:00';
       await updateClass({
         class_describe: '',
         class_difficult: this.class_difficult,
@@ -169,6 +174,7 @@ export default {
         classcode: this.classcode,
         food_type: this.food_type,
         mealkit_ok: this.mealkit_ok,
+        class_max: this.class_max,
         store_information_store_describe: '',
         store_information_store_name: '',
         store_information_storecode: '',

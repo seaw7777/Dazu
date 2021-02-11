@@ -83,9 +83,6 @@
                     label="클래스 상세 설명 등록"
                   ></v-file-input>
                 </v-col>
-                <v-col cols="12"
-                  ><MakeClassCalendars></MakeClassCalendars
-                ></v-col>
               </v-row>
             </v-container>
             <v-container>
@@ -132,7 +129,6 @@
 </template>
 
 <script>
-import MakeClassCalendars from '@/components/stores/MakeClassCalendars.vue';
 import { postClass } from '@/api/classes';
 export default {
   props: {
@@ -140,9 +136,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  components: {
-    MakeClassCalendars,
   },
   data() {
     return {
