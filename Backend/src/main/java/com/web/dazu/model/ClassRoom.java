@@ -1,6 +1,7 @@
 package com.web.dazu.model;
 
 public class ClassRoom {
+	private int class_roomcode;
 	private String class_time_information_class_timecode;
 	private String member_usercode;
 	private String class_information_classcode;
@@ -9,15 +10,26 @@ public class ClassRoom {
 	private int total_amount;
 	
 	public ClassRoom() {}
-
-	public ClassRoom(String class_time_information_class_timecode, String member_usercode,
+	
+	public ClassRoom(int class_roomcode, String class_time_information_class_timecode, String member_usercode,
 			String class_information_classcode, String item_name, int total_amount) {
 		super();
+		this.class_roomcode = class_roomcode;
 		this.class_time_information_class_timecode = class_time_information_class_timecode;
 		this.member_usercode = member_usercode;
 		this.class_information_classcode = class_information_classcode;
 		this.item_name = item_name;
 		this.total_amount = total_amount;
+	}
+	
+	
+
+	public int getClass_roomcode() {
+		return class_roomcode;
+	}
+
+	public void setClass_roomcode(int class_roomcode) {
+		this.class_roomcode = class_roomcode;
 	}
 
 	public String getItem_name() {

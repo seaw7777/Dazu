@@ -40,4 +40,6 @@ public interface ClassMapper {
 
 	void updateClass(Class c) throws Exception;
 
+	void insertClassTime(ClassTime time) throws Exception;
+
 }
