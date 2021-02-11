@@ -178,4 +178,9 @@ public class ClassServiceImpl implements ClassService {
 
 	}
 
+	@Override
+	public void insertClassTime(ClassTime time) throws Exception {
+		session.getMapper(ClassMapper.class).insertClassTime(time);
+	}
+
 }

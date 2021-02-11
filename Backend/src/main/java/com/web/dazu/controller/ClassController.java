@@ -106,6 +106,16 @@ public class ClassController {
 		return new ResponseEntity<List<ClassTime>>(list, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "새로운 클래스 일정(날짜, 시간)을 등록한다.")
+	@PostMapping("/time/insert")
+	public void insertClassTime(@RequestBody ClassTime time) {
+		try {
+			service.insertClassTime(time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@ApiOperation(value = "가게 별 등록된 모든 클래스 정보를 읽어온다.", response = List.class)
 	@GetMapping("/store/{storecode}")
 	public ResponseEntity<List<Class>> selectClassByStore(@PathVariable String storecode) {

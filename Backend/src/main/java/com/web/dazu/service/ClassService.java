@@ -42,4 +42,6 @@ public interface ClassService {
 
 	KakaoPayAccount KakaoAccount(String pg_token) throws Exception;
 
+	void insertClassTime(ClassTime time) throws Exception;
+
 }

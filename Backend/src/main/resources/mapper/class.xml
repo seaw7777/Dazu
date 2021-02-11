@@ -22,6 +22,11 @@
 		where class_information_classcode = #{classcode} and ci.classcode = #{classcode}
 	</select>
 	
+	<insert id="insertClassTime" parameterType="ClassTime">
+		insert into class_time_information (class_describe, class_starttime, class_endtime, class_date, class_information_classcode)
+		values (#{class_describe}, #{class_starttime}, #{class_endtime}, #{class_date}, #{class_information_classcode})
+	</insert>
+	
 	<insert id="insertClass" parameterType="Class">
 		insert into class_information(class_name, class_time, class_difficult, mealkit_ok, food_type, class_price, store_information_storecode)
 		values(#{class_name}, #{class_time}, #{class_difficult}, #{mealkit_ok}, #{food_type}, #{class_price}, #{store_information_storecode})

@@ -12,11 +12,15 @@
         <v-row no-gutters>
           <v-col cols="12" sm="6" md="8">
             <div>{{ classSimpleItem.class_name }}</div>
+            <Calendars></Calendars>
           </v-col>
           <v-col cols="6" md="4">
             <UpdateClass :classSimpleItem="classSimpleItem"></UpdateClass>
-            <!-- <v-icon @click="updateClass">mdi-lead-pencil</v-icon> -->
-            <v-icon @click="deleteClass">mdi-trash-can</v-icon>
+            <div class="my-2">
+              <v-btn color="error" fab small dark @click="deleteClass">
+                <v-icon>mdi-trash-can</v-icon>
+              </v-btn>
+            </div>
           </v-col>
         </v-row>
       </v-card-text>
@@ -25,10 +29,12 @@
 </template>
 <script>
 import UpdateClass from '@/components/stores/UpdateClass.vue';
+import Calendars from '@/components/stores/Calendars.vue';
 import { deleteClass } from '@/api/classes';
 export default {
   components: {
     UpdateClass,
+    Calendars,
   },
   props: {
     classSimpleItem: {

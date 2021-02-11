@@ -3,7 +3,11 @@
     <v-row no-gutters>
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on">mdi-lead-pencil</v-icon>
+          <div class="my-2">
+            <v-btn color="primary" fab small dark v-bind="attrs" v-on="on">
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+          </div>
         </template>
         <v-card>
           <v-card-title>
