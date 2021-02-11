@@ -73,6 +73,7 @@ export default {
         nickname: this.$store.state.username,
       });
       this.changeDialog();
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

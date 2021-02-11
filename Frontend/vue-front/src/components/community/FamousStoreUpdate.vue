@@ -87,6 +87,7 @@ export default {
         nickname: '',
       });
       this.changeDialog();
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

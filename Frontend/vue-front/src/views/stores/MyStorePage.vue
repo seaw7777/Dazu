@@ -3,14 +3,14 @@
     <v-container>
       <v-row>
         <v-col cols="8">
-          <StoreName :storeName="storeName"></StoreName>
+          <StoreName :storeData="storeData"></StoreName>
         </v-col>
         <v-col cols="4">
           <v-row><StoreClassList></StoreClassList></v-row>
         </v-col>
       </v-row>
       <v-row>
-        <StoreAdress></StoreAdress>
+        <StoreAdress :storeData="storeData"></StoreAdress>
       </v-row>
       <v-row>
         <StoreDetail></StoreDetail>
