@@ -123,6 +123,7 @@
   </div>
 </template>
 <script>
+import { updateClassTime } from '@/api/classes';
 export default {
   props: {
     selectedEvent: {
@@ -136,7 +137,23 @@ export default {
       describe: this.selectedEvent.describe,
       startTime: this.selectedEvent.startTime,
       endTime: this.selectedEvent.endTime,
+      focus: this.selectedEvent.date,
     };
+  },
+  methods: {
+    async clickUpdateClassTime() {
+      console.log(this.selectedEvent.timecode);
+      console.log(this.startTime);
+      await updateClassTime({
+        class_date: '',
+        class_describe: this.describe,
+        class_endtime: this.endTime,
+        class_information_classcode: 0,
+        class_starttime: this.startTime,
+        class_timecode: this.selectedEvent.timecode,
+      });
+      this.dialog = false;
+    },
   },
 };
 </script>

@@ -59,6 +59,14 @@ function postClass(data) {
 function postClassTime(data) {
   return instance.post('class/time/insert', data);
 }
+// 클래스 일정을 삭제한다.
+function deleteClassTime(timecode) {
+  return instance.delete(`class/time/delete/${timecode}`);
+}
+// 클래스 일정을 수정한다.
+function updateClassTime(data) {
+  return instance.put('class/time/update', data);
+}
 export {
   fetchClasses,
   fetchClass,
@@ -75,4 +83,6 @@ export {
   deleteClass,
   updateClass,
   postClass,
+  deleteClassTime,
+  updateClassTime,
 };
