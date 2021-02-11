@@ -3,14 +3,14 @@
     <v-container>
       <v-row>
         <v-col cols="8">
-          <StoreName></StoreName>
+          <StoreName :storeData="storeData"></StoreName>
         </v-col>
         <v-col cols="4">
           <v-row><StoreClassList></StoreClassList></v-row>
         </v-col>
       </v-row>
       <v-row>
-        <StoreAdress></StoreAdress>
+        <StoreAdress :storeData="storeData"></StoreAdress>
       </v-row>
       <v-row>
         <StoreDetail></StoreDetail>
@@ -24,6 +24,7 @@ import StoreAdress from '@/components/stores/StoreAdress.vue';
 import StoreClassList from '@/components/stores/StoreClassList.vue';
 import StoreDetail from '@/components/stores/StoreDetail.vue';
 import StoreName from '@/components/stores/StoreName.vue';
+import { MypageOwnerInfo } from '@/api/mypage';
 export default {
   components: {
     StoreAdress,
@@ -32,7 +33,17 @@ export default {
     StoreName,
   },
   data() {
-    return {};
+    return {
+      storeData: [],
+      storeName: String,
+    };
+  },
+  async created() {
+    const usercode = this.$store.state.usercode;
+    const res = await MypageOwnerInfo(usercode);
+    this.storeData = res.data;
+    this.storeName = res.data.store_name;
+    console.log(this.storeName);
   },
 };
 </script>

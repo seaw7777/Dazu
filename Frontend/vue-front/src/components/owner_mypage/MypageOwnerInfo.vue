@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     gotoStoreEdit() {
-      this.$router.push(`/mystore/${this.storeData.member_usercode}`);
+      this.$router.push(`/mystore/${this.$store.state.usercode}`);
     },
   },
   async created() {
