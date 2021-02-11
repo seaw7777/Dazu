@@ -6,16 +6,17 @@ public class Comment {
 	String comment_contents;
 	String board_code;
 	String member_usercode;
-	
+	String nickname;
 	public Comment() {}
 	public Comment(String comment_code, String comment_write_datetime, String comment_contents, String board_code,
-			String member_usercode) {
+			String member_usercode, String nickname) {
 		super();
 		this.comment_code = comment_code;
 		this.comment_write_datetime = comment_write_datetime;
 		this.comment_contents = comment_contents;
 		this.board_code = board_code;
 		this.member_usercode = member_usercode;
+		this.nickname = nickname;
 	}
 	public String getComment_code() {
 		return comment_code;
@@ -46,6 +47,18 @@ public class Comment {
 	}
 	public void setMember_usercode(String member_usercode) {
 		this.member_usercode = member_usercode;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	@Override
+	public String toString() {
+		return "Comment [comment_code=" + comment_code + ", comment_write_datetime=" + comment_write_datetime
+				+ ", comment_contents=" + comment_contents + ", board_code=" + board_code + ", member_usercode="
+				+ member_usercode + ", nickname=" + nickname + "]";
 	}
 	
 }

@@ -18,6 +18,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 	@Override
 	public void fileup(List<MultipartFile> file, String index) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("파일 업로드 서비스 진입 : " + file +" , " + index);
 		for (int i = 0; i < file.size(); i++) {
 			String rootPath = "/home/Image";
 			String filePath = rootPath + "/" + index + "-" + file.get(i).getOriginalFilename();
