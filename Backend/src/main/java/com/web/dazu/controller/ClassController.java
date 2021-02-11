@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.dazu.model.Class;
@@ -111,6 +112,26 @@ public class ClassController {
 	public void insertClassTime(@RequestBody ClassTime time) {
 		try {
 			service.insertClassTime(time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "클래스 일정(날짜, 시간)을 수정한다.")
+	@PutMapping("/time/update")
+	public void updateClassTime(@RequestBody ClassTime time) {
+		try {
+			service.updateClassTime(time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "클래스 일정(날짜, 시간)을 삭제한다.")
+	@DeleteMapping("/time/delete/{timecode}")
+	public void deleteClassTime(@PathVariable String timecode) {
+		try {
+			service.deleteClassTime(timecode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

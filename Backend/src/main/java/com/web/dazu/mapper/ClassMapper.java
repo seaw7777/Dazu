@@ -42,4 +42,8 @@ public interface ClassMapper {
 
 	void insertClassTime(ClassTime time) throws Exception;
 
+	void updateClassTime(ClassTime time) throws Exception;
+
+	void deleteClassTime(String timecode) throws Exception;
+
 }

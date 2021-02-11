@@ -179,6 +179,7 @@ export default {
         store_information_store_name: '',
         store_information_storecode: '',
       });
+      this.dialog = false;
     },
   },
 };

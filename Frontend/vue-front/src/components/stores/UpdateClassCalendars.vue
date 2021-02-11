@@ -1,107 +1,143 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="12" sm="6">
-        <v-date-picker v-model="dates" multiple></v-date-picker>
-      </v-col>
-      <v-col cols="12" sm="6">
-        <v-menu
-          ref="menu"
-          v-model="menu"
-          :close-on-content-click="false"
-          :return-value.sync="dates"
-          transition="scale-transition"
-          offset-y
-          min-width="auto"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-combobox
-              v-model="dates"
-              multiple
-              chips
-              small-chips
-              label="Multiple picker in menu"
-              prepend-icon="mdi-calendar"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-            ></v-combobox>
-          </template>
-          <v-date-picker v-model="dates" multiple no-title scrollable>
+    <v-row no-gutters>
+      <v-dialog v-model="dialog" persistent max-width="800px">
+        <template v-slot:activator="{ on, attrs }">
+          <div class="my-2">
+            <v-btn icon v-bind="attrs" v-on="on">
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+          </div>
+        </template>
+        <v-card>
+          <v-card-title>
+            <span class="headline">강의 수정</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="6">
+                  <v-icon>mdi-calendar-check</v-icon>
+                  <a>날짜</a>
+                  <v-text-field
+                    persistent-hint
+                    required
+                    v-model="focus"
+                    readonly
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-icon>mdi-pencil</v-icon>
+                  <v-textarea
+                    label="상세 정보를 입력해주세요."
+                    v-model="describe"
+                  ></v-textarea>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-select
+                    v-model="startTime"
+                    :items="[
+                      '09:00:00',
+                      '09:30:00',
+                      '10:00:00',
+                      '10:30:00',
+                      '11:00:00',
+                      '11:30:00',
+                      '12:00:00',
+                      '12:30:00',
+                      '13:00:00',
+                      '13:30:00',
+                      '14:00:00',
+                      '14:30:00',
+                      '15:00:00',
+                      '15:30:00',
+                      '16:00:00',
+                      '16:30:00',
+                      '17:00:00',
+                      '17:30:00',
+                      '18:00:00',
+                      '18:30:00',
+                      '19:00:00',
+                      '19:30:00',
+                      '20:00:00',
+                      '20:30:00',
+                    ]"
+                    required
+                    ><template slot="label">
+                      <v-icon>mdi-timer-outline</v-icon>
+                      시작시간
+                    </template>
+                  </v-select>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-select
+                    v-model="endTime"
+                    :items="[
+                      '09:00:00',
+                      '09:30:00',
+                      '10:00:00',
+                      '10:30:00',
+                      '11:00:00',
+                      '11:30:00',
+                      '12:00:00',
+                      '12:30:00',
+                      '13:00:00',
+                      '13:30:00',
+                      '14:00:00',
+                      '14:30:00',
+                      '15:00:00',
+                      '15:30:00',
+                      '16:00:00',
+                      '16:30:00',
+                      '17:00:00',
+                      '17:30:00',
+                      '18:00:00',
+                      '18:30:00',
+                      '19:00:00',
+                      '19:30:00',
+                      '20:00:00',
+                      '20:30:00',
+                    ]"
+                    required
+                    ><template slot="label">
+                      <v-icon>mdi-timer-outline</v-icon>
+                      종료시간
+                    </template>
+                  </v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn text color="primary" @click="menu = false">
-              Cancel
+            <v-btn color="blue darken-1" text @click="dialog = false">
+              닫기
             </v-btn>
-            <v-btn text color="primary" @click="$refs.menu.save(dates)">
-              OK
+            <v-btn color="blue darken-1" text @click="clickUpdateClassTime">
+              저장
             </v-btn>
-          </v-date-picker>
-        </v-menu>
-      </v-col>
-      <v-col cols="12">
-        <v-autocomplete
-          :items="[
-            '9:00',
-            '9:30',
-            '10:00',
-            '10:30',
-            '11:00',
-            '11:30',
-            '12:00',
-            '12:30',
-            '13:00',
-            '13:30',
-            '14:00',
-            '14:30',
-            '15:00',
-            '15:30',
-            '16:00',
-            '16:30',
-            '17:00',
-            '17:30',
-            '18:00',
-            '18:30',
-            '19:00',
-            '19:30',
-            '20:00',
-            '20:30',
-          ]"
-          label="클래스 개설 시간"
-          v-model="times"
-          multiple
-        ></v-autocomplete>
-      </v-col>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-row>
   </div>
 </template>
-
 <script>
-import { fetchClassTime } from '@/api/classes';
 export default {
-  data: function() {
-    return {
-      dates: [],
-      menu: false,
-      times: [],
-    };
-  },
   props: {
-    classcode: {
-      type: String,
+    selectedEvent: {
+      type: Object,
       required: true,
     },
   },
-  async created() {
-    console.log(this.classcode);
-    const { data } = await fetchClassTime(this.classcode);
-    for (let index = 0; index < data.length; index++) {
-      console.log(data[index].date);
-      this.dates.push(data[index].date);
-      this.times.push(data[index].starttime);
-    }
-    console.log(JSON.stringify(data));
+  data() {
+    return {
+      dialog: false,
+      describe: this.selectedEvent.describe,
+      startTime: this.selectedEvent.startTime,
+      endTime: this.selectedEvent.endTime,
+    };
   },
 };
 </script>
-
 <style></style>

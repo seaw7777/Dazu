@@ -183,4 +183,14 @@ public class ClassServiceImpl implements ClassService {
 		session.getMapper(ClassMapper.class).insertClassTime(time);
 	}
 
+	@Override
+	public void updateClassTime(ClassTime time) throws Exception {
+		session.getMapper(ClassMapper.class).updateClassTime(time); 
+	}
+
+	@Override
+	public void deleteClassTime(String timecode) throws Exception {
+		session.getMapper(ClassMapper.class).deleteClassTime(timecode);
+	}
+
 }

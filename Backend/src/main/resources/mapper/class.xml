@@ -27,6 +27,19 @@
 		values (#{class_describe}, #{class_starttime}, #{class_endtime}, #{class_date}, #{class_information_classcode})
 	</insert>
 	
+	<update id="updateClassTime" parameterType="ClassTime">
+		update class_time_information
+		set class_describe = #{class_describe},
+		class_starttime = #{class_starttime},
+		class_endtime = #{class_endtime}
+		where class_timecode = #{class_timecode}
+	</update>
+	
+	<delete id="deleteClassTime" parameterType="string">
+		delete from class_time_information
+		where class_timecode = #{timecode}
+	</delete>
+	
 	<insert id="insertClass" parameterType="Class">
 		insert into class_information(class_max, class_name, class_time, class_difficult, mealkit_ok, food_type, class_price, store_information_storecode)
 		values(#{class_max}, #{class_name}, #{class_time}, #{class_difficult}, #{mealkit_ok}, #{food_type}, #{class_price}, #{store_information_storecode})

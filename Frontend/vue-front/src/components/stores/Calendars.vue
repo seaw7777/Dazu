@@ -55,9 +55,14 @@
               >
                 <v-card color="grey lighten-4" min-width="350px" flat>
                   <v-toolbar :color="selectedEvent.color" dark>
-                    <v-btn icon>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
+                    <UpdateClassCalendars
+                      :selectedEvent="selectedEvent"
+                    ></UpdateClassCalendars>
+                    <v-btn
+                      icon
+                      @click="clickDeleteClassTime(selectedEvent.timecode)"
+                      ><v-icon>mdi-trash-can</v-icon></v-btn
+                    >
                     <v-toolbar-title
                       v-html="selectedEvent.name"
                     ></v-toolbar-title>
@@ -209,6 +214,7 @@
 <script>
 import { postClassTime } from '@/api/classes';
 import { fetchClassTime } from '@/api/classes';
+import UpdateClassCalendars from '@/components/stores/UpdateClassCalendars.vue';
 export default {
   props: {
     classcode: {
@@ -219,6 +225,9 @@ export default {
       type: String,
       required: true,
     },
+  },
+  components: {
+    UpdateClassCalendars,
   },
   data() {
     return {
@@ -271,11 +280,15 @@ export default {
         color: this.colors[this.rnd(0, this.colors.length - 1)],
         timed: false,
         describe: data[index].class_describe,
+        timecode: data[index].class_timecode,
       });
     }
     this.events = events;
   },
   methods: {
+    async clickDeleteClassTime(timecode) {
+      console.log(timecode);
+    },
     async clickInsertClassTime() {
       await postClassTime({
         class_date: this.focus,
