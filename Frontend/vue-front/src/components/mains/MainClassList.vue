@@ -24,7 +24,8 @@ export default {
     ClassItem,
   },
   async created() {
-    const { data } = await fetchClasses('우이동');
+    const userdong = this.$store.state.dong;
+    const { data } = await fetchClasses(userdong);
     // console.log('클래스:' + JSON.stringify(data));
     this.classItems = data;
   },

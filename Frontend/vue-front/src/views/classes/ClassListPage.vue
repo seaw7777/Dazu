@@ -32,7 +32,7 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    const { data } = await fetchClasses('우이동');
+    const { data } = await fetchClasses(this.$store.state.dong);
     this.isLoading = false;
     console.log('클래스:' + data);
     this.classItems = data;

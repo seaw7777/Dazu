@@ -123,6 +123,7 @@ export default {
     console.log(id);
     const res = await fetchClassTime(id);
     this.classDataList = res.data;
+    console.log(this.classDataList);
     for (var key in res.data) {
       const value =
         res.data[key].class_timecode +

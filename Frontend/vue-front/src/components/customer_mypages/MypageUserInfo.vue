@@ -142,7 +142,7 @@ export default {
           }
           if (data.userSelectedType === 'R') {
             if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-              this.dong += data.bname;
+              this.dong = data.bname;
             }
             if (data.buildingName !== '' && data.apartment === 'Y') {
               this.dong +=
