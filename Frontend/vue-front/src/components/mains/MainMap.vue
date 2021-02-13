@@ -74,7 +74,7 @@ export default {
         removable: iwRemoveable,
       });
 
-      window.kakao.maps.event.addListener(marker, 'click', function () {
+      window.kakao.maps.event.addListener(marker, 'click', function() {
         infowindow.open(map, marker);
       });
     }

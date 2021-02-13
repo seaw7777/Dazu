@@ -30,7 +30,7 @@
             />
           </div>
           <v-col cols="12">
-            <input type="text" placeholder="우편번호" v-model="postcode" />
+            <input type="text" placeholder="우편번호" v-model="postcode"/>
             <v-btn
               class="ma-2"
               outlined
