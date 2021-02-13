@@ -26,7 +26,7 @@ public class FileuploadController {
 	@ApiOperation(value = "feed image 조회 ", notes = "feed Image를 반환합니다. 못찾은경우 기본 image를 반환합니다.")
 	@GetMapping(value = "image/{imagename}", produces = MediaType.IMAGE_JPEG_VALUE)
 	public ResponseEntity<byte[]> userSearch(@PathVariable("imagename") String imagename) throws IOException {
-		InputStream imageStream = new FileInputStream("home/Image" + imagename);
+		InputStream imageStream = new FileInputStream("/home/Image/" + imagename);
 		byte[] imageByteArray = IOUtils.toByteArray(imageStream);
 		imageStream.close();
 		return new ResponseEntity<byte[]>(imageByteArray, HttpStatus.OK);
