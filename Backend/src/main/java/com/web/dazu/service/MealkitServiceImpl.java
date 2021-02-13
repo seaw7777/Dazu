@@ -20,4 +20,19 @@ public class MealkitServiceImpl implements MealkitService {
 		return session.getMapper(MealkitMapper.class).selectAllMealkit(dong);
 	}
 
+	@Override
+	public void insertMealkit(Mealkit mealkit) throws Exception {
+		session.getMapper(MealkitMapper.class).insertMealkit(mealkit);
+	}
+
+	@Override
+	public void updateMealkit(Mealkit mealkit) throws Exception {
+		session.getMapper(MealkitMapper.class).updateMealkit(mealkit);
+	}
+
+	@Override
+	public void deleteMealkit(String code) throws Exception {
+		session.getMapper(MealkitMapper.class).deleteMealkit(code);
+	}
+
 }

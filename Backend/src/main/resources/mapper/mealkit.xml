@@ -4,7 +4,7 @@
 	
 <mapper namespace="com.web.dazu.mapper.MealkitMapper">
 	<select id="selectAllMealkit" parameterType="string" resultType="Mealkit">
-		select m.class_information_classcode, m.mealkit_image, m.mealkitcode, m.mealkit_name, m.mealkit_price, c.class_name as class_information_classname
+		select m.class_information_classcode, m.mealkit_detail, m.mealkit_thumbnail, m.mealkitcode, m.mealkit_name, m.mealkit_price, c.class_name as class_information_classname
 		from mealkit_store as m join class_information as c
 		on m.class_information_classcode = c.classcode
 		where c.classcode in (select classcode
@@ -12,4 +12,24 @@
 								on c.store_information_storecode = s.storecode
 								where s.dong = #{dong} )
 	</select>
+	
+	<insert id="insertMealkit" parameterType="Mealkit">
+		insert into mealkit_store (class_information_classcode, mealkit_detail, mealkit_thumbnail, mealkit_name, mealkit_price)
+		values (#{class_information_classcode}, #{mealkit_detail}, #{mealkit_thumbnail}, #{mealkit_name}, #{mealkit_price})
+	</insert>
+	
+	<update id="updateMealkit" parameterType="Mealkit">
+		update mealkit_store
+		set mealkit_name = #{mealkit_name},
+		mealkit_price = #{mealkit_price},
+		mealkit_detail = #{mealkit_detail},
+		mealkit_thumbnail = #{mealkit_thumbnail}
+		where mealkitcode = #{mealkitcode}
+	</update>
+	
+	<delete id="deleteMealkit" parameterType="string">
+		delete from mealkit_store
+		where mealkitcode = #{code}
+	</delete>
+	
 </mapper>

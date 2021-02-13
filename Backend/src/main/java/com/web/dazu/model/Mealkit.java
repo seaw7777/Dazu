@@ -2,7 +2,8 @@ package com.web.dazu.model;
 
 public class Mealkit {
 	private int class_information_classcode;
-	private String mealkit_image;
+	private String mealkit_detail;
+	private String mealkit_thumbnail;
 	private int mealkitcode;
 	private String mealkit_name;
 	private int mealkit_price;
@@ -11,11 +12,12 @@ public class Mealkit {
 	
 	public Mealkit() {}
 
-	public Mealkit(int class_information_classcode, String mealkit_image, int mealkitcode, String mealkit_name,
-			int mealkit_price, String class_information_classname) {
+	public Mealkit(int class_information_classcode, String mealkit_detail, String mealkit_thumbnail, int mealkitcode,
+			String mealkit_name, int mealkit_price, String class_information_classname) {
 		super();
 		this.class_information_classcode = class_information_classcode;
-		this.mealkit_image = mealkit_image;
+		this.mealkit_detail = mealkit_detail;
+		this.mealkit_thumbnail = mealkit_thumbnail;
 		this.mealkitcode = mealkitcode;
 		this.mealkit_name = mealkit_name;
 		this.mealkit_price = mealkit_price;
@@ -30,12 +32,20 @@ public class Mealkit {
 		this.class_information_classcode = class_information_classcode;
 	}
 
-	public String getMealkit_image() {
-		return mealkit_image;
+	public String getMealkit_detail() {
+		return mealkit_detail;
 	}
 
-	public void setMealkit_image(String mealkit_image) {
-		this.mealkit_image = mealkit_image;
+	public void setMealkit_detail(String mealkit_detail) {
+		this.mealkit_detail = mealkit_detail;
+	}
+
+	public String getMealkit_thumbnail() {
+		return mealkit_thumbnail;
+	}
+
+	public void setMealkit_thumbnail(String mealkit_thumbnail) {
+		this.mealkit_thumbnail = mealkit_thumbnail;
 	}
 
 	public int getMealkitcode() {
@@ -69,5 +79,6 @@ public class Mealkit {
 	public void setClass_information_classname(String class_information_classname) {
 		this.class_information_classname = class_information_classname;
 	}
-    
+
+	
 }

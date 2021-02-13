@@ -5,8 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +37,35 @@ public class MealkitController {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	@ApiOperation(value = "새로운 밀키트 정보를 등록한다.")
+	@PostMapping("/insert")
+	public void insertMealkit(@RequestBody Mealkit mealkit) {
+		try {
+			service.insertMealkit(mealkit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "밀키트 정보를 수정한다.")
+	@PutMapping("/update")
+	public void updateMealkit(@RequestBody Mealkit mealkit) {
+		try {
+			service.updateMealkit(mealkit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "밀키트 정보를 삭제한다.")
+	@DeleteMapping("/delete/{code}")
+	public void deleteMealkit(@PathVariable String code) {
+		try {
+			service.deleteMealkit(code);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

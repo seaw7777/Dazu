@@ -96,12 +96,20 @@
                   ></v-select>
                 </v-col>
               </v-row>
-              <v-row>
+              <v-row v-show="mealkit_ok == '제공'">
                 <v-col cols="12" sm="6">
                   <v-text-field
-                    label="밀키트 가격"
+                    label="밀키트 가격(원)"
                     hint="ex) 10000원 -> 10000"
                   ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row v-show="mealkit_ok == '제공'">
+                <v-col cols="12" sm="6">
+                  <v-file-input
+                    truncate-length="15"
+                    label="밀키트 썸네일 등록"
+                  ></v-file-input>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
@@ -111,7 +119,6 @@
                 </v-col>
               </v-row>
             </v-container>
-            <small>*indicates required field</small>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
