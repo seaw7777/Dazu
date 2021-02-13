@@ -22,7 +22,6 @@
 
 <script>
 import ClassChoiceCalendar from '@/components//classes/ClassChoiceCalendar.vue';
-import { postKAKAOPAYReady } from '@/api/classes';
 export default {
   data() {
     return {
@@ -40,19 +39,6 @@ export default {
     ClassChoiceCalendar,
   },
   methods: {
-    async onClickKakaoPayAPI() {
-      console.log('클릭페이버튼!!!!!!');
-      const { data } = await postKAKAOPAYReady({
-        item_name: '클래스1',
-        total_amount: 21000,
-        class_information_classcode: '1',
-        class_time_information_class_timecode: '',
-        member_usercode: '2',
-      });
-      console.log(data);
-      window.open(data);
-    },
-
     mealkitCheck() {
       console.log(this.classData.mealkit_ok);
       if (this.classData.mealkit_ok === 'o') {

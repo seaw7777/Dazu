@@ -24,7 +24,9 @@ export default {
     MealkitItem,
   },
   async created() {
-    const { data } = await fetchMealkits('우이동');
+    const dong = this.$store.state.dong;
+    console.log(dong);
+    const { data } = await fetchMealkits(dong);
     this.mealkitItems = data;
   },
 };
