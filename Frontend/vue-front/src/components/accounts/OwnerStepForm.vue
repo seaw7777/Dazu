@@ -179,6 +179,7 @@ export default {
             type: 'application/json',
           }),
         );
+
         const res = await customerInfoAPI({
           accessToken: '',
           address: this.address,
@@ -191,6 +192,7 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
+
         const response = await ownerInfoPost(fd);
 
         console.log(res);
