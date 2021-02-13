@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container" id="map" style="width:900px;height:500px;"></div>
+  <div class="map-container" id="map" style="width: 900px; height: 500px"></div>
 </template>
 
 <script>
@@ -74,7 +74,7 @@ export default {
         removable: iwRemoveable,
       });
 
-      window.kakao.maps.event.addListener(marker, 'click', function() {
+      window.kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.open(map, marker);
       });
     }

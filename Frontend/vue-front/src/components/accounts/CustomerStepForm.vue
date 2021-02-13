@@ -8,18 +8,29 @@
           <div
             ref="searchWindow"
             :style="searchWindow"
-            style="border:1px solid;width:500px;margin:5px 0;position:relative"
+            style="
+              border: 1px solid;
+              width: 500px;
+              margin: 5px 0;
+              position: relative;
+            "
           >
             <img
               src="//t1.daumcdn.net/postcode/resource/images/close.png"
               id="btnFoldWrap"
-              style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+              style="
+                cursor: pointer;
+                position: absolute;
+                right: 0px;
+                top: -1px;
+                z-index: 1;
+              "
               @click="searchWindow.display = 'none'"
               alt="close"
             />
           </div>
           <v-col cols="12">
-            <input type="text" placeholder="우편번호" v-model="postcode"/>
+            <input type="text" placeholder="우편번호" v-model="postcode" />
             <v-btn
               class="ma-2"
               outlined
