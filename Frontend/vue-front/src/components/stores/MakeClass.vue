@@ -153,6 +153,7 @@ export default {
         store_information_store_describe: '',
         store_information_store_name: '',
         store_information_storecode: this.storecode,
+        class_max: this.class_max,
       });
       this.dialog = false;
       this.$router.go(this.$router.currentRoute);

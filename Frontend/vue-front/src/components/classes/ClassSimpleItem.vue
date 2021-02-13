@@ -17,12 +17,7 @@
               :class_name="classSimpleItem.class_name"
             ></Calendars>
             <div v-if="classSimpleItem.mealkit_ok === '제공'">
-              <div v-if="mealkit === ''">
-                <Mealkits :classcode="classSimpleItem.classcode"></Mealkits>
-              </div>
-              <div v-if="mealkit !== ''">
-                <UpdateMealkits :mealkit="mealkit"></UpdateMealkits>
-              </div>
+              <Mealkits :classcode="classSimpleItem.classcode"></Mealkits>
             </div>
           </v-col>
           <v-col cols="6" md="4">
@@ -42,20 +37,12 @@
 import UpdateClass from '@/components/stores/UpdateClass.vue';
 import Calendars from '@/components/stores/Calendars.vue';
 import Mealkits from '@/components/stores/Mealkits.vue';
-import UpdateMealkits from '@/components/stores/UpdateMealkits.vue';
 import { deleteClass } from '@/api/classes';
-import { fetchMealkit } from '@/api/mealkit';
 export default {
-  data() {
-    return {
-      mealkit: {},
-    };
-  },
   components: {
     UpdateClass,
     Calendars,
     Mealkits,
-    UpdateMealkits,
   },
   props: {
     classSimpleItem: {
@@ -68,12 +55,6 @@ export default {
       const id = this.classSimpleItem.classcode;
       await deleteClass(id);
     },
-  },
-  async created() {
-    const id = this.classSimpleItem.classcode;
-    const { data } = await fetchMealkit(id);
-    console.log(JSON.stringify(data));
-    this.mealkit = data;
   },
 };
 </script>

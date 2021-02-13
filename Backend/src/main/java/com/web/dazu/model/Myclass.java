@@ -6,6 +6,9 @@ public class Myclass {
 	private String class_starttime;
 	private String class_endtime;
 	private String class_date;
+	
+	private String class_url;
+	
 	public String getClasscode() {
 		return classcode;
 	}
@@ -38,21 +41,24 @@ public class Myclass {
 	}
 	
 	public Myclass() {}
-	
-	public Myclass(String classcode, String class_name, String class_starttime, String class_endtime,
-			String class_date) {
+	public Myclass(String classcode, String class_name, String class_starttime, String class_endtime, String class_date,
+			String class_url) {
 		super();
 		this.classcode = classcode;
 		this.class_name = class_name;
 		this.class_starttime = class_starttime;
 		this.class_endtime = class_endtime;
 		this.class_date = class_date;
+		this.class_url = class_url;
 	}
-	@Override
-	public String toString() {
-		return "Myclass [classcode=" + classcode + ", class_name=" + class_name + ", class_starttime=" + class_starttime
-				+ ", class_endtime=" + class_endtime + ", class_date=" + class_date + "]";
+	public String getClass_url() {
+		return class_url;
 	}
+	public void setClass_url(String class_url) {
+		this.class_url = class_url;
+	}
+	
+	
 	
 	
 	

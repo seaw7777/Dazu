@@ -33,6 +33,13 @@
                     v-model="describe"
                   ></v-textarea>
                 </v-col>
+                <v-col cols="12">
+                  <v-icon>mdi-file-find</v-icon>
+                  <v-text-field
+                    label="개설된 클래스 URL을 입력해주세요."
+                    v-model="url"
+                  ></v-text-field>
+                </v-col>
                 <v-col cols="12" sm="6">
                   <v-select
                     v-model="startTime"
@@ -138,6 +145,7 @@ export default {
       startTime: this.selectedEvent.startTime,
       endTime: this.selectedEvent.endTime,
       focus: this.selectedEvent.date,
+      url: '',
     };
   },
   methods: {
@@ -151,6 +159,7 @@ export default {
         class_information_classcode: 0,
         class_starttime: this.startTime,
         class_timecode: this.selectedEvent.timecode,
+        class_url: this.url,
       });
       this.dialog = false;
     },

@@ -136,13 +136,14 @@ export default {
   data() {
     return {
       dialog: false,
+      classcode: this.classSimpleItem.classcode,
       class_name: this.classSimpleItem.class_name,
       class_price: this.classSimpleItem.class_price,
       class_time: this.classSimpleItem.class_time,
       class_difficult: this.classSimpleItem.class_difficult,
       food_type: this.classSimpleItem.food_type,
       mealkit_ok: this.classSimpleItem.mealkit_ok,
-      class_max: this.classSimpleItem.class_max,
+      class_max: String(this.classSimpleItem.class_max),
       class_describe: '', // 파일 업로드 완료되면 수정할 부분
     };
   },
