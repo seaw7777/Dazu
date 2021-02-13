@@ -68,4 +68,16 @@ public class MealkitController {
 			e.printStackTrace();
 		}
 	}
+	
+	@ApiOperation(value = "클래스의 밀키트를 읽어온다.", response = Mealkit.class)
+	@GetMapping("/class/{classcode}") 
+	public Mealkit selectMealkit(@PathVariable String classcode) {
+		Mealkit mealkit = new Mealkit();
+		try {
+			mealkit = service.selectMealkit(classcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mealkit;
+	}
 }

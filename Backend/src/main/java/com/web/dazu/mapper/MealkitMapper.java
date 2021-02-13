@@ -17,4 +17,6 @@ public interface MealkitMapper {
 	
 	void deleteMealkit(String code) throws Exception;
 
+	Mealkit selectMealkit(String classcode) throws Exception;
+
 }

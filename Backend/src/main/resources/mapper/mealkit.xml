@@ -32,4 +32,10 @@
 		where mealkitcode = #{code}
 	</delete>
 	
+	<select id="selectMealkit" parameterType="string" resultType="Mealkit">
+		select * 
+		from mealkit_store
+		where class_information_classcode = #{classcode}
+	</select>
+	
 </mapper>

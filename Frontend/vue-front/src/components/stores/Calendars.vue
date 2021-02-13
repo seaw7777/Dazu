@@ -4,7 +4,7 @@
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
           <div class="my-2">
-            <v-btn tile color="success" v-bind="attrs" v-on="on">
+            <v-btn depressed color="success" v-bind="attrs" v-on="on">
               <v-icon left>
                 mdi-calendar-edit
               </v-icon>

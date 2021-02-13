@@ -35,4 +35,9 @@ public class MealkitServiceImpl implements MealkitService {
 		session.getMapper(MealkitMapper.class).deleteMealkit(code);
 	}
 
+	@Override
+	public Mealkit selectMealkit(String classcode) throws Exception {
+		return session.getMapper(MealkitMapper.class).selectMealkit(classcode);
+	}
+
 }
