@@ -32,6 +32,7 @@ export default {
   },
   async created() {
     this.isLoading = true;
+    console.log(this.$store.state.dong);
     const { data } = await fetchClasses(this.$store.state.dong);
     this.isLoading = false;
     console.log('클래스:' + data);

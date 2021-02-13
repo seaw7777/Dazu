@@ -24,7 +24,7 @@
     </v-col>
 
     <div>
-      <div v-if="mealkitchoice == '밀키트o'">
+      <div v-if="mealkitchoice == '밀키트 포함'">
         <v-card class="mx-auto" max-width="300">
           <v-card-text>
             <p class="display-1 text--primary">
@@ -33,7 +33,7 @@
           </v-card-text>
         </v-card>
       </div>
-      <div v-else-if="mealkitchoice === '밀키트만'">
+      <div v-else-if="mealkitchoice === 'Only 밀키트'">
         <v-card class="mx-auto" max-width="300">
           <v-card-text>
             <p class="display-1 text--primary">

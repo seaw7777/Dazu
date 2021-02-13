@@ -34,6 +34,9 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.username !== '';
     },
+    isUserType(state) {
+      return state.usertype === '1';
+    },
   },
   mutations: {
     setUsername(state, username) {

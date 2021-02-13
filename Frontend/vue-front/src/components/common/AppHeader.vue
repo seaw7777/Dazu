@@ -69,7 +69,7 @@ export default {
       return this.$store.getters.isLogin ? '/main' : '/user';
     },
     mypageLink() {
-      return this.$store.state.usertype === '1'
+      return this.$store.getters.isUserType
         ? '/mypage/1/' + this.$store.state.usercode
         : '/mypage/0/' + this.$store.state.usercode;
     },

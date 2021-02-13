@@ -55,10 +55,10 @@ export default {
 
     mealkitCheck() {
       console.log(this.classData.mealkit_ok);
-      if (this.classData.mealkit_ok === 'o') {
-        this.items = ['밀키트o', '밀키트X', '밀키트만'];
+      if (this.classData.mealkit_ok === '제공') {
+        this.items = ['밀키트 포함', '밀키트 미포함', 'Only 밀키트'];
       } else {
-        this.items = ['밀키트o', '밀키트X'];
+        this.items = ['클래스 가격'];
       }
     },
   },

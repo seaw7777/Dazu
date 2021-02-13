@@ -1,5 +1,18 @@
 <template>
   <div>
+    <v-alert
+      :value="alert"
+      color="pink"
+      dark
+      border="top"
+      icon="mdi-home"
+      transition="scale-transition"
+    >
+      수업준비중입니다.
+      <v-btn color="white" outlined @click="alert = !alert">
+        close
+      </v-btn>
+    </v-alert>
     <v-row no-gutters>
       <v-col cols="12">
         <v-simple-table fixed-header height="200px">
@@ -16,7 +29,10 @@
                   시간
                 </th>
                 <th class="text-center">
-                  바로가기
+                  클래스 바로가기
+                </th>
+                <th class="text-center">
+                  수업입장
                 </th>
               </tr>
             </thead>
@@ -33,8 +49,18 @@
                     class="ma-2"
                     color="orange"
                     style="display: flex;"
-                    >바로가기
+                    >클레스 상세
                   </v-btn>
+                </td>
+
+                <td>
+                  <div>
+                    <div class="text-center mb-4">
+                      <v-btn color="primary" @click="gotoClass(item.class_url)">
+                        Toggle
+                      </v-btn>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -52,7 +78,18 @@ export default {
   data() {
     return {
       classDataList: [],
+      alert: false,
     };
+  },
+  methods: {
+    gotoClass(url) {
+      console.log(url);
+      if (url === null) {
+        this.alert = !this.alert;
+      } else {
+        window.open(url);
+      }
+    },
   },
   async created() {
     const userid = this.$store.state.usercode;
