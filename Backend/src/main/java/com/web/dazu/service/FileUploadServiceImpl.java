@@ -23,7 +23,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 			String rootPath = "/home/Image";
 			String filePath = rootPath + "/" + index + "-" + file.get(i).getOriginalFilename();
 			File dest = new File(filePath);
-			file.get(i).transferTo(dest); // 파일 업로드 작업 수행
+//			file.get(i).transferTo(dest); // 파일 업로드 작업 수행
 			sqlSession.getMapper(FileUploadMapper.class).fileupload(filePath);
 		}
 	}
