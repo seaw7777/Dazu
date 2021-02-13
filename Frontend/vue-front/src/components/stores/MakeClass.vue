@@ -96,22 +96,7 @@
                   ></v-select>
                 </v-col>
               </v-row>
-              <v-row>
-                <v-col cols="12" sm="6">
-                  <v-text-field
-                    label="밀키트 가격"
-                    hint="ex) 10000원 -> 10000"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6">
-                  <v-file-input
-                    truncate-length="15"
-                    label="밀키트 상세 설명 등록"
-                  ></v-file-input>
-                </v-col>
-              </v-row>
             </v-container>
-            <small>*indicates required field</small>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
