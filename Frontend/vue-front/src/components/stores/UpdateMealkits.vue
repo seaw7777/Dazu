@@ -23,14 +23,14 @@
                 <v-col cols="12" sm="6">
                   <v-text-field
                     label="밀키트 이름"
-                    v-model="name"
+                    v-model="mealkit.mealkit_name"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-text-field
                     label="밀키트 가격(원)"
                     hint="ex) 10000원 -> 10000"
-                    v-model="price"
+                    v-model="mealkit.mealkit_price"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -39,14 +39,14 @@
                   <v-file-input
                     truncate-length="15"
                     label="밀키트 썸네일 등록"
-                    v-model="thumbnail"
+                    v-model="mealkit.mealkit_thumbnail"
                   ></v-file-input>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
                     truncate-length="15"
                     label="밀키트 상세 설명 등록"
-                    v-model="detail"
+                    v-model="mealkit.mealkit_detail"
                   ></v-file-input>
                 </v-col>
               </v-row>
@@ -72,20 +72,18 @@
 <script>
 import { updateMealkits } from '@/api/mealkit';
 import { deleteMealkits } from '@/api/mealkit';
+import { fetchMealkit } from '@/api/mealkit';
 export default {
   props: {
-    mealkit: {
-      type: Object,
+    classcode: {
+      type: String,
       required: true,
     },
   },
   data() {
     return {
       dialog: false,
-      name: this.mealkit.mealkit_name,
-      price: this.mealkit.mealkit_price,
-      thumbnail: this.mealkit.mealkit_thumbnail,
-      detail: this.mealkit.mealkit_detail,
+      mealkit: '',
     };
   },
   async mounted() {},
@@ -100,10 +98,18 @@ export default {
         mealkit_thumbnail: this.mealkit.mealkit_thumbnail,
         mealkitcode: this.mealkit.mealkitcode,
       });
+      this.dialog = false;
     },
     async clickDeleteMealkit() {
       await deleteMealkits(this.mealkit.mealkitcode);
+      this.dialog = false;
     },
+  },
+  async created() {
+    const id = this.classcode;
+    const { data } = await fetchMealkit(id);
+    console.log(JSON.stringify(data));
+    this.mealkit = data;
   },
 };
 </script>

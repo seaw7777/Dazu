@@ -37,7 +37,7 @@ export default {
     };
   },
   async created() {
-    const id = this.$route.params.storecode;
+    const id = this.$store.state.storecode;
     this.storecode = id;
     const { data } = await fetchStoreClass('1');
     console.log(data);

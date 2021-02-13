@@ -7,12 +7,13 @@ public class ClassTime {
 	private String class_endtime;
 	private String class_date;
 	private int class_information_classcode;
+	private String class_url;
 
 	public ClassTime() {}
 
 
 	public ClassTime(int class_timecode, String class_describe, String class_starttime, String class_endtime,
-			String class_date, int class_information_classcode) {
+			String class_date, int class_information_classcode, String class_url) {
 		super();
 		this.class_timecode = class_timecode;
 		this.class_describe = class_describe;
@@ -20,6 +21,17 @@ public class ClassTime {
 		this.class_endtime = class_endtime;
 		this.class_date = class_date;
 		this.class_information_classcode = class_information_classcode;
+		this.class_url = class_url;
+	}
+
+
+	public String getClass_url() {
+		return class_url;
+	}
+
+
+	public void setClass_url(String class_url) {
+		this.class_url = class_url;
 	}
 
 

@@ -31,7 +31,8 @@
 		update class_time_information
 		set class_describe = #{class_describe},
 		class_starttime = #{class_starttime},
-		class_endtime = #{class_endtime}
+		class_endtime = #{class_endtime},
+		class_url = #{class_url}
 		where class_timecode = #{class_timecode}
 	</update>
 	
