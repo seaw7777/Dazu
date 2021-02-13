@@ -167,10 +167,10 @@ export default {
         mealkit_ok: this.mealkit_ok,
         store_information_store_describe: '',
         store_information_store_name: '',
-        // store_information_storecode: this.storecode,
-        store_information_storecode: '1',
+        store_information_storecode: this.storecode,
       });
       this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };
