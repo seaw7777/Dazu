@@ -17,10 +17,10 @@
               :class_name="classSimpleItem.class_name"
             ></Calendars>
             <div v-if="classSimpleItem.mealkit_ok === '제공'">
-              <div v-if="mealkit.mealkitcode === ''">
+              <div v-if="mealkit === ''">
                 <Mealkits :classcode="classSimpleItem.classcode"></Mealkits>
               </div>
-              <div v-if="mealkit.mealkitcode !== ''">
+              <div v-if="mealkit !== ''">
                 <UpdateMealkits :mealkit="mealkit"></UpdateMealkits>
               </div>
             </div>
@@ -48,9 +48,7 @@ import { fetchMealkit } from '@/api/mealkit';
 export default {
   data() {
     return {
-      mealkit: {
-        mealkitcode: '',
-      },
+      mealkit: {},
     };
   },
   components: {
@@ -74,6 +72,7 @@ export default {
   async created() {
     const id = this.classSimpleItem.classcode;
     const { data } = await fetchMealkit(id);
+    console.log(JSON.stringify(data));
     this.mealkit = data;
   },
 };
