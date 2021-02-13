@@ -90,13 +90,19 @@
           </v-dialog>
         </v-row>
       </div>
+      <div>
+        <v-btn @click="deleteUser">회원탈퇴</v-btn>
+      </div>
     </div>
   </div>
 </template>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+import { deleteUser, logoutUser } from '@/api/auth';
+import { deleteCookie } from '@/utils/cookies';
 import { MypageCustomerInfo, MypageCustomerEditAddress } from '@/api/mypage';
+
 export default {
   props: {
     customerData: {
@@ -193,6 +199,29 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    async deleteUser() {
+      const response = await deleteUser(
+        this.$store.state.usercode,
+        this.$store.state.token,
+      );
+      console.log(response);
+      this.token = this.$store.state.token;
+      console.log(this.token);
+      await logoutUser(this.token);
+      this.$store.commit('clearUsername');
+      this.$store.commit('clearToken');
+      this.$store.commit('clearUserimg');
+      this.$store.commit('clearUserCode');
+      this.$store.commit('clearUserType');
+      this.$store.commit('clearStoreCode');
+      deleteCookie('til_auth');
+      deleteCookie('til_user');
+      deleteCookie('til_img');
+      deleteCookie('til_usercode');
+      deleteCookie('til_usertype');
+      deleteCookie('til_storecode');
+      this.$router.push('/user');
     },
   },
   async created() {

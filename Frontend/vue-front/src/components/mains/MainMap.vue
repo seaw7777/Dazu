@@ -12,6 +12,7 @@ export default {
     return {};
   },
   async created() {
+    this.$forceUpdate();
     this.isLoading = true;
     const houseData = await customerGetInfoAPI(this.$store.state.usercode);
     const storeData = await fetchStore(this.$store.state.dong);

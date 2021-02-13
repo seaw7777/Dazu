@@ -19,11 +19,16 @@
       <v-btn depressed color="error" @click="gotoStoreEdit">
         나의 가게 바로가기
       </v-btn>
+      <div>
+        <v-btn @click="deleteUser">회원탈퇴</v-btn>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { deleteUser, logoutUser } from '@/api/auth';
+import { deleteCookie } from '@/utils/cookies';
 import { MypageOwnerInfo } from '@/api/mypage';
 
 export default {
@@ -46,6 +51,29 @@ export default {
   methods: {
     gotoStoreEdit() {
       this.$router.push(`/mystore/${this.$store.state.usercode}`);
+    },
+    async deleteUser() {
+      const response = await deleteUser(
+        this.$store.state.usercode,
+        this.$store.state.token,
+      );
+      console.log(response);
+      this.token = this.$store.state.token;
+      console.log(this.token);
+      await logoutUser(this.token);
+      this.$store.commit('clearUsername');
+      this.$store.commit('clearToken');
+      this.$store.commit('clearUserimg');
+      this.$store.commit('clearUserCode');
+      this.$store.commit('clearUserType');
+      this.$store.commit('clearStoreCode');
+      deleteCookie('til_auth');
+      deleteCookie('til_user');
+      deleteCookie('til_img');
+      deleteCookie('til_usercode');
+      deleteCookie('til_usertype');
+      deleteCookie('til_storecode');
+      this.$router.push('/user');
     },
   },
   async created() {

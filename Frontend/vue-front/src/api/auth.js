@@ -4,6 +4,10 @@ import { instance } from './index';
 function logoutUser(accessToken) {
   return instance.get(`logout/${accessToken}`);
 }
+// 회원탈퇴 API
+function deleteUser(id, accessToken) {
+  return instance.delete(`member/deleteMember/${id}/${accessToken}`);
+}
 // 고객님 추가 정보 보내기 API
 function customerInfoAPI(customerInfo) {
   return instance.post('member/insertMember', customerInfo);
@@ -24,8 +28,10 @@ function ownerInfoPost(ownerInfo) {
     },
   });
 }
+
 export {
   logoutUser,
+  deleteUser,
   customerInfoAPI,
   customerGetInfoAPI,
   customerUpcomingClass,
