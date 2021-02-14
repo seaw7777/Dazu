@@ -2,7 +2,9 @@
   <div>
     <v-card width="600px">
       <v-card-title>가게 상세 설명</v-card-title>
-      <v-card-text><v-img src="https://i4d104.p.ssafy.io/image/store-2.jpg"></v-card-text>
+      <v-card-text
+        ><v-img src="https://i4d104.p.ssafy.io/image/store-2.jpg"
+      /></v-card-text>
       <v-row justify="center">
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
