@@ -3,7 +3,7 @@
     <v-card width="600px">
       <v-card-title>가게 상세 설명</v-card-title>
       <v-card-text
-        ><v-img src="https://i4d104.p.ssafy.io/dazu/image/store-2.jpg"
+        ><v-img src="https://i4d104.p.ssafy.io/dazu/file/image/store-2.jpg"
       /></v-card-text>
       <v-row justify="center">
         <v-dialog v-model="dialog" persistent max-width="290">
