@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-container">
-    <h4>STEP1. 강좌유형 선택</h4>
+  <div class="checkout__order">
+    <h6 class="order__title">STEP1. 강좌유형 선택</h6>
     <v-select
       @click="mealkitCheck"
       :items="items"
@@ -9,8 +9,7 @@
       solo
       v-model="mealkitchoice"
     ></v-select>
-
-    <h4>STEP2. 클래스 날짜 선택</h4>
+    <h6 class="order__title">STEP2. 클래스 날짜 선택</h6>
     <div class="calendar-container">
       <ClassChoiceCalendar
         :mealkitchoice="mealkitchoice"

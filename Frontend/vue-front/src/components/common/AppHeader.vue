@@ -25,9 +25,9 @@
                   </ul>
                 </div>
                 <div class="header__logo">
-                  <a href="#" @click="$router.push('/main')"
+                  <router-link :to="'/main'" tag="a"
                     ><img src="img/logo.png" alt=""
-                  /></a>
+                  /></router-link>
                 </div>
                 <div class="header__top__right">
                   <div class="header__top__right__links">
@@ -49,20 +49,24 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
-                <li class="active">
-                  <a href="#" @click="$router.push('/main')">Home</a>
+                <li>
+                  <router-link :to="'/main'" tag="a">Home</router-link>
                 </li>
                 <li>
-                  <a href="#" @click="$router.push('/class/list')">클래스</a>
+                  <router-link :to="'/class/list'" tag="a">클래스</router-link>
                 </li>
                 <li>
-                  <a href="#" @click="$router.push('/mealkit/list')">스토어</a>
+                  <router-link :to="'/mealkit/list'" tag="a"
+                    >스토어</router-link
+                  >
                 </li>
                 <li>
-                  <a href="#" @click="$router.push('/community')">커뮤니티</a>
+                  <router-link :to="'/community'" tag="a">커뮤니티</router-link>
                 </li>
                 <li>
-                  <a href="#" @click="$router.push('/notice/list')">공지사항</a>
+                  <router-link :to="'/notice/list'" tag="a"
+                    >공지사항</router-link
+                  >
                 </li>
               </ul>
             </nav>
@@ -122,4 +126,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped src="@/assets/css/nice-select.css"></style>

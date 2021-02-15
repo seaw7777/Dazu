@@ -23,7 +23,7 @@ const router = new VueRouter({
       path: '/user/customerstep',
       component: () => import('@/views/accounts/CustomerStepPage.vue'),
     },
-    { path: '/main', component: () => import('@/views/MainPage.vue') },
+    { path: '/main', component: () => import('@/views/mains/MainPage.vue') },
     {
       path: '/class/list',
       component: () => import('@/views/classes/ClassListPage.vue'),

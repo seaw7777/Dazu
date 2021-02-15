@@ -10,7 +10,7 @@
       <h6>
         <a href="#">{{ classItem.class_name }}</a>
       </h6>
-      <div class="product__item__price">{{ classItem.class_price }}원</div>
+      <div class="product__item__price">₩ {{ classItem.class_price }}</div>
       <div class="cart_add">
         <a href="#" @click="classclick">Go to Class</a>
       </div>

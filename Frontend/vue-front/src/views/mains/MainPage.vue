@@ -2,31 +2,37 @@
   <div>
     <ComingClass></ComingClass>
 
-    <v-card>
+    <v-card elevation="0">
       <v-tabs v-model="tab" centered icons-and-text>
         <v-tab v-for="item in items" :key="item.tab">
           {{ item.tab }}
           <v-icon>{{ item.icon }}</v-icon>
         </v-tab>
       </v-tabs>
-
-      <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in items" :key="item.tab">
-          <v-card flat v-if="item.tab === '지도'">
-            <v-card-text class="card-container"
-              ><MainMap></MainMap
-            ></v-card-text>
-          </v-card>
-          <v-card flat v-else-if="item.tab === '목록'">
-            <v-card-text class="card-container"
-              ><MainClassList></MainClassList>
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
+      <section class="testimonial spad">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="section-title">
+                <h2>Our Neighborhood</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <v-tabs-items v-model="tab">
+              <v-tab-item v-for="item in items" :key="item.tab">
+                <div flat v-if="item.tab === '지도'">
+                  <MainMap></MainMap>
+                </div>
+                <div flat v-else-if="item.tab === '목록'">
+                  <MainClassList></MainClassList>
+                </div>
+              </v-tab-item>
+            </v-tabs-items>
+          </div>
+        </div>
+      </section>
     </v-card>
-
-    <div class="map-container" id="map" style="width:900px;height:500px;"></div>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-sheet class="mx-auto" elevation="8" max-width="800">
+    <v-sheet class="mx-auto" elevation="0" max-width="800">
       <v-slide-group
         v-model="model"
         class="pa-4"
@@ -12,6 +12,7 @@
           :key="comingItem.classcode"
         >
           <v-card
+            elevation="0"
             :color="active ? undefined : 'grey lighten-1'"
             class="ma-4"
             @click="classclick(comingItem.classcode)"
