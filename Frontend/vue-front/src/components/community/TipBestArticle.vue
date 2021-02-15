@@ -15,7 +15,10 @@
           <v-row v-for="n in 5" :key="n">
             <v-col v-for="k in 2" :key="k">
               <div v-if="k === 1">
-                <p @click="titleClick(bestTipList[n - 1].board_code)">
+                <p
+                  font-size="1.5rem"
+                  @click="titleClick(bestTipList[n - 1].board_code)"
+                >
                   {{ n }} {{ bestTipList[n - 1].board_title }}
                 </p>
               </div>
@@ -68,4 +71,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+p {
+  font-size: 1.5rem;
+}
+</style>
