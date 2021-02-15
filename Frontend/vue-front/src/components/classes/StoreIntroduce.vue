@@ -20,7 +20,7 @@ export default {
     const id = this.$route.params.id;
     // console.log(id);
     const { data } = await fetchClass(id);
-    console.log('클래스 소개 mounted:  ' + data.store_information_storecode);
+    console.log('가게 소개 mounted:  ' + data.store_information_storecode);
     this.storecode = data.store_information_storecode;
     this.imgsrc =
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
