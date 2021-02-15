@@ -13,7 +13,10 @@
       </div>
     </div>
     <!-- Breadcrumb End -->
-
+    <v-tabs class="tabs">
+      <v-tab class="tab1" @click="clickTip">꿀팁 공유</v-tab>
+      <v-tab class="tab2" @click="clickFamousStore">맛집 정보</v-tab>
+    </v-tabs>
     <!-- <h3>BEST 게시글</h3> -->
     <div v-if="tab === true">
       <TipBestArticle></TipBestArticle>
@@ -21,16 +24,14 @@
     <div v-else>
       <FamousStoreBestArticle></FamousStoreBestArticle>
     </div>
-    <v-tabs>
-      <v-tab class="tab1" @click="clickTip">꿀팁 공유</v-tab>
-      <v-tab class="tab2" @click="clickFamousStore">맛집 정보</v-tab>
-    </v-tabs>
-    <div>
-      <div v-if="tab === true">
-        <TipList></TipList>
-      </div>
-      <div v-else>
-        <FamousStoreList></FamousStoreList>
+    <div class="tab-container">
+      <div class="tab">
+        <div v-if="tab === true">
+          <TipList></TipList>
+        </div>
+        <div v-else>
+          <FamousStoreList></FamousStoreList>
+        </div>
       </div>
     </div>
   </div>
