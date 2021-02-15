@@ -1,7 +1,7 @@
 <template>
   <div class="product__item" @click="classclick">
     <div class="product__item__pic set-bg" data-setbg="pic">
-      <img :src="pic" />
+      <img class="food-img" :src="pic" />
       <div class="product__label">
         <span>{{ classItem.food_type }}</span>
       </div>
@@ -75,4 +75,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.product__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product__item__pic {
+  display: flex;
+  flex-shrink: 0;
+}
+</style>

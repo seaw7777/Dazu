@@ -44,4 +44,10 @@ export default {
   },
 };
 </script>
-<style scope></style>
+<style scope>
+.container {
+  padding: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
