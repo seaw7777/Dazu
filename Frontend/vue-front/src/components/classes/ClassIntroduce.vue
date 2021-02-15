@@ -24,7 +24,7 @@ export default {
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
       this.classcode +
       '_class_intro';
-    console.log(imgsrc);
+    console.log(this.imgsrc);
   },
 };
 </script>
