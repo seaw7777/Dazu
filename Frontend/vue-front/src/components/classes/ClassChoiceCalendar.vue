@@ -50,7 +50,11 @@
         </v-card>
       </div>
       <div>
-        <v-btn class="submit" elevation="2" @click="submitTime">신청하기</v-btn>
+        <img
+          class="kakao_btn"
+          src="@/assets/kakaopay.png"
+          @click="onClickKakaoPayAPI"
+        />
       </div>
     </div>
   </div>
@@ -59,6 +63,7 @@
 <script>
 import { fetchClassTime, postClassTime } from '@/api/classes';
 // postClassTime
+import { postKAKAOPAYReady } from '@/api/classes';
 
 export default {
   props: {
@@ -104,6 +109,28 @@ export default {
     },
   },
   methods: {
+    async onClickKakaoPayAPI() {
+      console.log('클릭페이버튼!!!!!!');
+      const id = this.$store.state.usercode;
+      console.log(
+        this.classData.class_name +
+          ' ' +
+          this.classData.class_price +
+          ' ' +
+          this.classData.classcode +
+          ' ' +
+          id,
+      );
+      const { data } = await postKAKAOPAYReady({
+        item_name: this.classData.class_name,
+        total_amount: this.classData.class_price,
+        class_information_classcode: this.classData.classcode,
+        class_time_information_class_timecode: this.timecode.slice(0, 2),
+        member_usercode: id,
+      });
+      console.log(data);
+      window.open(data);
+    },
     async submitTime() {
       const Tcode = this.timecode.slice(0, 2);
       console.log(Tcode);

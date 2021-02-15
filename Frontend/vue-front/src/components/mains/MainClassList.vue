@@ -1,6 +1,19 @@
 <template>
   <div>
-    <v-row no-gutters>
+    <section class="shop spad">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-lg-3 col-md-6 col-sm-6"
+            v-for="classItem in classItems"
+            :key="classItem.classcode"
+          >
+            <ClassItem :classItem="classItem"></ClassItem>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <v-row no-gutters>
       <v-col
         v-for="classItem in classItems"
         :key="classItem.classcode"
@@ -8,7 +21,7 @@
         sm="4"
       >
         <ClassItem :classItem="classItem"></ClassItem></v-col
-    ></v-row>
+    ></v-row> -->
   </div>
 </template>
 <script>

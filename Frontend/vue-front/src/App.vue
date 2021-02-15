@@ -1,10 +1,10 @@
 <template>
   <!-- <div id="app"> -->
   <v-app id="app">
-    <div v-if="isUserLogin" class="mb-10">
+    <div v-if="isUserLogin">
       <AppHeader></AppHeader>
     </div>
-    <div class="mt-16"><router-view></router-view></div>
+    <router-view></router-view>
   </v-app>
 </template>
 

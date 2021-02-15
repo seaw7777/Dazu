@@ -1,5 +1,7 @@
 <template>
   <div>
+    <TipCreate></TipCreate>
+
     <v-data-table
       :headers="headers"
       :items="tipList"
@@ -10,16 +12,25 @@
       style="width: 60%"
     >
       <template v-slot:top>
-        <v-row>
+        <!-- <v-row>
           <v-col cols="12" sm="6">
             <v-text-field
               v-model="search"
               label="키워드를 검색해주세요."
               class="mx-4"
             ></v-text-field>
-          </v-col>
-          <TipCreate></TipCreate>
-        </v-row>
+          </v-col> -->
+        <v-text-field
+          v-model="search"
+          label="키워드를 검색해주세요."
+          class="mx-4"
+        ></v-text-field>
+        <!-- </v-row> -->
+        <tr class="blog__details__comment__item">
+          <td class="blog__details__comment__item__pic"></td>
+          <td class="blog__details__comment__item__text"></td>
+          <td></td>
+        </tr>
       </template>
     </v-data-table>
   </div>

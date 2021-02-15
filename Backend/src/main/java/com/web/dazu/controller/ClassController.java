@@ -208,15 +208,19 @@ public class ClassController {
 		}
 	}
 	
-	private static ClassRoom cr = new ClassRoom();
-	
+
 	@ApiOperation(value = "KAKAO PAY API 결제 준비(사용자)")
 	@PostMapping("/kakao/ready") 
 	public String KakaoReady(@RequestBody ClassRoom room) {
-		cr = room;
+
 		String url = null;
 		try {
 			url = service.KakaoReady(room);
+			try {
+				service.insertClassRoom(room);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -233,16 +237,6 @@ public class ClassController {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
-		if(account.getAid() != null) {
-			try {
-				service.insertClassRoom(cr);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		cr = null;
 
 	}
 }

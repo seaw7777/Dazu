@@ -102,7 +102,7 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public String KakaoReady(ClassRoom room) throws Exception {
 		
-		System.out.println("클래스코드: " + room.getClass_information_classcode()+ " 클래스 이름: "+ room.getItem_name());
+		System.out.println("클래스코드: " + room.getClass_information_classcode()+ " 클래스 이름: "+ room.getItem_name() + " 클래스 시간 : " + room.getClass_time_information_class_timecode());
 		
 		cr = room;
 		URL url = new URL("https://kapi.kakao.com");

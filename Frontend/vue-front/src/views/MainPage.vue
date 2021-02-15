@@ -1,15 +1,9 @@
 <template>
   <div>
-    <div><ComingClass></ComingClass></div>
+    <ComingClass></ComingClass>
 
     <v-card>
-      <v-tabs
-        v-model="tab"
-        background-color="deep-purple accent-4"
-        centered
-        dark
-        icons-and-text
-      >
+      <v-tabs v-model="tab" centered icons-and-text>
         <v-tab v-for="item in items" :key="item.tab">
           {{ item.tab }}
           <v-icon>{{ item.icon }}</v-icon>

@@ -1,5 +1,7 @@
 <template>
-  <div class="map-container" id="map" style="width: 900px; height: 500px"></div>
+  <div class="container">
+    <div class="map-container" id="map" style="width:900px;height:500px;"></div>
+  </div>
 </template>
 
 <script>
@@ -65,6 +67,7 @@ export default {
       for (let index = 0; index < storeClass.data.length; index++) {
         const id = storeClass.data[index].classcode;
         element += '<br>';
+        // element += `<a href="http://localhost:8080/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
         element += `<a href="https://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
       }
       element += '</div>';

@@ -1,6 +1,86 @@
 <template>
   <div>
-    <div class="flex-container">
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>Class detail</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="product-details spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-6">
+            <ClassShortDetail :classData="classdata"></ClassShortDetail>
+
+            <div class="product__details__tab">
+              <div class="col-lg-12">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item" v-for="item in items" :key="item.tab">
+                    <a
+                      class="nav-link"
+                      data-toggle="tab"
+                      :href="'#' + item.tab"
+                      role="tab"
+                      >{{ item.tab }}</a
+                    >
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="클래스" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <ClassIntroduce></ClassIntroduce>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="가게" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <StoreIntroduce></StoreIntroduce>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="밀키트" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <MealkitInfo></MealkitInfo>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="후기" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <ClassReviewList
+                          :classdata="classdata"
+                        ></ClassReviewList>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="질문" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <ClassQnA></ClassQnA>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="flex-container">
       <div>
         <aside class="secondary secondary-a class-info">
           <ClassShortDetail :classData="classdata"></ClassShortDetail>
@@ -53,7 +133,7 @@
       <aside class="secondary secondary-b">
         <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
       </aside>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -66,16 +146,17 @@ import ClassReviewList from '@/components/classes/ClassReviewList.vue';
 import ClassQnA from '@/components/classes/ClassQnA.vue';
 import ClassChoiceForm from '@/components/classes/ClassChoiceForm.vue';
 import { fetchClass } from '@/api/classes';
+
 export default {
   data() {
     return {
       tab: null,
       items: [
-        { tab: '클래스 소개' },
-        { tab: '가게소개' },
-        { tab: '밀키트 정보' },
+        { tab: '클래스' },
+        { tab: '가게' },
+        { tab: '밀키트' },
         { tab: '후기' },
-        { tab: 'Q&A' },
+        { tab: '질문' },
       ],
       classdata: {},
     };
