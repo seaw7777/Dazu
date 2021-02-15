@@ -23,7 +23,7 @@ export default {
     this.imgsrc =
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
       this.classcode +
-      '_class_intro.jpg';
+      '_class_intro';
   },
 };
 </script>

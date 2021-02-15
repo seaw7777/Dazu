@@ -25,7 +25,7 @@ export default {
     this.imgsrc =
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
       this.storecode +
-      '_store_intro.jpg';
+      '_store_intro';
   },
 };
 </script>

@@ -55,9 +55,7 @@ export default {
   created() {
     this.id = this.storeData.storecode;
     this.imgsrc =
-      'https://i4d104.p.ssafy.io/dazu/file/image/' +
-      this.id +
-      '_store_intro.jpg';
+      'https://i4d104.p.ssafy.io/dazu/file/image/' + this.id + '_store_intro';
   },
   computed: {},
   methods: {
