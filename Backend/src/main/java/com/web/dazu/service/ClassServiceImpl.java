@@ -87,8 +87,8 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public void insertClass(List<MultipartFile> file, Class c) throws Exception {
-		fileuploadservice.classfileup(file, c.getClasscode());
 		session.getMapper(ClassMapper.class).insertClass(c);
+		fileuploadservice.classfileup(file, session.getMapper(ClassMapper.class).getclasscode(c));
 	}
 
 	@Override

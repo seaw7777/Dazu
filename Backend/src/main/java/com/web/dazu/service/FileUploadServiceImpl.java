@@ -40,7 +40,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 		String[] str = new String[2];
 		str[0] = "Thumbnail";
 		str[1] = "intro";
-
+		System.out.println("인덱스 확인 : "+index);
 		for (int i = 0; i < file.size(); i++) {
 			String rootPath = "/home/Image";
 			String filePath = rootPath + "/" + Integer.toString(index) + "_" + "class" + "_" + str[i];

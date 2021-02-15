@@ -46,4 +46,6 @@ public interface ClassMapper {
 
 	void deleteClassTime(String timecode) throws Exception;
 
+	int getclasscode(Class c) throws Exception;
+
 }

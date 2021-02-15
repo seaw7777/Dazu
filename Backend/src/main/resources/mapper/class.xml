@@ -98,4 +98,9 @@
 		values(#{class_time_information_class_timecode}, #{member_usercode}, #{class_information_classcode})
 	</insert>
 	
+	<select id="getclasscode" parameterType="Class" resultType="int">
+		select classcode 
+		from class_information
+		where class_name = #{class_name} and store_information_storecode = #{store_information_storecode}
+	</select>
 </mapper>
