@@ -22,4 +22,6 @@ public interface StoreMapper {
 
 	void updateStoreAddress(Store store) throws Exception;
 
+	int getstorecode(Store store) throws Exception;
+
 }

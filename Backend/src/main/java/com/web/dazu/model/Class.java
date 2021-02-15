@@ -40,14 +40,8 @@ public class Class {
 	}
 
 
-<<<<<<< HEAD
+
 	public int getClasscode() {
-=======
-
-
-
-	public String getClasscode() {
->>>>>>> feature/he_css_template
 		return classcode;
 	}
 
