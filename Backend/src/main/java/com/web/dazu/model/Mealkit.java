@@ -7,14 +7,12 @@ public class Mealkit {
 	private int mealkitcode;
 	private String mealkit_name;
 	private int mealkit_price;
-	
 	private String class_information_classname;
 	
 	public Mealkit() {}
 
 	public Mealkit(int class_information_classcode, String mealkit_detail, String mealkit_thumbnail, int mealkitcode,
 			String mealkit_name, int mealkit_price, String class_information_classname) {
-		super();
 		this.class_information_classcode = class_information_classcode;
 		this.mealkit_detail = mealkit_detail;
 		this.mealkit_thumbnail = mealkit_thumbnail;

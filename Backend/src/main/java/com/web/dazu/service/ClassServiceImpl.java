@@ -14,6 +14,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.dazu.mapper.ClassMapper;
 import com.web.dazu.model.Class;
@@ -29,7 +30,10 @@ public class ClassServiceImpl implements ClassService {
 	
 	@Autowired
 	private SqlSession session;
-
+	
+	@Autowired
+	private FileUploadService fileuploadservice;
+	
 	@Override
 	public List<Class> selectAllClass(String dong) throws Exception {
 		return session.getMapper(ClassMapper.class).selectAllClass(dong);
@@ -82,7 +86,8 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public void insertClass(Class c) throws Exception {
+	public void insertClass(List<MultipartFile> file, Class c) throws Exception {
+		fileuploadservice.classfileup(file, c.getClasscode());
 		session.getMapper(ClassMapper.class).insertClass(c);
 	}
 
@@ -92,7 +97,8 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public void updateClass(Class c) throws Exception {
+	public void updateClass(List<MultipartFile> file, Class c) throws Exception {
+		fileuploadservice.classfileup(file, c.getClasscode());
 		session.getMapper(ClassMapper.class).updateClass(c);
 	}
 

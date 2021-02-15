@@ -154,8 +154,8 @@ export default {
       dialog: false,
       mealkit_ok: '',
       name: '',
-      thumbnail: '',
-      detail: '',
+      thumbnail: null,
+      detail: null,
       price: '',
       mealkit: '',
     };
@@ -163,15 +163,23 @@ export default {
   async mounted() {},
   methods: {
     async clickUpdateMealkit() {
-      await updateMealkits({
-        class_information_classcode: '',
+      var fd = new FormData();
+      fd.append('files', this.mealkit_thumbnail);
+      fd.append('files', this.mealkit_detail);
+      var datadummy = {
+        class_information_classcode: this.classcode,
         class_information_classname: '',
-        mealkit_detail: this.mealkit.mealkit_detail,
-        mealkit_name: this.mealkit.mealkit_name,
-        mealkit_price: this.mealkit.mealkit_price,
-        mealkit_thumbnail: this.mealkit.mealkit_thumbnail,
-        mealkitcode: this.mealkit.mealkitcode,
-      });
+        mealkit_name: this.name,
+        mealkit_price: this.price,
+        mealkitcode: '',
+      };
+      fd.append(
+        'key',
+        new Blob([JSON.stringify(datadummy)], {
+          type: 'application/json',
+        }),
+      );
+      await updateMealkits(fd);
       this.dialog = false;
     },
     async clickDeleteMealkit() {
@@ -180,15 +188,23 @@ export default {
     },
     async clickInsertMealkit() {
       console.log(this.classcode);
-      await postMealkits({
+      var fd = new FormData();
+      fd.append('files', this.mealkit_thumbnail);
+      fd.append('files', this.mealkit_detail);
+      var datadummy = {
         class_information_classcode: this.classcode,
         class_information_classname: '',
-        mealkit_detail: this.detail,
         mealkit_name: this.name,
         mealkit_price: this.price,
-        mealkit_thumbnail: this.thumbnail,
         mealkitcode: '',
-      });
+      };
+      fd.append(
+        'key',
+        new Blob([JSON.stringify(datadummy)], {
+          type: 'application/json',
+        }),
+      );
+      await postMealkits(fd);
       this.dialog = false;
     },
   },

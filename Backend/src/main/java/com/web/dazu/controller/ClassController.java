@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassQnA;
@@ -65,9 +67,10 @@ public class ClassController {
 	
 	@ApiOperation(value = "새로운 클래스를 등록한다.(사장님)")
 	@PostMapping("/ceo/insert")
-	public void insertClass(@RequestBody Class c) {
+	public void insertClass(@RequestPart(value = "files", required = true) List<MultipartFile> file,
+			@RequestPart(value = "key", required = false) Class c) {
 		try {
-			service.insertClass(c);
+			service.insertClass(file,c);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -85,9 +88,10 @@ public class ClassController {
 	
 	@ApiOperation(value = "특정 클래스 정보를 수정한다.(사장님)")
 	@PutMapping("/ceo/update")
-	public void updateClass(@RequestBody Class c) {
+	public void updateClass(@RequestPart(value = "files", required = true) List<MultipartFile> file,
+			@RequestPart(value = "key", required = false) Class c) {
 		try {
-			service.updateClass(c);
+			service.updateClass(file,c);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

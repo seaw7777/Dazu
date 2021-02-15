@@ -2,9 +2,7 @@
   <div>
     <v-card width="600px">
       <v-card-title>가게 상세 설명</v-card-title>
-      <v-card-text
-        ><v-img src="https://i4d104.p.ssafy.io/dazu/file/image/store-2.jpg"
-      /></v-card-text>
+      <v-card-text><v-img :src="imgsrc"/></v-card-text>
       <v-row justify="center">
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
@@ -18,13 +16,14 @@
             </v-card-title>
             <v-card-text
               ><v-file-input
+                v-model="selectfile"
                 truncate-length="15"
                 label="새로운 가게 상세 설명"
               ></v-file-input
             ></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="green darken-1" text @click="dialog = false">
+              <v-btn color="green darken-1" text @click="putStoreDetail()">
                 SAVE
               </v-btn>
               <v-btn color="green darken-1" text @click="dialog = false">
@@ -39,12 +38,41 @@
 </template>
 
 <script>
+import { updateStoreDetail } from '@/api/store';
 export default {
   data() {
     return {
+      selectfile: null,
       dialog: false,
       message1: '기존값연결',
+      imgsrc: '',
+      id: Number,
     };
+  },
+  props: {
+    storeData: Object,
+  },
+  created() {
+    this.id = this.storeData.storecode;
+    this.imgsrc =
+      'https://i4d104.p.ssafy.io/dazu/file/image/' +
+      this.id +
+      '_store_intro.jpg';
+  },
+  computed: {},
+  methods: {
+    changeDialog() {
+      this.dialog = false;
+    },
+    async putStoreDetail() {
+      this.id = this.storeData.storecode;
+      var fd = new FormData();
+      fd.append('file', this.selectfile);
+      fd.append('key', this.id);
+      await updateStoreDetail(fd);
+      this.changeDialog();
+      this.$router.go(this.$router.currentRoute);
+    },
   },
 };
 </script>

@@ -40,7 +40,7 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void insertStore(List<MultipartFile> file,Store store) throws Exception {
 		System.out.println("서비스 진입");
-		fileuploadservice.fileup(file, "store");
+		fileuploadservice.storefileup(file, store.getStorecode());
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
 	    String jsonString = null;

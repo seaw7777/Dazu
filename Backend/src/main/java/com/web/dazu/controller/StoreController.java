@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.web.dazu.model.Store;
+import com.web.dazu.service.FileUploadService;
 import com.web.dazu.service.StoreService;
 
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,8 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService service;
-	
+	@Autowired
+	private FileUploadService fileuploadservice;
 	@ApiOperation(value = "현재 로그인된 회원의 행정동에 위치하는 모든 가게 정보를 불러온다.", response = List.class)
 	@GetMapping("list/{dong}")
 	public ResponseEntity<List<Store>> selectAllStore(@PathVariable String dong) {
@@ -47,8 +49,6 @@ public class StoreController {
 	
 	@ApiOperation(value = "사장님 계정으로 회원가입할 때, 새로운 가게 정보를 등록한다.")
 	@PostMapping("/insert")
-//	public void insertStore(@RequestBody Store store) {
-	//@RequestPart(value = "file", required = true) MultipartFile file,
 	public void insertStore(@RequestPart(value = "files", required = true) List<MultipartFile> file,
 			@RequestPart(value = "key", required = true) Store store) {
 		System.out.println("스토어 진입");
@@ -89,6 +89,18 @@ public class StoreController {
 		System.out.println(store.getStorecode());
 		try {
 			service.updateStoreAddress(store);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value = "가게 상세정보를 변경한다.")
+	@PutMapping("/update/detail")
+	public void updateStoreDetail(@RequestPart(value = "file", required = true) MultipartFile file,
+			@RequestPart(value = "key", required = false) Store store) {
+		try {
+			service.updateStoreAddress(store);
+			fileuploadservice.updateStoreDetail(store.getStorecode(),file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <!-- <v-img
-      lazy-src="require(@/assets/page.jpg)"
-      src="@/assets/page.jpg"
-    ></v-img> -->
-    클래스 코드 {{ classcode }}
+    <v-img src="@/assets/page.jpg"></v-img>
   </div>
 </template>
 

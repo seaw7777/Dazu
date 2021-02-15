@@ -13,7 +13,7 @@
         <StoreAdress :storeData="storeData"></StoreAdress>
       </v-row>
       <v-row>
-        <StoreDetail></StoreDetail>
+        <StoreDetail :storeData="storeData">></StoreDetail>
       </v-row>
     </v-container>
   </div>

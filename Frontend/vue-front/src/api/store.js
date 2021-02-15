@@ -13,5 +13,17 @@ function updateStoreName(newName) {
 function updateStoreAddress(newAddress) {
   return instance.put('store/update/address', newAddress);
 }
-
-export { fetchStore, updateStoreName, updateStoreAddress, fetchStoreClassInfo };
+function updateStoreDetail(newDetail) {
+  return instance.put('store/update/detail', newDetail, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
+export {
+  fetchStore,
+  updateStoreName,
+  updateStoreAddress,
+  updateStoreDetail,
+  fetchStoreClassInfo,
+};
