@@ -53,7 +53,11 @@ function updateClass(data) {
 }
 // 새로운 클래스를 등록한다.
 function postClass(data) {
-  return instance.post('class/ceo/insert', data);
+  return instance.post('class/ceo/insert', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 // 새로운 클래스 일정을 등록한다.
 function postClassTime(data) {

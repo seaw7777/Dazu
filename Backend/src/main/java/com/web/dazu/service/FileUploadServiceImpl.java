@@ -16,18 +16,16 @@ public class FileUploadServiceImpl implements FileUploadService {
 	private SqlSession sqlSession;
 
 	@Override
-	public void fileup(List<MultipartFile> file, String index) throws Exception {
+	public void storefileup(List<MultipartFile> file, int index) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("파일 업로드 서비스 진입 : " + file +" , " + index);
 		for (int i = 0; i < file.size(); i++) {
 			String rootPath = "/home/Image";
-			String filePath = rootPath + "/" + index + "-" + file.get(i).getOriginalFilename();
+			String filePath = rootPath + "/" + Integer.toString(index) + "_" + "store" + "_" + "intro";
 			File dest = new File(filePath);
 			File sample = new File(rootPath);
 			if (!sample.exists()) {
 				try {
 					sample.mkdir();
-					
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -36,4 +34,47 @@ public class FileUploadServiceImpl implements FileUploadService {
 			sqlSession.getMapper(FileUploadMapper.class).fileupload(filePath);
 		}
 	}
+
+	@Override
+	public void classfileup(List<MultipartFile> file, String index) throws Exception {
+		String[] str = new String[2];
+		str[0] = "Thumbnail";
+		str[1] = "intro";
+
+		for (int i = 0; i < file.size(); i++) {
+			String rootPath = "/home/Image";
+			String filePath = rootPath + "/" + index + "_" + "class" + "_" + str[i];
+			File dest = new File(filePath);
+			File sample = new File(rootPath);
+			if (!sample.exists()) {
+				try {
+					sample.mkdir();
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+			file.get(i).transferTo(dest); // 파일 업로드 작업 수행
+			sqlSession.getMapper(FileUploadMapper.class).fileupload(filePath);
+		}
+
+	}
+
+	@Override
+	public void updateStoreDetail(int storecode, MultipartFile file) throws Exception {
+		String rootPath = "/home/Image";
+		String filePath = rootPath + "/" + Integer.toString(storecode) + "_" + "class" + "_" + "intro";
+		File dest = new File(filePath);
+		File sample = new File(rootPath);
+		if (!sample.exists()) {
+			try {
+				sample.mkdir();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		file.transferTo(dest); // 파일 업로드 작업 수행
+		sqlSession.getMapper(FileUploadMapper.class).fileupload(filePath);
+		
+	}
+
 }

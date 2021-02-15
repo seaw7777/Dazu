@@ -3,6 +3,8 @@ package com.web.dazu.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.web.dazu.model.Class;
 import com.web.dazu.model.ClassQnA;
 import com.web.dazu.model.ClassReview;
@@ -32,11 +34,11 @@ public interface ClassService {
 
 	void insertClassQnAAnswer(ClassQnA answer) throws Exception;
 
-	void insertClass(Class c) throws Exception;
+	void insertClass(List<MultipartFile> file, Class c) throws Exception;
 
 	void deleteClass(String classcode) throws Exception;
 
-	void updateClass(Class c) throws Exception;
+	void updateClass(List<MultipartFile> file, Class c) throws Exception;
 
 	String KakaoReady(ClassRoom room) throws Exception;
 

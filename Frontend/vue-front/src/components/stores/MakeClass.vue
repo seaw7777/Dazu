@@ -73,12 +73,14 @@
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
+                    v-model="class_Thumbnail"
                     truncate-length="15"
                     label="클래스 썸네일 등록"
                   ></v-file-input>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
+                    v-model="class_intro"
                     truncate-length="15"
                     label="클래스 상세 설명 등록"
                   ></v-file-input>
@@ -134,6 +136,8 @@ export default {
       dates: [],
       times: [],
       mealkit_ok: '',
+      class_Thumbnail: '',
+      class_intro: '',
     };
   },
   methods: {
@@ -141,7 +145,10 @@ export default {
       if (this.class_time === '1시간') this.class_time = '01:00:00';
       else if (this.class_time === '1시간 30분') this.class_time = '01:30:00';
       else if (this.class_time === '2시간') this.class_time = '02:00:00';
-      await postClass({
+      var fd = new FormData();
+      fd.append('files', this.class_Thumbnail);
+      fd.append('files', this.class_intro);
+      var datadummy = {
         class_describe: '',
         class_difficult: this.class_difficult,
         class_name: this.class_name,
@@ -154,7 +161,15 @@ export default {
         store_information_store_name: '',
         store_information_storecode: this.storecode,
         class_max: this.class_max,
-      });
+      };
+
+      fd.append(
+        'key',
+        new Blob([JSON.stringify(datadummy)], {
+          type: 'application/json',
+        }),
+      );
+      await postClass(fd);
       this.dialog = false;
       this.$router.go(this.$router.currentRoute);
     },
