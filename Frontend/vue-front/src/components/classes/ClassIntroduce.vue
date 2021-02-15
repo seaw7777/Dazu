@@ -1,23 +1,29 @@
 <template>
   <div>
-    <v-img
+    <!-- <v-img
       lazy-src="require(@/assets/page.jpg)"
       src="@/assets/page.jpg"
-    ></v-img>
+    ></v-img> -->
+    클래스 코드 {{ classcode }}
   </div>
 </template>
 
 <script>
+import { fetchClass } from '@/api/classes';
+
 export default {
-  props: {
-    classdata: {
-      type: Object,
-      required: true,
-    },
+  data() {
+    return {
+      classcode: '',
+    };
   },
-  created() {
-    const classcode = this.classdata.classcode;
-    console.log('클래스 소개' + classcode);
+
+  async mounted() {
+    const id = this.$route.params.id;
+    // console.log(id);
+    const { data } = await fetchClass(id);
+    console.log('클래스 소개 mounted:  ' + data.classcode);
+    this.classcode = data.classcode;
   },
 };
 </script>

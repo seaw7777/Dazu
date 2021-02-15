@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div class="breadcrumb-option">
+    <div class="breadcrumb-option">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -35,7 +35,9 @@
                   <div class="tab-pane active" id="클래스" role="tabpanel">
                     <div class="row d-flex justify-content-center">
                       <div class="col-lg-8">
-                        <ClassIntroduce :classdata="classdata"></ClassIntroduce>
+                        <ClassIntroduce
+                          :classcode="classdata.classcode"
+                        ></ClassIntroduce>
                       </div>
                     </div>
                   </div>
@@ -78,9 +80,9 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <div class="flex-container">
+    <!-- <div class="flex-container">
       <div>
         <aside class="secondary secondary-a class-info">
           <ClassShortDetail :classData="classdata"></ClassShortDetail>
@@ -133,7 +135,7 @@
       <aside class="secondary secondary-b">
         <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
       </aside>
-    </div>
+    </div> -->
   </div>
 </template>
 
