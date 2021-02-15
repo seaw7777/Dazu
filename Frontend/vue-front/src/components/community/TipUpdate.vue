@@ -1,9 +1,9 @@
 <template>
   <div v-if="this.userId === this.$store.state.usercode">
-    <v-row justify="center">
+    <v-row>
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+          <v-btn class="editbtn" color="orange" dark v-bind="attrs" v-on="on">
             수정
           </v-btn>
         </template>
@@ -93,4 +93,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.editbtn {
+  margin-bottom: 12px;
+}
+</style>

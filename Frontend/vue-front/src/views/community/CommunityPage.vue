@@ -12,18 +12,53 @@
         </div>
       </div>
     </div>
-    <!-- Breadcrumb End -->
-    <v-tabs class="tabs">
-      <v-tab class="tab1" @click="clickTip">꿀팁 공유</v-tab>
-      <v-tab class="tab2" @click="clickFamousStore">맛집 정보</v-tab>
-    </v-tabs>
-    <!-- <h3>BEST 게시글</h3> -->
-    <div v-if="tab === true">
-      <TipBestArticle></TipBestArticle>
+    <div class="product__details__tab">
+      <div class="col-lg-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a
+              @click="clickTip"
+              class="nav-link active"
+              data-toggle="tab"
+              href="#tabs-1"
+              role="tab"
+              ><font size="5rem">꿀팁 공유</font></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              @click="clickFamousStore"
+              class="nav-link"
+              data-toggle="tab"
+              href="#tabs-2"
+              role="tab"
+              ><font size="5rem">맛집공유</font></a
+            >
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabs-1" role="tabpanel">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                <div v-if="tab === true">
+                  <TipBestArticle></TipBestArticle>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tabs-2" role="tabpanel">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                <div v-if="tab === false">
+                  <FamousStoreBestArticle></FamousStoreBestArticle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-else>
-      <FamousStoreBestArticle></FamousStoreBestArticle>
-    </div>
+
     <div class="tab-container">
       <div class="tab">
         <div v-if="tab === true">
@@ -71,5 +106,8 @@ export default {
 }
 .tab2 {
   font-size: 30px;
+}
+.nav-item {
+  font-size: 1.2rem;
 }
 </style>

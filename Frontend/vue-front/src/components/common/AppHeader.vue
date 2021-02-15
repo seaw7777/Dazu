@@ -44,7 +44,7 @@
           <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
       </div>
-      <div class="container">
+      <div class="header-container">
         <div class="row">
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
@@ -126,4 +126,9 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/css/nice-select.css"></style>
+<style>
+/* scoped src="@/assets/css/nice-select.css" */
+.header-container {
+  height: 73px;
+}
+</style>

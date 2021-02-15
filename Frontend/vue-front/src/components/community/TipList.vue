@@ -4,7 +4,7 @@
       :headers="headers"
       :items="tipList"
       :items-per-page="5"
-      class="table"
+      class="table elevation-1"
       @click:row="handleClick"
       :search="search"
     >
@@ -21,7 +21,7 @@
           <v-text-field
             v-model="search"
             label="키워드를 검색해주세요."
-            class="textarea"
+            class="textarea mx-4"
             style="width:300px;"
           ></v-text-field>
 
@@ -154,7 +154,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-
+/* .v-data-table-header {
+  font-size: 3rem;
+} */
 .board-form {
   display: grid;
   grid-template-areas: 'textarea writebtn';

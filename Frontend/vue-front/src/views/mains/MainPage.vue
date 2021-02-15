@@ -11,18 +11,18 @@
           v-model="tab"
           centered
           icons-and-text
-          color="amber lighten-4"
+          color="orange accent-4"
         >
           <v-tab class="tab" v-for="item in items" :key="item.tab">
             <!-- {{ item.tab }}
             <v-icon>{{ item.icon }}</v-icon> -->
-            <div class="categories__item">
-              <div class="categories__item__icon">
-                <span :class="item.icon"></span>
-                <!-- <v-icon>{{ item.icon }}</v-icon> -->
-                <h6>{{ item.tab }}</h6>
-              </div>
-            </div>
+            <!-- <div class="categories__item"> -->
+            <!-- <div class="categories__item__icon"> -->
+            <!-- <span :class="item.icon"></span> -->
+            {{ item.tab }}
+            <v-icon>{{ item.icon }}</v-icon>
+            <!-- </div>
+            </div> -->
           </v-tab>
         </v-tabs>
 
@@ -36,16 +36,20 @@
               </div>
             </div>
             <div class="row">
-              <v-tabs-items v-model="tab">
-                <v-tab-item v-for="item in items" :key="item.tab">
-                  <div flat v-if="item.tab === '지도'">
-                    <MainMap></MainMap>
-                  </div>
-                  <div flat v-else-if="item.tab === '목록'">
-                    <MainClassList></MainClassList>
-                  </div>
-                </v-tab-item>
-              </v-tabs-items>
+              <div class="col-lg-12 text-center">
+                <div class="section-title">
+                  <v-tabs-items v-model="tab">
+                    <v-tab-item v-for="item in items" :key="item.tab">
+                      <div flat v-if="item.tab === '지도'">
+                        <MainMap></MainMap>
+                      </div>
+                      <div flat v-else-if="item.tab === '목록'">
+                        <MainClassList></MainClassList>
+                      </div>
+                    </v-tab-item>
+                  </v-tabs-items>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -68,11 +72,11 @@ export default {
       items: [
         {
           tab: '지도',
-          icon: 'flaticon-034-chocolate-roll',
+          icon: 'mdi-home-map-marker',
         },
         {
           tab: '목록',
-          icon: 'flaticon-029-cupcake-3',
+          icon: 'mdi-heart',
         },
       ],
     };
@@ -98,6 +102,6 @@ export default {
   height: 100%;
 }
 .categories__item__icon {
-  /* height: 0px; */
+  font-size: 1px;
 }
 </style>
