@@ -22,17 +22,17 @@
             <v-tab-item v-for="item in items" :key="item.tab">
               <v-card flat v-if="item.tab === '클래스 소개'">
                 <v-card-text class="card-container"
-                  ><ClassIntroduce></ClassIntroduce
+                  ><ClassIntroduce :classdata="classdata"></ClassIntroduce
                 ></v-card-text>
               </v-card>
               <v-card flat v-else-if="item.tab === '가게소개'">
                 <v-card-text class="card-container"
-                  ><StoreIntroduce></StoreIntroduce>
+                  ><StoreIntroduce :classdata="classdata"></StoreIntroduce>
                 </v-card-text>
               </v-card>
               <v-card flat v-else-if="item.tab === '밀키트 정보'">
                 <v-card-text class="card-container"
-                  ><MealkitInfo></MealkitInfo>
+                  ><MealkitInfo :classdata="classdata"></MealkitInfo>
                 </v-card-text>
               </v-card>
 
