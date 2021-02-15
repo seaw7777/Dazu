@@ -51,7 +51,7 @@
 		dong = #{dong}
 		where storecode = #{storecode}
 	</update>
-		<select id="selectAllStore" parameterType="Store" resultType="int">
+	<select id="getstorecode" parameterType="Store" resultType="int">
 		select storecode
 		from store_information
 		where dong = #{dong} and store_name = #{store_name}
