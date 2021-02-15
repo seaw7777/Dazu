@@ -10,7 +10,6 @@ import VueDaumPostcode from 'vue-daum-postcode';
 // import './src/sass/main.scss';
 
 import '@/assets/css/bootstrap.min.css';
-import '@/assets/sass/_product.scss';
 
 // import 'bootstrap/dist/css/bootstrap.css';
 // import 'bootstrap-vue/dist/bootstrap-vue.css';
