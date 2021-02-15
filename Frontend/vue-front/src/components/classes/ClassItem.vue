@@ -1,5 +1,22 @@
 <template>
-  <div>
+  <div class="product__item" @click="classclick">
+    <div class="product__item__pic set-bg" data-setbg="pic">
+      <img :src="pic" />
+      <div class="product__label">
+        <span>{{ classItem.food_type }}</span>
+      </div>
+    </div>
+    <div class="product__item__text">
+      <h6>
+        <a href="#">{{ classItem.class_name }}</a>
+      </h6>
+      <div class="product__item__price">{{ classItem.class_price }}원</div>
+      <div class="cart_add">
+        <a href="#" @click="classclick">Go to Class</a>
+      </div>
+    </div>
+  </div>
+  <!-- <div>
     <v-card class="mx-auto" max-width="400" @click="classclick">
       <v-img
         class="white--text align-end"
@@ -31,11 +48,17 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import Pic from '@/assets/img/shop/product-1.jpg';
 export default {
+  data() {
+    return {
+      pic: Pic,
+    };
+  },
   props: {
     classItem: {
       type: Object,

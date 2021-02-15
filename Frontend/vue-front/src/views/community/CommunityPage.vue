@@ -1,6 +1,20 @@
 <template>
   <div>
-    <h3>BEST 게시글</h3>
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>Community</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- <h3>BEST 게시글</h3> -->
     <div v-if="tab === true">
       <TipBestArticle></TipBestArticle>
     </div>

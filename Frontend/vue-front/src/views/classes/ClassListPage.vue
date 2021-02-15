@@ -1,7 +1,33 @@
 <template>
   <div>
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>Class</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcrumb End -->
     <!-- <div class="coming-container"><ComingClass></ComingClass></div> -->
-    <v-row no-gutters>
+    <section class="shop spad">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-lg-3 col-md-6 col-sm-6"
+            v-for="classItem in classItems"
+            :key="classItem.classcode"
+          >
+            <ClassItem :classItem="classItem"></ClassItem>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <v-row no-gutters>
       <v-col
         v-for="classItem in classItems"
         :key="classItem.classcode"
@@ -9,7 +35,7 @@
         sm="4"
       >
         <ClassItem :classItem="classItem"></ClassItem></v-col
-    ></v-row>
+    ></v-row> -->
   </div>
 </template>
 
@@ -40,9 +66,9 @@ export default {
 };
 </script>
 
-<style scope>
-.coming-container {
+<style>
+/* .coming-container {
   display: flex;
   margin: 20px;
-}
+} */
 </style>

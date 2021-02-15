@@ -1,54 +1,76 @@
 <template>
-  <div class="fixed-top">
-    <b-navbar toggleable="lg" type="light" variant="warning" sticky="true">
-      <b-navbar-brand :to="logoLink">
-        <b-img
-          :src="require('@/assets/DAZUnewlogo.png')"
-          class="d-inline-block align-top"
-          width="80"
-          hegith="80"
-          alt="DAZU"
-      /></b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item to="/class/list">클래스</b-nav-item>
-          <b-nav-item to="/mealkit/list">스토어</b-nav-item>
-          <b-nav-item to="/community">커뮤니티</b-nav-item>
-          <b-nav-item to="/notice/list">공지사항</b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-            <b-form-input
-              size="sm"
-              class="mr-sm-2"
-              placeholder="Search"
-            ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >Search</b-button
-            >
-          </b-nav-form>
-          <v-avatar>
-            <b-avatar href="#" :src="userImgUrl"></b-avatar>
-          </v-avatar>
-
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template #button-content>
-              <em>{{ $store.state.username }}</em>
-            </template>
-            <b-dropdown-item :to="mypageLink"> Mypage</b-dropdown-item>
-            <b-dropdown-item href="javascript:;" @click="logoutUser"
-              >Log Out</b-dropdown-item
-            >
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+  <div>
+    <!-- Header Section Begin -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header__top__inner">
+                <div class="header__top__left">
+                  <div class="testimonial__author__pic">
+                    <img :src="userImgUrl" alt="" />
+                  </div>
+                  <ul>
+                    <li>
+                      {{ $store.state.username }}
+                      <span class="arrow_carrot-down"></span>
+                      <ul>
+                        <router-link :to="mypageLink" tag="li"
+                          >Mypage</router-link
+                        >
+                        <li @click="logoutUser">Logout</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="header__logo">
+                  <a href="#" @click="$router.push('/main')"
+                    ><img src="img/logo.png" alt=""
+                  /></a>
+                </div>
+                <div class="header__top__right">
+                  <div class="header__top__right__links">
+                    <a href="#" class="search-switch"
+                      ><img src="img/icon/search.png" alt=""
+                    /></a>
+                    <a href="#"><img src="img/icon/heart.png" alt=""/></a>
+                  </div>
+                  <div class="header__top__right__cart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="header__menu mobile-menu">
+              <ul>
+                <li class="active">
+                  <a href="#" @click="$router.push('/main')">Home</a>
+                </li>
+                <li>
+                  <a href="#" @click="$router.push('/class/list')">클래스</a>
+                </li>
+                <li>
+                  <a href="#" @click="$router.push('/mealkit/list')">스토어</a>
+                </li>
+                <li>
+                  <a href="#" @click="$router.push('/community')">커뮤니티</a>
+                </li>
+                <li>
+                  <a href="#" @click="$router.push('/notice/list')">공지사항</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
   </div>
 </template>
 
