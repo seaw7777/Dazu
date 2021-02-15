@@ -1,7 +1,7 @@
 package com.web.dazu.model;
 
 public class Class {
-	private String classcode;
+	private int classcode;
 	private String class_name;
 	private String class_time;
 	private String class_describe;
@@ -19,7 +19,7 @@ public class Class {
 	public Class() {}
 
 
-	public Class(String classcode, String class_name, String class_time, String class_describe, String class_difficult,
+	public Class(int classcode, String class_name, String class_time, String class_describe, String class_difficult,
 			String mealkit_ok, String food_type, String store_information_storecode,
 			String store_information_store_name, String store_information_store_describe, int milkit_price,
 			int class_max, int class_price) {
@@ -40,12 +40,12 @@ public class Class {
 	}
 
 
-	public String getClasscode() {
+	public int getClasscode() {
 		return classcode;
 	}
 
 
-	public void setClasscode(String classcode) {
+	public void setClasscode(int classcode) {
 		this.classcode = classcode;
 	}
 
@@ -180,6 +180,5 @@ public class Class {
 				+ milkit_price + ", class_max=" + class_max + ", class_price=" + class_price + "]";
 	}
 
-	
 	
 }

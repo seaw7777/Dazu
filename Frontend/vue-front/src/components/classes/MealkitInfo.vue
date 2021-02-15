@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- <v-img
-      lazy-src="require(@/assets/mealkit.jpg)"
-      src="@/assets/mealkit.jpg"
-    ></v-img> -->
     클래스 코드 {{ classcode }}
+    <v-img :src="imgsrc"></v-img>
   </div>
 </template>
 
@@ -24,6 +21,10 @@ export default {
     const { data } = await fetchClass(id);
     console.log('클래스 소개 mounted:  ' + data.classcode);
     this.classcode = data.classcode;
+    this.imgsrc =
+      'https://i4d104.p.ssafy.io/dazu/file/image/' +
+      this.classcode +
+      '_milkit_intro.jpg';
   },
 };
 </script>

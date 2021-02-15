@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.dazu.model.Mealkit;
+import com.web.dazu.service.FileUploadService;
 import com.web.dazu.service.MealkitService;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +29,8 @@ public class MealkitController {
 	
 	@Autowired
 	private MealkitService service;
-	
+	@Autowired
+	private FileUploadService fileuploadservice;
 	@ApiOperation(value = "현재 사용자의 행정동에 해당하는 밀키트 목록을 읽어온다.", response = Mealkit.class)
 	@GetMapping("/list/{dong}")
 	public List<Mealkit> selectAllMealkit(@PathVariable String dong) {
@@ -41,9 +45,11 @@ public class MealkitController {
 	
 	@ApiOperation(value = "새로운 밀키트 정보를 등록한다.")
 	@PostMapping("/insert")
-	public void insertMealkit(@RequestBody Mealkit mealkit) {
+	public void insertMealkit(@RequestPart(value = "files", required = true) List<MultipartFile> file,
+			@RequestPart(value = "key", required = false) Mealkit mealkit) {
 		try {
 			service.insertMealkit(mealkit);
+			fileuploadservice.uploadmilkit(file,mealkit.getClass_information_classcode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

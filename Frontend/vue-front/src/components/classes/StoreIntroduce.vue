@@ -1,5 +1,8 @@
 <template>
-  <div>가게 코드 {{ storecode }}</div>
+  <div>
+    가게 코드 {{ storecode }}
+    <v-img :src="imgsrc" />
+  </div>
 </template>
 
 <script>
@@ -9,6 +12,7 @@ export default {
   data() {
     return {
       storecode: '',
+      imgsrc: '',
     };
   },
 
@@ -18,6 +22,10 @@ export default {
     const { data } = await fetchClass(id);
     console.log('클래스 소개 mounted:  ' + data.store_information_storecode);
     this.storecode = data.store_information_storecode;
+    this.imgsrc =
+      'https://i4d104.p.ssafy.io/dazu/file/image/' +
+      this.storecode +
+      '_store_intro.jpg';
   },
 };
 </script>
