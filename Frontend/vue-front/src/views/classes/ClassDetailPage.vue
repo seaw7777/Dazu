@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="breadcrumb-option">
+    <!-- <div class="breadcrumb-option">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -35,21 +35,21 @@
                   <div class="tab-pane active" id="클래스" role="tabpanel">
                     <div class="row d-flex justify-content-center">
                       <div class="col-lg-8">
-                        <ClassIntroduce></ClassIntroduce>
+                        <ClassIntroduce :classdata="classdata"></ClassIntroduce>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="가게" role="tabpanel">
                     <div class="row d-flex justify-content-center">
                       <div class="col-lg-8">
-                        <StoreIntroduce></StoreIntroduce>
+                        <StoreIntroduce :classdata="classdata"></StoreIntroduce>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="밀키트" role="tabpanel">
                     <div class="row d-flex justify-content-center">
                       <div class="col-lg-8">
-                        <MealkitInfo></MealkitInfo>
+                        <MealkitInfo :classdata="classdata"></MealkitInfo>
                       </div>
                     </div>
                   </div>
@@ -78,9 +78,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <!-- <div class="flex-container">
+    <div class="flex-container">
       <div>
         <aside class="secondary secondary-a class-info">
           <ClassShortDetail :classData="classdata"></ClassShortDetail>
@@ -102,17 +102,17 @@
             <v-tab-item v-for="item in items" :key="item.tab">
               <v-card flat v-if="item.tab === '클래스 소개'">
                 <v-card-text class="card-container"
-                  ><ClassIntroduce></ClassIntroduce
+                  ><ClassIntroduce :classdata="classdata"></ClassIntroduce
                 ></v-card-text>
               </v-card>
               <v-card flat v-else-if="item.tab === '가게소개'">
                 <v-card-text class="card-container"
-                  ><StoreIntroduce></StoreIntroduce>
+                  ><StoreIntroduce :classdata="classdata"></StoreIntroduce>
                 </v-card-text>
               </v-card>
               <v-card flat v-else-if="item.tab === '밀키트 정보'">
                 <v-card-text class="card-container"
-                  ><MealkitInfo></MealkitInfo>
+                  ><MealkitInfo :classdata="classdata"></MealkitInfo>
                 </v-card-text>
               </v-card>
 
@@ -133,7 +133,7 @@
       <aside class="secondary secondary-b">
         <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
       </aside>
-    </div> -->
+    </div>
   </div>
 </template>
 

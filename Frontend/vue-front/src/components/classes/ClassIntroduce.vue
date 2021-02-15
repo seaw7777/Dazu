@@ -8,7 +8,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    classdata: {
+      type: Object,
+      required: true,
+    },
+  },
+  created() {
+    const classcode = this.classdata.classcode;
+    console.log('클래스 소개' + classcode);
+  },
+};
 </script>
 
 <style></style>
