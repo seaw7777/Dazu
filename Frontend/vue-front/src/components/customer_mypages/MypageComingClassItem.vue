@@ -7,8 +7,9 @@
             {{ comingItem.class_name }}
           </v-list-item-title>
           <v-list-item-subtitle
-            >{{ comingItem.class_date }}
-            {{ comingItem.class_starttime.slice(0, 5) }}</v-list-item-subtitle
+            >{{ comingItem.class_date }} |
+            {{ comingItem.class_starttime.slice(0, 5) }} -
+            {{ comingItem.class_endtime.slice(0, 5) }}</v-list-item-subtitle
           >
         </v-list-item-content>
 

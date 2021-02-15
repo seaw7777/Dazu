@@ -1,18 +1,20 @@
 <template>
   <div>
-    <vc-date-picker :attributes="attributes" is-dark v-model="date">
-      <div slot="day-popover" slot-scope="{ dayTitle, attributes }">
-        <div class="text-xs text-gray-300 font-semibold text-center">
-          {{ dayTitle }}
+    <v-col cols="12">
+      <vc-date-picker :attributes="attributes" v-model="date">
+        <div slot="day-popover" slot-scope="{ dayTitle, attributes }">
+          <div class="text-xs text-gray-300 font-semibold text-center">
+            {{ dayTitle }}
+          </div>
+          <ul>
+            <li v-for="{ key, customData } in attributes" :key="key">
+              {{ customData.class_timecode }}
+              {{ customData.class_starttime.slice(0, 5) }}
+            </li>
+          </ul>
         </div>
-        <ul>
-          <li v-for="{ key, customData } in attributes" :key="key">
-            {{ customData.class_timecode }}
-            {{ customData.class_starttime.slice(0, 5) }}
-          </li>
-        </ul>
-      </div>
-    </vc-date-picker>
+      </vc-date-picker>
+    </v-col>
     <v-col cols="12">
       <v-select
         :items="classTimeList"
@@ -23,7 +25,7 @@
       ></v-select>
     </v-col>
 
-    <div>
+    <!-- <div>
       <div v-if="mealkitchoice == '밀키트 포함'">
         <v-card class="mx-auto" max-width="300">
           <v-card-text>
@@ -49,14 +51,25 @@
           </v-card-text>
         </v-card>
       </div>
-      <div>
-        <img
-          class="kakao_btn"
-          src="@/assets/kakaopay.png"
-          @click="onClickKakaoPayAPI"
-        />
-      </div>
-    </div>
+    </div> -->
+
+    <ul class="checkout__total__all">
+      <li v-if="mealkitchoice === '밀키트 포함' && timecode !== ''">
+        Total
+        <span>₩ {{ classData.class_price + classData.mealkit_price }}</span>
+      </li>
+      <li v-else-if="mealkitchoice === 'Only 밀키트' && timecode !== ''">
+        Total
+        <span>₩ {{ classData.mealkit_price }}</span>
+      </li>
+      <li v-else>
+        Total <span v-if="timecode !== ''"> ₩ {{ classData.class_price }}</span>
+      </li>
+    </ul>
+
+    <button class="site-btn" @click="onClickKakaoPayAPI">
+      ORDER - KAKAO PAY
+    </button>
   </div>
 </template>
 
@@ -148,6 +161,9 @@ export default {
   async created() {
     const id = this.$route.params.id;
     console.log(id);
+
+    // const resu = await fetchMealkit(id);
+
     const res = await fetchClassTime(id);
     this.classDataList = res.data;
     console.log(this.classDataList);

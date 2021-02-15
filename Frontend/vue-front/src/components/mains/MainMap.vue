@@ -1,6 +1,14 @@
 <template>
-  <div class="container">
-    <div class="map-container" id="map" style="width:900px;height:500px;"></div>
+  <div>
+    <section class="testimonial spad">
+      <div class="container">
+        <div
+          class="map-container"
+          id="map"
+          style="width:1000px;height:500px; border:1px solid #f08632;"
+        ></div>
+      </div>
+    </section>
   </div>
 </template>
 

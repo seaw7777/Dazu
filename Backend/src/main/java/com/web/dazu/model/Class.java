@@ -11,7 +11,7 @@ public class Class {
 	private String store_information_storecode;
 	private String store_information_store_name;
 	private String store_information_store_describe;
-	private int milkit_price;
+	private int mealkit_price;
 	private int class_max;
 	private int class_price;
 
@@ -21,7 +21,7 @@ public class Class {
 
 	public Class(int classcode, String class_name, String class_time, String class_describe, String class_difficult,
 			String mealkit_ok, String food_type, String store_information_storecode,
-			String store_information_store_name, String store_information_store_describe, int milkit_price,
+			String store_information_store_name, String store_information_store_describe, int mealkit_price,
 			int class_max, int class_price) {
 		super();
 		this.classcode = classcode;
@@ -34,13 +34,20 @@ public class Class {
 		this.store_information_storecode = store_information_storecode;
 		this.store_information_store_name = store_information_store_name;
 		this.store_information_store_describe = store_information_store_describe;
-		this.milkit_price = milkit_price;
+		this.mealkit_price = mealkit_price;
 		this.class_max = class_max;
 		this.class_price = class_price;
 	}
 
 
+<<<<<<< HEAD
 	public int getClasscode() {
+=======
+
+
+
+	public String getClasscode() {
+>>>>>>> feature/he_css_template
 		return classcode;
 	}
 
@@ -140,14 +147,16 @@ public class Class {
 	}
 
 
-	public int getMilkit_price() {
-		return milkit_price;
+	public int getMealkit_price() {
+		return mealkit_price;
 	}
 
 
-	public void setMilkit_price(int milkit_price) {
-		this.milkit_price = milkit_price;
+
+	public void setMealkit_price(int mealkit_price) {
+		this.mealkit_price = mealkit_price;
 	}
+
 
 
 	public int getClass_max() {
@@ -167,17 +176,6 @@ public class Class {
 
 	public void setClass_price(int class_price) {
 		this.class_price = class_price;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Class [classcode=" + classcode + ", class_name=" + class_name + ", class_time=" + class_time
-				+ ", class_describe=" + class_describe + ", class_difficult=" + class_difficult + ", mealkit_ok="
-				+ mealkit_ok + ", food_type=" + food_type + ", store_information_storecode="
-				+ store_information_storecode + ", store_information_store_name=" + store_information_store_name
-				+ ", store_information_store_describe=" + store_information_store_describe + ", milkit_price="
-				+ milkit_price + ", class_max=" + class_max + ", class_price=" + class_price + "]";
 	}
 
 	

@@ -49,7 +49,7 @@
           <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
               <ul>
-                <li class="active">
+                <li>
                   <router-link :to="'/main'" tag="a">Home</router-link>
                 </li>
                 <li>
@@ -126,4 +126,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped src="@/assets/css/nice-select.css"></style>

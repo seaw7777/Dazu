@@ -12,7 +12,7 @@
       </h6>
       <div class="product__item__price">{{ mealkitItem.mealkit_price }}원</div>
       <div class="cart_add">
-        <a href="#" @click="mealkitClick">Go to Class</a>
+        <a href="#" @click="mealkitClick">Buy Mealkit</a>
       </div>
     </div>
   </div>

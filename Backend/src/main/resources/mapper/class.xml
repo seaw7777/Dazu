@@ -11,7 +11,7 @@
 	</select>
 
 	<select id="selectClass" parameterType="string" resultType="Class">
-		select * 
+		select *
 		from class_information
 		where classcode = #{classcode}
 	</select>

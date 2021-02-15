@@ -1,12 +1,41 @@
 <template>
-  <div>
-    <div>
-      <v-sheet class="mx-auto" elevation="8" max-width="1000">
-        <p>다가오는 클래스</p>
+  <div v-if="classItems !== ''">
+    <!-- Related Products Section Begin -->
+    <section class="related-products spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="section-title">
+              <h2>Coming Up Classes</h2>
+            </div>
+          </div>
+        </div>
         <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-          <v-slide-item v-for="n in classLen" :key="n" v-slot="{ active }">
-            <v-card
-              :color="active ? 'primary' : 'grey lighten-1'"
+          <v-slide-item v-for="n in classLen" :key="n">
+            <v-card class="ma-4" elevation="0" @click="classclick(n - 1)">
+              <div class="product__item">
+                <div class="product__item__pic set-bg" data-setbg="pic">
+                  <img :src="pic" />
+                  <div class="product__label">
+                    <span>{{ classItems[n - 1].class_date }}</span>
+                  </div>
+                </div>
+                <div class="product__item__text">
+                  <h6>
+                    <a href="#">{{ classItems[n - 1].class_name }}</a>
+                  </h6>
+                  <div class="product__item__price">
+                    {{ classItems[n - 1].class_starttime }} -
+                    {{ classItems[n - 1].class_endtime }}
+                  </div>
+                  <div class="cart_add">
+                    <a href="#" @click="classclick">Go to Class</a>
+                  </div>
+                </div>
+              </div>
+            </v-card>
+            <!-- <v-card
+              outlined
               class="ma-4"
               height="260"
               width="300"
@@ -14,39 +43,44 @@
             >
               <v-img
                 src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                height="180px"
+                height="180"
               ></v-img>
               <v-card-title>
                 {{ classItems[n - 1].class_name }}
               </v-card-title>
-            </v-card>
+            </v-card> -->
           </v-slide-item>
         </v-slide-group>
-      </v-sheet>
-    </div>
+      </div>
+    </section>
+    <!-- Related Products Section End -->
   </div>
 </template>
 
 <script>
 import { customerUpcomingClass } from '@/api/auth';
+import Pic from '@/assets/img/shop/product-3.jpg';
 export default {
-  data: () => ({
-    model: null,
-    classItems: [],
-    checkClass: false,
-    classLen: Number,
-  }),
+  data() {
+    return {
+      model: null,
+      classItems: [],
+      checkClass: false,
+      classLen: Number,
+      pic: Pic,
+    };
+  },
   async created() {
     this.isLoading = true;
     const id = this.$store.state.usercode;
-    const classList = await customerUpcomingClass(id);
+    const { data } = await customerUpcomingClass(id);
+    console.log('받은거' + JSON.stringify(data));
     this.isLoading = false;
-    this.classItems = classList.data;
-    this.classLen = classList.data.length;
-    if (this.classLen > 0) {
-      this.checkClass = true;
-    }
-    // console.log('받은거' + JSON.stringify(this.classItems));
+    this.classItems = data;
+    this.classLen = data.length;
+    // if (this.classLen > 0) {
+    //   this.checkClass = true;
+    // }
   },
   methods: {
     classclick(n) {

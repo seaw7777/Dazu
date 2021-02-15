@@ -25,7 +25,6 @@
           <li>Tags: <span>Gadgets, minimalisstic</span></li> -->
         </ul>
         <div class="product__details__option">
-          <a href="#" class="primary-btn">Take classe</a>
           <a href="#" class="heart__btn"
             ><span class="icon_heart_alt"></span
           ></a>
