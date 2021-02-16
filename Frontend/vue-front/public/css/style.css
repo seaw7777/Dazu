@@ -322,7 +322,7 @@ ol {
 }
 
 .header__top__left {
-  float: left;
+  float: right;
 }
 .header__top__left ul li {
   font-size: 14px;
@@ -385,7 +385,7 @@ ol {
 
 .header__logo {
   position: absolute;
-  left: 50%;
+  left: 45%;
   top: 25px;
   margin-left: -60px;
 }
@@ -465,7 +465,7 @@ ol {
   background: #111111;
 }
 .header__menu ul li:hover .dropdown {
-  top: 62px;
+  top: 72px;
   opacity: 1;
   visibility: visible;
 }
@@ -475,7 +475,7 @@ ol {
 .header__menu ul li .dropdown {
   position: absolute;
   left: 0;
-  top: 82px;
+  top: 72px;
   width: 150px;
   background: #111111;
   text-align: left;
@@ -492,7 +492,7 @@ ol {
   margin-right: 0;
 }
 .header__menu ul li .dropdown li a {
-  font-size: 14px;
+  font-size: 20px;
   color: #ffffff;
   font-weight: 400;
   padding: 5px 20px;
@@ -502,7 +502,7 @@ ol {
   display: none;
 }
 .header__menu ul li a {
-  font-size: 16px;
+  font-size: 20px;
   color: #ffffff;
   display: block;
   font-weight: 600;

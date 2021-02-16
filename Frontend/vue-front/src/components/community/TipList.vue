@@ -118,12 +118,6 @@ export default {
       newTitle: '',
       newContent: '',
       headers: [
-        {
-          text: 'No',
-          align: 'center',
-          sortable: false,
-          value: 'board_code',
-        },
         { text: '작성자', value: 'nickname', sortable: false, align: 'center' },
         {
           text: '제목',
@@ -175,7 +169,7 @@ export default {
 
 <style scoped>
 .table {
-  width: 80%;
+  width: 65%;
   margin-left: auto;
   margin-right: auto;
 }
