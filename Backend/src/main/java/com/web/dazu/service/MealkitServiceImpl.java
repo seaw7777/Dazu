@@ -23,6 +23,7 @@ public class MealkitServiceImpl implements MealkitService {
 	@Override
 	public void insertMealkit(Mealkit mealkit) throws Exception {
 		session.getMapper(MealkitMapper.class).insertMealkit(mealkit);
+		session.getMapper(MealkitMapper.class).insertclassinformationMealkit(mealkit);
 	}
 
 	@Override

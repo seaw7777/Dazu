@@ -19,4 +19,6 @@ public interface MealkitMapper {
 
 	Mealkit selectMealkit(String classcode) throws Exception;
 
+	void insertclassinformationMealkit(Mealkit mealkit) throws Exception;
+
 }
