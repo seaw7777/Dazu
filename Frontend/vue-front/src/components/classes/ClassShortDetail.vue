@@ -3,7 +3,7 @@
     <div class="col-lg-6">
       <div class="product__details__img">
         <div class="product__details__big__img">
-          <img class="big_img" :src="pic" alt="" />
+          <img class="big_img" :src="imgurl" alt="" />
         </div>
       </div>
     </div>
@@ -57,23 +57,30 @@
 </template>
 
 <script>
-import Pic from '@/assets/img/shop/details/product-big-1.jpg';
 export default {
   data() {
     return {
-      pic: Pic,
+      pic: '',
     };
   },
+
   props: {
     classData: {
       type: Object,
       required: true,
+    },
+    imgurl: {
+      type: String,
+      requried: true,
     },
   },
   computed: {
     comclass: function() {
       // console.log(this.classData.class_name);
       return this.classData.class_name;
+    },
+    comclasscode: function() {
+      return this.classData.classcode;
     },
   },
 };
