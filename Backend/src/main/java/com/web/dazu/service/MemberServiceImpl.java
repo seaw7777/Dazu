@@ -77,6 +77,14 @@ public class MemberServiceImpl implements MemberService {
 		member.setLng(XYMap.get("y"));
 		    
 		System.out.println(member.getLat() + member.getLng());
+		
+		String dong = member.getDong();
+		System.out.println(member.getDong());
+		
+		dong = dong.replaceAll(" ", "");
+		
+		member.setDong(dong);
+		System.out.println(member.getDong());
 
 		session.getMapper(MemberMapper.class).insertMember(member);
 	}

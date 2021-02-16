@@ -73,6 +73,7 @@ public class RestaurantsboardController {
 	@GetMapping(value = "/detail/{board_code}")
 	public Board getBoardDetail(@PathVariable int board_code) {
 		try {
+			
 			Board board = service.getBoard(board_code);
 			service.updateViews(board_code);
 			return board;

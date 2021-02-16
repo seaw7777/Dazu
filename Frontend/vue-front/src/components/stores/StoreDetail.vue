@@ -1,12 +1,18 @@
 <template>
   <div>
-    <v-card width="600px">
-      <v-card-title>가게 상세 설명</v-card-title>
-      <v-card-text><v-img :src="imgsrc"/></v-card-text>
-      <v-row justify="center">
+    <div class="cart__discount">
+      <h6>Store Detail</h6>
+      <form action="#">
+        <input type="text" placeholder="이미지 URL?" readonly />
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            <v-btn
+              style="font-size: 14px;color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #111111;padding: 0 30px;border: none;position: absolute;right: 0;top: 0;height: 100%;"
+              dark
+              tile
+              v-bind="attrs"
+              v-on="on"
+            >
               편집
             </v-btn>
           </template>
@@ -32,8 +38,8 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-      </v-row>
-    </v-card>
+      </form>
+    </div>
   </div>
 </template>
 

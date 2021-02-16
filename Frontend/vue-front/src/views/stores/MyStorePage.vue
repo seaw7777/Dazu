@@ -1,6 +1,32 @@
 <template>
   <div>
-    <v-container>
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>My Store</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="shopping-cart spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <StoreClassList></StoreClassList>
+          </div>
+          <div class="col-lg-4">
+            <StoreName :storeData="storeData"></StoreName>
+            <StoreAdress :storeData="storeData"></StoreAdress>
+            <StoreDetail :storeData="storeData">></StoreDetail>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <v-container>
       <v-row>
         <v-col cols="8">
           <StoreName :storeData="storeData"></StoreName>
@@ -15,7 +41,7 @@
       <v-row>
         <StoreDetail :storeData="storeData">></StoreDetail>
       </v-row>
-    </v-container>
+    </v-container> -->
   </div>
 </template>
 

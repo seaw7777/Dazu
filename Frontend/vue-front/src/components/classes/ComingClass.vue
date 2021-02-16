@@ -1,6 +1,5 @@
 <template>
-  <div v-if="classItems !== ''">
-    <!-- Related Products Section Begin -->
+  <div v-if="checkClass">
     <section class="related-products spad">
       <div class="container">
         <div class="row">
@@ -34,26 +33,10 @@
                 </div>
               </div>
             </v-card>
-            <!-- <v-card
-              outlined
-              class="ma-4"
-              height="260"
-              width="300"
-              @click="classclick(n - 1)"
-            >
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                height="180"
-              ></v-img>
-              <v-card-title>
-                {{ classItems[n - 1].class_name }}
-              </v-card-title>
-            </v-card> -->
           </v-slide-item>
         </v-slide-group>
       </div>
     </section>
-    <!-- Related Products Section End -->
   </div>
 </template>
 
@@ -78,9 +61,9 @@ export default {
     this.isLoading = false;
     this.classItems = data;
     this.classLen = data.length;
-    // if (this.classLen > 0) {
-    //   this.checkClass = true;
-    // }
+    if (this.classLen > 0) {
+      this.checkClass = true;
+    }
   },
   methods: {
     classclick(n) {
