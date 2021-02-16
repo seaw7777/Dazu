@@ -33,16 +33,9 @@ public class Class {
 		this.class_max = class_max;
 		this.class_price = class_price;
 	}
-<<<<<<< HEAD
-	public Class() {
-		super();
-	}
-=======
 
+	public Class() {}
 
-
-	
->>>>>>> afb3161dd3aa24b834df90e48f29df7545614412
 	public int getClasscode() {
 		return classcode;
 	}
