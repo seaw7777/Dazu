@@ -27,6 +27,11 @@
 		where mealkitcode = #{mealkitcode}
 	</update>
 	
+	<update id="insertclassinformationMealkit" parameterType="Mealkit">
+		update class_information
+		set mealkit_price = #{mealkit_price}
+		where classcode = #{class_information_classcode}
+	</update>
 	<delete id="deleteMealkit" parameterType="string">
 		delete from mealkit_store
 		where mealkitcode = #{code}
