@@ -198,8 +198,8 @@ export default {
     async clickInsertMealkit() {
       console.log(this.classcode);
       var fd = new FormData();
-      fd.append('files', this.mealkit_thumbnail);
-      fd.append('files', this.mealkit_detail);
+      fd.append('files', this.thumbnail);
+      fd.append('files', this.detail);
       var datadummy = {
         class_information_classcode: this.classcode,
         class_information_classname: '',

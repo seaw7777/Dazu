@@ -16,7 +16,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-6">
-            <ClassShortDetail :classData="classdata"></ClassShortDetail>
+            <ClassShortDetail
+              :classData="classdata"
+              :imgurl="url"
+            ></ClassShortDetail>
 
             <div class="product__details__tab">
               <div class="col-lg-12">
@@ -152,6 +155,7 @@ import { fetchClass } from '@/api/classes';
 export default {
   data() {
     return {
+      url: '',
       tab: null,
       items: [
         { tab: '클래스' },
@@ -178,6 +182,10 @@ export default {
     const { data } = await fetchClass(id);
     console.log(data);
     this.classdata = data;
+    this.url =
+      'https://i4d104.p.ssafy.io/dazu/file/image/' +
+      this.classdata.classcode +
+      '_class_Thumbnail';
   },
 };
 </script>
