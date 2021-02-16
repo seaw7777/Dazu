@@ -5,6 +5,7 @@
     </div>
 
     <div>
+      <br /><br />
       <v-card elevation="0">
         <v-tabs
           class="tabs"
@@ -31,21 +32,25 @@
             <div class="row">
               <div class="col-lg-12 text-center">
                 <div class="section-title">
-                  <h2>Our Neighborhood</h2>
+                  <span>Our Neighborhood</span>
                 </div>
               </div>
             </div>
             <div class="row">
-              <v-tabs-items v-model="tab">
-                <v-tab-item v-for="item in items" :key="item.tab">
-                  <div flat v-if="item.tab === '지도'">
-                    <MainMap></MainMap>
-                  </div>
-                  <div flat v-else-if="item.tab === '목록'">
-                    <MainClassList></MainClassList>
-                  </div>
-                </v-tab-item>
-              </v-tabs-items>
+              <div class="col-lg-12 text-center">
+                <div class="section-title">
+                  <v-tabs-items v-model="tab">
+                    <v-tab-item v-for="item in items" :key="item.tab">
+                      <div flat v-if="item.tab === '지도'">
+                        <MainMap></MainMap>
+                      </div>
+                      <div flat v-else-if="item.tab === '목록'">
+                        <MainClassList></MainClassList>
+                      </div>
+                    </v-tab-item>
+                  </v-tabs-items>
+                </div>
+              </div>
             </div>
           </div>
         </section>

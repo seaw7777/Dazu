@@ -1,15 +1,39 @@
 <template>
-  <div class="flex-container">
-    <div class="user-container">
-      <div><MypageUserInfo :customerData="customerData"></MypageUserInfo></div>
-      <div>
-        <MypageCalendar></MypageCalendar>
+  <div>
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>MyPage</h2>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="user-class-container">
-      <div class="user-class"><MypageUserClass></MypageUserClass></div>
-      <div><MypageComingClass></MypageComingClass></div>
-    </div>
+    <section class="checkout spad">
+      <div class="container">
+        <div class="checkout__form">
+          <div class="row">
+            <div class="col-lg-8 col-md-6">
+              <MypageUserInfo :customerData="customerData"></MypageUserInfo>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="checkout__order">
+                <h6 class="order__title text-center">My Schedule</h6>
+                <MypageCalendar></MypageCalendar>
+                <br />
+                <hr />
+                <br />
+                <MypageUserClass></MypageUserClass>
+              </div>
+            </div>
+          </div>
+          <br /><br />
+          <MypageComingClass></MypageComingClass>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 

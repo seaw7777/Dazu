@@ -4,8 +4,14 @@
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
           <div class="my-2">
-            <v-btn depressed color="success" v-bind="attrs" v-on="on">
-              <v-icon left>
+            <v-btn
+              tile
+              elevation="0"
+              large
+              style="font-size: 14px;color: #ffffff;background: #111111;font-weight: 600;border: none;text-transform: uppercase;display: inline-block;letter-spacing: 2px;padding: 14px 30px;"
+              v-bind="attrs"
+              v-on="on"
+              ><v-icon left>
                 mdi-calendar-edit
               </v-icon>
               스케줄 관리
@@ -91,7 +97,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="dialog = false">
+            <v-btn text @click="dialog = false">
               닫기
             </v-btn>
           </v-card-actions>
@@ -107,7 +113,7 @@
               <v-row>
                 <v-col cols="12" sm="6">
                   <v-icon>mdi-calendar-check</v-icon>
-                  <a>날짜</a>
+                  <p>날짜</p>
                   <v-text-field
                     persistent-hint
                     required

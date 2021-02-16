@@ -5,7 +5,7 @@
         <div
           class="map-container"
           id="map"
-          style="width:1000px;height:500px; border:1px solid #f08632;"
+          style="width:900px;height:500px; border:1px solid #f08632;"
         ></div>
       </div>
     </section>
@@ -75,8 +75,8 @@ export default {
       for (let index = 0; index < storeClass.data.length; index++) {
         const id = storeClass.data[index].classcode;
         element += '<br>';
-        element += `<a href="http://localhost:8080/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
-        // element += `<a href="https://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
+        // element += `<a href="http://localhost:8080/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
+        element += `<a href="https://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
       }
       element += '</div>';
 
@@ -96,7 +96,7 @@ export default {
 <style>
 .map-container {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;

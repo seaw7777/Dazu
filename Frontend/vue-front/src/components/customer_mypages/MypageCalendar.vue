@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     <!-- {{ tmpcom }} -->
     <vc-calendar v-model="date" :attributes="attributes">
       <div slot="day-popover" slot-scope="{ dayTitle, attributes }">

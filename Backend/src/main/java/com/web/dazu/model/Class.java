@@ -38,16 +38,8 @@ public class Class {
 		this.class_max = class_max;
 		this.class_price = class_price;
 	}
-
-
-<<<<<<< HEAD
+	
 	public int getClasscode() {
-=======
-
-
-
-	public String getClasscode() {
->>>>>>> feature/he_css_template
 		return classcode;
 	}
 
