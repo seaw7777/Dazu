@@ -103,10 +103,10 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="dialog = false">
+            <v-btn color="blue darken-1" text @click="closeDialog()">
               Close
             </v-btn>
-            <v-btn color="blue darken-1" text @click="clickUpdateClass">
+            <v-btn color="blue darken-1" text @click="clickUpdateClass()">
               Save
             </v-btn>
           </v-card-actions>
@@ -143,6 +143,7 @@ export default {
       food_type: this.classSimpleItem.food_type,
       mealkit_ok: this.classSimpleItem.mealkit_ok,
       class_max: this.classSimpleItem.class_max,
+      classcode: this.classSimpleItem.classcode,
       class_describe: '', // 파일 업로드 완료되면 수정할 부분
     };
   },
@@ -166,6 +167,11 @@ export default {
         store_information_storecode: '',
       });
       this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
+    },
+    closeDialog() {
+      this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };
