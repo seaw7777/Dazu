@@ -11,17 +11,17 @@
           </div>
         </div>
         <hr />
-        <div>
+        <div class="best-post">
           <v-row v-for="n in 5" :key="n">
             <v-col v-for="k in 2" :key="k">
               <div v-if="k === 1">
                 <p @click="titleClick(bestFamousStoreList[n - 1].board_code)">
-                  {{ n }} {{ bestFamousStoreList[n - 1].board_title }}
+                  {{ n }}. {{ bestFamousStoreList[n - 1].board_title }}
                 </p>
               </div>
               <div v-else>
                 <p @click="titleClick(bestFamousStoreList[n + 4].board_code)">
-                  {{ n + 5 }} {{ bestFamousStoreList[n + 4].board_title }}
+                  {{ n + 5 }}. {{ bestFamousStoreList[n + 4].board_title }}
                 </p>
               </div>
             </v-col>
@@ -68,4 +68,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+p {
+  display: flex;
+  font-size: 1.5rem;
+}
+.best-post {
+  margin: 2rem;
+}
+</style>

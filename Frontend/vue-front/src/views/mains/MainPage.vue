@@ -14,15 +14,15 @@
           color="orange accent-4"
         >
           <v-tab class="tab" v-for="item in items" :key="item.tab">
-            <!-- {{ item.tab }}
-            <v-icon>{{ item.icon }}</v-icon> -->
-            <!-- <div class="categories__item"> -->
-            <!-- <div class="categories__item__icon"> -->
-            <!-- <span :class="item.icon"></span> -->
-            {{ item.tab }}
-            <v-icon>{{ item.icon }}</v-icon>
-            <!-- </div>
-            </div> -->
+            <!-- {{ item.tab }} -->
+            <!-- <v-icon>{{ item.icon }}</v-icon> -->
+            <div class="categories__item">
+              <div class="categories__item__icon">
+                <span :class="item.icon"></span>
+                <div>{{ item.tab }}</div>
+                <!-- <v-icon>{{ item.icon }}</v-icon> -->
+              </div>
+            </div>
           </v-tab>
         </v-tabs>
 
@@ -72,11 +72,11 @@ export default {
       items: [
         {
           tab: '지도',
-          icon: 'mdi-home-map-marker',
+          icon: 'flaticon-034-chocolate-roll',
         },
         {
           tab: '목록',
-          icon: 'mdi-heart',
+          icon: 'flaticon-029-cupcake-3',
         },
       ],
     };
@@ -90,18 +90,10 @@ export default {
 </script>
 
 <style scoped>
-.flaticon-034-chocolate-roll {
-  /* width: 1rem; */
-  size: 80%;
-}
-
 .tabs {
   height: 110px;
 }
 .tab {
-  height: 100%;
-}
-.categories__item__icon {
-  font-size: 1px;
+  height: 3.5rem;
 }
 </style>

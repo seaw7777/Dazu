@@ -1,9 +1,9 @@
 <template>
   <div v-if="this.userId === this.$store.state.usercode">
-    <v-row justify="center">
+    <v-row>
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+          <v-btn class="editbtn" color="orange" dark v-bind="attrs" v-on="on">
             수정
           </v-btn>
         </template>
@@ -15,20 +15,29 @@
             <v-container>
               <v-row>
                 <v-col cols="12" sm="10">
-                  <v-text-field
-                    v-model="updateTitle"
-                    :rules="rules"
-                    counter="25"
-                    label="제목"
-                  ></v-text-field>
+                  <div class="checkout__input">
+                    <p>제목<span>*</span></p>
+                    <input
+                      class="title-input"
+                      type="text"
+                      maxlength="25"
+                      v-model="updateTitle"
+                      @click="titleclick"
+                    />
+                  </div>
+                  <p class="title-count">{{ updateTitle.length }}/25</p>
                 </v-col>
                 <v-col cols="12" md="10">
-                  <v-textarea
-                    outlined
-                    name="input-7-4"
-                    label="내용을 입력하세요."
-                    v-model="updateContent"
-                  ></v-textarea>
+                  <div class="checkout__input">
+                    <p>내용<span>*</span></p>
+                    <textarea
+                      type="text"
+                      v-model="updateContent"
+                      placeholder="내용을 입력하세요."
+                      class="content-input"
+                      @click="contentclick"
+                    />
+                  </div>
                 </v-col>
               </v-row>
             </v-container>
@@ -93,4 +102,23 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.editbtn {
+  margin-bottom: 12px;
+}
+.title-input {
+  width: 100%;
+}
+.content-input {
+  height: 200px;
+  width: 100%;
+  padding: 20px;
+  font-size: 14px;
+  border-style: solid;
+  border-color: rgb(204, 201, 201);
+}
+.title-count {
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
