@@ -1,12 +1,23 @@
 <template>
   <div>
-    <v-card width="600px">
-      <v-card-title>가게 주소</v-card-title>
-      <v-card-text>{{ this.storeData.store_location }}</v-card-text>
-      <v-row justify="center">
+    <div class="cart__discount">
+      <h6>Store Address</h6>
+      <form action="#">
+        <input
+          type="text"
+          placeholder="Coupon code"
+          v-model="storeData.store_location"
+          readonly
+        />
         <v-dialog v-model="dialog" persistent max-width="600">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            <v-btn
+              style="font-size: 14px;color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #111111;padding: 0 30px;border: none;position: absolute;right: 0;top: 0;height: 100%;"
+              dark
+              tile
+              v-bind="attrs"
+              v-on="on"
+            >
               편집
             </v-btn>
           </template>
@@ -68,17 +79,18 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="dialog = false">
+              <v-btn text @click="dialog = false">
                 Close
               </v-btn>
-              <v-btn color="blue darken-1" text @click="submitInfo">
+              <v-btn text @click="submitInfo">
                 Save
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
-      </v-row>
-    </v-card>
+        <!-- <button type="submit">Edit</button> -->
+      </form>
+    </div>
   </div>
 </template>
 

@@ -1,14 +1,20 @@
 <template>
   <div>
-    <v-card width="600px">
-      <v-card-title>가게 이름</v-card-title>
-      <v-card-text>{{ this.storeData.store_name }}</v-card-text>
-      <v-row justify="center">
+    <div class="cart__discount">
+      <h6>Store Name</h6>
+      <form>
+        <input
+          type="text"
+          placeholder="Coupon code"
+          v-model="storeData.store_name"
+          readonly
+        />
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              style="font-size: 14px;color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #111111;padding: 0 30px;border: none;position: absolute;right: 0;top: 0;height: 100%;"
               dark
+              tile
               v-bind="attrs"
               v-on="on"
               @click="changeName(storeData)"
@@ -29,17 +35,17 @@
             ></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="green darken-1" text @click="putStoreName()">
+              <v-btn text @click="putStoreName()">
                 SAVE
               </v-btn>
-              <v-btn color="green darken-1" text @click="dialog = false">
+              <v-btn text @click="dialog = false">
                 CLOSE
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
-      </v-row>
-    </v-card>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -49,12 +55,15 @@ export default {
   data() {
     return {
       dialog: false,
-      newStoreName: '',
+      newStoreName: this.storeData.store_name,
       id: Number,
     };
   },
   props: {
     storeData: Object,
+  },
+  created() {
+    this.newStoreName = this.storeData.store_name;
   },
   computed: {
     newName: function() {

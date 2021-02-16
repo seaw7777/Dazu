@@ -1,36 +1,40 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="400" @click="classclick">
-      <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-      </v-img>
-
-      <v-card-text class="text--primary">
-        <v-row no-gutters>
-          <v-col cols="12" sm="6" md="8">
-            <div>{{ classSimpleItem.class_name }}</div>
-            <Calendars
-              :classcode="classSimpleItem.classcode"
-              :class_name="classSimpleItem.class_name"
-            ></Calendars>
-            <div v-if="classSimpleItem.mealkit_ok === '제공'">
-              <Mealkits :classcode="classSimpleItem.classcode"></Mealkits>
-            </div>
-          </v-col>
-          <v-col cols="6" md="4">
-            <UpdateClass :classSimpleItem="classSimpleItem"></UpdateClass>
-            <div class="my-2">
-              <v-btn color="error" fab small dark @click="deleteClass">
-                <v-icon>mdi-trash-can</v-icon>
-              </v-btn>
-            </div>
-          </v-col>
-        </v-row>
-      </v-card-text>
-    </v-card>
+    <td class="product__cart__item">
+      <div class="product__cart__item__pic">
+        <img src="img/shop/cart/cart-1.jpg" alt="" />
+      </div>
+      <div class="product__cart__item__text">
+        <h6>{{ classSimpleItem.class_name }}</h6>
+      </div>
+    </td>
+    <td class="cart__price">₩ {{ classSimpleItem.class_price }}</td>
+    <td class="cart__stock">{{ classSimpleItem.food_type }}</td>
+    <td
+      class="cart__btn"
+      v-if="classSimpleItem.mealkit_ok === '제공'"
+      style="vertical-align: middle;"
+    >
+      <Calendars
+        :classcode="classSimpleItem.classcode"
+        :class_name="classSimpleItem.class_name"
+      ></Calendars>
+      <Mealkits :classcode="classSimpleItem.classcode"></Mealkits>
+    </td>
+    <td class="cart__btn" v-if="classSimpleItem.mealkit_ok === '미제공'">
+      <Calendars
+        :classcode="classSimpleItem.classcode"
+        :class_name="classSimpleItem.class_name"
+      ></Calendars>
+    </td>
+    <td class="cart__btn">
+      <UpdateClass :classSimpleItem="classSimpleItem"></UpdateClass>
+    </td>
+    <td class="cart__btn">
+      <v-btn color="error" fab small dark @click="deleteClass">
+        <v-icon>mdi-trash-can</v-icon>
+      </v-btn>
+    </td>
   </div>
 </template>
 <script>

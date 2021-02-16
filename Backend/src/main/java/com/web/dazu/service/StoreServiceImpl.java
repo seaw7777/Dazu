@@ -81,6 +81,13 @@ public class StoreServiceImpl implements StoreService {
 		store.setLng(XYMap.get("y"));
 
 		System.out.println(store.getLat() + store.getLng());
+		String dong = store.getDong();
+		System.out.println(store.getDong());
+		
+		dong = dong.replaceAll(" ", "");
+		
+		store.setDong(dong);
+		System.out.println(store.getDong());
 
 	    session.getMapper(StoreMapper.class).insertStore(store);
 	    fileuploadservice.storefileup(file, session.getMapper(StoreMapper.class).getstorecode(store));

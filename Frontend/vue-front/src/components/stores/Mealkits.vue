@@ -5,7 +5,16 @@
         <v-dialog v-model="dialog" persistent max-width="800px">
           <template v-slot:activator="{ on, attrs }">
             <div class="my-2">
-              <v-btn depressed color="warning" v-bind="attrs" v-on="on">
+              <v-btn
+                tile
+                elevation="0"
+                large
+                style="display: inline-block;font-size: 14px;font-weight: 600;text-transform: uppercase;padding: 14px 30px;color: #ffffff;background: #f08632;letter-spacing: 2px;"
+                depressed
+                color="warning"
+                v-bind="attrs"
+                v-on="on"
+              >
                 <v-icon left>
                   mdi-food-variant
                 </v-icon>

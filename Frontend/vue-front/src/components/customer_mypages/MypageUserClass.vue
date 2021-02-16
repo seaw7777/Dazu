@@ -1,6 +1,32 @@
 <template>
   <div>
-    <v-alert
+    <div class="blog__sidebar__item">
+      <h5>MY Classes</h5>
+
+      <div
+        class="blog__sidebar__recent"
+        v-for="item in classDataList"
+        :key="item.name"
+      >
+        <router-link
+          :to="'/class/detail/' + item.classcode"
+          tag="a"
+          class="blog__sidebar__recent__item"
+        >
+          <div class="blog__sidebar__recent__item__pic">
+            <img src="img/blog/br-1.jpg" alt="" />
+          </div>
+          <div class="blog__sidebar__recent__item__text">
+            <p>{{ item.class_name }}</p>
+            <span
+              >{{ item.class_date }} | {{ item.class_starttime.slice(0, 5) }} -
+              {{ item.class_endtime.slice(0, 5) }}</span
+            >
+          </div>
+        </router-link>
+      </div>
+    </div>
+    <!-- <v-alert
       :value="alert"
       color="pink"
       dark
@@ -12,8 +38,8 @@
       <v-btn color="white" outlined @click="alert = !alert">
         close
       </v-btn>
-    </v-alert>
-    <v-row no-gutters>
+    </v-alert> -->
+    <!-- <v-row no-gutters>
       <v-col cols="12">
         <v-simple-table fixed-header height="200px">
           <template v-slot:default>
@@ -67,7 +93,7 @@
           </template>
         </v-simple-table>
       </v-col>
-    </v-row>
+    </v-row> -->
   </div>
 </template>
 

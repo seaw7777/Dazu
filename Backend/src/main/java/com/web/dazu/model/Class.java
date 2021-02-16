@@ -41,6 +41,7 @@ public class Class {
 
 
 
+	
 	public int getClasscode() {
 		return classcode;
 	}

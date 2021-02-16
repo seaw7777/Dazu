@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <v-card color="grey lighten-3" width="450px">
-      <v-row>
-        <v-col cols="8">
-          <v-card-title>개설 클래스 목록</v-card-title>
-        </v-col>
-        <v-col cols="4">
-          <MakeClass :storecode="storecode"></MakeClass>
-        </v-col>
-      </v-row>
-      <v-col
-        v-for="classSimpleItem in classSimpleItems"
-        :key="classSimpleItem.classcode"
-        cols="12"
-        sm="12"
-      >
-        <ClassSimpleItem :classSimpleItem="classSimpleItem"></ClassSimpleItem
-      ></v-col>
-    </v-card>
+  <div class="wishlist__cart__table">
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="classSimpleItem in classSimpleItems"
+          :key="classSimpleItem.classcode"
+        >
+          <ClassSimpleItem :classSimpleItem="classSimpleItem"></ClassSimpleItem>
+        </tr>
+      </tbody>
+    </table>
+    <MakeClass :storecode="storecode"></MakeClass>
   </div>
 </template>
 

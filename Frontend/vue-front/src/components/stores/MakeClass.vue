@@ -3,8 +3,16 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            클래스 추가
+          <v-btn
+            tile
+            elevation="0"
+            large
+            style="color: #111111;font-size: 14px;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;border: 1px solid #e1e1e1;padding: 14px 35px;display: inline-block;"
+            v-bind="attrs"
+            v-on="on"
+            block
+          >
+            클래스 등록
           </v-btn>
         </template>
         <v-card>
@@ -102,10 +110,10 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="dialog = false">
+            <v-btn text @click="dialog = false">
               Close
             </v-btn>
-            <v-btn color="blue darken-1" text @click="clickInsertClass">
+            <v-btn text @click="clickInsertClass">
               Save
             </v-btn>
           </v-card-actions>

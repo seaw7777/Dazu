@@ -5,7 +5,7 @@
         <div
           class="map-container"
           id="map"
-          style="width:1000px;height:500px; border:1px solid #f08632;"
+          style="width:900px;height:500px; border:1px solid #f08632;"
         ></div>
       </div>
     </section>
@@ -96,7 +96,7 @@ export default {
 <style>
 .map-container {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h6 class="checkout__title">Comming Up Classes</h6>
     <v-sheet class="mx-auto" elevation="0" max-width="800">
       <v-slide-group
         v-model="model"

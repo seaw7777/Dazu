@@ -5,6 +5,7 @@
     </div>
 
     <div>
+      <br /><br />
       <v-card elevation="0">
         <v-tabs
           class="tabs"
@@ -31,7 +32,7 @@
             <div class="row">
               <div class="col-lg-12 text-center">
                 <div class="section-title">
-                  <h2>Our Neighborhood</h2>
+                  <span>Our Neighborhood</span>
                 </div>
               </div>
             </div>
