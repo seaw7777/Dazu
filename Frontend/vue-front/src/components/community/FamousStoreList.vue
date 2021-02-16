@@ -32,26 +32,46 @@
               </template>
               <v-card>
                 <v-card-title>
-                  <span class="headline">새로운 맛집 정보 등록</span>
+                  <h4 class="checkout__title">새로운 꿀팁 등록</h4>
+                  <!-- <span class="headline">새로운 맛집 정보 등록</span> -->
                 </v-card-title>
                 <v-card-text>
                   <v-container>
                     <v-row>
                       <v-col cols="12" sm="10">
-                        <v-text-field
+                        <!-- <v-text-field
                           v-model="newTitle"
                           :rules="rules"
                           counter="25"
                           label="제목"
-                        ></v-text-field>
+                        ></v-text-field> -->
+                        <div class="checkout__input">
+                          <p>제목<span>*</span></p>
+                          <input
+                            class="title-input"
+                            maxlength="25"
+                            type="text"
+                            v-model="newTitle"
+                          />
+                          <p class="title-count">{{ newTitle.length }}/25</p>
+                        </div>
                       </v-col>
                       <v-col cols="12" md="10">
-                        <v-textarea
+                        <!-- <v-textarea
                           outlined
                           name="input-7-4"
                           label="내용을 입력하세요."
                           v-model="newContent"
-                        ></v-textarea>
+                        ></v-textarea> -->
+                        <div class="checkout__input">
+                          <p>내용<span>*</span></p>
+                          <textarea
+                            type="text"
+                            v-model="newContent"
+                            placeholder="내용을 입력하세요."
+                            class="content-input"
+                          />
+                        </div>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -164,6 +184,22 @@ th {
 .writebtn {
   grid-area: writebtn;
   margin-top: 30px;
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.title-input {
+  width: 100%;
+}
+.content-input {
+  height: 200px;
+  width: 100%;
+  padding: 20px;
+  font-size: 14px;
+  border-style: solid;
+  border-color: rgb(204, 201, 201);
+}
+.title-count {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

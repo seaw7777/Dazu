@@ -37,7 +37,12 @@
           height="300"
           width="800"
         >
-          {{ detailData.board_contents }}
+          <!-- {{ detailData.board_contents }} -->
+          <div class="blog__details__text">
+            <p>
+              {{ detailData.board_contents }}
+            </p>
+          </div>
         </v-sheet>
       </v-card-text>
       <v-row class="btn-container">
@@ -69,17 +74,8 @@
         </v-col>
         <v-card-text>
           <div v-for="comment in commentList" :key="comment">
-            <p>
-              {{ comment.nickname }}({{ comment.comment_write_datetime }})
-              <!-- <v-btn
-              v-if="
-                this.commentList.member_usercode === this.$store.state.usercode
-              "
-              @click="deleteComment(comment)"
-              >X</v-btn
-            >
-            <v-btn v-else></v-btn> -->
-            </p>
+            <p>{{ comment.nickname }}({{ comment.comment_write_datetime }})</p>
+
             <p>{{ comment.comment_contents }}</p>
             <v-divider></v-divider>
           </div>
@@ -177,5 +173,8 @@ export default {
 .comment-container {
   padding: 1rem;
   margin-left: 1.3rem;
+}
+.blog__details__text {
+  padding: 1rem;
 }
 </style>
