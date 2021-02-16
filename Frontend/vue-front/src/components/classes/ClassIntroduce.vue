@@ -1,5 +1,6 @@
 <template>
   <div>
+    클래스코드{{ classcode }}
     <v-img :src="imgsrc"></v-img>
   </div>
 </template>
@@ -24,7 +25,7 @@ export default {
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
       this.classcode +
       '_class_intro';
-    console.log(this.imgsrc);
+    console.log('클래스 코드 들어간 src' + this.imgsrc);
   },
 };
 </script>
