@@ -26,7 +26,7 @@
 		select res.*,m.nickname
 		from recommended_restaurants_board as res,member as m
 		where board_code = #{board_code}
-		and tip.member_usercode = m.usercode
+		and res.member_usercode = m.usercode
 	</select>
 	
 	<update id="updateViews" parameterType="int">
