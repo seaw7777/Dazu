@@ -1,6 +1,5 @@
 <template>
   <div>
-    가게 코드 {{ storecode }}
     <v-img :src="imgsrc" />
   </div>
 </template>

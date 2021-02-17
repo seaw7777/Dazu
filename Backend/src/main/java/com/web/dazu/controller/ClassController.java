@@ -101,13 +101,11 @@ public class ClassController {
 	@GetMapping("/time/{classcode}")
 	public ResponseEntity<List<ClassTime>> selectClassTime(@PathVariable String classcode) {
 		List<ClassTime> list = new LinkedList<ClassTime>(); 
-		System.out.println(classcode);
 		try {
 			list =  service.selectClassTime(classcode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(list);
 		return new ResponseEntity<List<ClassTime>>(list, HttpStatus.OK);
 	}
 	
@@ -145,7 +143,6 @@ public class ClassController {
 	@GetMapping("/store/{storecode}")
 	public ResponseEntity<List<Class>> selectClassByStore(@PathVariable String storecode) {
 		List<Class> list = new ArrayList<>();
-		System.out.println(storecode);
 		try {
 			list = service.selectClassByStore(storecode);
 		} catch (Exception e) {
@@ -181,7 +178,6 @@ public class ClassController {
 	@ApiOperation(value = "클래스에 Q&A를 등록한다.")
 	@PostMapping("/qna/insert")
 	public void insertClassQnA(@RequestBody ClassQnA qna) {
-		System.out.println(qna.getClass_qna_board_write_contents());
 		try {
 			service.insertClassQnA(qna);
 		} catch (Exception e) {
@@ -192,8 +188,6 @@ public class ClassController {
 	@ApiOperation(value = "특정 클래스 특정 Q&A에 댓글(답변)을 등록한다.")
 	@PostMapping("/qna/answer/insert")
 	public void insertClassQnAAnswer(@RequestBody ClassQnA answer) {
-		System.out.println(answer.getClass_qna_answer_write_content());
-		System.out.println(answer.getClass_qna_board_code());
 		try {
 			service.insertClassQnAAnswer(answer);
 		} catch (Exception e) {

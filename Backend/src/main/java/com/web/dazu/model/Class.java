@@ -162,14 +162,5 @@ public class Class {
 		this.class_price = class_price;
 	}
 
-	@Override
-	public String toString() {
-		return "Class [classcode=" + classcode + ", class_name=" + class_name + ", class_time=" + class_time
-				+ ", class_describe=" + class_describe + ", class_difficult=" + class_difficult + ", mealkit_ok="
-				+ mealkit_ok + ", food_type=" + food_type + ", store_information_storecode="
-				+ store_information_storecode + ", store_information_store_name=" + store_information_store_name
-				+ ", store_information_store_describe=" + store_information_store_describe + ", mealkit_price="
-				+ mealkit_price + ", class_max=" + class_max + ", class_price=" + class_price + "]";
-	}
 
 }

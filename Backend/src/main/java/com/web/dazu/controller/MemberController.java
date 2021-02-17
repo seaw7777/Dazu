@@ -87,7 +87,6 @@ public class MemberController {
 	@ApiOperation(value = "고객이 신청한 클래스들을 확인한다.")
 	@GetMapping("/selectMyclass/{id}")
 	public ResponseEntity<List<Myclass>> selectmyclass(String id) {
-		System.out.println("진입 : "+id);
 		List<Myclass> list = new LinkedList<Myclass>();
 		try {
 			list = service.selectMyclass(id);

@@ -51,9 +51,6 @@ public class StoreController {
 	@PostMapping("/insert")
 	public void insertStore(@RequestPart(value = "files", required = true) List<MultipartFile> file,
 			@RequestPart(value = "key", required = true) Store store) {
-		System.out.println("스토어 진입");
-		System.out.println(file.get(0).getOriginalFilename());
-		System.out.println(store);
 		try {
 			service.insertStore(file,store);
 		} catch (Exception e) {
@@ -86,7 +83,6 @@ public class StoreController {
 	@ApiOperation(value = "가게 주소를 변경한다.")
 	@PutMapping("/update/address")
 	public void updateStoreAddress(@RequestBody Store store) {
-		System.out.println(store.getStorecode());
 		try {
 			service.updateStoreAddress(store);
 		} catch (Exception e) {
@@ -97,10 +93,9 @@ public class StoreController {
 	@ApiOperation(value = "가게 상세정보를 변경한다.")
 	@PutMapping("/update/detail")
 	public void updateStoreDetail(@RequestPart(value = "file", required = true) MultipartFile file,
-			@RequestPart(value = "key", required = false) Store store) {
+			@RequestPart(value = "key", required = false) int storecode) {
 		try {
-			service.updateStoreAddress(store);
-			fileuploadservice.updateStoreDetail(store.getStorecode(),file);
+			fileuploadservice.updateStoreDetail(storecode,file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

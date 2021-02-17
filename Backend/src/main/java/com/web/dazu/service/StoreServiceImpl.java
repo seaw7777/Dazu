@@ -39,7 +39,6 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public void insertStore(List<MultipartFile> file,Store store) throws Exception {
-		System.out.println("서비스 진입");
 		
 		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
@@ -59,7 +58,6 @@ public class StoreServiceImpl implements StoreService {
         while ((line = br.readLine()) != null) {
             result += line;
         }
-        System.out.println(result);
         jsonString = result.toString();
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -80,14 +78,11 @@ public class StoreServiceImpl implements StoreService {
 		store.setLat(XYMap.get("x"));
 		store.setLng(XYMap.get("y"));
 
-		System.out.println(store.getLat() + store.getLng());
 		String dong = store.getDong();
-		System.out.println(store.getDong());
 		
 		dong = dong.replaceAll(" ", "");
 		
 		store.setDong(dong);
-		System.out.println(store.getDong());
 
 	    session.getMapper(StoreMapper.class).insertStore(store);
 	    fileuploadservice.storefileup(file, session.getMapper(StoreMapper.class).getstorecode(store));
@@ -128,7 +123,6 @@ public class StoreServiceImpl implements StoreService {
         while ((line = br.readLine()) != null) {
             result += line;
         }
-        System.out.println(result);
         jsonString = result.toString();
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -149,8 +143,6 @@ public class StoreServiceImpl implements StoreService {
 		store.setLat(XYMap.get("x"));
 		store.setLng(XYMap.get("y"));
 
-		System.out.println(store.getLat() + store.getLng());
-		System.out.println(store.getStorecode());
 		
 		session.getMapper(StoreMapper.class).updateStoreAddress(store);
 	}

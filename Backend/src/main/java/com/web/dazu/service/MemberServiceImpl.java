@@ -76,15 +76,12 @@ public class MemberServiceImpl implements MemberService {
 		member.setLat(XYMap.get("x"));
 		member.setLng(XYMap.get("y"));
 		    
-		System.out.println(member.getLat() + member.getLng());
 		
 		String dong = member.getDong();
-		System.out.println(member.getDong());
 		
 		dong = dong.replaceAll(" ", "");
 		
 		member.setDong(dong);
-		System.out.println(member.getDong());
 
 		session.getMapper(MemberMapper.class).insertMember(member);
 	}
@@ -155,7 +152,6 @@ public class MemberServiceImpl implements MemberService {
 	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 	        
 	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
 	        
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        
@@ -165,7 +161,6 @@ public class MemberServiceImpl implements MemberService {
 	        while ((line = br.readLine()) != null) {
 	            result += line;
 	        }
-	        System.out.println(result);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }

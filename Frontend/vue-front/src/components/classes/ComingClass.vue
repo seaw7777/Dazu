@@ -14,7 +14,7 @@
             <v-card class="ma-4" elevation="0" @click="classclick(n - 1)">
               <div class="product__item">
                 <div class="product__item__pic set-bg" data-setbg="pic">
-                  <img :src="pic" />
+                  <img :src="imgsrc(classItems[n - 1].classcode)" />
                   <div class="product__label">
                     <span>{{ classItems[n - 1].class_date }}</span>
                   </div>
@@ -42,7 +42,6 @@
 
 <script>
 import { customerUpcomingClass } from '@/api/auth';
-import Pic from '@/assets/img/shop/product-3.jpg';
 export default {
   data() {
     return {
@@ -50,7 +49,6 @@ export default {
       classItems: [],
       checkClass: false,
       classLen: Number,
-      pic: Pic,
     };
   },
   async created() {
@@ -61,11 +59,19 @@ export default {
     this.isLoading = false;
     this.classItems = data;
     this.classLen = data.length;
+
     if (this.classLen > 0) {
       this.checkClass = true;
     }
   },
   methods: {
+    imgsrc: function(code) {
+      var imgsrc =
+        'https://i4d104.p.ssafy.io/dazu/file/image/' +
+        code +
+        '_class_Thumbnail';
+      return imgsrc;
+    },
     classclick(n) {
       const id = this.classItems[n].classcode;
       this.$router.push(`/class/detail/${id}`);

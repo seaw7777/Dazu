@@ -41,7 +41,6 @@ public class TipboardCommentController {
 	@ApiOperation(value = "특정 게시판에 댓글 달기", response = String.class)
 	@PostMapping(value = "/write")
 	public String writeBoardComment(@RequestBody Comment comment) {
-		System.out.println(comment);
 		try {
 			service.writeBoardComment(comment);
 			return "success";
@@ -66,7 +65,6 @@ public class TipboardCommentController {
 	@ApiOperation(value = "팁 게시판 게시글 댓글 수정진행", response = String.class)
 	@PutMapping(value = "/modify")
 	public String modifyComment(@RequestBody Comment comment) {
-		System.out.println(comment);
 		try {
 			service.modifyComment(comment);
 			return "success";

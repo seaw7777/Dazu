@@ -1,6 +1,5 @@
 <template>
   <div>
-    클래스코드{{ classcode }}
     <v-img :src="imgsrc"></v-img>
   </div>
 </template>

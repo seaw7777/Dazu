@@ -93,6 +93,10 @@ export default {
 </script>
 
 <style scoped>
+.class-container {
+  display: flex;
+  flex-direction: column;
+}
 .ma-2 {
   background-color: orange;
   text-color: black;
