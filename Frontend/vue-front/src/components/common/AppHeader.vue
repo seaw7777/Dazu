@@ -12,16 +12,13 @@
                     ><img src="img/DAZUlogo_v2.png" alt=""
                   /></router-link>
                 </div>
+
                 <div class="userlogo">
                   <div class="testimonial__author__pic">
                     <img :src="userImgUrl" alt="" />
                   </div>
 
-                  <ul
-                    class="user-down"
-                    style="
-    padding-left: 10px;"
-                  >
+                  <ul class="user-down" style="padding-left: 10px;">
                     <li>
                       {{ $store.state.username }}
                       <span class="arrow_carrot-down"></span>
@@ -37,7 +34,6 @@
               </div>
             </div>
           </div>
-          <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
       </div>
 
@@ -145,7 +141,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .menu {
   display: flex;
   width: 100%;

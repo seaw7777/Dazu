@@ -32,7 +32,7 @@ export default new Vuex.Store({
   },
   getters: {
     isLogin(state) {
-      return state.username !== '';
+      return state.usercode !== '';
     },
     isUserType(state) {
       return state.usertype === '1';

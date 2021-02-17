@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <LoginSignBtn></LoginSignBtn>
   </div>
 </template>
@@ -47,4 +47,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.container {
+}
+</style>

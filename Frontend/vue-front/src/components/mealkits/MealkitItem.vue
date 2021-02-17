@@ -46,4 +46,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.product__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product__item__pic {
+  display: flex;
+  flex-shrink: 0;
+}
+</style>
