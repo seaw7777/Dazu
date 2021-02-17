@@ -60,6 +60,7 @@ export default {
         'https://i4d104.p.ssafy.io/' +
         this.classSimpleItem.classcode +
         '_class_Thumbnail';
+      console.log('클래스 심플 아이템 이미지 : ' + imgsrc);
       return imgsrc;
     },
     async deleteClass() {

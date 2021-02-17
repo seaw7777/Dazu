@@ -36,6 +36,7 @@ export default {
         'https://i4d104.p.ssafy.io/dazu/file/image/' +
         this.mealkitItem.class_information_classcode +
         '_mealkit_Thumbnail';
+      console.log('밀키트 아이템 이미지 : ' + imgsrc);
       return imgsrc;
     },
     mealkitClick() {
