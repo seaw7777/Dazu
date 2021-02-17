@@ -2,7 +2,7 @@
   <div>
     <td class="product__cart__item">
       <div class="product__cart__item__pic">
-        <img src="img/shop/cart/cart-1.jpg" alt="" />
+        <img :src="imgsrc()" alt="" />
       </div>
       <div class="product__cart__item__text">
         <h6>{{ classSimpleItem.class_name }}</h6>
@@ -55,6 +55,13 @@ export default {
     },
   },
   methods: {
+    imgsrc: function() {
+      var imgsrc =
+        'https://i4d104.p.ssafy.io/' +
+        this.classSimpleItem.classcode +
+        '_class_Thumbnail';
+      return imgsrc;
+    },
     async deleteClass() {
       const id = this.classSimpleItem.classcode;
       await deleteClass(id);

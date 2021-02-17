@@ -1,7 +1,7 @@
 <template>
   <div class="product__item" @click="mealkitClick">
     <div class="product__item__pic set-bg" data-setbg="pic">
-      <img :src="pic" />
+      <img :src="imgsrc()" />
       <div class="product__label">
         <span>{{ mealkitItem.class_information_classname }}</span>
       </div>
@@ -35,7 +35,7 @@ export default {
       var imgsrc =
         'https://i4d104.p.ssafy.io/dazu/file/image/' +
         this.classItem.classcode +
-        '_class_Thumbnail';
+        '_mealkit_Thumbnail';
       return imgsrc;
     },
     mealkitClick() {

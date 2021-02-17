@@ -24,7 +24,7 @@ export default {
     this.imgsrc =
       'https://i4d104.p.ssafy.io/dazu/file/image/' +
       this.classcode +
-      '_milkit_intro';
+      '_mealkit_intro';
   },
 };
 </script>

@@ -86,7 +86,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 
 		for (int i = 0; i < file.size(); i++) {
 			String rootPath = "/home/Image";
-			String filePath = rootPath + "/" + Integer.toString(index) + "_" + "milkit" + "_" + str[i];
+			String filePath = rootPath + "/" + Integer.toString(index) + "_" + "mealkit" + "_" + str[i];
 			File dest = new File(filePath);
 			File sample = new File(rootPath);
 			if (!sample.exists()) {
