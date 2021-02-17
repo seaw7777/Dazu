@@ -34,7 +34,6 @@ public class TipboardController {
 	public List<Board> getBoardList(@RequestParam Map<String, String> map) {
 		try {
 			List<Board> list = service.getBoardList(map);
-			System.out.println(list);
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,7 +44,6 @@ public class TipboardController {
 	@ApiOperation(value = "팁 게시판 글쓰기", response = String.class)
 	@PostMapping(value = "/write")
 	public String writeBoard(@RequestBody Board notice) {
-		System.out.println(notice);
 		try {
 			service.writeBoard(notice);
 			return "success";
@@ -96,7 +94,6 @@ public class TipboardController {
 	@ApiOperation(value = "팁 게시판 게시글 수정진행", response = String.class)
 	@PutMapping(value = "/modify")
 	public String modifyTip(@RequestBody Board board) {
-		System.out.println(board);
 		try {
 			service.modifyBoard(board);
 			return "success";

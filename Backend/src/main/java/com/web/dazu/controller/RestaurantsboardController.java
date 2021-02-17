@@ -46,7 +46,6 @@ public class RestaurantsboardController {
 	@ApiOperation(value = "맛집 게시판 글쓰기", response = String.class)
 	@PostMapping(value = "/write")
 	public String writeBoard(@RequestBody Board board) {
-		System.out.println(board);
 		try {
 			service.writeBoard(board);
 			return "success";
@@ -98,7 +97,6 @@ public class RestaurantsboardController {
 	@ApiOperation(value = "맛집 게시판 게시글 수정진행", response = String.class)
 	@PutMapping(value = "/modify")
 	public String modifyRes(@RequestBody Board board) {
-		System.out.println(board);
 		try {
 			service.modifyBoard(board);
 			return "success";

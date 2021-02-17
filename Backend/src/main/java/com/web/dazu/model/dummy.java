@@ -28,9 +28,5 @@ public class dummy {
 		this.detailaddress = detailaddress;
 	}
 
-	@Override
-	public String toString() {
-		return "dummy [address=" + address + ", detailaddress=" + detailaddress + "]";
-	}
 	
 }

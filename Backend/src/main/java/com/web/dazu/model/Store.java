@@ -111,13 +111,6 @@ public class Store {
 		this.member_usercode = member_usercode;
 	}
 
-	@Override
-	public String toString() {
-		return "Store [storecode=" + storecode + ", store_name=" + store_name + ", store_describe=" + store_describe
-				+ ", store_location=" + store_location + ", store_grade_cnt=" + store_grade_cnt + ", store_grade="
-				+ store_grade + ", dong=" + dong + ", lat=" + lat + ", lng=" + lng + ", member_usercode="
-				+ member_usercode + "]";
-	}
 	
 	
 }
