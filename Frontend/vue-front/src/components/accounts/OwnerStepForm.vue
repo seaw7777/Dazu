@@ -52,11 +52,6 @@
             />
           </v-col>
           <v-col cols="12">
-            <!-- <v-file-input
-              v-model="file"
-              truncate-length="15"
-              label="가게 정보 사진"
-            ></v-file-input> -->
             <v-file-input
               accept="image/png, image/jpeg, image/bmp"
               label="File input"
@@ -64,12 +59,6 @@
               v-model="selectfile"
               prepend-icon="mdi-paperclip"
             >
-              <!-- <input
-              type="file"
-              name="uploadFile"
-              ref="fileData"
-              @change="filechange"
-            /> -->
               <template v-slot:selection="{ text }">
                 <v-chip small label color="primary">
                   {{ text }}

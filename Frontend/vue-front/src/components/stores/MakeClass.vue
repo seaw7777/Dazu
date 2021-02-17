@@ -81,6 +81,7 @@
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
+                    accept="image/jpeg"
                     v-model="class_Thumbnail"
                     truncate-length="15"
                     label="클래스 썸네일 등록"
@@ -88,6 +89,7 @@
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
+                    accept="image/jpeg"
                     v-model="class_intro"
                     truncate-length="15"
                     label="클래스 상세 설명 등록"

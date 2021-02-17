@@ -47,6 +47,7 @@
                 <v-row>
                   <v-col cols="12" sm="6">
                     <v-file-input
+                      accept="image/jpeg"
                       truncate-length="15"
                       label="밀키트 썸네일 등록"
                       v-model="thumbnail"
@@ -54,6 +55,7 @@
                   </v-col>
                   <v-col cols="12" sm="6">
                     <v-file-input
+                      accept="image/jpeg"
                       truncate-length="15"
                       label="밀키트 상세 설명 등록"
                       v-model="detail"
@@ -98,6 +100,7 @@
                 <v-row>
                   <v-col cols="12" sm="6">
                     <v-text-field
+                      accept="image/jpeg"
                       label="밀키트 이름"
                       v-model="mealkit.mealkit_name"
                     ></v-text-field>
@@ -113,6 +116,7 @@
                 <v-row>
                   <v-col cols="12" sm="6">
                     <v-file-input
+                      accept="image/jpeg"
                       truncate-length="15"
                       label="밀키트 썸네일 등록"
                       v-model="mealkit.mealkit_thumbnail"
