@@ -7,6 +7,12 @@
         show-value
         color="red"
       ></b-form-rating>
+      <v-rating
+        v-model="rating"
+        background-color="orange lighten-3"
+        color="orange"
+        large
+      ></v-rating>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
           v-model="review_content"

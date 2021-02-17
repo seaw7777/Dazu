@@ -14,6 +14,7 @@ public class Class {
 	private int mealkit_price;
 	private int class_max;
 	private int class_price;
+
 	public Class(int classcode, String class_name, String class_time, String class_describe, String class_difficult,
 			String mealkit_ok, String food_type, String store_information_storecode,
 			String store_information_store_name, String store_information_store_describe, int mealkit_price,
@@ -33,94 +34,115 @@ public class Class {
 		this.class_max = class_max;
 		this.class_price = class_price;
 	}
-<<<<<<< HEAD
+
 	public Class() {
-		super();
+
 	}
-=======
 
-
-
-	
->>>>>>> afb3161dd3aa24b834df90e48f29df7545614412
 	public int getClasscode() {
 		return classcode;
 	}
+
 	public void setClasscode(int classcode) {
 		this.classcode = classcode;
 	}
+
 	public String getClass_name() {
 		return class_name;
 	}
+
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
+
 	public String getClass_time() {
 		return class_time;
 	}
+
 	public void setClass_time(String class_time) {
 		this.class_time = class_time;
 	}
+
 	public String getClass_describe() {
 		return class_describe;
 	}
+
 	public void setClass_describe(String class_describe) {
 		this.class_describe = class_describe;
 	}
+
 	public String getClass_difficult() {
 		return class_difficult;
 	}
+
 	public void setClass_difficult(String class_difficult) {
 		this.class_difficult = class_difficult;
 	}
+
 	public String getMealkit_ok() {
 		return mealkit_ok;
 	}
+
 	public void setMealkit_ok(String mealkit_ok) {
 		this.mealkit_ok = mealkit_ok;
 	}
+
 	public String getFood_type() {
 		return food_type;
 	}
+
 	public void setFood_type(String food_type) {
 		this.food_type = food_type;
 	}
+
 	public String getStore_information_storecode() {
 		return store_information_storecode;
 	}
+
 	public void setStore_information_storecode(String store_information_storecode) {
 		this.store_information_storecode = store_information_storecode;
 	}
+
 	public String getStore_information_store_name() {
 		return store_information_store_name;
 	}
+
 	public void setStore_information_store_name(String store_information_store_name) {
 		this.store_information_store_name = store_information_store_name;
 	}
+
 	public String getStore_information_store_describe() {
 		return store_information_store_describe;
 	}
+
 	public void setStore_information_store_describe(String store_information_store_describe) {
 		this.store_information_store_describe = store_information_store_describe;
 	}
+
 	public int getMealkit_price() {
 		return mealkit_price;
 	}
+
 	public void setMealkit_price(int mealkit_price) {
 		this.mealkit_price = mealkit_price;
 	}
+
 	public int getClass_max() {
 		return class_max;
 	}
+
 	public void setClass_max(int class_max) {
 		this.class_max = class_max;
 	}
+
 	public int getClass_price() {
 		return class_price;
 	}
+
 	public void setClass_price(int class_price) {
 		this.class_price = class_price;
 	}
+
 	@Override
 	public String toString() {
 		return "Class [classcode=" + classcode + ", class_name=" + class_name + ", class_time=" + class_time
@@ -131,8 +153,4 @@ public class Class {
 				+ mealkit_price + ", class_max=" + class_max + ", class_price=" + class_price + "]";
 	}
 
-	
-   
-
-	
 }
