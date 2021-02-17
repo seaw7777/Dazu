@@ -49,7 +49,6 @@ public class LoginServiceImpl implements LoginService {
         
         //    결과 코드가 200이라면 성공
         int responseCode = conn.getResponseCode();
-        System.out.println("responseCode : " + responseCode);
 
         //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -59,7 +58,6 @@ public class LoginServiceImpl implements LoginService {
         while ((line = br.readLine()) != null) {
             result += line;
         }
-        System.out.println("response body : " + result);
         
         // Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
         JsonParser parser = new JsonParser();
@@ -68,8 +66,6 @@ public class LoginServiceImpl implements LoginService {
         accessToken = element.getAsJsonObject().get("access_token").getAsString();
         refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
         
-        System.out.println("accessToken : " + accessToken);
-        System.out.println("refresh_token : " + refreshToken);
         
         br.close();
         bw.close();
@@ -89,7 +85,6 @@ public class LoginServiceImpl implements LoginService {
 	     conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 	        
 	     int responseCode = conn.getResponseCode();
-	     System.out.println("responseCode : " + responseCode);
 	        
 	     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        
@@ -99,7 +94,6 @@ public class LoginServiceImpl implements LoginService {
 	     while ((line = br.readLine()) != null) {
 	         result += line;
 	     }
-	     System.out.println("response body : " + result);
 	        
 	     JsonParser parser = new JsonParser();
 	     JsonElement element = parser.parse(result);
@@ -131,7 +125,6 @@ public class LoginServiceImpl implements LoginService {
 	     member.setUsercode(id);
 	     member.setAccessToken(accessToken);
 	     
-	     System.out.println("service : " + member.getAccessToken());
 		    
 		 return member;
 	}
@@ -149,7 +142,6 @@ public class LoginServiceImpl implements LoginService {
         conn.setRequestProperty("Authorization", "Bearer " + accessToken);
         
         int responseCode = conn.getResponseCode();
-        System.out.println("responseCode : " + responseCode);
         
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         
@@ -159,7 +151,6 @@ public class LoginServiceImpl implements LoginService {
         while ((line = br.readLine()) != null) {
             result += line;
         }
-        System.out.println(result);
 	}
 
 }

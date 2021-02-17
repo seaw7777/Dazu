@@ -67,7 +67,6 @@ public class RestaurantsboardCommentController {
 	@ApiOperation(value = "맛집 게시판 게시글 댓글 수정진행", response = String.class)
 	@PutMapping(value = "/modify")
 	public String modifyComment(@RequestBody Comment comment) {
-		System.out.println(comment);
 		try {
 			service.modifyComment(comment);
 			return "success";
