@@ -6,10 +6,13 @@
         <template v-for="review in classreviews">
           <v-list-item :key="review.class_review_code" class="list-item">
             <v-list-item-content class="review-content">
-              <ReviewStar :class_point="review.class_review_point"></ReviewStar>
-              {{ review.member_nickname }}
-              {{ review.class_review_point }}
-              {{ review.class_review_describe }}
+              <div class="checkout__order">
+                <ReviewStar
+                  :class_point="review.class_review_point"
+                ></ReviewStar>
+                <h6 class="order__title">{{ review.member_nickname }}</h6>
+                {{ review.class_review_describe }}
+              </div>
             </v-list-item-content>
           </v-list-item>
         </template>
@@ -49,13 +52,13 @@ export default {
 </script>
 
 <style scoped>
-.review-container {
+/* .review-container {
   display: flex;
-}
-.review-list-container {
+} */
+/* .review-list-container {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* width: 500px; */
-}
+  flex-wrap: wrap;
+  width: 500px;
+} */
 </style>

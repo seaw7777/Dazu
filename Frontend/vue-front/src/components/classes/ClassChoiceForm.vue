@@ -7,6 +7,7 @@
       label="유형 선택"
       dense
       solo
+      b
       v-model="mealkitchoice"
     ></v-select>
     <h6 class="order__title">STEP2. 클래스 날짜 선택</h6>

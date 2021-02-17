@@ -4,7 +4,7 @@
       class="star"
       v-model="class_point"
       background-color="orange lighten-3"
-      color="indigo"
+      color="orange lighten-3"
       readonly
     ></v-rating>
   </div>
