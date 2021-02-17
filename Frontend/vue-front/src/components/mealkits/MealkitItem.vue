@@ -34,7 +34,7 @@ export default {
     imgsrc: function() {
       var imgsrc =
         'https://i4d104.p.ssafy.io/dazu/file/image/' +
-        this.classItem.classcode +
+        this.mealkitItem.class_information_classcode +
         '_mealkit_Thumbnail';
       return imgsrc;
     },

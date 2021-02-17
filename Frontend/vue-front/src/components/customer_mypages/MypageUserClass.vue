@@ -110,6 +110,7 @@ export default {
   methods: {
     imgsrc: function(code) {
       var imgsrc = 'https://i4d104.p.ssafy.io/' + code + '_class_Thumbnail';
+      console.log(' 이미지 패스 로그 : ' + imgsrc);
       return imgsrc;
     },
     gotoClass(url) {
