@@ -57,7 +57,7 @@ export default {
   methods: {
     imgsrc: function() {
       var imgsrc =
-        'https://i4d104.p.ssafy.io/file/image' +
+        'https://i4d104.p.ssafy.io/file/image/' +
         this.classSimpleItem.classcode +
         '_class_Thumbnail';
       console.log('클래스 심플 아이템 이미지 : ' + imgsrc);
