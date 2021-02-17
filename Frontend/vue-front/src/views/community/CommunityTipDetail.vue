@@ -74,12 +74,6 @@
             <v-divider></v-divider>
           </div>
         </v-card-text>
-
-        <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve">
-            Reserve
-          </v-btn>
-        </v-card-actions>
       </div>
     </v-card>
     <v-row class="justify-content-center">

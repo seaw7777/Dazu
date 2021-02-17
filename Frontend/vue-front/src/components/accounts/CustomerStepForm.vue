@@ -62,7 +62,11 @@
                     placeholder="도로명주소"
                     v-model="address"
                   />
-                  <input type="text" placeholder="상세주소 (optinal)" />
+                  <input
+                    type="text"
+                    v-model="extraAddress"
+                    placeholder="상세주소 (optinal)"
+                  />
                 </div>
 
                 <v-btn
@@ -81,7 +85,6 @@
         </div>
       </div>
     </section>
-    <!-- Checkout Section End -->
     -->
   </div>
 </template>

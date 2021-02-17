@@ -40,12 +40,13 @@
           </div>
         </v-sheet>
       </v-card-text>
-      <v-row class="btn-container">
-        <v-btn @click="goList">목록</v-btn>
+      <v-row class="btn-container text-center">
         <FamousStoreUpdate :boardId="boardId"></FamousStoreUpdate>
         <v-btn
           v-if="this.detailData.member_usercode === this.$store.state.usercode"
           @click="deleteThisFamousStore()"
+          tile
+          elevation="0"
           >삭제</v-btn
         >
       </v-row>
@@ -76,14 +77,18 @@
             <v-divider></v-divider>
           </div>
         </v-card-text>
-
-        <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve">
-            Reserve
-          </v-btn>
-        </v-card-actions>
       </div>
     </v-card>
+    <v-row class="justify-content-center">
+      <v-btn
+        tile
+        elevation="0"
+        large
+        style="font-size: 14px;color: #ffffff;background: #111111;font-weight: 600;border: none;text-transform: uppercase;display: inline-block;letter-spacing: 2px;padding: 14px 30px;"
+        @click="goList"
+        >목록</v-btn
+      >
+    </v-row>
   </div>
 </template>
 

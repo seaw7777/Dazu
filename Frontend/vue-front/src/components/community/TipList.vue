@@ -83,11 +83,7 @@
 
 <script>
 import { getTipList, postTip } from '@/api/community';
-// import TipCreate from '@/components/community/TipCreate.vue';
 export default {
-  components: {
-    // TipCreate,
-  },
   data() {
     return {
       search: '',

@@ -88,11 +88,7 @@
 
 <script>
 import { getFamousStoreList, postFamousStore } from '@/api/community';
-// import FamousStoreCreate from '@/components/community/FamousStoreCreate.vue';
 export default {
-  components: {
-    // FamousStoreCreate,
-  },
   data() {
     return {
       search: '',

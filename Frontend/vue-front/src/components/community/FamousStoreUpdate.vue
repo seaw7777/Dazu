@@ -3,7 +3,15 @@
     <v-row>
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn class="editbtn" color="orange" dark v-bind="attrs" v-on="on">
+          <v-btn
+            tile
+            elevation="0"
+            class="editbtn"
+            color="orange"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
             수정
           </v-btn>
         </template>

@@ -16,10 +16,11 @@
 
           <div class="text-center">
             <v-rating
-              v-model="classData.store_information_store_cnt"
+              v-model="classData.store_information_store_grade"
               background-color="orange lighten-3"
               color="orange"
               medium
+              readonly
             ></v-rating>
           </div>
         </v-row>
@@ -54,7 +55,6 @@ export default {
       pic: '',
     };
   },
-
   props: {
     classData: {
       type: Object,
