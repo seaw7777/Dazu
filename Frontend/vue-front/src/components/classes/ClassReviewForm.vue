@@ -1,29 +1,23 @@
 <template>
   <div>
-    <div class="flex-container">
-      <b-form-rating
-        class="rating-form"
-        v-model="rating"
-        show-value
-        color="red"
-      ></b-form-rating>
+    <div class="review-submit">
       <v-rating
         v-model="rating"
         background-color="orange lighten-3"
         color="orange"
-        large
+        size="25"
+        class="rating-form"
       ></v-rating>
-      <v-form ref="form" v-model="valid" lazy-validation>
+      <v-form ref="form" v-model="valid" lazy-validation class="reviewsubmit">
         <v-text-field
           v-model="review_content"
-          :counter="50"
           label="댓글내용"
           required
         ></v-text-field>
-
         <v-btn
           :disabled="!valid"
           class="mr-4 review-btn"
+          color="amber"
           @click="class_review_describe"
         >
           Submit
@@ -65,6 +59,7 @@ export default {
         console.log(JSON.stringify(data));
         this.rating = 0;
         this.review_content = '';
+        this.$router.go(this.$router.currentRoute);
       } catch (error) {
         console.log(error);
       }
@@ -78,10 +73,24 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.reviewsubmit {
+  display: flex;
+}
 .rating-form {
-  /* widows: 100px; */
+  margin: 0.5rem;
 }
 .review-btn {
-  color: blueviolet;
+  margin-top: 0.5rem;
+}
+.review-submit {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: 'rating-form reviewsubmit';
+}
+.rating-form {
+  grid-area: rating-form;
+}
+.reviewsubmit {
+  grid-area: reviewsubmit;
 }
 </style>

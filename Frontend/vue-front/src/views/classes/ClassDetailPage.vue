@@ -34,7 +34,7 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="클래스" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassIntroduce
                           :classcode="classdata.classcode"
                         ></ClassIntroduce>
@@ -43,21 +43,21 @@
                   </div>
                   <div class="tab-pane" id="가게" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <StoreIntroduce :classdata="classdata"></StoreIntroduce>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="밀키트" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <MealkitInfo :classdata="classdata"></MealkitInfo>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="후기" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassReviewList
                           :classdata="classdata"
                         ></ClassReviewList>
@@ -66,7 +66,7 @@
                   </div>
                   <div class="tab-pane" id="질문" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassQnA></ClassQnA>
                       </div>
                     </div>
@@ -190,7 +190,7 @@ export default {
   justify-items: stretch;
 }
 .tab-container {
-  width: 700px;
+  width: 80%;
 }
 .class-info {
   display: flex;
