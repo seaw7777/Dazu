@@ -29,6 +29,7 @@
           placeholder="Street Address"
           class="checkout__input__add"
           v-model="storeData.store_location"
+          readonly
         />
       </div>
       <div class="checkout__input">
@@ -71,7 +72,11 @@
                   />
                 </div>
                 <v-col cols="12">
-                  <input type="text" placeholder="우편번호" v-model="postcode"/>
+                  <input
+                    type="text"
+                    placeholder="우편번호"
+                    v-model="postcode"
+                    readonly/>
                   <v-btn
                     class="ma-2"
                     tile
@@ -97,13 +102,6 @@
                     type="text"
                     v-model="dong"
                     placeholder="동"
-                    readonly
-                  />
-                  <v-text-field
-                    type="text"
-                    v-model="extraAddress"
-                    ref="extraAddress"
-                    placeholder="상세주소"
                     readonly
                   />
                 </v-col>
@@ -133,42 +131,27 @@
         회원탈퇴
       </v-btn>
     </div>
-    <!-- <div class="owner-mypage">
-      <v-avatar size="230">
-        <img :src="userImgUrl" alt="this.$store.username" />
-      </v-avatar>
-      <div class="owner-info">
-        <div>이름 : {{ userName }}</div>
-        <div>주소 : {{ this.storeData.store_location }}</div>
-        <div>
-          <v-rating
-            class="star"
-            v-model="storeGrade"
-            background-color="orange lighten-3"
-            color="warning"
-            readonly
-          ></v-rating>
-        </div>
-        <div>가게 평점: {{ storeGrade }}</div>
-        <v-btn depressed color="error" @click="gotoStoreEdit">
-          나의 가게 바로가기
-        </v-btn>
-        <div>
-          <v-btn @click="deleteUser">회원탈퇴</v-btn>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 import { deleteUser, logoutUser } from '@/api/auth';
 import { deleteCookie } from '@/utils/cookies';
 import { MypageOwnerInfo } from '@/api/mypage';
+import { MypageCustomerEditAddress } from '@/api/mypage';
 
 export default {
   data() {
     return {
+      searchWindow: {
+        display: 'none',
+        height: '300px',
+      },
+      postcode: '',
+      address: '',
+      dong: '',
+      dialog: false,
       storeData: '',
       usernickName: this.$store.state.username,
     };
@@ -185,6 +168,75 @@ export default {
     },
   },
   methods: {
+    execDaumPostcode() {
+      const currentScroll = Math.max(
+        document.body.scrollTop,
+        document.documentElement.scrollTop,
+      );
+
+      new daum.Postcode({
+        onComplete: data => {
+          if (data.userSelectedType === 'R') {
+            this.address = data.roadAddress;
+          } else {
+            this.address = data.jibunAddress;
+          }
+          if (data.userSelectedType === 'R') {
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+              this.dong = data.bname;
+            }
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+              this.dong +=
+                this.dong !== '' ? `, ${data.buildingName}` : data.buildingName;
+            }
+            if (this.dong !== '') {
+              this.dong = ` ${this.dong}`;
+            }
+          } else {
+            // this.extraAddress = '';
+          }
+          this.postcode = data.zonecode;
+          // this.$refs.extraAddress.focus();
+          this.searchWindow.display = 'none';
+          document.body.scrollTop = currentScroll;
+        },
+        onResize: size => {
+          this.searchWindow.height = `${size.height}px`;
+        },
+        width: '100%',
+        height: '100%',
+      }).embed(this.$refs.searchWindow);
+      this.searchWindow.display = 'block';
+    },
+
+    async submitInfo() {
+      try {
+        console.log('data3' + this.dong);
+        const extrainfo = {
+          dong: this.dong,
+          usertype: '0',
+        };
+        const response = await MypageCustomerEditAddress({
+          accessToken: '',
+          address: this.address,
+          address_detail: '',
+          usercode: this.$store.state.usercode,
+          create_date: '',
+          lat: '',
+          lng: '',
+          dong: this.dong,
+          nickname: this.$store.state.username,
+          usertype: '0',
+        });
+        this.$store.dispatch('EXTRAINFO', extrainfo);
+        // this.$router.go(this.$router.currentRoute);
+        console.log('고객님 주소변경 완료');
+        this.storeData.store_location = this.address;
+        this.storeData.dong = this.dong;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async deleteUser() {
       const response = await deleteUser(
         this.$store.state.usercode,
