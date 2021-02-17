@@ -59,8 +59,8 @@ export default {
     },
   },
   async created() {
-    const userid = this.$store.state.usercode;
-    console.log(userid);
+    const userid = this.$store.state.storecode;
+    console.log('생성 확인' + userid);
     const res = await fetchStoreClassInfo(userid);
     this.classDataList = res.data;
     // console.log(this.classDataList);
@@ -76,7 +76,7 @@ export default {
       var timeData = time.data;
       for (var index in timeData) {
         var value = timeData[index];
-        // console.log(value);
+        console.log('진입 확인' + value);
         this.classTimeList.push(value);
       }
     }
