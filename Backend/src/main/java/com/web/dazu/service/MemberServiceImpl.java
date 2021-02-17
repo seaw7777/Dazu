@@ -91,6 +91,57 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void updateMember(Member member) throws Exception {
+		String apiKey = "2ce9bedc0889520f06b58f54d0724e65";
+	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
+	    String jsonString = null;
+	    
+	    String addrutf = URLEncoder.encode(member.getAddress(), "UTF-8");
+
+        String addr = apiUrl + "?query=" + addrutf;
+
+        URL url = new URL(addr);
+        URLConnection conn = url.openConnection();
+        conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+
+        BufferedReader br = null;
+        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+
+        String line = "";
+        String result = "";
+
+        while ((line = br.readLine()) != null) {
+            result += line;
+        }
+        jsonString = result.toString();
+		 
+		ObjectMapper mapper = new ObjectMapper();
+		HashMap<String, String> XYMap = new HashMap<String, String>();
+		
+		TypeReference<Map<String, Object>> typeRef 
+        = new TypeReference<Map<String, Object>>(){};
+	    Map<String, Object> jsonMap = mapper.readValue(jsonString, typeRef);
+	
+	    @SuppressWarnings("unchecked")
+	    List<Map<String, String>> docList 
+	        =  (List<Map<String, String>>) jsonMap.get("documents");	
+	
+	    Map<String, String> adList = (Map<String, String>) docList.get(0);
+	    XYMap.put("x",adList.get("x"));
+	    XYMap.put("y", adList.get("y"));
+
+		member.setLat(XYMap.get("x"));
+		member.setLng(XYMap.get("y"));
+		    
+		System.out.println(member.getLat() + member.getLng());
+		
+		String dong = member.getDong();
+		System.out.println(member.getDong());
+		
+		dong = dong.replaceAll(" ", "");
+		
+		member.setDong(dong);
+		System.out.println(member.getDong());
+		
 		session.getMapper(MemberMapper.class).updateMember(member);
 	}
 

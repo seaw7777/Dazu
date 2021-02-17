@@ -58,6 +58,12 @@ export default {
     };
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     const userid = this.$store.state.usercode;
     console.log(userid);
     const response = await MypageCustomerInfo(userid);

@@ -3,20 +3,12 @@
     <v-data-table
       :headers="headers"
       :items="tipList"
-      :items-per-page="5"
+      :items-per-page="10"
       class="table elevation-1"
       @click:row="handleClick"
       :search="search"
     >
       <template v-slot:top>
-        <!-- <v-row>
-          <v-col cols="12" sm="6">
-            <v-text-field
-              v-model="search"
-              label="키워드를 검색해주세요."
-              class="mx-4"
-            ></v-text-field>
-          </v-col> -->
         <div class="board-form">
           <v-text-field
             v-model="search"
@@ -24,8 +16,6 @@
             class="textarea mx-4"
             style="width:300px;"
           ></v-text-field>
-
-          <!-- </v-row> -->
           <v-row>
             <v-dialog v-model="dialog" persistent max-width="600px">
               <template v-slot:activator="{ on, attrs }">
@@ -42,18 +32,11 @@
               <v-card>
                 <v-card-title>
                   <h4 class="checkout__title">새로운 꿀팁 등록</h4>
-                  <!-- <span class="headline">새로운 꿀팁 등록</span> -->
                 </v-card-title>
                 <v-card-text>
                   <v-container>
                     <v-row>
                       <v-col cols="12" sm="10">
-                        <!-- <v-text-field
-                          v-model="newTitle"
-                          :rules="rules"
-                          counter="25"
-                          label="제목"
-                        ></v-text-field> -->
                         <div class="checkout__input">
                           <p>제목<span>*</span></p>
                           <input
@@ -66,12 +49,6 @@
                         </div>
                       </v-col>
                       <v-col cols="12" md="10">
-                        <!-- <v-textarea
-                          outlined
-                          name="input-7-4"
-                          label="내용을 입력하세요."
-                          v-model="newContent"
-                        ></v-textarea> -->
                         <div class="checkout__input">
                           <p>내용<span>*</span></p>
                           <textarea

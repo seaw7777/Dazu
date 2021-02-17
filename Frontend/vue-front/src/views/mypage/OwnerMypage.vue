@@ -56,6 +56,14 @@ export default {
       this.$router.push(`/mystore/${this.$store.state.usercode}`);
     },
   },
+  created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
+  },
 };
 </script>
 

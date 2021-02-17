@@ -20,13 +20,9 @@
 
       <v-card-text>
         <div class="writer-info">
-          <!-- <v-row align="center" class="datetime" width="25%"> -->
           <div class="my-4 subtitle-1 datetime">
             {{ detailData.board_write_datetime }}
           </div>
-
-          <!-- </v-row> -->
-
           <div class="my-4 subtitle-1">작성자 : {{ detailData.nickname }}</div>
         </div>
         <v-sheet
@@ -37,7 +33,6 @@
           height="300"
           width="800"
         >
-          <!-- {{ detailData.board_contents }} -->
           <div class="blog__details__text">
             <p>
               {{ detailData.board_contents }}
@@ -46,7 +41,6 @@
         </v-sheet>
       </v-card-text>
       <v-row class="btn-container">
-        <v-btn @click="goList()">목록</v-btn>
         <TipUpdate :boardId="boardId"></TipUpdate>
         <v-btn
           v-if="this.detailData.member_usercode === this.$store.state.usercode"
@@ -88,6 +82,16 @@
         </v-card-actions>
       </div>
     </v-card>
+    <v-row class="justify-content-center">
+      <v-btn
+        tile
+        elevation="0"
+        large
+        style="font-size: 14px;color: #ffffff;background: #111111;font-weight: 600;border: none;text-transform: uppercase;display: inline-block;letter-spacing: 2px;padding: 14px 30px;"
+        @click="goList"
+        >목록</v-btn
+      >
+    </v-row>
   </div>
 </template>
 
@@ -96,7 +100,6 @@ import { getTipDetail } from '@/api/community';
 import { getTipDetailComment } from '@/api/community';
 import { postTipComment } from '@/api/community';
 import { deleteTip } from '@/api/community';
-// import { deleteTipComment } from '@/api/community';
 import TipUpdate from '@/components/community/TipUpdate.vue';
 export default {
   components: {
@@ -111,6 +114,12 @@ export default {
     };
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     const id = this.$route.params.id;
     this.boardId = id;
     const tipDetail = await getTipDetail(id);

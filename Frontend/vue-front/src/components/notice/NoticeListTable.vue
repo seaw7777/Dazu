@@ -3,16 +3,11 @@
     <v-data-table
       :headers="headers"
       :items="notices"
-      class="elevation-1"
+      :items-per-page="10"
+      class="table elevation-1"
       @click:row="gotoNoticeDetail"
     >
-      <template v-slot:top>
-        <v-toolbar flat>
-          <v-toolbar-title>공지사항</v-toolbar-title>
-          <v-divider class="mx-4" inset vertical></v-divider>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-      </template>
+      <template v-slot:top> </template>
     </v-data-table>
   </div>
 </template>
@@ -26,15 +21,21 @@ export default {
       headers: [
         {
           text: '번호',
-          align: 'start',
+          align: 'center',
           sortable: false,
           value: 'main_notice_board_code',
         },
-        { text: '제목', value: 'main_notice_board_title', sortable: false },
+        {
+          text: '제목',
+          value: 'main_notice_board_title',
+          sortable: false,
+          align: 'center',
+        },
         {
           text: '등록일',
           value: 'main_notice_board_write_datetime',
           sortable: false,
+          align: 'center',
         },
       ],
       notices: [],
@@ -53,4 +54,19 @@ export default {
   },
 };
 </script>
-<style scope></style>
+<style scope>
+.table {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+th {
+  font-size: 24px;
+}
+.board-form {
+  display: grid;
+  grid-template-areas: 'textarea writebtn';
+  align-content: center;
+  justify-content: end;
+}
+</style>

@@ -20,13 +20,9 @@
 
       <v-card-text>
         <div class="writer-info">
-          <!-- <v-row align="center" class="datetime" width="25%"> -->
           <div class="my-4 subtitle-1 datetime">
             {{ detailData.board_write_datetime }}
           </div>
-
-          <!-- </v-row> -->
-
           <div class="my-4 subtitle-1">작성자 : {{ detailData.nickname }}</div>
         </div>
         <v-sheet
@@ -37,7 +33,6 @@
           height="300"
           width="800"
         >
-          <!-- {{ detailData.board_contents }} -->
           <div class="blog__details__text">
             <p>
               {{ detailData.board_contents }}
@@ -111,6 +106,12 @@ export default {
     };
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     const id = this.$route.params.id;
     this.boardId = id;
     const famousStoreDetail = await getFamousStoreDetail(id);

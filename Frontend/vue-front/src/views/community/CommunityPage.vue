@@ -39,7 +39,7 @@
         <div class="tab-content">
           <div class="tab-pane active" id="tabs-1" role="tabpanel">
             <div class="row d-flex justify-content-center">
-              <div class="col-lg-8">
+              <div class="col-lg-12">
                 <div v-if="tab === true">
                   <TipBestArticle></TipBestArticle>
                 </div>
@@ -48,7 +48,7 @@
           </div>
           <div class="tab-pane" id="tabs-2" role="tabpanel">
             <div class="row d-flex justify-content-center">
-              <div class="col-lg-8">
+              <div class="col-lg-12">
                 <div v-if="tab === false">
                   <FamousStoreBestArticle></FamousStoreBestArticle>
                 </div>
@@ -96,6 +96,14 @@ export default {
     clickFamousStore() {
       this.tab = false;
     },
+  },
+  created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
   },
 };
 </script>

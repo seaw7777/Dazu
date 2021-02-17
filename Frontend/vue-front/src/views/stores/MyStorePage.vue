@@ -25,23 +25,6 @@
         </div>
       </div>
     </section>
-
-    <!-- <v-container>
-      <v-row>
-        <v-col cols="8">
-          <StoreName :storeData="storeData"></StoreName>
-        </v-col>
-        <v-col cols="4">
-          <v-row><StoreClassList></StoreClassList></v-row>
-        </v-col>
-      </v-row>
-      <v-row>
-        <StoreAdress :storeData="storeData"></StoreAdress>
-      </v-row>
-      <v-row>
-        <StoreDetail :storeData="storeData">></StoreDetail>
-      </v-row>
-    </v-container> -->
   </div>
 </template>
 
@@ -65,6 +48,12 @@ export default {
     };
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     const usercode = this.$store.state.usercode;
     const res = await MypageOwnerInfo(usercode);
     this.storeData = res.data;

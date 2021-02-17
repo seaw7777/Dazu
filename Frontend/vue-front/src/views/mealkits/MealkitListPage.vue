@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
       <div class="container">
         <div class="row">
@@ -12,7 +11,6 @@
         </div>
       </div>
     </div>
-    <!-- Breadcrumb End -->
     <section class="shop spad">
       <div class="container">
         <div class="row">
@@ -26,15 +24,6 @@
         </div>
       </div>
     </section>
-    <!-- <v-row no-gutters>
-      <v-col
-        v-for="mealkitItem in mealkitItems"
-        :key="mealkitItem.mealkitcode"
-        cols="12"
-        sm="4"
-      >
-        <MealkitItem :mealkitItem="mealkitItem"></MealkitItem></v-col
-    ></v-row> -->
   </div>
 </template>
 <script>
@@ -50,6 +39,12 @@ export default {
     MealkitItem,
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     const dong = this.$store.state.dong;
     console.log(dong);
     const { data } = await fetchMealkits(dong);

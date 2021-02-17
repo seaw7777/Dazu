@@ -13,7 +13,7 @@
       </h6>
       <div class="product__item__price">₩ {{ classItem.class_price }}</div>
       <div class="cart_add">
-        <a href="#" @click="classclick">Go to Class</a>
+        <a @click="classclick">Go to Class</a>
       </div>
     </div>
   </div>

@@ -257,12 +257,14 @@ export default {
       this.$store.commit('clearUserCode');
       this.$store.commit('clearUserType');
       this.$store.commit('clearStoreCode');
+      this.$store.commit('clearDong');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
       deleteCookie('til_usercode');
       deleteCookie('til_usertype');
       deleteCookie('til_storecode');
+      deleteCookie('til_dong');
       this.$router.push('/user');
     },
   },

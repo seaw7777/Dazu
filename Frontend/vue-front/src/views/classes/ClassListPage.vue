@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
       <div class="container">
         <div class="row">
@@ -12,8 +11,6 @@
         </div>
       </div>
     </div>
-    <!-- Breadcrumb End -->
-    <!-- <div class="coming-container"><ComingClass></ComingClass></div> -->
     <section class="shop spad">
       <div class="container">
         <div class="row">
@@ -27,15 +24,6 @@
         </div>
       </div>
     </section>
-    <!-- <v-row no-gutters>
-      <v-col
-        v-for="classItem in classItems"
-        :key="classItem.classcode"
-        cols="12"
-        sm="4"
-      >
-        <ClassItem :classItem="classItem"></ClassItem></v-col
-    ></v-row> -->
   </div>
 </template>
 
@@ -54,9 +42,14 @@ export default {
   },
   components: {
     ClassItem,
-    // ComingClass,
   },
   async created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
     this.isLoading = true;
     console.log(this.$store.state.dong);
     const { data } = await fetchClasses(this.$store.state.dong);

@@ -27,7 +27,7 @@ export default {
     const houseData = await customerGetInfoAPI(this.$store.state.usercode);
     const storeData = await fetchStore(this.$store.state.dong);
 
-    console.log('가게: ' + storeData);
+    console.log('가게: ' + JSON.stringify(storeData));
 
     this.isLoading = false;
     const lat = Number(houseData.data.lat);
@@ -35,7 +35,7 @@ export default {
     const container = document.getElementById('map');
     const options = {
       center: new window.kakao.maps.LatLng(lng, lat),
-      level: 3,
+      level: 6,
     };
     const map = new window.kakao.maps.Map(container, options);
 
@@ -75,7 +75,7 @@ export default {
       for (let index = 0; index < storeClass.data.length; index++) {
         const id = storeClass.data[index].classcode;
         element += '<br>';
-        // element += `<a href="http://localhost:8080/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
+        // element += `<a href="http://localhost:8080/class/detail/${id}" style="color:black;">${storeClass.data[index].class_name} | ${storeClass.data[index].class_price}원</a>`;
         element += `<a href="https://i4d104.p.ssafy.io/class/detail/${id}" style="color:blue">${storeClass.data[index].class_name}&emsp;&emsp;&emsp;${storeClass.data[index].class_price}원</a>`;
       }
       element += '</div>';
@@ -104,5 +104,10 @@ export default {
 #map {
   margin-left: auto;
   margin-right: auto;
+}
+.testimonial {
+  background: #fdf3ea;
+  padding-top: 40px;
+  padding-bottom: 0px;
 }
 </style>

@@ -8,6 +8,7 @@ import {
   getUserTypeFromCookie,
   getDongFromCookie,
   getStoreCodeFromCookie,
+  getAddressFromCookie,
   saveAuthToCookie,
   saveUserToCookie,
   saveImgToCookie,
@@ -15,16 +16,18 @@ import {
   saveUserTypeToCookie,
   saveDongToCookie,
   saveStoreCodeToCookie,
+  saveAddressToCookie,
 } from '@/utils/cookies';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
+    header: '0',
     username: getUserFromCookie() || '',
     token: getAuthFromCookie() || '',
     userimg: getImgFromCookie() || '',
     code: '',
-    address: '',
+    address: getAddressFromCookie() || '',
     usercode: getUserCodeFromCookie() || '',
     usertype: getUserTypeFromCookie() || '',
     dong: getDongFromCookie() || '',
@@ -32,7 +35,7 @@ export default new Vuex.Store({
   },
   getters: {
     isLogin(state) {
-      return state.username !== '';
+      return state.usercode !== '';
     },
     isUserType(state) {
       return state.usertype === '1';
@@ -81,6 +84,12 @@ export default new Vuex.Store({
     clearStoreCode(state) {
       state.storecode = '';
     },
+    clearDong(state) {
+      state.dong = '';
+    },
+    clearAddress(state) {
+      state.address = '';
+    },
   },
   actions: {
     async LOGIN({ commit }, userData) {
@@ -107,7 +116,7 @@ export default new Vuex.Store({
     async ROAD({ commit }, address) {
       console.log(address);
       commit('setAddress', address);
-      return address;
+      saveAddressToCookie(address);
     },
     async EXTRAINFO({ commit }, extrainfo) {
       console.log('vuex' + extrainfo);
