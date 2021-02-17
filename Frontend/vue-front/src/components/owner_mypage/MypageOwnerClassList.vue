@@ -14,7 +14,7 @@
           class="blog__sidebar__recent__item"
         >
           <div class="blog__sidebar__recent__item__pic">
-            <img src="img/blog/br-1.jpg" alt="" />
+            <img :src="imgsrc(item.classcode)" alt="" />
           </div>
           <div class="blog__sidebar__recent__item__text">
             <p>{{ item.class_name }}</p>
@@ -42,6 +42,14 @@ export default {
     console.log(storecode);
     const res = await fetchStoreClassInfo(storecode);
     this.classDataList = res.data;
+  },
+  methods: {
+    imgsrc: function(code) {
+      var imgsrc =
+        'https://i4d104.p.ssafy.io/file/image/' + code + '_class_Thumbnail';
+      console.log(' 이미지 패스 로그 : ' + imgsrc);
+      return imgsrc;
+    },
   },
 };
 </script>
