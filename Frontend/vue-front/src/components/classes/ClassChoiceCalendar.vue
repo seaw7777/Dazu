@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col cols="12">
+    <v-col cols="12" class="text-center">
       <vc-date-picker :attributes="attributes" v-model="date">
         <div slot="day-popover" slot-scope="{ dayTitle, attributes }">
           <div class="text-xs text-gray-300 font-semibold text-center">
@@ -21,38 +21,10 @@
         label="시간 선택"
         dense
         solo
+        :disabled="disabled == 1"
         v-model="timecode"
       ></v-select>
     </v-col>
-
-    <!-- <div>
-      <div v-if="mealkitchoice == '밀키트 포함'">
-        <v-card class="mx-auto" max-width="300">
-          <v-card-text>
-            <p class="display-1 text--primary">
-              ₩ {{ classData.class_price + classData.milkit_price }}
-            </p>
-          </v-card-text>
-        </v-card>
-      </div>
-      <div v-else-if="mealkitchoice === 'Only 밀키트'">
-        <v-card class="mx-auto" max-width="300">
-          <v-card-text>
-            <p class="display-1 text--primary">
-              ₩ {{ classData.milkit_price }}
-            </p>
-          </v-card-text>
-        </v-card>
-      </div>
-      <div v-else>
-        <v-card class="mx-auto" max-width="300">
-          <v-card-text>
-            <p class="display-1 text--primary">₩ {{ classData.class_price }}</p>
-          </v-card-text>
-        </v-card>
-      </div>
-    </div> -->
-
     <ul class="checkout__total__all">
       <li v-if="mealkitchoice === '밀키트 포함' && timecode !== ''">
         Total
@@ -66,7 +38,6 @@
         Total <span v-if="timecode !== ''"> ₩ {{ classData.class_price }}</span>
       </li>
     </ul>
-
     <button class="site-btn" @click="onClickKakaoPayAPI">
       ORDER - KAKAO PAY
     </button>
@@ -82,6 +53,10 @@ export default {
   props: {
     mealkitchoice: {
       type: String,
+    },
+    disabled: {
+      type: String,
+      required: true,
     },
     classData: {
       type: Object,

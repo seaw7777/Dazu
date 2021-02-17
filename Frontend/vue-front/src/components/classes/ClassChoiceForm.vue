@@ -14,6 +14,7 @@
       <ClassChoiceCalendar
         :mealkitchoice="mealkitchoice"
         :classData="classData"
+        :disabled="disabled"
       ></ClassChoiceCalendar>
     </div>
   </div>
@@ -24,6 +25,7 @@ import ClassChoiceCalendar from '@/components//classes/ClassChoiceCalendar.vue';
 export default {
   data() {
     return {
+      disabled: '1',
       mealkitchoice: '',
       items: [],
     };
@@ -44,6 +46,14 @@ export default {
         this.items = ['밀키트 포함', '밀키트 미포함', 'Only 밀키트'];
       } else {
         this.items = ['클래스 가격'];
+      }
+    },
+  },
+  watch: {
+    mealkitchoice: function(newVal, oldVal) {
+      console.log(oldVal);
+      if (newVal !== '') {
+        this.disabled = '0';
       }
     },
   },

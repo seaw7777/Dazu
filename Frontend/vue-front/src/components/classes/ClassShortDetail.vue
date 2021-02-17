@@ -9,51 +9,42 @@
     </div>
     <div class="col-lg-6">
       <div class="product__details__text">
-        <div class="product__label">{{ classData.food_type }}</div>
+        <v-row>
+          <div class="product__label">
+            {{ classData.store_information_store_name }}
+          </div>
+
+          <div class="text-center">
+            <v-rating
+              v-model="classData.store_information_store_cnt"
+              background-color="orange lighten-3"
+              color="orange"
+              medium
+            ></v-rating>
+          </div>
+        </v-row>
         <h4>{{ classData.class_name }}</h4>
         <h5>{{ classData.class_price }}원</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida
-        </p>
         <ul>
           <li>
-            Mealkit: <span>{{ classData.mealkit_ok }}</span>
+            분류: <span>{{ classData.food_type }}</span>
           </li>
-          <!-- <li>Category: <span>Biscuit cake</span></li>
-          <li>Tags: <span>Gadgets, minimalisstic</span></li> -->
+          <li>
+            밀키트: <span>{{ classData.mealkit_ok }}</span>
+          </li>
+          <li>
+            난이도: <span>{{ classData.class_difficult }}</span>
+          </li>
+          <li>
+            최대인원: <span>{{ classData.class_max }}</span>
+          </li>
+          <li>
+            강의시간: <span>{{ classData.class_time }}</span>
+          </li>
         </ul>
-        <div class="product__details__option">
-          <a href="#" class="heart__btn"
-            ><span class="icon_heart_alt"></span
-          ></a>
-        </div>
       </div>
     </div>
   </div>
-  <!-- <div>
-    <div class="flex-container" color="blue">
-      <v-container class="fill-height" fluid color="blue">
-        <v-row>
-          <v-col cols="12">
-            <v-img
-              src="https://picsum.photos/250/165?random"
-              max-height="125"
-              class="grey darken-4"
-            ></v-img>
-          </v-col>
-        </v-row>
-      </v-container>
-      <div class="class-info-container">
-        <h4>{{ classData.class_name }}</h4>
-        <div>밀키트 여부 : {{ classData.mealkit_ok }}</div>
-        <div>가격 : {{ classData.class_price }}</div>
-        <div>음식종류 : {{ classData.food_type }}</div>
-         <p>{{ comclass }}</p> 
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
@@ -72,7 +63,6 @@ export default {
   },
   computed: {
     comclass: function() {
-      // console.log(this.classData.class_name);
       return this.classData.class_name;
     },
   },

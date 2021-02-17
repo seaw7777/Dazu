@@ -11,9 +11,12 @@
 	</select>
 
 	<select id="selectClass" parameterType="string" resultType="Class">
-		select *
-		from class_information
-		where classcode = #{classcode}
+	select c.classcode, c.class_name, class_time, c.class_describe, c.class_difficult, c.mealkit_ok, c.food_type, s.storecode as store_information_storecode, s.store_name as store_information_store_name, ( s.store_grade / s.store_grade_cnt ) as store_information_store_grade, s.store_describe as store_information_store_describe, m.mealkit_price, c.class_max, c.class_price
+        from class_information as c join store_information as s
+        on c.store_information_storecode = s.storecode
+        left join mealkit_store as m
+        on c.classcode = m.class_information_classcode 
+        where c.classcode = #{classcode};
 	</select>
 	
 	<select id="selectClassTime" parameterType="string" resultType="ClassTime">
@@ -71,15 +74,18 @@
 	</select>
 	
 	<select id="selectClassQnA" parameterType="string" resultType="ClassQnA">
-		select class_qna_board_code, class_qna_baoard_write_datetime, class_qna_board_write_contents, class_qna_answer_write_content, m.nickname as member_nickname
+		select (select s.member_usercode 
+		from store_information as s join class_information as c
+		on s.storecode = c.store_information_storecode
+		where c.classcode = #{classcode}) as answer_usercode , image_url, class_qna_board_code, class_qna_baoard_write_datetime, class_qna_board_write_contents, class_qna_answer_write_content, m.nickname as member_nickname
 		from class_qna_board as q join `member` as m
 		on q.member_usercode = m.usercode
 		where class_information_classcode = #{classcode}
 	</select>
 	
 	<insert id="insertClassQnA" parameterType="ClassQnA">
-		insert into class_qna_board (class_qna_board_write_contents, member_usercode, class_information_classcode)
-		values (#{class_qna_board_write_contents}, #{member_usercode}, #{class_information_classcode})
+		insert into class_qna_board (image_url, class_qna_board_write_contents, member_usercode, class_information_classcode)
+		values (#{image_url}, #{class_qna_board_write_contents}, #{member_usercode}, #{class_information_classcode})
 	</insert>
 	
 	<insert id="insertClassQnAAnswer" parameterType="ClassQnA">

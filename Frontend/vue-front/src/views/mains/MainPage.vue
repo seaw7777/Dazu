@@ -15,13 +15,10 @@
           color="orange accent-4"
         >
           <v-tab class="tab" v-for="item in items" :key="item.tab">
-            <!-- {{ item.tab }} -->
-            <!-- <v-icon>{{ item.icon }}</v-icon> -->
             <div class="categories__item">
               <div class="categories__item__icon">
                 <span :class="item.icon"></span>
                 <div>{{ item.tab }}</div>
-                <!-- <v-icon>{{ item.icon }}</v-icon> -->
               </div>
             </div>
           </v-tab>
@@ -30,7 +27,7 @@
         <section class="testimonial spad">
           <div class="container">
             <div class="row">
-              <div class="col-lg-12 text-center">
+              <div class="col-lg-12 text-center ttt">
                 <div class="section-title">
                   <span>Our Neighborhood</span>
                 </div>
@@ -87,6 +84,14 @@ export default {
     MainClassList,
     MainMap,
   },
+  created() {
+    if (!this.$store.getters.isLogin) {
+      console.log('goto loginBtn');
+      this.$router.push('/user');
+    } else {
+      this.$store.state.header = '1';
+    }
+  },
 };
 </script>
 
@@ -96,5 +101,10 @@ export default {
 }
 .tab {
   height: 3.5rem;
+}
+.testimonial {
+  background: #fdf3ea;
+  padding-top: 60px;
+  padding-bottom: 0px;
 }
 </style>

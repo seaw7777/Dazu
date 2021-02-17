@@ -34,7 +34,7 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="클래스" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassIntroduce
                           :classcode="classdata.classcode"
                         ></ClassIntroduce>
@@ -43,21 +43,21 @@
                   </div>
                   <div class="tab-pane" id="가게" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <StoreIntroduce :classdata="classdata"></StoreIntroduce>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="밀키트" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <MealkitInfo :classdata="classdata"></MealkitInfo>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="후기" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassReviewList
                           :classdata="classdata"
                         ></ClassReviewList>
@@ -66,7 +66,7 @@
                   </div>
                   <div class="tab-pane" id="질문" role="tabpanel">
                     <div class="row d-flex justify-content-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-12">
                         <ClassQnA></ClassQnA>
                       </div>
                     </div>
@@ -81,61 +81,6 @@
         </div>
       </div>
     </section>
-
-    <!-- <div class="flex-container">
-      <div>
-        <aside class="secondary secondary-a class-info">
-          <ClassShortDetail :classData="classdata"></ClassShortDetail>
-        </aside>
-
-        <v-card class="tab-container">
-          <v-tabs
-            v-model="tab"
-            background-color="black
-          "
-            dark
-          >
-            <v-tab v-for="item in items" :key="item.tab">
-              {{ item.tab }}
-            </v-tab>
-          </v-tabs>
-
-          <v-tabs-items v-model="tab">
-            <v-tab-item v-for="item in items" :key="item.tab">
-              <v-card flat v-if="item.tab === '클래스 소개'">
-                <v-card-text class="card-container"
-                  ><ClassIntroduce :classdata="classdata"></ClassIntroduce
-                ></v-card-text>
-              </v-card>
-              <v-card flat v-else-if="item.tab === '가게소개'">
-                <v-card-text class="card-container"
-                  ><StoreIntroduce :classdata="classdata"></StoreIntroduce>
-                </v-card-text>
-              </v-card>
-              <v-card flat v-else-if="item.tab === '밀키트 정보'">
-                <v-card-text class="card-container"
-                  ><MealkitInfo :classdata="classdata"></MealkitInfo>
-                </v-card-text>
-              </v-card>
-
-              <v-card flat v-else-if="item.tab === '후기'">
-                <v-card-text class="card-container"
-                  ><ClassReviewList :classdata="classdata"></ClassReviewList>
-                </v-card-text>
-              </v-card>
-              <v-card flat v-else-if="item.tab === 'Q&A'">
-                <v-card-text class="card-container"
-                  ><ClassQnA></ClassQnA>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-          </v-tabs-items>
-        </v-card>
-      </div>
-      <aside class="secondary secondary-b">
-        <ClassChoiceForm :classData="classdata"></ClassChoiceForm>
-      </aside>
-    </div> -->
   </div>
 </template>
 

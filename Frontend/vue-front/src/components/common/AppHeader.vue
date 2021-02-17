@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <!-- Header Section Begin -->
+  <div v-if="this.$store.state.header === '1'">
     <header class="header">
       <div class="header__top">
         <div class="container">
@@ -9,7 +8,9 @@
               <div class="header__top__inner">
                 <div class="header__top__left">
                   <div class="testimonial__author__pic">
-                    <img :src="userImgUrl" alt="" />
+                    <v-badge :color="typecolor" :content="tt">
+                      <img :src="userImgUrl" alt="" />
+                    </v-badge>
                   </div>
                   <ul>
                     <li>
@@ -74,7 +75,6 @@
         </div>
       </div>
     </header>
-    <!-- Header Section End -->
   </div>
 </template>
 
@@ -84,7 +84,10 @@ import { logoutUser } from '@/api/auth';
 export default {
   data() {
     return {
+      disHeader: '',
       token: '',
+      typecolor: '',
+      tt: '',
     };
   },
   computed: {
@@ -114,14 +117,26 @@ export default {
       this.$store.commit('clearUserCode');
       this.$store.commit('clearUserType');
       this.$store.commit('clearStoreCode');
+      this.$store.commit('clearDong');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
       deleteCookie('til_usercode');
       deleteCookie('til_usertype');
       deleteCookie('til_storecode');
+      deleteCookie('til_dong');
       this.$router.push('/user');
     },
+  },
+  created() {
+    const type = this.$store.state.usertype;
+    if (type == '0') {
+      this.typecolor = 'black';
+      this.tt = '사장님';
+    } else if (type == '1') {
+      this.typecolor = 'deep-orange lighten-4';
+      this.tt = '고객님';
+    }
   },
 };
 </script>

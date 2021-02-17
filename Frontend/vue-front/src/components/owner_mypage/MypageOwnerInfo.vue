@@ -193,10 +193,8 @@ export default {
               this.dong = ` ${this.dong}`;
             }
           } else {
-            // this.extraAddress = '';
           }
           this.postcode = data.zonecode;
-          // this.$refs.extraAddress.focus();
           this.searchWindow.display = 'none';
           document.body.scrollTop = currentScroll;
         },
@@ -214,6 +212,7 @@ export default {
         console.log('data3' + this.dong);
         const extrainfo = {
           dong: this.dong,
+          address: this.address,
           usertype: '0',
         };
         const response = await MypageCustomerEditAddress({
@@ -229,10 +228,10 @@ export default {
           usertype: '0',
         });
         this.$store.dispatch('EXTRAINFO', extrainfo);
-        // this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute);
         console.log('고객님 주소변경 완료');
-        this.storeData.store_location = this.address;
-        this.storeData.dong = this.dong;
+        // this.storeData.store_location = this.address;
+        // this.storeData.dong = this.dong;
       } catch (error) {
         console.log(error);
       }
@@ -252,12 +251,14 @@ export default {
       this.$store.commit('clearUserCode');
       this.$store.commit('clearUserType');
       this.$store.commit('clearStoreCode');
+      this.$store.commit('clearDong');
       deleteCookie('til_auth');
       deleteCookie('til_user');
       deleteCookie('til_img');
       deleteCookie('til_usercode');
       deleteCookie('til_usertype');
       deleteCookie('til_storecode');
+      deleteCookie('til_dong');
       this.$router.push('/user');
     },
   },

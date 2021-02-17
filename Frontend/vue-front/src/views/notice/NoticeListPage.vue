@@ -1,8 +1,19 @@
 <template>
   <div>
-    <v-row no-gutters>
-      <NoticeListTable></NoticeListTable>
-    </v-row>
+    <div class="breadcrumb-option">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="breadcrumb__text">
+              <h2>Notice</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <br />
+    <NoticeListTable></NoticeListTable>
   </div>
 </template>
 <script>
