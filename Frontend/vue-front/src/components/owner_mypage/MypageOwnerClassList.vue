@@ -13,14 +13,16 @@
           tag="a"
           class="blog__sidebar__recent__item"
         >
-          <div class="blog__sidebar__recent__item__pic">
-            <img :src="imgsrc(item.classcode)" alt="" />
-          </div>
-          <div class="blog__sidebar__recent__item__text">
-            <p>{{ item.class_name }}</p>
-            <span>난이도 | {{ item.class_difficult }}</span>
-            <br />
-            <span>분류 | {{ item.food_type }}</span>
+          <div class="class-container">
+            <div class="blog__sidebar__recent__item__pic">
+              <img :src="imgsrc(item.classcode)" alt="" />
+            </div>
+            <div class="blog__sidebar__recent__item__text">
+              <p>{{ item.class_name }}</p>
+              <span>난이도 | {{ item.class_difficult }}</span>
+              <br />
+              <span>분류 | {{ item.food_type }}</span>
+            </div>
           </div>
         </router-link>
       </div>
@@ -56,4 +58,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.class-container {
+  display: flex;
+  flex-direction: column;
+}
+</style>
