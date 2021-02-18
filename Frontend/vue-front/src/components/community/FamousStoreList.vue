@@ -32,7 +32,7 @@
               </template>
               <v-card>
                 <v-card-title>
-                  <h4 class="checkout__title">새로운 꿀팁 등록</h4>
+                  <h4 class="checkout__title">새로운 맛집 등록</h4>
                 </v-card-title>
                 <v-card-text>
                   <v-container>
