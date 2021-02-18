@@ -91,9 +91,10 @@ public class StoreController {
 	}
 	
 	@ApiOperation(value = "가게 상세정보를 변경한다.")
-	@PutMapping("/update/detail")
-	public void updateStoreDetail(@RequestPart(value = "file", required = true) MultipartFile file,
-			@RequestPart(value = "key", required = false) int storecode) {
+	@PostMapping("/update/detail")
+	public void updateStoreDetail(@RequestPart(value = "file", required = true) MultipartFile file
+			,@RequestPart(value = "key", required = true) String storecode) {
+		System.out.println("진입");
 		try {
 			fileuploadservice.updateStoreDetail(storecode,file);
 		} catch (Exception e) {

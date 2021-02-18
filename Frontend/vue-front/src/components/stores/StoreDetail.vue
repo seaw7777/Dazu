@@ -84,6 +84,8 @@ export default {
       this.id = this.storeData.storecode;
       var fd = new FormData();
       fd.append('file', this.selectfile);
+      console.log(this.selectfile);
+      console.log(this.id);
       fd.append('key', this.id);
       await updateStoreDetail(fd);
       this.changeDialog();

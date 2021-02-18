@@ -14,7 +14,7 @@ function updateStoreAddress(newAddress) {
   return instance.put('store/update/address', newAddress);
 }
 function updateStoreDetail(newDetail) {
-  return instance.put('store/update/detail', newDetail, {
+  return instance.post('store/update/detail', newDetail, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

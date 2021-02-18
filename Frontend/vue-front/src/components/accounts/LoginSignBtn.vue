@@ -36,8 +36,8 @@ export default {
   methods: {
     async onClickKakaoAPI() {
       const params = {
-        // redirectUri: 'http://localhost:8080/user',
-        redirectUri: 'https://i4d104.p.ssafy.io/user',
+        redirectUri: 'http://localhost:8080/user',
+        // redirectUri: 'https://i4d104.p.ssafy.io/user',
       };
       window.Kakao.Auth.authorize(params);
     },

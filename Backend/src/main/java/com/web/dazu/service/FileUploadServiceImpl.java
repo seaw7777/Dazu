@@ -59,9 +59,9 @@ public class FileUploadServiceImpl implements FileUploadService {
 	}
 
 	@Override
-	public void updateStoreDetail(int storecode, MultipartFile file) throws Exception {
+	public void updateStoreDetail(String storecode, MultipartFile file) throws Exception {
 		String rootPath = "/home/Image";
-		String filePath = rootPath + "/" + Integer.toString(storecode) + "_" + "class" + "_" + "intro";
+		String filePath = rootPath + "/" + storecode + "_" + "class" + "_" + "intro";
 		File dest = new File(filePath);
 		File sample = new File(rootPath);
 		if (!sample.exists()) {
