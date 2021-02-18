@@ -49,7 +49,11 @@ function deleteClass(classcode) {
 }
 // 특정 클래스 정보를 수정한다.
 function updateClass(data) {
-  return instance.put('class/ceo/update', data);
+  return instance.put('class/ceo/update', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 // 새로운 클래스를 등록한다.
 function postClass(data) {

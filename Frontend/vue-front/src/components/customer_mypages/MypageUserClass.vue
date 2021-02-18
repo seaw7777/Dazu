@@ -26,11 +26,13 @@
             tag="a"
             class="blog__sidebar__recent__item"
           >
-            <div class="blog__sidebar__recent__item__pic">
-              <img :src="imgsrc(item.classcode)" alt="" />
-            </div>
-            <div class="blog__sidebar__recent__item__text">
-              <p>{{ item.class_name }}</p>
+            <div class="class-container">
+              <div class="blog__sidebar__recent__item__pic">
+                <img :src="imgsrc(item.classcode)" alt="" />
+              </div>
+              <div class="blog__sidebar__recent__item__text">
+                <p>{{ item.class_name }}</p>
+              </div>
             </div>
           </router-link>
           <div class="text-center mb-4">

@@ -76,12 +76,14 @@
                 <v-col cols="12" sm="6">
                   <v-file-input
                     truncate-length="15"
+                    v-model="thumbnailfile"
                     label="클래스 썸네일 등록"
                   ></v-file-input>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-file-input
                     truncate-length="15"
+                    v-model="introfile"
                     label="클래스 상세 설명 등록"
                   ></v-file-input>
                 </v-col>
@@ -144,7 +146,8 @@ export default {
       food_type: this.classSimpleItem.food_type,
       mealkit_ok: this.classSimpleItem.mealkit_ok,
       class_max: String(this.classSimpleItem.class_max),
-      class_describe: '', // 파일 업로드 완료되면 수정할 부분
+      thumbnailfile: null,
+      introfile: null,
     };
   },
   methods: {
@@ -152,7 +155,10 @@ export default {
       if (this.class_time === '1시간') this.class_time = '01:00:00';
       else if (this.class_time === '1시간 30분') this.class_time = '01:30:00';
       else if (this.class_time === '2시간') this.class_time = '02:00:00';
-      await updateClass({
+      var fd = new FormData();
+      fd.append('files', this.thumbnailfile);
+      fd.append('files', this.introfile);
+      var datadummy = {
         class_describe: '',
         class_difficult: this.class_difficult,
         class_name: this.class_name,
@@ -165,7 +171,14 @@ export default {
         store_information_store_describe: '',
         store_information_store_name: '',
         store_information_storecode: '',
-      });
+      };
+      fd.append(
+        'key',
+        new Blob([JSON.stringify(datadummy)], {
+          type: 'application/json',
+        }),
+      );
+      await updateClass(fd);
       this.dialog = false;
     },
   },
