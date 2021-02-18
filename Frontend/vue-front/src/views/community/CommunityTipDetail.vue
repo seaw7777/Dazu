@@ -74,12 +74,6 @@
             <v-divider></v-divider>
           </div>
         </v-card-text>
-
-        <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve">
-            Reserve
-          </v-btn>
-        </v-card-actions>
       </div>
     </v-card>
     <v-row class="justify-content-center">
@@ -87,7 +81,17 @@
         tile
         elevation="0"
         large
-        style="font-size: 14px;color: #ffffff;background: #111111;font-weight: 600;border: none;text-transform: uppercase;display: inline-block;letter-spacing: 2px;padding: 14px 30px;"
+        style="
+          font-size: 14px;
+          color: #ffffff;
+          background: #111111;
+          font-weight: 600;
+          border: none;
+          text-transform: uppercase;
+          display: inline-block;
+          letter-spacing: 2px;
+          padding: 14px 30px;
+        "
         @click="goList"
         >목록</v-btn
       >

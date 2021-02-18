@@ -2,43 +2,51 @@
   <div>
     <div class="cart__discount">
       <h6>Store Detail</h6>
-      <form action="#">
-        <input type="text" placeholder="이미지 URL?" readonly />
-        <v-dialog v-model="dialog" persistent max-width="290">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              style="font-size: 14px;color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #111111;padding: 0 30px;border: none;position: absolute;right: 0;top: 0;height: 100%;"
-              dark
-              tile
-              v-bind="attrs"
-              v-on="on"
-            >
-              편집
+
+      <v-dialog v-model="dialog" persistent max-width="290">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            style="
+              font-size: 14px;
+              color: #ffffff;
+              background: #111111;
+              font-weight: 600;
+              border: none;
+              text-transform: uppercase;
+              display: inline-block;
+              letter-spacing: 2px;
+              padding: 14px 30px;
+            "
+            dark
+            tile
+            large
+            block
+            v-bind="attrs"
+            v-on="on"
+          >
+            편집
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title class="headline"> 가게 상세 설명 편집 </v-card-title>
+          <v-card-text
+            ><v-file-input
+              v-model="selectfile"
+              truncate-length="15"
+              label="새로운 가게 상세 설명"
+            ></v-file-input
+          ></v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="green darken-1" text @click="putStoreDetail">
+              SAVE
             </v-btn>
-          </template>
-          <v-card>
-            <v-card-title class="headline">
-              가게 상세 설명 편집
-            </v-card-title>
-            <v-card-text
-              ><v-file-input
-                v-model="selectfile"
-                truncate-length="15"
-                label="새로운 가게 상세 설명"
-              ></v-file-input
-            ></v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="green darken-1" text @click="putStoreDetail()">
-                SAVE
-              </v-btn>
-              <v-btn color="green darken-1" text @click="dialog = false">
-                CLOSE
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </form>
+            <v-btn color="green darken-1" text @click="dialog = false">
+              CLOSE
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </div>
   </div>
 </template>

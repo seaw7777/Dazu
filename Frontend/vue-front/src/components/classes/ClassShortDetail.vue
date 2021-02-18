@@ -16,10 +16,11 @@
 
           <div class="text-center">
             <v-rating
-              v-model="classData.store_information_store_cnt"
+              v-model="classData.store_information_store_grade"
               background-color="orange lighten-3"
               color="orange"
               medium
+              readonly
             ></v-rating>
           </div>
         </v-row>
@@ -66,10 +67,10 @@ export default {
     },
   },
   computed: {
-    comclass: function() {
+    comclass: function () {
       return this.classData.class_name;
     },
-    comclasscode: function() {
+    comclasscode: function () {
       return this.classData.classcode;
     },
   },

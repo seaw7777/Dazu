@@ -16,12 +16,23 @@
                         <div
                           ref="searchWindow"
                           :style="searchWindow"
-                          style="border:1px solid;width:500px;margin:5px 0;position:relative"
+                          style="
+                            border: 1px solid;
+                            width: 500px;
+                            margin: 5px 0;
+                            position: relative;
+                          "
                         >
                           <img
                             src="//t1.daumcdn.net/postcode/resource/images/close.png"
                             id="btnFoldWrap"
-                            style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+                            style="
+                              cursor: pointer;
+                              position: absolute;
+                              right: 0px;
+                              top: -1px;
+                              z-index: 1;
+                            "
                             @click="searchWindow.display = 'none'"
                             alt="close"
                           />
@@ -38,7 +49,11 @@
                             tile
                             large
                             elevation="0"
-                            style="background: rgba(226, 108, 12, 0.2);color: #111111;position: absolute;"
+                            style="
+                              background: rgba(226, 108, 12, 0.2);
+                              color: #111111;
+                              position: absolute;
+                            "
                             value="우편번호 찾기"
                             @click="execDaumPostcode"
                             >우편번호 찾기</v-btn
@@ -62,14 +77,28 @@
                     placeholder="도로명주소"
                     v-model="address"
                   />
-                  <input type="text" placeholder="상세주소 (optinal)" />
+                  <input
+                    type="text"
+                    v-model="extraAddress"
+                    placeholder="상세주소 (optinal)"
+                  />
                 </div>
 
                 <v-btn
                   tile
                   elevation="0"
                   large
-                  style="font-size: 14px;color: #ffffff;background: #111111;font-weight: 600;border: none;text-transform: uppercase;display: inline-block;letter-spacing: 2px;padding: 14px 30px;"
+                  style="
+                    font-size: 14px;
+                    color: #ffffff;
+                    background: #111111;
+                    font-weight: 600;
+                    border: none;
+                    text-transform: uppercase;
+                    display: inline-block;
+                    letter-spacing: 2px;
+                    padding: 14px 30px;
+                  "
                   block
                   @click="submitInfo"
                 >
