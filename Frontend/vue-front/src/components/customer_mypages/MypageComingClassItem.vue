@@ -13,7 +13,11 @@
           >
         </v-list-item-content>
 
-        <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
+        <v-list-item-avatar tile size="90" color="grey"
+          ><img
+            :src="imgsrc(comingItem.classcode)"
+            style="width:90px; height:90px;"
+        /></v-list-item-avatar>
       </v-list-item>
     </v-card>
   </div>
@@ -24,6 +28,15 @@ export default {
   props: {
     comingItem: {
       type: Object,
+    },
+  },
+  methods: {
+    imgsrc: function(code) {
+      var imgsrc =
+        'https://i4d104.p.ssafy.io/dazu/file/image/' +
+        code +
+        '_class_Thumbnail';
+      return imgsrc;
     },
   },
 };

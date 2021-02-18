@@ -2,7 +2,7 @@
   <div>
     <td class="product__cart__item">
       <div class="product__cart__item__pic">
-        <img :src="imgsrc()" alt="" />
+        <img :src="imgsrc()" alt="" style="width:90px;height:90px;" />
       </div>
       <div class="product__cart__item__text">
         <h6>{{ classSimpleItem.class_name }}</h6>
@@ -66,6 +66,7 @@ export default {
     async deleteClass() {
       const id = this.classSimpleItem.classcode;
       await deleteClass(id);
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

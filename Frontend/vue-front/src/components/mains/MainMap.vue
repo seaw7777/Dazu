@@ -5,7 +5,7 @@
         <div
           class="map-container"
           id="map"
-          style="width:900px;height:500px; border:1px solid #f08632;"
+          style="width: 900px; height: 500px; border: 1px solid #f08632"
         ></div>
       </div>
     </section>

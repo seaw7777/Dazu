@@ -167,6 +167,7 @@ export default {
         store_information_storecode: '',
       });
       this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

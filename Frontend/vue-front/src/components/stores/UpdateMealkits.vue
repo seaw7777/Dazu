@@ -98,10 +98,12 @@ export default {
         mealkit_thumbnail: this.mealkit.mealkit_thumbnail,
         mealkitcode: this.mealkit.mealkitcode,
       });
+      this.$router.go(this.$router.currentRoute);
       this.dialog = false;
     },
     async clickDeleteMealkit() {
       await deleteMealkits(this.mealkit.mealkitcode);
+      this.$router.go(this.$router.currentRoute);
       this.dialog = false;
     },
   },

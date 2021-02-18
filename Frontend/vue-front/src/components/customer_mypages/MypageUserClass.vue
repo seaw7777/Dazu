@@ -20,35 +20,35 @@
         v-for="item in classDataList"
         :key="item.name"
       >
-        <div>
-          <router-link
-            :to="'/class/detail/' + item.classcode"
-            tag="a"
-            class="blog__sidebar__recent__item"
-          >
-            <div class="blog__sidebar__recent__item__pic">
-              <img :src="imgsrc(item.classcode)" alt="" />
-            </div>
-            <div class="blog__sidebar__recent__item__text">
-              <p>{{ item.class_name }}</p>
-            </div>
-          </router-link>
-          <div class="text-center mb-4">
-            <v-btn
-              tile
-              elevation="0"
-              style="display: inline-block;font-size: 12px;font-weight: 600;text-transform: uppercase; padding: 14px 30px;color: rgb(255, 255, 255);background: rgb(240, 134, 50);letter-spacing: 2px;width:65px;hegith:20px;margin:4px;"
-              @click="gotoClass(item.class_url)"
-            >
-              class
-            </v-btn>
+        <div class="blog__sidebar__recent__item">
+          <div class="blog__sidebar__recent__item__pic">
+            <img
+              :src="imgsrc(item.classcode)"
+              alt=""
+              style="width:90px;height:90px;"
+            />
           </div>
-        </div>
-        <div>
-          <span
-            >{{ item.class_date }} | {{ item.class_starttime.slice(0, 5) }} -
-            {{ item.class_endtime.slice(0, 5) }}</span
-          >
+          <div class="blog__sidebar__recent__item__text">
+            <router-link :to="'/class/detail/' + item.classcode" tag="p">{{
+              item.class_name
+            }}</router-link>
+            <span
+              >{{ item.class_date.slice(5, 10) }} |
+              {{ item.class_starttime.slice(0, 5) }} -
+              {{ item.class_endtime.slice(0, 5) }}</span
+            >&nbsp;
+            <span
+              ><v-btn
+                tile
+                elevation="0"
+                style="display: inline-block;font-size: 15px;font-weight: 600;text-transform: uppercase; background: black;color:white;letter-spacing: 2px;"
+                @click="gotoClass(item.class_url)"
+              >
+                강의
+                <v-icon>mdi-arrow-right-thick</v-icon>
+              </v-btn></span
+            >
+          </div>
         </div>
       </div>
     </div>

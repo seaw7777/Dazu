@@ -14,7 +14,10 @@
             <v-card class="ma-4" elevation="0" @click="classclick(n - 1)">
               <div class="product__item">
                 <div class="product__item__pic set-bg" data-setbg="pic">
-                  <img :src="imgsrc(classItems[n - 1].classcode)" />
+                  <img
+                    :src="imgsrc(classItems[n - 1].classcode)"
+                    style="width:270px; height:270px;"
+                  />
                   <div class="product__label">
                     <span>{{ classItems[n - 1].class_date }}</span>
                   </div>

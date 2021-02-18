@@ -13,14 +13,14 @@ export default {
       member: [],
     };
   },
-  created() {
+  async created() {
     this.code = this.$route.query.code;
     console.log(this.code);
     if (this.code != undefined || this.code != null) {
       this.$store.dispatch('CODE', this.code);
 
       console.log('passif--' + this.code);
-      this.$axios
+      await this.$axios
         .get('https://i4d104.p.ssafy.io/dazu/login?code=' + this.code)
         // .get('http://localhost:8000/dazu/login?code=' + this.code)
         .then(({ data }) => {

@@ -195,7 +195,7 @@ export default {
           nickname: this.$store.state.username,
           usertype: this.usertype,
         });
-        this.$store.dispatch('EXTRAINFO', extrainfo);
+        await this.$store.dispatch('EXTRAINFO', extrainfo);
         this.$router.push('/main');
         console.log(response);
         console.log('고객님 회원가입 완료');

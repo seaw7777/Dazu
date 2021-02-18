@@ -23,9 +23,10 @@
 	</insert>
 	
 	<select id="getBoard" parameterType="int" resultType="Board">
-		select *
-		from recommended_restaurants_board
+		select res.*,m.nickname
+		from recommended_restaurants_board as res,member as m
 		where board_code = #{board_code}
+		and res.member_usercode = m.usercode
 	</select>
 	
 	<update id="updateViews" parameterType="int">

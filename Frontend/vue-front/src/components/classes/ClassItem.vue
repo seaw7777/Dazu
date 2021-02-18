@@ -1,7 +1,11 @@
 <template>
   <div class="product__item" @click="classclick">
     <div class="product__item__pic set-bg" data-setbg="pic">
-      <img class="food-img" :src="imgsrc()" />
+      <img
+        class="food-img"
+        :src="imgsrc()"
+        style="width:270px; height:270px;"
+      />
       <p></p>
       <div class="product__label">
         <span>{{ classItem.food_type }}</span>
