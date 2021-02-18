@@ -180,6 +180,7 @@ export default {
       );
       await updateClass(fd);
       this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

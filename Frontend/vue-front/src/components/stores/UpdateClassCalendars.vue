@@ -162,6 +162,7 @@ export default {
         class_url: this.url,
       });
       this.dialog = false;
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

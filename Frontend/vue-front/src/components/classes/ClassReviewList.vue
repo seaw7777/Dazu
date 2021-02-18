@@ -51,14 +51,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* .review-container {
-  display: flex;
-} */
-/* .review-list-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 500px;
-} */
-</style>
+<style scoped></style>

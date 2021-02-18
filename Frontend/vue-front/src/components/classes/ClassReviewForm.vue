@@ -11,16 +11,19 @@
       <v-form ref="form" v-model="valid" lazy-validation class="reviewsubmit">
         <v-text-field
           v-model="review_content"
-          label="댓글내용"
+          label="후기를 입력해주세요."
           required
         ></v-text-field>
         <v-btn
           :disabled="!valid"
           class="mr-4 review-btn"
-          color="amber"
+          style="background: rgba(226, 108, 12, 0.2);font-size: 14px;font-weight: 600;"
+          elevation="0"
+          large
+          tile
           @click="class_review_describe"
         >
-          Submit
+          후기등록
         </v-btn>
       </v-form>
     </div>
@@ -59,7 +62,6 @@ export default {
         console.log(JSON.stringify(data));
         this.rating = 0;
         this.review_content = '';
-        this.$router.go(this.$router.currentRoute);
       } catch (error) {
         console.log(error);
       }
@@ -92,5 +94,20 @@ export default {
 }
 .reviewsubmit {
   grid-area: reviewsubmit;
+}
+.blog__details__comment .primary-btn {
+  background: rgba(226, 108, 12, 0.2);
+  color: #111111;
+  position: absolute;
+  right: 0;
+  top: -12px;
+}
+.primary-btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  letter-spacing: 2px;
 }
 </style>

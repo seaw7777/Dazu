@@ -17,15 +17,6 @@
         </section>
       </div>
     </section>
-    <!-- <v-row no-gutters>
-      <v-col
-        v-for="classItem in classItems"
-        :key="classItem.classcode"
-        cols="12"
-        sm="4"
-      >
-        <ClassItem :classItem="classItem"></ClassItem></v-col
-    ></v-row> -->
   </div>
 </template>
 <script>

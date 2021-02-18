@@ -11,13 +11,14 @@
 	</select>
 	
 	<select id="selectMyclass" parameterType="string" resultType="Myclass">
-		select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date 
-		from class_time_information as cti ,class_information as ci
-		where cti.class_information_classcode = ci.classcode 
-		and class_timecode in (select class_time_information_class_timecode
-		from class_room as cr0 
-		where cr0.member_usercode = 1)
-		order by class_date,class_starttime;
+
+    	select ci.classcode,ci.class_name,cti.class_starttime,cti.class_endtime,cti.class_date,cti.class_url
+    	from class_time_information as cti ,class_information as ci
+    	where cti.class_information_classcode = ci.classcode 
+    	and class_timecode in (select class_time_information_class_timecode
+   	 	from class_room as cr0 
+    	where cr0.member_usercode = #{id})
+    	order by class_date,class_starttime
 	</select>
 	
 	<select id = "selectCommingMyClass" parameterType="string" resultType="Myclass">
@@ -28,7 +29,7 @@
 		from class_room as cr0 
 		where date(subdate(now(), INTERVAL -7 DAY)) >= date(cti.class_date) AND date(cti.class_date)>= date(now())
         and cr0.member_usercode = #{id})
-		order by class_date,class_starttime;
+		order by class_date,class_starttime
 	</select>
 	
 	<insert id="insertMember" parameterType="Member">

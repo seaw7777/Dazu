@@ -10,7 +10,7 @@
 		where dong = #{dong}
 	</select>
 	
-	<insert id="insertStore">
+	<insert id="insertStore" parameterType="Store">
 		insert into store_information(store_name, store_describe, store_location, dong, lat, lng, member_usercode)
 		values(#{store_name}, #{store_describe}, #{store_location}, #{dong}, #{lat}, #{lng}, #{member_usercode})
 	</insert>
@@ -37,4 +37,23 @@
 		where member_usercode = #{ usercode }
 	</select>
 	
+	<update id="updateStoreName" parameterType="Store">
+		update store_information
+		set store_name = #{ store_name }
+		where storecode = #{ storecode }
+	</update>
+	
+	<update id="updateStoreAddress" parameterType="Store">
+		update store_information set 
+		store_location = #{store_location},
+		lat = #{lat},
+		lng = #{lng},
+		dong = #{dong}
+		where storecode = #{storecode}
+	</update>
+	<select id="getstorecode" parameterType="Store" resultType="int">
+		select storecode
+		from store_information
+		where dong = #{dong} and store_name = #{store_name}
+	</select>
 </mapper>

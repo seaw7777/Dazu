@@ -13,9 +13,13 @@
           tag="a"
           class="blog__sidebar__recent__item"
         >
-          <div class="class-container">
+          <div class="blog__sidebar__recent">
             <div class="blog__sidebar__recent__item__pic">
-              <img :src="imgsrc(item.classcode)" alt="" />
+              <img
+                :src="imgsrc(item.classcode)"
+                alt=""
+                style="width:90px;height:90px;"
+              />
             </div>
             <div class="blog__sidebar__recent__item__text">
               <p>{{ item.class_name }}</p>
