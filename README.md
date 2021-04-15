@@ -66,11 +66,17 @@ COVID-19의 빠른 확산과 잦은 방역수칙 변경으로 소상공인들이
 
 ## 🖥️Tech Stacks
 
-[Backend](https://www.notion.so/ff2f69a51988472db0d7d34c545f9b09)
+[Backend]
 
-[Frontend](https://www.notion.so/86ec9de56365488eb0a8cb54b3ce5162)
+![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/1.jpg)
 
-[Server](https://www.notion.so/2bbf0a8826b64cc19763e86c2e42e31d)
+[Frontend]
+
+![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/2.jpg)
+
+[Server]
+
+![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/3.jpg)
 
 ## ✏️ GitHub
 
