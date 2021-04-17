@@ -50,7 +50,7 @@ COVID-19의 빠른 확산과 잦은 방역수칙 변경으로 소상공인들이
 
 [화면정의서](https://www.notion.so/80b7e8725f9b43219aa8793b042a95bb)
 
-## project
+## Project Structure
 
 ```bash
 📦PJT
@@ -71,30 +71,26 @@ COVID-19의 빠른 확산과 잦은 방역수칙 변경으로 소상공인들이
 
 ## 실행
 
-#### Vue.js실행
+#### Frontend 실행
 
-1. 패키지 설치
-
-``` bash
-$ npm i
-```
-
-2. Vue.js 실행
+- 위치로 이동후 실행
 
 ```bash
+$ cd frontend
+$ npm install
 $ npm run serve
 ```
 
-
+- [http://localhost:8080/](http://localhost:8080/) 에서 확인 가능
 
 #### Backend 실행
 
 - 위치로 이동후 실행
 
 ```bash
-cd backend
+$ cd backend
 #window에서 실행 시
-.\mvnw spring-boot:run
+$ .\mvnw spring-boot:run
 ```
 
 - [http://localhost:8000/swagger-ui.html](http://localhost:8000/swagger-ui.html%EC%9D%84)을 통해 swagger 확인 가능
