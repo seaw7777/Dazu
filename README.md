@@ -50,6 +50,55 @@ COVID-19의 빠른 확산과 잦은 방역수칙 변경으로 소상공인들이
 
 [화면정의서](https://www.notion.so/80b7e8725f9b43219aa8793b042a95bb)
 
+## project
+
+```bash
+📦PJT
+ ┣ 📂Backend		#Backend
+ ┃ ┣ 📂src/main/java	#Backend 코드
+ ┃  ┣ 📂Controller
+ ┃  ┣ 📂Mapper
+ ┃  ┣ 📂Model
+ ┃  ┣ 📂Service
+ ┣ 📂Frontend		# FrontEnd
+ ┃ ┣ 📂vue-front 
+ ┃ 	┣ 📂src				# Front 코드
+ ┣ 📂참고자료		# 산출물
+ ┃ ┣ 📂pjt01_DB				# DB 관련
+ ┃ ┣ 📂pjt-1_wireframe		# 와이어프래임
+ ┗ 📜README.md			# 프로젝트 README
+```
+
+## 실행
+
+#### Vue.js실행
+
+1. 패키지 설치
+
+``` bash
+$ npm i
+```
+
+2. Vue.js 실행
+
+```bash
+$ npm run serve
+```
+
+
+
+#### Backend 실행
+
+- 위치로 이동후 실행
+
+```bash
+cd backend
+#window에서 실행 시
+.\mvnw spring-boot:run
+```
+
+- [http://localhost:8000/swagger-ui.html](http://localhost:8000/swagger-ui.html%EC%9D%84)을 통해 swagger 확인 가능
+
 ### 프로젝트 상세 소개
 
 - 지역별 쿠킹클래스
