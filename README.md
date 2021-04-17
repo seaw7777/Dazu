@@ -111,17 +111,11 @@ $ .\mvnw spring-boot:run
 
 ## 🖥️Tech Stacks
 
-[Backend]
+## Tech Stack
 
-![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/1.jpg)
+![Spring](https://img.shields.io/badge/Vue-2.6.12-green?style=flat&logo=Vue.js) ![Vuetify](https://img.shields.io/badge/Vuetify-2.0.9-green?style=flat&logo=Vuetify)![Vue](https://img.shields.io/badge/Spring-2.42-success?style=flat&logo=Spring)![Prettier](https://img.shields.io/badge/Prettier-%5E6.0.0-yellow?style=flat&logo=Prettier)![ESlint](https://img.shields.io/badge/ESlint-4.5.0-yellow?style=flat&logo=ESlint)
 
-[Frontend]
-
-![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/2.jpg)
-
-[Server]
-
-![Dazu%205255c23c85d344619c00cb51f60242fa/Untitled.png](Dazu%205255c23c85d344619c00cb51f60242fa/3.jpg)
+![MYSQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white)![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white)![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=Jenkins&logoColor=white)
 
 ## ✏️ GitHub
 
